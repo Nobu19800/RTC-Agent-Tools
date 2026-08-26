@@ -77,7 +77,7 @@
       ],
       "servicePorts": [],
       "repositoryUrl": "https://github.com/n-ando/OpenRTM-aist",
-      "directoryUrl": "https://github.com/n-ando/OpenRTM-aist/tree/main/examples/Motor",
+      "directoryUrl": "https://github.com/n-ando/OpenRTM-aist/tree/master/examples/Motor",
       "path": "examples/Motor/RTC.xml",
       "rtcXmlUrl": "https://github.com/n-ando/OpenRTM-aist/blob/c7bff246903816cf44b510a44cc439c89cb99459/examples/Motor/RTC.xml"
     },
@@ -142,7 +142,7 @@
       ],
       "servicePorts": [],
       "repositoryUrl": "https://github.com/n-ando/OpenRTM-aist",
-      "directoryUrl": "https://github.com/n-ando/OpenRTM-aist/tree/main/examples/SeqIn",
+      "directoryUrl": "https://github.com/n-ando/OpenRTM-aist/tree/master/examples/SeqIn",
       "path": "examples/SeqIn/RTC.xml",
       "rtcXmlUrl": "https://github.com/n-ando/OpenRTM-aist/blob/c7bff246903816cf44b510a44cc439c89cb99459/examples/SeqIn/RTC.xml"
     },
@@ -167,7 +167,7 @@
       ],
       "servicePorts": [],
       "repositoryUrl": "https://github.com/n-ando/OpenRTM-aist",
-      "directoryUrl": "https://github.com/n-ando/OpenRTM-aist/tree/main/examples/Sensor",
+      "directoryUrl": "https://github.com/n-ando/OpenRTM-aist/tree/master/examples/Sensor",
       "path": "examples/Sensor/RTC.xml",
       "rtcXmlUrl": "https://github.com/n-ando/OpenRTM-aist/blob/c7bff246903816cf44b510a44cc439c89cb99459/examples/Sensor/RTC.xml"
     },
@@ -232,7 +232,7 @@
       ],
       "servicePorts": [],
       "repositoryUrl": "https://github.com/n-ando/OpenRTM-aist",
-      "directoryUrl": "https://github.com/n-ando/OpenRTM-aist/tree/main/examples/SeqOut",
+      "directoryUrl": "https://github.com/n-ando/OpenRTM-aist/tree/master/examples/SeqOut",
       "path": "examples/SeqOut/RTC.xml",
       "rtcXmlUrl": "https://github.com/n-ando/OpenRTM-aist/blob/c7bff246903816cf44b510a44cc439c89cb99459/examples/SeqOut/RTC.xml"
     },
@@ -449,7 +449,7 @@
       ],
       "servicePorts": [],
       "repositoryUrl": "https://github.com/n-ando/OpenRTM-aist",
-      "directoryUrl": "https://github.com/n-ando/OpenRTM-aist/tree/main/examples/ConsoleIn",
+      "directoryUrl": "https://github.com/n-ando/OpenRTM-aist/tree/master/examples/ConsoleIn",
       "path": "examples/ConsoleIn/RTC.xml",
       "rtcXmlUrl": "https://github.com/n-ando/OpenRTM-aist/blob/c7bff246903816cf44b510a44cc439c89cb99459/examples/ConsoleIn/RTC.xml"
     },
@@ -469,7 +469,7 @@
       ],
       "servicePorts": [],
       "repositoryUrl": "https://github.com/n-ando/OpenRTM-aist",
-      "directoryUrl": "https://github.com/n-ando/OpenRTM-aist/tree/main/examples/ConsoleOut",
+      "directoryUrl": "https://github.com/n-ando/OpenRTM-aist/tree/master/examples/ConsoleOut",
       "path": "examples/ConsoleOut/RTC.xml",
       "rtcXmlUrl": "https://github.com/n-ando/OpenRTM-aist/blob/c7bff246903816cf44b510a44cc439c89cb99459/examples/ConsoleOut/RTC.xml"
     },
@@ -494,7 +494,7 @@
       ],
       "servicePorts": [],
       "repositoryUrl": "https://github.com/n-ando/OpenRTM-aist",
-      "directoryUrl": "https://github.com/n-ando/OpenRTM-aist/tree/main/examples/Controller",
+      "directoryUrl": "https://github.com/n-ando/OpenRTM-aist/tree/master/examples/Controller",
       "path": "examples/Controller/RTC.xml",
       "rtcXmlUrl": "https://github.com/n-ando/OpenRTM-aist/blob/c7bff246903816cf44b510a44cc439c89cb99459/examples/Controller/RTC.xml"
     }
