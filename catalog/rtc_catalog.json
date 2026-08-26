@@ -12,42 +12,42 @@
         {
           "name": "target_velocity_in",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "pose_update_in",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "buzzer_hz_in",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "led4bit_in",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "current_velocity_out",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "current_pose_out",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "ir_sensor_out",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "switch3bit_out",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         }
       ],
       "servicePorts": [],
@@ -67,12 +67,12 @@
         {
           "name": "in",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "out",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         }
       ],
       "servicePorts": [],
@@ -92,52 +92,52 @@
         {
           "name": "Octet",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "Short",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "Long",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "Float",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "Double",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "OctetSeq",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "ShortSeq",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "LongSeq",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "FloatSeq",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "DoubleSeq",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         }
       ],
       "servicePorts": [],
@@ -157,12 +157,12 @@
         {
           "name": "in",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "out",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         }
       ],
       "servicePorts": [],
@@ -182,52 +182,52 @@
         {
           "name": "Octet",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "Short",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "Long",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "Float",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "Double",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "OctetSeq",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "ShortSeq",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "LongSeq",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "FloatSeq",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "DoubleSeq",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         }
       ],
       "servicePorts": [],
@@ -247,47 +247,47 @@
         {
           "name": "velocity",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "RTC::TimedVelocity2D"
         },
         {
           "name": "targetJointAngle",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "RTC::TimedDoubleSeq"
         },
         {
           "name": "camera",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "RTC::CameraImage"
         },
         {
           "name": "audio",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "RTC::TimedOctetSeq"
         },
         {
           "name": "bumper",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "RTC::TimedBooleanSeq"
         },
         {
           "name": "touch",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "RTC::TimedBooleanSeq"
         },
         {
           "name": "sonar",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "RTC::TimedBooleanSeq"
         },
         {
           "name": "currentJointAngle",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "RTC::TimedDoubleSeq"
         },
         {
           "name": "currentPose",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "RTC::TimedPose2D"
         }
       ],
       "servicePorts": [
@@ -368,42 +368,42 @@
         {
           "name": "pos",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "mode",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "out_joint",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "out_vel",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "out_trq",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "out_cur",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "out_tmp",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "is_moving",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         }
       ],
       "servicePorts": [
@@ -444,7 +444,7 @@
         {
           "name": "out",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         }
       ],
       "servicePorts": [],
@@ -464,7 +464,7 @@
         {
           "name": "in",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         }
       ],
       "servicePorts": [],
@@ -484,12 +484,12 @@
         {
           "name": "in",
           "direction": "InPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         },
         {
           "name": "out",
           "direction": "OutPort",
-          "dataType": ""
+          "dataType": "rtcExt:dataport_ext"
         }
       ],
       "servicePorts": [],
