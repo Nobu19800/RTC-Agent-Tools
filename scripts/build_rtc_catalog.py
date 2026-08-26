@@ -77,12 +77,12 @@ def get_attribute(element, name):
     """
     Get an XML attribute while ignoring namespaces.
 
-    Example:
+    Examples:
         rtc:name
         {namespace}name
         name
 
-    are all treated as "name".
+    are treated as the same attribute.
     """
 
     target = name.lower()
@@ -99,9 +99,10 @@ def get_attribute(element, name):
 
 def search_rtc_xml():
     """
-    Search GitHub for files named RTC.xml.
+    Search GitHub for RTC.xml.
 
-    This test version retrieves the first 100 search results.
+    This test version retrieves up to 100 results
+    from the first page.
     """
 
     query = "filename:RTC.xml"
@@ -129,7 +130,7 @@ def search_rtc_xml():
 
 def get_file_content(item):
     """
-    Download RTC.xml through GitHub Contents API.
+    Download RTC.xml using GitHub Contents API.
     """
 
     api_url = item["url"]
@@ -176,7 +177,7 @@ def get_file_content(item):
 
 def parse_basic_info(root):
     """
-    Parse BasicInfo element.
+    Parse RTC BasicInfo.
     """
 
     result = {
@@ -239,10 +240,10 @@ def parse_basic_info(root):
 
 def normalize_data_type(value):
     """
-    Normalize a DataPort data type.
+    Normalize DataPort data type.
 
-    Do not automatically add RTC:: because RTC.xml may use
-    user-defined IDL types or another namespace.
+    Do not automatically prepend RTC:: because
+    user-defined IDL types may be used.
     """
 
     if not value:
@@ -251,9 +252,60 @@ def normalize_data_type(value):
     return value.strip()
 
 
+def is_rtc_data_type(value):
+    """
+    Return True only if the value looks like an actual
+    DataPort data type.
+
+    Values such as:
+        rtcExt:dataport_ext
+        rtcExt:serviceport_ext
+
+    describe XML schema extension types and must not be
+    treated as RTC data types.
+    """
+
+    if not value:
+        return False
+
+    value = value.strip()
+
+    if not value:
+        return False
+
+    lower = value.lower()
+
+    invalid_values = {
+        "rtcext:dataport_ext",
+        "rtcext:serviceport_ext",
+        "dataport_ext",
+        "serviceport_ext",
+    }
+
+    if lower in invalid_values:
+        return False
+
+    if lower.startswith("rtcext:"):
+        return False
+
+    if lower.startswith("xsi:"):
+        return False
+
+    if lower.endswith("_ext"):
+        return False
+
+    if "dataport_ext" in lower:
+        return False
+
+    if "serviceport_ext" in lower:
+        return False
+
+    return True
+
+
 def detect_port_direction(element):
     """
-    Detect InPort / OutPort from RTC Profile attributes.
+    Detect InPort / OutPort.
     """
 
     tag = local_name(
@@ -311,18 +363,11 @@ def parse_data_ports(root):
     """
     Parse RTC DataPorts.
 
-    Supported examples include:
+    Supports multiple RTC Profile representations.
 
-        <rtc:DataPorts
-            rtc:name="target_angle"
-            rtc:portType="DataInPort"
-            rtc:type="RTC::TimedDoubleSeq">
-
-    and:
-
-        <rtcExt:Properties
-            rtcExt:name="dataport.data_type"
-            rtcExt:value="RTC::TimedDoubleSeq">
+    Important:
+    The generic XML "type" attribute may actually be xsi:type,
+    such as rtcExt:dataport_ext. Such values are filtered out.
     """
 
     ports = []
@@ -355,8 +400,7 @@ def parse_data_ports(root):
         )
 
         #
-        # RTC Profile commonly stores the data type
-        # in the "type" attribute.
+        # Prefer explicit data type attributes.
         #
         data_type = (
             get_attribute(
@@ -371,19 +415,30 @@ def parse_data_ports(root):
                 element,
                 "data_type",
             )
-            or get_attribute(
-                element,
-                "type",
-            )
             or ""
         )
+
+        #
+        # "type" may be xsi:type="rtcExt:dataport_ext".
+        # Only use it if it looks like a real RTC data type.
+        #
+        type_attr = get_attribute(
+            element,
+            "type",
+        )
+
+        if (
+            not data_type
+            and is_rtc_data_type(type_attr)
+        ):
+            data_type = type_attr
 
         direction = detect_port_direction(
             element
         )
 
         #
-        # Search child elements and extension properties.
+        # Search child elements and RTC extension properties.
         #
         for child in element.iter():
 
@@ -399,7 +454,7 @@ def parse_data_ports(root):
             ).strip()
 
             #
-            # Child <Name>
+            # Child name.
             #
             if child_tag == "name":
 
@@ -407,19 +462,34 @@ def parse_data_ports(root):
                     name = text
 
             #
-            # Child <DataType> / <Type>
+            # Child DataType element.
             #
             elif child_tag in (
                 "datatype",
                 "data_type",
-                "type",
             ):
 
-                if text and not data_type:
+                if (
+                    text
+                    and not data_type
+                    and is_rtc_data_type(text)
+                ):
                     data_type = text
 
             #
-            # RTC Builder extension properties
+            # Child Type element.
+            #
+            elif child_tag == "type":
+
+                if (
+                    text
+                    and not data_type
+                    and is_rtc_data_type(text)
+                ):
+                    data_type = text
+
+            #
+            # RTC Builder extension properties.
             #
             elif child_tag in (
                 "properties",
@@ -448,17 +518,27 @@ def parse_data_ports(root):
                     .lower()
                 )
 
+                #
+                # Data type properties.
+                #
                 if property_name_lower in (
                     "dataport.data_type",
                     "dataport.datatype",
                     "data_type",
                     "datatype",
-                    "type",
                 ):
 
-                    if property_value:
+                    if (
+                        property_value
+                        and is_rtc_data_type(
+                            property_value
+                        )
+                    ):
                         data_type = property_value
 
+                #
+                # Port direction properties.
+                #
                 elif property_name_lower in (
                     "port.port_type",
                     "dataport.port_type",
@@ -487,43 +567,10 @@ def parse_data_ports(root):
                     ):
                         direction = "OutPort"
 
-        #
-        # Some profiles may store information in rtcDoc:Doc.
-        #
-        if not data_type:
-
-            for child in element.iter():
-
-                child_tag = local_name(
-                    child.tag
-                ).lower()
-
-                if child_tag != "doc":
-                    continue
-
-                doc_type = (
-                    get_attribute(
-                        child,
-                        "type",
-                    )
-                    or get_attribute(
-                        child,
-                        "dataType",
-                    )
-                    or ""
-                )
-
-                if doc_type:
-                    data_type = doc_type
-                    break
-
         data_type = normalize_data_type(
             data_type
         )
 
-        #
-        # A port without a name is not useful for the catalog.
-        #
         if not name:
             continue
 
@@ -536,7 +583,9 @@ def parse_data_ports(root):
         if key in seen:
             continue
 
-        seen.add(key)
+        seen.add(
+            key
+        )
 
         ports.append(
             {
@@ -575,9 +624,37 @@ def normalize_service_direction(value):
     return value
 
 
+def is_service_interface_type(value):
+    """
+    Filter out XML schema extension types from
+    service interface type values.
+    """
+
+    if not value:
+        return False
+
+    value = value.strip()
+
+    if not value:
+        return False
+
+    lower = value.lower()
+
+    if lower.startswith("rtcext:"):
+        return False
+
+    if lower.endswith("_ext"):
+        return False
+
+    if "serviceport_ext" in lower:
+        return False
+
+    return True
+
+
 def parse_service_ports(root):
     """
-    Parse ServicePorts and service interfaces.
+    Parse ServicePorts and interfaces.
     """
 
     service_ports = []
@@ -648,10 +725,6 @@ def parse_service_ports(root):
             interface_type = (
                 get_attribute(
                     child,
-                    "type",
-                )
-                or get_attribute(
-                    child,
                     "interfaceType",
                 )
                 or get_attribute(
@@ -660,6 +733,22 @@ def parse_service_ports(root):
                 )
                 or ""
             )
+
+            #
+            # Generic "type" may also contain XML extension type.
+            #
+            type_attr = get_attribute(
+                child,
+                "type",
+            )
+
+            if (
+                not interface_type
+                and is_service_interface_type(
+                    type_attr
+                )
+            ):
+                interface_type = type_attr
 
             direction = (
                 get_attribute(
@@ -784,7 +873,7 @@ def parse_rtc_xml(xml_text):
         root
     )
 
-    rtc = {
+    return {
         **basic,
 
         "language": parse_language(
@@ -800,12 +889,10 @@ def parse_rtc_xml(xml_text):
         ),
     }
 
-    return rtc
-
 
 def is_valid_rtc(rtc):
     """
-    Determine whether the XML is likely an RTC Profile.
+    Check whether parsed XML looks like an RTC Profile.
     """
 
     component_name = (
@@ -816,18 +903,14 @@ def is_valid_rtc(rtc):
         .strip()
     )
 
-    if not component_name:
-        return False
-
-    return True
+    return bool(
+        component_name
+    )
 
 
 def get_repository_info(item):
     """
     Get repository URL and default branch.
-
-    Code search results do not always contain default_branch,
-    so retrieve repository metadata when necessary.
     """
 
     repository = item[
@@ -880,7 +963,7 @@ def build_directory_url(
     default_branch,
 ):
     """
-    Build URL for the directory containing RTC.xml.
+    Build GitHub URL of directory containing RTC.xml.
     """
 
     parent = str(
@@ -902,7 +985,7 @@ def create_catalog_entry(
     rtc,
 ):
     """
-    Add GitHub metadata to parsed RTC data.
+    Add GitHub metadata to parsed RTC information.
     """
 
     (
@@ -922,7 +1005,7 @@ def create_catalog_entry(
         default_branch,
     )
 
-    entry = {
+    return {
         "componentName": rtc.get(
             "componentName",
             "",
@@ -975,12 +1058,10 @@ def create_catalog_entry(
         ),
     }
 
-    return entry
-
 
 def save_catalog(catalog):
     """
-    Save rtc_catalog.json.
+    Save RTC catalog.
     """
 
     OUTPUT_FILE.parent.mkdir(
@@ -1011,7 +1092,7 @@ def save_catalog(catalog):
 
 def print_rtc(entry, index):
     """
-    Print parsed RTC information to Actions log.
+    Print parsed information to GitHub Actions log.
     """
 
     print(
@@ -1075,11 +1156,18 @@ def print_rtc(entry, index):
                 [],
             ):
 
+                interface_type = (
+                    interface.get(
+                        "type"
+                    )
+                    or "(unknown)"
+                )
+
                 print(
                     "          "
                     f"{interface['direction']} "
                     f"{interface['name']} : "
-                    f"{interface['type']}"
+                    f"{interface_type}"
                 )
 
     else:
@@ -1215,9 +1303,6 @@ def main():
                 len(catalog),
             )
 
-            #
-            # Stop after --limit valid RTCs.
-            #
             if (
                 args.limit is not None
                 and len(catalog)
@@ -1254,11 +1339,9 @@ def main():
     )
 
     print()
-
     print(
         "Summary"
     )
-
     print(
         "-------"
     )
