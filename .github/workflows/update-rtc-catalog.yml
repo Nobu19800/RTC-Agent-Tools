@@ -1,0 +1,43 @@
+name: Update RTC Catalog
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: "0 18 1 * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build RTC catalog
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/build_rtc_catalog.py
+
+      - name: Commit catalog
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add catalog/rtc_catalog.json
+
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Update RTC catalog"
+            git push
+          fi
