@@ -35,31 +35,182 @@ if TOKEN:
 # ============================================================
 
 def github_api(url):
-    request = urllib.request.Request(
-        url,
-        headers=HEADERS,
-    )
+    """
+    Call GitHub REST API.
 
-    try:
-        with urllib.request.urlopen(
-            request,
-            timeout=30,
-        ) as response:
-            return json.load(response)
+    If GitHub returns 403/429 because of a rate limit,
+    wait according to Retry-After or X-RateLimit-Reset
+    and retry automatically.
+    """
 
-    except urllib.error.HTTPError as e:
-        print(
-            f"GitHub API error: {e.code} {e.reason}",
-            file=sys.stderr,
+    while True:
+
+        request = urllib.request.Request(
+            url,
+            headers=HEADERS,
         )
 
         try:
-            body = e.read().decode("utf-8")
-            print(body, file=sys.stderr)
-        except Exception:
-            pass
 
-        raise
+            with urllib.request.urlopen(
+                request,
+                timeout=30,
+            ) as response:
+
+                return json.load(
+                    response
+                )
+
+        except urllib.error.HTTPError as e:
+
+            print(
+                f"GitHub API error: "
+                f"{e.code} {e.reason}",
+                file=sys.stderr,
+            )
+
+            remaining = e.headers.get(
+                "X-RateLimit-Remaining"
+            )
+
+            reset = e.headers.get(
+                "X-RateLimit-Reset"
+            )
+
+            retry_after = e.headers.get(
+                "Retry-After"
+            )
+
+            print(
+                f"X-RateLimit-Remaining: "
+                f"{remaining}",
+                file=sys.stderr,
+            )
+
+            print(
+                f"X-RateLimit-Reset: "
+                f"{reset}",
+                file=sys.stderr,
+            )
+
+            print(
+                f"Retry-After: "
+                f"{retry_after}",
+                file=sys.stderr,
+            )
+
+            #
+            # Rate limit / secondary rate limit
+            #
+            if e.code in (
+                403,
+                429,
+            ):
+
+                #
+                # Retry-After has priority.
+                #
+                if retry_after:
+
+                    try:
+                        wait = (
+                            int(retry_after)
+                            + 1
+                        )
+                    except ValueError:
+                        wait = 60
+
+                    print(
+                        f"Waiting {wait} seconds "
+                        f"before retrying...",
+                        file=sys.stderr,
+                    )
+
+                    time.sleep(
+                        wait
+                    )
+
+                    continue
+
+                #
+                # Primary rate limit.
+                #
+                if (
+                    remaining == "0"
+                    and reset
+                ):
+
+                    try:
+
+                        reset_time = int(
+                            reset
+                        )
+
+                        now = int(
+                            time.time()
+                        )
+
+                        wait = max(
+                            reset_time
+                            - now
+                            + 2,
+                            1,
+                        )
+
+                    except ValueError:
+
+                        wait = 60
+
+                    print(
+                        f"Waiting {wait} seconds "
+                        f"for rate limit reset...",
+                        file=sys.stderr,
+                    )
+
+                    time.sleep(
+                        wait
+                    )
+
+                    continue
+
+                #
+                # 403 can also be a secondary rate limit.
+                # GitHub does not always return Retry-After.
+                #
+                print(
+                    "Possible secondary rate limit. "
+                    "Waiting 60 seconds...",
+                    file=sys.stderr,
+                )
+
+                time.sleep(
+                    60
+                )
+
+                continue
+
+            #
+            # Non-rate-limit error
+            #
+            try:
+
+                body = (
+                    e.read()
+                    .decode(
+                        "utf-8",
+                        errors="replace",
+                    )
+                )
+
+                print(
+                    body,
+                    file=sys.stderr,
+                )
+
+            except Exception:
+                pass
+
+            raise
 
 
 # ============================================================
@@ -67,42 +218,58 @@ def github_api(url):
 # ============================================================
 
 def local_name(name):
+
     if "}" in name:
-        return name.split("}", 1)[1]
+        return name.split(
+            "}",
+            1,
+        )[1]
 
     if ":" in name:
-        return name.split(":", 1)[1]
+        return name.split(
+            ":",
+            1,
+        )[1]
 
     return name
 
 
-def get_attr(elem, name):
-    """
-    Get an XML attribute.
+def get_attr(
+    elem,
+    name,
+):
 
-    If namespace-qualified name is specified,
-    use elem.get() directly.
-
-    Otherwise search by local attribute name.
-    """
-
-    if name.startswith("{"):
-        return elem.get(name)
+    if name.startswith(
+        "{"
+    ):
+        return elem.get(
+            name
+        )
 
     target = name.lower()
 
-    for key, value in elem.attrib.items():
+    for key, value in (
+        elem.attrib.items()
+    ):
 
-        if local_name(key).lower() == target:
+        if (
+            local_name(
+                key
+            ).lower()
+            == target
+        ):
+
             return value
 
-    return elem.get(name)
+    return elem.get(
+        name
+    )
 
 
-def rtc_attr(elem, name):
-    """
-    Get an attribute specifically from the RTC namespace.
-    """
+def rtc_attr(
+    elem,
+    name,
+):
 
     return elem.get(
         f"{{{RTC_NS}}}{name}"
@@ -110,154 +277,210 @@ def rtc_attr(elem, name):
 
 
 # ============================================================
-# GitHub search
+# GitHub Code Search
 # ============================================================
 
 def search_rtc_xml():
     """
     Search GitHub for RTC.xml.
 
-    Multiple queries are used because GitHub Code Search
-    limits the number of results obtainable for one query.
+    Start with a single query:
 
-    Results are deduplicated by:
-        repository + file path
+        filename:RTC.xml
+
+    GitHub Code Search returns at most 100 results/page
+    and at most 10 pages (1000 accessible search results).
+
+    A delay is inserted between search requests because
+    Code Search has a stricter rate limit than normal REST API.
     """
 
-    queries = [
-        "filename:RTC.xml",
-        "filename:RTC.xml language:C++",
-        "filename:RTC.xml language:Python",
-        "filename:RTC.xml language:Java",
-    ]
+    query = "filename:RTC.xml"
+
+    encoded_query = (
+        urllib.parse.quote(
+            query
+        )
+    )
 
     all_items = []
     seen = set()
 
-    for query in queries:
+    print()
+    print(
+        "=" * 70
+    )
 
-        print()
-        print("=" * 70)
-        print(f"Search query: {query}")
-        print("=" * 70)
+    print(
+        f"Search query: "
+        f"{query}"
+    )
 
-        encoded_query = urllib.parse.quote(
-            query
+    print(
+        "=" * 70
+    )
+
+    for page in range(
+        1,
+        11,
+    ):
+
+        url = (
+            f"{GITHUB_API}"
+            f"/search/code"
+            f"?q={encoded_query}"
+            f"&per_page=100"
+            f"&page={page}"
         )
 
-        # GitHub search results are limited to
-        # 100 results/page and at most 10 pages.
-        for page in range(1, 11):
+        print()
+        print(
+            f"Searching page "
+            f"{page} ..."
+        )
 
-            url = (
-                f"{GITHUB_API}/search/code"
-                f"?q={encoded_query}"
-                f"&per_page=100"
-                f"&page={page}"
+        try:
+
+            data = github_api(
+                url
             )
 
-            print(
-                f"Searching page {page} ..."
-            )
+        except urllib.error.HTTPError as e:
 
-            try:
-
-                data = github_api(
-                    url
-                )
-
-            except urllib.error.HTTPError as e:
-
-                # GitHub may reject page > available
-                # search window.
-                if e.code == 422:
-
-                    print(
-                        "Search result limit reached."
-                    )
-
-                    break
-
-                raise
-
-            items = data.get(
-                "items",
-                [],
-            )
-
-            total_count = data.get(
-                "total_count",
-                0,
-            )
-
-            if page == 1:
+            #
+            # Search API may return 422
+            # when the accessible search window
+            # has been exceeded.
+            #
+            if e.code == 422:
 
                 print(
-                    f"GitHub reports "
-                    f"{total_count} matches."
+                    "Search result window "
+                    "limit reached."
                 )
 
-            if not items:
                 break
 
-            added = 0
+            raise
 
-            for item in items:
+        items = data.get(
+            "items",
+            [],
+        )
 
-                repository = item[
+        total_count = data.get(
+            "total_count",
+            0,
+        )
+
+        if page == 1:
+
+            print(
+                f"GitHub reports "
+                f"{total_count} matches."
+            )
+
+            if total_count > 1000:
+
+                print(
+                    "Warning: GitHub reports "
+                    "more than 1000 matches."
+                )
+
+                print(
+                    "Only the first 1000 "
+                    "search results are "
+                    "accessible with this query."
+                )
+
+        if not items:
+
+            print(
+                "No more search results."
+            )
+
+            break
+
+        added = 0
+
+        for item in items:
+
+            repository = (
+                item[
                     "repository"
                 ]
-
-                repository_name = (
-                    repository.get(
-                        "full_name",
-                        repository.get(
-                            "html_url",
-                            "",
-                        ),
-                    )
-                )
-
-                path = item[
-                    "path"
-                ]
-
-                key = (
-                    repository_name,
-                    path,
-                )
-
-                if key in seen:
-                    continue
-
-                seen.add(
-                    key
-                )
-
-                all_items.append(
-                    item
-                )
-
-                added += 1
-
-            print(
-                f"  received : {len(items)}"
             )
 
-            print(
-                f"  new      : {added}"
+            repository_name = (
+                repository.get(
+                    "full_name"
+                )
+                or repository.get(
+                    "html_url",
+                    "",
+                )
             )
 
-            print(
-                f"  unique   : {len(all_items)}"
+            path = item.get(
+                "path",
+                "",
             )
 
-            if len(items) < 100:
-                break
+            key = (
+                repository_name,
+                path,
+            )
 
-            # Small delay to avoid unnecessarily
-            # hammering the Search API.
-            time.sleep(1)
+            if key in seen:
+                continue
+
+            seen.add(
+                key
+            )
+
+            all_items.append(
+                item
+            )
+
+            added += 1
+
+        print(
+            f"  received : "
+            f"{len(items)}"
+        )
+
+        print(
+            f"  new      : "
+            f"{added}"
+        )
+
+        print(
+            f"  unique   : "
+            f"{len(all_items)}"
+        )
+
+        #
+        # Last partial page.
+        #
+        if len(items) < 100:
+
+            print(
+                "Last search page reached."
+            )
+
+            break
+
+        #
+        # Code Search has a strict rate limit.
+        #
+        print(
+            "Waiting 7 seconds before "
+            "next Code Search request..."
+        )
+
+        time.sleep(
+            7
+        )
 
     print()
     print(
@@ -276,10 +499,9 @@ def search_rtc_xml():
 # Download RTC.xml
 # ============================================================
 
-def get_file_content(item):
-    """
-    Download RTC.xml through GitHub Contents API.
-    """
+def get_file_content(
+    item,
+):
 
     api_url = item[
         "url"
@@ -302,13 +524,17 @@ def get_file_content(item):
         and content
     ):
 
-        decoded = base64.b64decode(
-            content
+        decoded = (
+            base64.b64decode(
+                content
+            )
         )
 
-        return decoded.decode(
-            "utf-8",
-            errors="replace",
+        return (
+            decoded.decode(
+                "utf-8",
+                errors="replace",
+            )
         )
 
     download_url = data.get(
@@ -317,12 +543,14 @@ def get_file_content(item):
 
     if download_url:
 
-        request = urllib.request.Request(
-            download_url,
-            headers={
-                "User-Agent":
-                    "rtc-catalog-builder",
-            },
+        request = (
+            urllib.request.Request(
+                download_url,
+                headers={
+                    "User-Agent":
+                        "rtc-catalog-builder",
+                },
+            )
         )
 
         with urllib.request.urlopen(
@@ -340,7 +568,8 @@ def get_file_content(item):
             )
 
     raise RuntimeError(
-        "RTC.xml content could not be retrieved"
+        "RTC.xml content "
+        "could not be retrieved"
     )
 
 
@@ -348,7 +577,9 @@ def get_file_content(item):
 # BasicInfo
 # ============================================================
 
-def parse_basic_info(root):
+def parse_basic_info(
+    root,
+):
 
     result = {
         "componentName": "",
@@ -361,38 +592,81 @@ def parse_basic_info(root):
     for elem in root.iter():
 
         if (
-            local_name(elem.tag).lower()
+            local_name(
+                elem.tag
+            ).lower()
             != "basicinfo"
         ):
+
             continue
 
-        result["componentName"] = (
-            rtc_attr(elem, "name")
-            or get_attr(elem, "name")
+        result[
+            "componentName"
+        ] = (
+            rtc_attr(
+                elem,
+                "name",
+            )
+            or get_attr(
+                elem,
+                "name",
+            )
             or ""
         )
 
-        result["description"] = (
-            rtc_attr(elem, "description")
-            or get_attr(elem, "description")
+        result[
+            "description"
+        ] = (
+            rtc_attr(
+                elem,
+                "description",
+            )
+            or get_attr(
+                elem,
+                "description",
+            )
             or ""
         )
 
-        result["category"] = (
-            rtc_attr(elem, "category")
-            or get_attr(elem, "category")
+        result[
+            "category"
+        ] = (
+            rtc_attr(
+                elem,
+                "category",
+            )
+            or get_attr(
+                elem,
+                "category",
+            )
             or ""
         )
 
-        result["vendor"] = (
-            rtc_attr(elem, "vendor")
-            or get_attr(elem, "vendor")
+        result[
+            "vendor"
+        ] = (
+            rtc_attr(
+                elem,
+                "vendor",
+            )
+            or get_attr(
+                elem,
+                "vendor",
+            )
             or ""
         )
 
-        result["version"] = (
-            rtc_attr(elem, "version")
-            or get_attr(elem, "version")
+        result[
+            "version"
+        ] = (
+            rtc_attr(
+                elem,
+                "version",
+            )
+            or get_attr(
+                elem,
+                "version",
+            )
             or ""
         )
 
@@ -405,14 +679,9 @@ def parse_basic_info(root):
 # DataPorts
 # ============================================================
 
-def get_port_type(elem):
-    """
-    Get rtc:portType exactly as stored in RTC.xml.
-
-    Examples:
-        DataInPort
-        DataOutPort
-    """
+def get_port_type(
+    elem,
+):
 
     return (
         rtc_attr(
@@ -423,21 +692,9 @@ def get_port_type(elem):
     ).strip()
 
 
-def get_data_type(elem):
-    """
-    Get rtc:type.
-
-    xsi:type is intentionally ignored.
-
-    Example:
-
-        xsi:type="rtcExt:dataport_ext"
-        rtc:type="RTC::TimedVelocity2D"
-
-    returns:
-
-        RTC::TimedVelocity2D
-    """
+def get_data_type(
+    elem,
+):
 
     return (
         rtc_attr(
@@ -448,7 +705,9 @@ def get_data_type(elem):
     ).strip()
 
 
-def parse_data_ports(root):
+def parse_data_ports(
+    root,
+):
 
     ports = []
     seen = set()
@@ -464,11 +723,18 @@ def parse_data_ports(root):
 
     for elem in root.iter():
 
-        tag = local_name(
-            elem.tag
-        ).lower()
+        tag = (
+            local_name(
+                elem.tag
+            )
+            .lower()
+        )
 
-        if tag not in valid_tags:
+        if (
+            tag
+            not in valid_tags
+        ):
+
             continue
 
         name = (
@@ -483,12 +749,16 @@ def parse_data_ports(root):
             or ""
         )
 
-        port_type = get_port_type(
-            elem
+        port_type = (
+            get_port_type(
+                elem
+            )
         )
 
-        data_type = get_data_type(
-            elem
+        data_type = (
+            get_data_type(
+                elem
+            )
         )
 
         if not name:
@@ -509,9 +779,14 @@ def parse_data_ports(root):
 
         ports.append(
             {
-                "name": name,
-                "portType": port_type,
-                "dataType": data_type,
+                "name":
+                    name,
+
+                "portType":
+                    port_type,
+
+                "dataType":
+                    data_type,
             }
         )
 
@@ -522,19 +797,24 @@ def parse_data_ports(root):
 # ServicePorts
 # ============================================================
 
-def normalize_service_direction(value):
+def normalize_service_direction(
+    value,
+):
 
     value = (
         value or ""
     ).strip()
 
-    lower = value.lower()
+    lower = (
+        value.lower()
+    )
 
     if lower in (
         "provided",
         "provider",
         "provides",
     ):
+
         return "Provider"
 
     if lower in (
@@ -542,6 +822,7 @@ def normalize_service_direction(value):
         "consumer",
         "requires",
     ):
+
         return "Consumer"
 
     return value
@@ -554,19 +835,24 @@ def get_property_value(
 
     property_names = {
         name.lower()
-        for name in property_names
+        for name
+        in property_names
     }
 
     for child in elem.iter():
 
-        tag = local_name(
-            child.tag
-        ).lower()
+        tag = (
+            local_name(
+                child.tag
+            )
+            .lower()
+        )
 
         if tag not in (
             "properties",
             "property",
         ):
+
             continue
 
         prop_name = (
@@ -586,15 +872,19 @@ def get_property_value(
         ).strip()
 
         if (
-            prop_name in property_names
+            prop_name
+            in property_names
             and prop_value
         ):
+
             return prop_value
 
     return ""
 
 
-def get_service_interface_name(elem):
+def get_service_interface_name(
+    elem,
+):
 
     return (
         rtc_attr(
@@ -629,12 +919,9 @@ def get_service_interface_name(elem):
     ).strip()
 
 
-def get_service_interface_type(elem):
-    """
-    Get service interface type.
-
-    xsi:type is intentionally ignored.
-    """
+def get_service_interface_type(
+    elem,
+):
 
     value = (
         rtc_attr(
@@ -658,10 +945,14 @@ def get_service_interface_type(elem):
         or ""
     )
 
-    return value.strip()
+    return (
+        value.strip()
+    )
 
 
-def get_service_interface_direction(elem):
+def get_service_interface_direction(
+    elem,
+):
 
     value = (
         rtc_attr(
@@ -692,12 +983,16 @@ def get_service_interface_direction(elem):
         or ""
     )
 
-    return normalize_service_direction(
-        value
+    return (
+        normalize_service_direction(
+            value
+        )
     )
 
 
-def parse_service_ports(root):
+def parse_service_ports(
+    root,
+):
 
     service_ports = []
     seen_ports = set()
@@ -718,11 +1013,18 @@ def parse_service_ports(root):
 
     for elem in root.iter():
 
-        tag = local_name(
-            elem.tag
-        ).lower()
+        tag = (
+            local_name(
+                elem.tag
+            )
+            .lower()
+        )
 
-        if tag not in valid_port_tags:
+        if (
+            tag
+            not in valid_port_tags
+        ):
+
             continue
 
         port_name = (
@@ -745,14 +1047,18 @@ def parse_service_ports(root):
             if child is elem:
                 continue
 
-            child_tag = local_name(
-                child.tag
-            ).lower()
+            child_tag = (
+                local_name(
+                    child.tag
+                )
+                .lower()
+            )
 
             if (
                 child_tag
                 not in valid_interface_tags
             ):
+
                 continue
 
             interface_name = (
@@ -778,6 +1084,7 @@ def parse_service_ports(root):
                 or interface_type
                 or interface_direction
             ):
+
                 continue
 
             interface_key = (
@@ -790,6 +1097,7 @@ def parse_service_ports(root):
                 interface_key
                 in seen_interfaces
             ):
+
                 continue
 
             seen_interfaces.add(
@@ -813,6 +1121,7 @@ def parse_service_ports(root):
             not port_name
             and not interfaces
         ):
+
             continue
 
         port_key = (
@@ -820,16 +1129,26 @@ def parse_service_ports(root):
 
             tuple(
                 (
-                    interface["name"],
-                    interface["type"],
-                    interface["direction"],
+                    interface[
+                        "name"
+                    ],
+                    interface[
+                        "type"
+                    ],
+                    interface[
+                        "direction"
+                    ],
                 )
                 for interface
                 in interfaces
             ),
         )
 
-        if port_key in seen_ports:
+        if (
+            port_key
+            in seen_ports
+        ):
+
             continue
 
         seen_ports.add(
@@ -853,14 +1172,19 @@ def parse_service_ports(root):
 # Language
 # ============================================================
 
-def parse_language(root):
+def parse_language(
+    root,
+):
 
     for elem in root.iter():
 
         if (
-            local_name(elem.tag).lower()
+            local_name(
+                elem.tag
+            ).lower()
             != "language"
         ):
+
             continue
 
         value = (
@@ -881,7 +1205,8 @@ def parse_language(root):
                 "name",
             )
             or (
-                elem.text or ""
+                elem.text
+                or ""
             ).strip()
         )
 
@@ -892,17 +1217,23 @@ def parse_language(root):
 
 
 # ============================================================
-# RTC.xml parser
+# RTC parser
 # ============================================================
 
-def parse_rtc_xml(xml_text):
+def parse_rtc_xml(
+    xml_text,
+):
 
-    root = ET.fromstring(
-        xml_text
+    root = (
+        ET.fromstring(
+            xml_text
+        )
     )
 
-    basic = parse_basic_info(
-        root
+    basic = (
+        parse_basic_info(
+            root
+        )
     )
 
     return {
@@ -925,7 +1256,9 @@ def parse_rtc_xml(xml_text):
     }
 
 
-def is_valid_rtc(rtc):
+def is_valid_rtc(
+    rtc,
+):
 
     component_name = (
         rtc.get(
@@ -941,18 +1274,24 @@ def is_valid_rtc(rtc):
 
 
 # ============================================================
-# GitHub metadata
+# Repository metadata
 # ============================================================
 
-def get_repository_info(item):
+def get_repository_info(
+    item,
+):
 
-    repository = item[
-        "repository"
-    ]
+    repository = (
+        item[
+            "repository"
+        ]
+    )
 
-    repository_url = repository[
-        "html_url"
-    ]
+    repository_url = (
+        repository[
+            "html_url"
+        ]
+    )
 
     repository_api_url = (
         repository.get(
@@ -973,8 +1312,10 @@ def get_repository_info(item):
 
         try:
 
-            repo_data = github_api(
-                repository_api_url
+            repo_data = (
+                github_api(
+                    repository_api_url
+                )
             )
 
             default_branch = (
@@ -986,8 +1327,10 @@ def get_repository_info(item):
         except Exception as e:
 
             print(
-                "  Warning: could not get "
-                f"default branch: {e}"
+                "  Warning: "
+                "could not get "
+                f"default branch: "
+                f"{e}"
             )
 
     if not default_branch:
@@ -1006,16 +1349,19 @@ def build_directory_url(
 ):
 
     parent = str(
-        Path(path).parent
+        Path(
+            path
+        ).parent
     )
 
     if parent == ".":
         return repository_url
 
     return (
-        f"{repository_url}/tree/"
-        f"{default_branch}/"
-        f"{parent}"
+        f"{repository_url}"
+        f"/tree/"
+        f"{default_branch}"
+        f"/{parent}"
     )
 
 
@@ -1027,13 +1373,17 @@ def create_catalog_entry(
     (
         repository_url,
         default_branch,
-    ) = get_repository_info(
-        item
+    ) = (
+        get_repository_info(
+            item
+        )
     )
 
-    path = item[
-        "path"
-    ]
+    path = (
+        item[
+            "path"
+        ]
+    )
 
     directory_url = (
         build_directory_url(
@@ -1110,10 +1460,12 @@ def create_catalog_entry(
 
 
 # ============================================================
-# Save catalog
+# Save
 # ============================================================
 
-def save_catalog(catalog):
+def save_catalog(
+    catalog,
+):
 
     OUTPUT_FILE.parent.mkdir(
         parents=True,
@@ -1121,8 +1473,11 @@ def save_catalog(catalog):
     )
 
     data = {
-        "schemaVersion": "1.0",
-        "rtcs": catalog,
+        "schemaVersion":
+            "1.0",
+
+        "rtcs":
+            catalog,
     }
 
     OUTPUT_FILE.write_text(
@@ -1142,7 +1497,7 @@ def save_catalog(catalog):
 
 
 # ============================================================
-# Console output
+# Console
 # ============================================================
 
 def print_rtc(
@@ -1155,7 +1510,11 @@ def print_rtc(
         f"{entry['componentName']}"
     )
 
-    if entry["description"]:
+    if (
+        entry[
+            "description"
+        ]
+    ):
 
         print(
             f"      Description: "
@@ -1166,11 +1525,17 @@ def print_rtc(
         "      DataPorts:"
     )
 
-    if entry["dataPorts"]:
-
-        for port in entry[
+    if (
+        entry[
             "dataPorts"
-        ]:
+        ]
+    ):
+
+        for port in (
+            entry[
+                "dataPorts"
+            ]
+        ):
 
             port_type = (
                 port.get(
@@ -1203,20 +1568,28 @@ def print_rtc(
         "      ServicePorts:"
     )
 
-    if entry["servicePorts"]:
-
-        for port in entry[
+    if (
+        entry[
             "servicePorts"
-        ]:
+        ]
+    ):
+
+        for port in (
+            entry[
+                "servicePorts"
+            ]
+        ):
 
             print(
                 f"        "
                 f"{port['name']}"
             )
 
-            for interface in port.get(
-                "interfaces",
-                [],
+            for interface in (
+                port.get(
+                    "interfaces",
+                    [],
+                )
             ):
 
                 interface_name = (
@@ -1265,10 +1638,13 @@ def print_rtc(
 
 def main():
 
-    parser = argparse.ArgumentParser(
-        description=(
-            "Search GitHub for RTC.xml and "
-            "build an RT-Component catalog."
+    parser = (
+        argparse.ArgumentParser(
+            description=(
+                "Search GitHub for "
+                "RTC.xml and build "
+                "an RT-Component catalog."
+            )
         )
     )
 
@@ -1277,41 +1653,47 @@ def main():
         type=int,
         default=None,
         help=(
-            "Stop after finding this number "
-            "of valid RT-Components. "
-            "If omitted, process all search results."
+            "Stop after finding "
+            "this number of valid "
+            "RT-Components. "
+            "If omitted, process all "
+            "accessible search results."
         ),
     )
 
-    args = parser.parse_args()
+    args = (
+        parser.parse_args()
+    )
 
     if (
-        args.limit is not None
+        args.limit
+        is not None
         and args.limit <= 0
     ):
 
         parser.error(
-            "--limit must be greater than 0"
+            "--limit must be "
+            "greater than 0"
         )
 
     if not TOKEN:
 
         print(
-            "Warning: GITHUB_TOKEN is not set.",
+            "Warning: GITHUB_TOKEN "
+            "is not set.",
             file=sys.stderr,
         )
 
         print(
-            "Unauthenticated GitHub API "
-            "requests have stricter limits.",
+            "Unauthenticated "
+            "GitHub API requests "
+            "have stricter limits.",
             file=sys.stderr,
         )
 
-    # ----------------------------------------
-    # Search GitHub
-    # ----------------------------------------
-
-    items = search_rtc_xml()
+    items = (
+        search_rtc_xml()
+    )
 
     catalog = []
 
@@ -1319,10 +1701,6 @@ def main():
     skipped = 0
 
     seen = set()
-
-    # ----------------------------------------
-    # Parse each RTC.xml
-    # ----------------------------------------
 
     for item in items:
 
@@ -1334,16 +1712,22 @@ def main():
             ]
         )
 
-        path = item[
-            "path"
-        ]
+        path = (
+            item[
+                "path"
+            ]
+        )
 
         unique_key = (
             repository_url,
             path,
         )
 
-        if unique_key in seen:
+        if (
+            unique_key
+            in seen
+        ):
+
             continue
 
         seen.add(
@@ -1355,7 +1739,8 @@ def main():
         print()
         print(
             f"Checking: "
-            f"{repository_url}/{path}"
+            f"{repository_url}/"
+            f"{path}"
         )
 
         try:
@@ -1372,15 +1757,18 @@ def main():
                 )
             )
 
-            if not is_valid_rtc(
-                rtc
+            if not (
+                is_valid_rtc(
+                    rtc
+                )
             ):
 
                 skipped += 1
 
                 print(
                     "  Skip: "
-                    "not recognized as RTC Profile"
+                    "not recognized "
+                    "as RTC Profile"
                 )
 
                 continue
@@ -1401,10 +1789,12 @@ def main():
                 len(catalog),
             )
 
-            # Test mode
             if (
-                args.limit is not None
-                and len(catalog)
+                args.limit
+                is not None
+                and len(
+                    catalog
+                )
                 >= args.limit
             ):
 
@@ -1422,7 +1812,8 @@ def main():
 
             print(
                 f"  Skip: "
-                f"XML parse error: {e}"
+                f"XML parse error: "
+                f"{e}"
             )
 
         except Exception as e:
@@ -1430,27 +1821,18 @@ def main():
             skipped += 1
 
             print(
-                f"  Skip: {e}"
+                f"  Skip: "
+                f"{e}"
             )
-
-    # ----------------------------------------
-    # Save result
-    # ----------------------------------------
 
     save_catalog(
         catalog
     )
 
-    # ----------------------------------------
-    # Summary
-    # ----------------------------------------
-
     print()
-
     print(
         "Summary"
     )
-
     print(
         "-------"
     )
