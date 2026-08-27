@@ -5,6 +5,7 @@ import base64
 import json
 import os
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -16,7 +17,6 @@ GITHUB_API = "https://api.github.com"
 OUTPUT_FILE = Path("catalog/rtc_catalog.json")
 
 RTC_NS = "http://www.openrtp.org/namespaces/rtc"
-RTC_EXT_NS = "http://www.openrtp.org/namespaces/rtc_ext"
 
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
 
@@ -29,6 +29,10 @@ HEADERS = {
 if TOKEN:
     HEADERS["Authorization"] = f"Bearer {TOKEN}"
 
+
+# ============================================================
+# GitHub API
+# ============================================================
 
 def github_api(url):
     request = urllib.request.Request(
@@ -58,6 +62,10 @@ def github_api(url):
         raise
 
 
+# ============================================================
+# XML utility
+# ============================================================
+
 def local_name(name):
     if "}" in name:
         return name.split("}", 1)[1]
@@ -70,12 +78,12 @@ def local_name(name):
 
 def get_attr(elem, name):
     """
-    Get an attribute.
+    Get an XML attribute.
 
-    If a namespace-qualified name is specified,
-    ElementTree's elem.get() is used directly.
+    If namespace-qualified name is specified,
+    use elem.get() directly.
 
-    Otherwise, attributes are searched by local name.
+    Otherwise search by local attribute name.
     """
 
     if name.startswith("{"):
@@ -84,6 +92,7 @@ def get_attr(elem, name):
     target = name.lower()
 
     for key, value in elem.attrib.items():
+
         if local_name(key).lower() == target:
             return value
 
@@ -92,7 +101,7 @@ def get_attr(elem, name):
 
 def rtc_attr(elem, name):
     """
-    Get an attribute specifically from the rtc namespace.
+    Get an attribute specifically from the RTC namespace.
     """
 
     return elem.get(
@@ -100,66 +109,219 @@ def rtc_attr(elem, name):
     )
 
 
+# ============================================================
+# GitHub search
+# ============================================================
+
 def search_rtc_xml():
     """
     Search GitHub for RTC.xml.
 
-    This test version retrieves up to 100 files
-    from the first search result page.
+    Multiple queries are used because GitHub Code Search
+    limits the number of results obtainable for one query.
+
+    Results are deduplicated by:
+        repository + file path
     """
 
-    query = "filename:RTC.xml"
+    queries = [
+        "filename:RTC.xml",
+        "filename:RTC.xml language:C++",
+        "filename:RTC.xml language:Python",
+        "filename:RTC.xml language:Java",
+    ]
 
-    encoded_query = urllib.parse.quote(query)
+    all_items = []
+    seen = set()
 
-    url = (
-        f"{GITHUB_API}/search/code"
-        f"?q={encoded_query}"
-        f"&per_page=100"
-        f"&page=1"
+    for query in queries:
+
+        print()
+        print("=" * 70)
+        print(f"Search query: {query}")
+        print("=" * 70)
+
+        encoded_query = urllib.parse.quote(
+            query
+        )
+
+        # GitHub search results are limited to
+        # 100 results/page and at most 10 pages.
+        for page in range(1, 11):
+
+            url = (
+                f"{GITHUB_API}/search/code"
+                f"?q={encoded_query}"
+                f"&per_page=100"
+                f"&page={page}"
+            )
+
+            print(
+                f"Searching page {page} ..."
+            )
+
+            try:
+
+                data = github_api(
+                    url
+                )
+
+            except urllib.error.HTTPError as e:
+
+                # GitHub may reject page > available
+                # search window.
+                if e.code == 422:
+
+                    print(
+                        "Search result limit reached."
+                    )
+
+                    break
+
+                raise
+
+            items = data.get(
+                "items",
+                [],
+            )
+
+            total_count = data.get(
+                "total_count",
+                0,
+            )
+
+            if page == 1:
+
+                print(
+                    f"GitHub reports "
+                    f"{total_count} matches."
+                )
+
+            if not items:
+                break
+
+            added = 0
+
+            for item in items:
+
+                repository = item[
+                    "repository"
+                ]
+
+                repository_name = (
+                    repository.get(
+                        "full_name",
+                        repository.get(
+                            "html_url",
+                            "",
+                        ),
+                    )
+                )
+
+                path = item[
+                    "path"
+                ]
+
+                key = (
+                    repository_name,
+                    path,
+                )
+
+                if key in seen:
+                    continue
+
+                seen.add(
+                    key
+                )
+
+                all_items.append(
+                    item
+                )
+
+                added += 1
+
+            print(
+                f"  received : {len(items)}"
+            )
+
+            print(
+                f"  new      : {added}"
+            )
+
+            print(
+                f"  unique   : {len(all_items)}"
+            )
+
+            if len(items) < 100:
+                break
+
+            # Small delay to avoid unnecessarily
+            # hammering the Search API.
+            time.sleep(1)
+
+    print()
+    print(
+        "GitHub search completed."
     )
-
-    print("Searching GitHub for RTC.xml ...")
-
-    data = github_api(url)
 
     print(
-        "GitHub search result count:",
-        data.get("total_count", 0),
+        f"Unique RTC.xml candidates: "
+        f"{len(all_items)}"
     )
 
-    return data.get("items", [])
+    return all_items
 
+
+# ============================================================
+# Download RTC.xml
+# ============================================================
 
 def get_file_content(item):
     """
     Download RTC.xml through GitHub Contents API.
     """
 
-    api_url = item["url"]
+    api_url = item[
+        "url"
+    ]
 
-    data = github_api(api_url)
+    data = github_api(
+        api_url
+    )
 
-    encoding = data.get("encoding")
-    content = data.get("content")
+    encoding = data.get(
+        "encoding"
+    )
 
-    if encoding == "base64" and content:
+    content = data.get(
+        "content"
+    )
 
-        decoded = base64.b64decode(content)
+    if (
+        encoding == "base64"
+        and content
+    ):
+
+        decoded = base64.b64decode(
+            content
+        )
 
         return decoded.decode(
             "utf-8",
             errors="replace",
         )
 
-    download_url = data.get("download_url")
+    download_url = data.get(
+        "download_url"
+    )
 
     if download_url:
 
         request = urllib.request.Request(
             download_url,
             headers={
-                "User-Agent": "rtc-catalog-builder",
+                "User-Agent":
+                    "rtc-catalog-builder",
             },
         )
 
@@ -168,9 +330,13 @@ def get_file_content(item):
             timeout=30,
         ) as response:
 
-            return response.read().decode(
-                "utf-8",
-                errors="replace",
+            return (
+                response
+                .read()
+                .decode(
+                    "utf-8",
+                    errors="replace",
+                )
             )
 
     raise RuntimeError(
@@ -178,10 +344,11 @@ def get_file_content(item):
     )
 
 
+# ============================================================
+# BasicInfo
+# ============================================================
+
 def parse_basic_info(root):
-    """
-    Parse RTC BasicInfo.
-    """
 
     result = {
         "componentName": "",
@@ -193,7 +360,10 @@ def parse_basic_info(root):
 
     for elem in root.iter():
 
-        if local_name(elem.tag).lower() != "basicinfo":
+        if (
+            local_name(elem.tag).lower()
+            != "basicinfo"
+        ):
             continue
 
         result["componentName"] = (
@@ -231,9 +401,13 @@ def parse_basic_info(root):
     return result
 
 
+# ============================================================
+# DataPorts
+# ============================================================
+
 def get_port_type(elem):
     """
-    Get rtc:portType exactly as written in RTC.xml.
+    Get rtc:portType exactly as stored in RTC.xml.
 
     Examples:
         DataInPort
@@ -241,36 +415,40 @@ def get_port_type(elem):
     """
 
     return (
-        rtc_attr(elem, "portType")
+        rtc_attr(
+            elem,
+            "portType",
+        )
         or ""
     ).strip()
 
 
 def get_data_type(elem):
     """
-    Get rtc:type exactly as written in RTC.xml.
+    Get rtc:type.
 
     xsi:type is intentionally ignored.
+
+    Example:
+
+        xsi:type="rtcExt:dataport_ext"
+        rtc:type="RTC::TimedVelocity2D"
+
+    returns:
+
+        RTC::TimedVelocity2D
     """
 
     return (
-        rtc_attr(elem, "type")
+        rtc_attr(
+            elem,
+            "type",
+        )
         or ""
     ).strip()
 
 
 def parse_data_ports(root):
-    """
-    Parse DataPorts.
-
-    Output example:
-
-        {
-            "name": "target_velocity_in",
-            "portType": "DataInPort",
-            "dataType": "RTC::TimedVelocity2D"
-        }
-    """
 
     ports = []
     seen = set()
@@ -286,20 +464,32 @@ def parse_data_ports(root):
 
     for elem in root.iter():
 
-        if (
-            local_name(elem.tag).lower()
-            not in valid_tags
-        ):
+        tag = local_name(
+            elem.tag
+        ).lower()
+
+        if tag not in valid_tags:
             continue
 
         name = (
-            rtc_attr(elem, "name")
-            or get_attr(elem, "name")
+            rtc_attr(
+                elem,
+                "name",
+            )
+            or get_attr(
+                elem,
+                "name",
+            )
             or ""
         )
 
-        port_type = get_port_type(elem)
-        data_type = get_data_type(elem)
+        port_type = get_port_type(
+            elem
+        )
+
+        data_type = get_data_type(
+            elem
+        )
 
         if not name:
             continue
@@ -313,7 +503,9 @@ def parse_data_ports(root):
         if key in seen:
             continue
 
-        seen.add(key)
+        seen.add(
+            key
+        )
 
         ports.append(
             {
@@ -326,8 +518,15 @@ def parse_data_ports(root):
     return ports
 
 
+# ============================================================
+# ServicePorts
+# ============================================================
+
 def normalize_service_direction(value):
-    value = (value or "").strip()
+
+    value = (
+        value or ""
+    ).strip()
 
     lower = value.lower()
 
@@ -348,15 +547,10 @@ def normalize_service_direction(value):
     return value
 
 
-def get_property_value(elem, property_names):
-    """
-    Search descendant Properties / Property elements.
-
-    Example:
-        <rtcExt:Properties
-            rtcExt:name="interface_type"
-            rtcExt:value="MyService"/>
-    """
+def get_property_value(
+    elem,
+    property_names,
+):
 
     property_names = {
         name.lower()
@@ -401,16 +595,28 @@ def get_property_value(elem, property_names):
 
 
 def get_service_interface_name(elem):
-    """
-    Get service interface instance/name.
-    """
 
     return (
-        rtc_attr(elem, "instanceName")
-        or rtc_attr(elem, "name")
-        or get_attr(elem, "instanceName")
-        or get_attr(elem, "instance_name")
-        or get_attr(elem, "name")
+        rtc_attr(
+            elem,
+            "instanceName",
+        )
+        or rtc_attr(
+            elem,
+            "name",
+        )
+        or get_attr(
+            elem,
+            "instanceName",
+        )
+        or get_attr(
+            elem,
+            "instance_name",
+        )
+        or get_attr(
+            elem,
+            "name",
+        )
         or get_property_value(
             elem,
             {
@@ -425,17 +631,20 @@ def get_service_interface_name(elem):
 
 def get_service_interface_type(elem):
     """
-    Get the actual service interface type.
+    Get service interface type.
 
-    Try explicit RTC attributes first and then
-    extension Properties.
-
-    Generic xsi:type is not used.
+    xsi:type is intentionally ignored.
     """
 
     value = (
-        rtc_attr(elem, "type")
-        or rtc_attr(elem, "interfaceType")
+        rtc_attr(
+            elem,
+            "type",
+        )
+        or rtc_attr(
+            elem,
+            "interfaceType",
+        )
         or get_property_value(
             elem,
             {
@@ -453,15 +662,24 @@ def get_service_interface_type(elem):
 
 
 def get_service_interface_direction(elem):
-    """
-    Get Provider / Consumer direction.
-    """
 
     value = (
-        rtc_attr(elem, "direction")
-        or rtc_attr(elem, "polarity")
-        or get_attr(elem, "direction")
-        or get_attr(elem, "polarity")
+        rtc_attr(
+            elem,
+            "direction",
+        )
+        or rtc_attr(
+            elem,
+            "polarity",
+        )
+        or get_attr(
+            elem,
+            "direction",
+        )
+        or get_attr(
+            elem,
+            "polarity",
+        )
         or get_property_value(
             elem,
             {
@@ -480,20 +698,6 @@ def get_service_interface_direction(elem):
 
 
 def parse_service_ports(root):
-    """
-    Parse ServicePorts and their interfaces.
-
-    Supports interface information stored as:
-
-        rtc:name
-        rtc:instanceName
-        rtc:type
-        rtc:interfaceType
-        rtc:direction
-        rtc:polarity
-
-    and selected Properties representations.
-    """
 
     service_ports = []
     seen_ports = set()
@@ -522,8 +726,14 @@ def parse_service_ports(root):
             continue
 
         port_name = (
-            rtc_attr(elem, "name")
-            or get_attr(elem, "name")
+            rtc_attr(
+                elem,
+                "name",
+            )
+            or get_attr(
+                elem,
+                "name",
+            )
             or ""
         ).strip()
 
@@ -588,9 +798,14 @@ def parse_service_ports(root):
 
             interfaces.append(
                 {
-                    "name": interface_name,
-                    "type": interface_type,
-                    "direction": interface_direction,
+                    "name":
+                        interface_name,
+
+                    "type":
+                        interface_type,
+
+                    "direction":
+                        interface_direction,
                 }
             )
 
@@ -602,13 +817,15 @@ def parse_service_ports(root):
 
         port_key = (
             port_name,
+
             tuple(
                 (
                     interface["name"],
                     interface["type"],
                     interface["direction"],
                 )
-                for interface in interfaces
+                for interface
+                in interfaces
             ),
         )
 
@@ -621,18 +838,22 @@ def parse_service_ports(root):
 
         service_ports.append(
             {
-                "name": port_name,
-                "interfaces": interfaces,
+                "name":
+                    port_name,
+
+                "interfaces":
+                    interfaces,
             }
         )
 
     return service_ports
 
 
+# ============================================================
+# Language
+# ============================================================
+
 def parse_language(root):
-    """
-    Parse implementation language.
-    """
 
     for elem in root.iter():
 
@@ -643,10 +864,22 @@ def parse_language(root):
             continue
 
         value = (
-            rtc_attr(elem, "kind")
-            or rtc_attr(elem, "name")
-            or get_attr(elem, "kind")
-            or get_attr(elem, "name")
+            rtc_attr(
+                elem,
+                "kind",
+            )
+            or rtc_attr(
+                elem,
+                "name",
+            )
+            or get_attr(
+                elem,
+                "kind",
+            )
+            or get_attr(
+                elem,
+                "name",
+            )
             or (
                 elem.text or ""
             ).strip()
@@ -658,10 +891,11 @@ def parse_language(root):
     return ""
 
 
+# ============================================================
+# RTC.xml parser
+# ============================================================
+
 def parse_rtc_xml(xml_text):
-    """
-    Parse one RTC.xml.
-    """
 
     root = ET.fromstring(
         xml_text
@@ -674,24 +908,24 @@ def parse_rtc_xml(xml_text):
     return {
         **basic,
 
-        "language": parse_language(
-            root
-        ),
+        "language":
+            parse_language(
+                root
+            ),
 
-        "dataPorts": parse_data_ports(
-            root
-        ),
+        "dataPorts":
+            parse_data_ports(
+                root
+            ),
 
-        "servicePorts": parse_service_ports(
-            root
-        ),
+        "servicePorts":
+            parse_service_ports(
+                root
+            ),
     }
 
 
 def is_valid_rtc(rtc):
-    """
-    Check whether parsed XML looks like an RTC Profile.
-    """
 
     component_name = (
         rtc.get(
@@ -701,13 +935,16 @@ def is_valid_rtc(rtc):
         .strip()
     )
 
-    return bool(component_name)
+    return bool(
+        component_name
+    )
 
+
+# ============================================================
+# GitHub metadata
+# ============================================================
 
 def get_repository_info(item):
-    """
-    Get repository URL and default branch.
-    """
 
     repository = item[
         "repository"
@@ -717,12 +954,16 @@ def get_repository_info(item):
         "html_url"
     ]
 
-    repository_api_url = repository.get(
-        "url"
+    repository_api_url = (
+        repository.get(
+            "url"
+        )
     )
 
-    default_branch = repository.get(
-        "default_branch"
+    default_branch = (
+        repository.get(
+            "default_branch"
+        )
     )
 
     if (
@@ -763,9 +1004,6 @@ def build_directory_url(
     path,
     default_branch,
 ):
-    """
-    Build GitHub URL of directory containing RTC.xml.
-    """
 
     parent = str(
         Path(path).parent
@@ -785,9 +1023,6 @@ def create_catalog_entry(
     item,
     rtc,
 ):
-    """
-    Add GitHub metadata to parsed RTC information.
-    """
 
     (
         repository_url,
@@ -796,7 +1031,9 @@ def create_catalog_entry(
         item
     )
 
-    path = item["path"]
+    path = item[
+        "path"
+    ]
 
     directory_url = (
         build_directory_url(
@@ -807,63 +1044,76 @@ def create_catalog_entry(
     )
 
     return {
-        "componentName": rtc.get(
-            "componentName",
-            "",
-        ),
+        "componentName":
+            rtc.get(
+                "componentName",
+                "",
+            ),
 
-        "description": rtc.get(
-            "description",
-            "",
-        ),
+        "description":
+            rtc.get(
+                "description",
+                "",
+            ),
 
-        "category": rtc.get(
-            "category",
-            "",
-        ),
+        "category":
+            rtc.get(
+                "category",
+                "",
+            ),
 
-        "vendor": rtc.get(
-            "vendor",
-            "",
-        ),
+        "vendor":
+            rtc.get(
+                "vendor",
+                "",
+            ),
 
-        "version": rtc.get(
-            "version",
-            "",
-        ),
+        "version":
+            rtc.get(
+                "version",
+                "",
+            ),
 
-        "language": rtc.get(
-            "language",
-            "",
-        ),
+        "language":
+            rtc.get(
+                "language",
+                "",
+            ),
 
-        "dataPorts": rtc.get(
-            "dataPorts",
-            [],
-        ),
+        "dataPorts":
+            rtc.get(
+                "dataPorts",
+                [],
+            ),
 
-        "servicePorts": rtc.get(
-            "servicePorts",
-            [],
-        ),
+        "servicePorts":
+            rtc.get(
+                "servicePorts",
+                [],
+            ),
 
-        "repositoryUrl": repository_url,
+        "repositoryUrl":
+            repository_url,
 
-        "directoryUrl": directory_url,
+        "directoryUrl":
+            directory_url,
 
-        "path": path,
+        "path":
+            path,
 
-        "rtcXmlUrl": item.get(
-            "html_url",
-            "",
-        ),
+        "rtcXmlUrl":
+            item.get(
+                "html_url",
+                "",
+            ),
     }
 
 
+# ============================================================
+# Save catalog
+# ============================================================
+
 def save_catalog(catalog):
-    """
-    Save RTC catalog.
-    """
 
     OUTPUT_FILE.parent.mkdir(
         parents=True,
@@ -891,10 +1141,14 @@ def save_catalog(catalog):
     )
 
 
-def print_rtc(entry, index):
-    """
-    Print parsed information to GitHub Actions log.
-    """
+# ============================================================
+# Console output
+# ============================================================
+
+def print_rtc(
+    entry,
+    index,
+):
 
     print(
         f"  [{index}] "
@@ -1005,7 +1259,12 @@ def print_rtc(entry, index):
     )
 
 
+# ============================================================
+# Main
+# ============================================================
+
 def main():
+
     parser = argparse.ArgumentParser(
         description=(
             "Search GitHub for RTC.xml and "
@@ -1019,7 +1278,8 @@ def main():
         default=None,
         help=(
             "Stop after finding this number "
-            "of valid RT-Components."
+            "of valid RT-Components. "
+            "If omitted, process all search results."
         ),
     )
 
@@ -1029,6 +1289,7 @@ def main():
         args.limit is not None
         and args.limit <= 0
     ):
+
         parser.error(
             "--limit must be greater than 0"
         )
@@ -1046,6 +1307,10 @@ def main():
             file=sys.stderr,
         )
 
+    # ----------------------------------------
+    # Search GitHub
+    # ----------------------------------------
+
     items = search_rtc_xml()
 
     catalog = []
@@ -1054,6 +1319,10 @@ def main():
     skipped = 0
 
     seen = set()
+
+    # ----------------------------------------
+    # Parse each RTC.xml
+    # ----------------------------------------
 
     for item in items:
 
@@ -1132,6 +1401,7 @@ def main():
                 len(catalog),
             )
 
+            # Test mode
             if (
                 args.limit is not None
                 and len(catalog)
@@ -1140,7 +1410,7 @@ def main():
 
                 print()
                 print(
-                    "Test limit reached: "
+                    "Limit reached: "
                     f"{args.limit} RTCs"
                 )
 
@@ -1163,30 +1433,45 @@ def main():
                 f"  Skip: {e}"
             )
 
+    # ----------------------------------------
+    # Save result
+    # ----------------------------------------
+
     save_catalog(
         catalog
     )
 
+    # ----------------------------------------
+    # Summary
+    # ----------------------------------------
+
     print()
+
     print(
         "Summary"
     )
+
     print(
         "-------"
     )
 
     print(
-        f"Processed files : "
+        f"Search candidates : "
+        f"{len(items)}"
+    )
+
+    print(
+        f"Processed files   : "
         f"{processed}"
     )
 
     print(
-        f"Valid RTCs      : "
+        f"Valid RTCs        : "
         f"{len(catalog)}"
     )
 
     print(
-        f"Skipped files   : "
+        f"Skipped files     : "
         f"{skipped}"
     )
 
@@ -1194,6 +1479,7 @@ def main():
 
 
 if __name__ == "__main__":
+
     raise SystemExit(
         main()
     )

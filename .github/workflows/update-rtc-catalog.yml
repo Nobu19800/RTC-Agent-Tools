@@ -32,7 +32,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python scripts/build_rtc_catalog.py --limit 10
+          python scripts/build_rtc_catalog.py
 
       - name: Commit catalog
         run: |
