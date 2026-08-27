@@ -11,43 +11,43 @@
       "dataPorts": [
         {
           "name": "target_velocity_in",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedVelocity2D"
         },
         {
           "name": "pose_update_in",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedPose2D"
         },
         {
           "name": "buzzer_hz_in",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedShort"
         },
         {
           "name": "led4bit_in",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedBooleanSeq"
         },
         {
           "name": "current_velocity_out",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedVelocity2D"
         },
         {
           "name": "current_pose_out",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedPose2D"
         },
         {
           "name": "ir_sensor_out",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedShortSeq"
         },
         {
           "name": "switch3bit_out",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedBooleanSeq"
         }
       ],
       "servicePorts": [],
@@ -66,13 +66,13 @@
       "dataPorts": [
         {
           "name": "in",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedFloat"
         },
         {
           "name": "out",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedLong"
         }
       ],
       "servicePorts": [],
@@ -91,53 +91,53 @@
       "dataPorts": [
         {
           "name": "Octet",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedOctet"
         },
         {
           "name": "Short",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedShort"
         },
         {
           "name": "Long",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedLong"
         },
         {
           "name": "Float",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedFloat"
         },
         {
           "name": "Double",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedDouble"
         },
         {
           "name": "OctetSeq",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedOctetSeq"
         },
         {
           "name": "ShortSeq",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedShortSeq"
         },
         {
           "name": "LongSeq",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedLongSeq"
         },
         {
           "name": "FloatSeq",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedFloatSeq"
         },
         {
           "name": "DoubleSeq",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedDoubleSeq"
         }
       ],
       "servicePorts": [],
@@ -156,13 +156,13 @@
       "dataPorts": [
         {
           "name": "in",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedLong"
         },
         {
           "name": "out",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedFloat"
         }
       ],
       "servicePorts": [],
@@ -181,53 +181,53 @@
       "dataPorts": [
         {
           "name": "Octet",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedOctet"
         },
         {
           "name": "Short",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedShort"
         },
         {
           "name": "Long",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedLong"
         },
         {
           "name": "Float",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedFloat"
         },
         {
           "name": "Double",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedDouble"
         },
         {
           "name": "OctetSeq",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedOctetSeq"
         },
         {
           "name": "ShortSeq",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedShortSeq"
         },
         {
           "name": "LongSeq",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedLongSeq"
         },
         {
           "name": "FloatSeq",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedFloatSeq"
         },
         {
           "name": "DoubleSeq",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedDoubleSeq"
         }
       ],
       "servicePorts": [],
@@ -246,47 +246,47 @@
       "dataPorts": [
         {
           "name": "velocity",
-          "direction": "InPort",
+          "portType": "DataInPort",
           "dataType": "RTC::TimedVelocity2D"
         },
         {
           "name": "targetJointAngle",
-          "direction": "InPort",
+          "portType": "DataInPort",
           "dataType": "RTC::TimedDoubleSeq"
         },
         {
           "name": "camera",
-          "direction": "OutPort",
+          "portType": "DataOutPort",
           "dataType": "RTC::CameraImage"
         },
         {
           "name": "audio",
-          "direction": "OutPort",
+          "portType": "DataOutPort",
           "dataType": "RTC::TimedOctetSeq"
         },
         {
           "name": "bumper",
-          "direction": "OutPort",
+          "portType": "DataOutPort",
           "dataType": "RTC::TimedBooleanSeq"
         },
         {
           "name": "touch",
-          "direction": "OutPort",
+          "portType": "DataOutPort",
           "dataType": "RTC::TimedBooleanSeq"
         },
         {
           "name": "sonar",
-          "direction": "OutPort",
+          "portType": "DataOutPort",
           "dataType": "RTC::TimedBooleanSeq"
         },
         {
           "name": "currentJointAngle",
-          "direction": "OutPort",
+          "portType": "DataOutPort",
           "dataType": "RTC::TimedDoubleSeq"
         },
         {
           "name": "currentPose",
-          "direction": "OutPort",
+          "portType": "DataOutPort",
           "dataType": "RTC::TimedPose2D"
         }
       ],
@@ -367,43 +367,43 @@
       "dataPorts": [
         {
           "name": "pos",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedFloatSeq"
         },
         {
           "name": "mode",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedChar"
         },
         {
           "name": "out_joint",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedFloatSeq"
         },
         {
           "name": "out_vel",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedFloatSeq"
         },
         {
           "name": "out_trq",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedFloatSeq"
         },
         {
           "name": "out_cur",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedFloatSeq"
         },
         {
           "name": "out_tmp",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedFloatSeq"
         },
         {
           "name": "is_moving",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedBoolean"
         }
       ],
       "servicePorts": [
@@ -412,7 +412,7 @@
           "interfaces": [
             {
               "name": "middle",
-              "type": "",
+              "type": "JARA_ARM::ManipulatorCommonInterface_Middle",
               "direction": "Provider"
             }
           ]
@@ -422,7 +422,7 @@
           "interfaces": [
             {
               "name": "common",
-              "type": "",
+              "type": "JARA_ARM::ManipulatorCommonInterface_Common",
               "direction": "Provider"
             }
           ]
@@ -443,8 +443,8 @@
       "dataPorts": [
         {
           "name": "out",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedLong"
         }
       ],
       "servicePorts": [],
@@ -463,8 +463,8 @@
       "dataPorts": [
         {
           "name": "in",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedLong"
         }
       ],
       "servicePorts": [],
@@ -483,13 +483,13 @@
       "dataPorts": [
         {
           "name": "in",
-          "direction": "InPort",
-          "dataType": ""
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedFloat"
         },
         {
           "name": "out",
-          "direction": "OutPort",
-          "dataType": ""
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedFloat"
         }
       ],
       "servicePorts": [],
