@@ -15,6 +15,9 @@ from pathlib import Path
 GITHUB_API = "https://api.github.com"
 OUTPUT_FILE = Path("catalog/rtc_catalog.json")
 
+RTC_NS = "http://www.openrtp.org/namespaces/rtc"
+RTC_EXT_NS = "http://www.openrtp.org/namespaces/rtc_ext"
+
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
 
 HEADERS = {
@@ -56,14 +59,6 @@ def github_api(url):
 
 
 def local_name(name):
-    """
-    Remove XML namespace or prefix.
-
-    Examples:
-        {namespace}DataPorts -> DataPorts
-        rtc:DataPorts       -> DataPorts
-    """
-
     if "}" in name:
         return name.split("}", 1)[1]
 
@@ -73,36 +68,44 @@ def local_name(name):
     return name
 
 
-def get_attribute(element, name):
+def get_attr(elem, name):
     """
-    Get an XML attribute while ignoring namespaces.
+    Get an attribute.
 
-    Examples:
-        rtc:name
-        {namespace}name
-        name
+    If a namespace-qualified name is specified,
+    ElementTree's elem.get() is used directly.
 
-    are treated as the same attribute.
+    Otherwise, attributes are searched by local name.
     """
+
+    if name.startswith("{"):
+        return elem.get(name)
 
     target = name.lower()
 
-    for key, value in element.attrib.items():
-
-        key_name = local_name(key).lower()
-
-        if key_name == target:
+    for key, value in elem.attrib.items():
+        if local_name(key).lower() == target:
             return value
 
-    return None
+    return elem.get(name)
+
+
+def rtc_attr(elem, name):
+    """
+    Get an attribute specifically from the rtc namespace.
+    """
+
+    return elem.get(
+        f"{{{RTC_NS}}}{name}"
+    )
 
 
 def search_rtc_xml():
     """
     Search GitHub for RTC.xml.
 
-    This test version retrieves up to 100 results
-    from the first page.
+    This test version retrieves up to 100 files
+    from the first search result page.
     """
 
     query = "filename:RTC.xml"
@@ -130,7 +133,7 @@ def search_rtc_xml():
 
 def get_file_content(item):
     """
-    Download RTC.xml using GitHub Contents API.
+    Download RTC.xml through GitHub Contents API.
     """
 
     api_url = item["url"]
@@ -188,186 +191,85 @@ def parse_basic_info(root):
         "version": "",
     }
 
-    for element in root.iter():
+    for elem in root.iter():
 
-        if local_name(element.tag).lower() != "basicinfo":
+        if local_name(elem.tag).lower() != "basicinfo":
             continue
 
-        name = get_attribute(
-            element,
-            "name",
+        result["componentName"] = (
+            rtc_attr(elem, "name")
+            or get_attr(elem, "name")
+            or ""
         )
 
-        if name:
-            result["componentName"] = name
-
-        description = get_attribute(
-            element,
-            "description",
+        result["description"] = (
+            rtc_attr(elem, "description")
+            or get_attr(elem, "description")
+            or ""
         )
 
-        if description:
-            result["description"] = description
-
-        category = get_attribute(
-            element,
-            "category",
+        result["category"] = (
+            rtc_attr(elem, "category")
+            or get_attr(elem, "category")
+            or ""
         )
 
-        if category:
-            result["category"] = category
-
-        vendor = get_attribute(
-            element,
-            "vendor",
+        result["vendor"] = (
+            rtc_attr(elem, "vendor")
+            or get_attr(elem, "vendor")
+            or ""
         )
 
-        if vendor:
-            result["vendor"] = vendor
-
-        version = get_attribute(
-            element,
-            "version",
+        result["version"] = (
+            rtc_attr(elem, "version")
+            or get_attr(elem, "version")
+            or ""
         )
-
-        if version:
-            result["version"] = version
 
         break
 
     return result
 
 
-def normalize_data_type(value):
+def get_port_type(elem):
     """
-    Normalize DataPort data type.
+    Get rtc:portType exactly as written in RTC.xml.
 
-    Do not automatically prepend RTC:: because
-    user-defined IDL types may be used.
-    """
-
-    if not value:
-        return ""
-
-    return value.strip()
-
-
-def is_rtc_data_type(value):
-    """
-    Return True only if the value looks like an actual
-    DataPort data type.
-
-    Values such as:
-        rtcExt:dataport_ext
-        rtcExt:serviceport_ext
-
-    describe XML schema extension types and must not be
-    treated as RTC data types.
+    Examples:
+        DataInPort
+        DataOutPort
     """
 
-    if not value:
-        return False
-
-    value = value.strip()
-
-    if not value:
-        return False
-
-    lower = value.lower()
-
-    invalid_values = {
-        "rtcext:dataport_ext",
-        "rtcext:serviceport_ext",
-        "dataport_ext",
-        "serviceport_ext",
-    }
-
-    if lower in invalid_values:
-        return False
-
-    if lower.startswith("rtcext:"):
-        return False
-
-    if lower.startswith("xsi:"):
-        return False
-
-    if lower.endswith("_ext"):
-        return False
-
-    if "dataport_ext" in lower:
-        return False
-
-    if "serviceport_ext" in lower:
-        return False
-
-    return True
-
-
-def detect_port_direction(element):
-    """
-    Detect InPort / OutPort.
-    """
-
-    tag = local_name(
-        element.tag
-    ).lower()
-
-    if "inport" in tag:
-        return "InPort"
-
-    if "outport" in tag:
-        return "OutPort"
-
-    port_type = (
-        get_attribute(
-            element,
-            "portType",
-        )
-        or get_attribute(
-            element,
-            "direction",
-        )
+    return (
+        rtc_attr(elem, "portType")
         or ""
-    )
+    ).strip()
 
-    value = port_type.strip().lower()
 
-    if "datainport" in value:
-        return "InPort"
+def get_data_type(elem):
+    """
+    Get rtc:type exactly as written in RTC.xml.
 
-    if "dataoutport" in value:
-        return "OutPort"
+    xsi:type is intentionally ignored.
+    """
 
-    if "inport" in value:
-        return "InPort"
-
-    if "outport" in value:
-        return "OutPort"
-
-    if value in (
-        "in",
-        "input",
-    ):
-        return "InPort"
-
-    if value in (
-        "out",
-        "output",
-    ):
-        return "OutPort"
-
-    return "DataPort"
+    return (
+        rtc_attr(elem, "type")
+        or ""
+    ).strip()
 
 
 def parse_data_ports(root):
     """
-    Parse RTC DataPorts.
+    Parse DataPorts.
 
-    Supports multiple RTC Profile representations.
+    Output example:
 
-    Important:
-    The generic XML "type" attribute may actually be xsi:type,
-    such as rtcExt:dataport_ext. Such values are filtered out.
+        {
+            "name": "target_velocity_in",
+            "portType": "DataInPort",
+            "dataType": "RTC::TimedVelocity2D"
+        }
     """
 
     ports = []
@@ -382,215 +284,41 @@ def parse_data_ports(root):
         "data_outport",
     }
 
-    for element in root.iter():
+    for elem in root.iter():
 
-        tag = local_name(
-            element.tag
-        ).lower()
-
-        if tag not in valid_tags:
+        if (
+            local_name(elem.tag).lower()
+            not in valid_tags
+        ):
             continue
 
         name = (
-            get_attribute(
-                element,
-                "name",
-            )
+            rtc_attr(elem, "name")
+            or get_attr(elem, "name")
             or ""
         )
 
-        #
-        # Prefer explicit data type attributes.
-        #
-        data_type = (
-            get_attribute(
-                element,
-                "dataType",
-            )
-            or get_attribute(
-                element,
-                "datatype",
-            )
-            or get_attribute(
-                element,
-                "data_type",
-            )
-            or ""
-        )
-
-        #
-        # "type" may be xsi:type="rtcExt:dataport_ext".
-        # Only use it if it looks like a real RTC data type.
-        #
-        type_attr = get_attribute(
-            element,
-            "type",
-        )
-
-        if (
-            not data_type
-            and is_rtc_data_type(type_attr)
-        ):
-            data_type = type_attr
-
-        direction = detect_port_direction(
-            element
-        )
-
-        #
-        # Search child elements and RTC extension properties.
-        #
-        for child in element.iter():
-
-            if child is element:
-                continue
-
-            child_tag = local_name(
-                child.tag
-            ).lower()
-
-            text = (
-                child.text or ""
-            ).strip()
-
-            #
-            # Child name.
-            #
-            if child_tag == "name":
-
-                if text and not name:
-                    name = text
-
-            #
-            # Child DataType element.
-            #
-            elif child_tag in (
-                "datatype",
-                "data_type",
-            ):
-
-                if (
-                    text
-                    and not data_type
-                    and is_rtc_data_type(text)
-                ):
-                    data_type = text
-
-            #
-            # Child Type element.
-            #
-            elif child_tag == "type":
-
-                if (
-                    text
-                    and not data_type
-                    and is_rtc_data_type(text)
-                ):
-                    data_type = text
-
-            #
-            # RTC Builder extension properties.
-            #
-            elif child_tag in (
-                "properties",
-                "property",
-            ):
-
-                property_name = (
-                    get_attribute(
-                        child,
-                        "name",
-                    )
-                    or ""
-                )
-
-                property_value = (
-                    get_attribute(
-                        child,
-                        "value",
-                    )
-                    or ""
-                )
-
-                property_name_lower = (
-                    property_name
-                    .strip()
-                    .lower()
-                )
-
-                #
-                # Data type properties.
-                #
-                if property_name_lower in (
-                    "dataport.data_type",
-                    "dataport.datatype",
-                    "data_type",
-                    "datatype",
-                ):
-
-                    if (
-                        property_value
-                        and is_rtc_data_type(
-                            property_value
-                        )
-                    ):
-                        data_type = property_value
-
-                #
-                # Port direction properties.
-                #
-                elif property_name_lower in (
-                    "port.port_type",
-                    "dataport.port_type",
-                    "port_type",
-                ):
-
-                    direction_value = (
-                        property_value
-                        .strip()
-                        .lower()
-                    )
-
-                    if (
-                        "datainport"
-                        in direction_value
-                        or "inport"
-                        in direction_value
-                    ):
-                        direction = "InPort"
-
-                    elif (
-                        "dataoutport"
-                        in direction_value
-                        or "outport"
-                        in direction_value
-                    ):
-                        direction = "OutPort"
-
-        data_type = normalize_data_type(
-            data_type
-        )
+        port_type = get_port_type(elem)
+        data_type = get_data_type(elem)
 
         if not name:
             continue
 
         key = (
             name,
-            direction,
+            port_type,
             data_type,
         )
 
         if key in seen:
             continue
 
-        seen.add(
-            key
-        )
+        seen.add(key)
 
         ports.append(
             {
                 "name": name,
-                "direction": direction,
+                "portType": port_type,
                 "dataType": data_type,
             }
         )
@@ -599,11 +327,7 @@ def parse_data_ports(root):
 
 
 def normalize_service_direction(value):
-    """
-    Normalize service interface direction.
-    """
-
-    value = value.strip()
+    value = (value or "").strip()
 
     lower = value.lower()
 
@@ -624,37 +348,151 @@ def normalize_service_direction(value):
     return value
 
 
-def is_service_interface_type(value):
+def get_property_value(elem, property_names):
     """
-    Filter out XML schema extension types from
-    service interface type values.
+    Search descendant Properties / Property elements.
+
+    Example:
+        <rtcExt:Properties
+            rtcExt:name="interface_type"
+            rtcExt:value="MyService"/>
     """
 
-    if not value:
-        return False
+    property_names = {
+        name.lower()
+        for name in property_names
+    }
 
-    value = value.strip()
+    for child in elem.iter():
 
-    if not value:
-        return False
+        tag = local_name(
+            child.tag
+        ).lower()
 
-    lower = value.lower()
+        if tag not in (
+            "properties",
+            "property",
+        ):
+            continue
 
-    if lower.startswith("rtcext:"):
-        return False
+        prop_name = (
+            get_attr(
+                child,
+                "name",
+            )
+            or ""
+        ).strip().lower()
 
-    if lower.endswith("_ext"):
-        return False
+        prop_value = (
+            get_attr(
+                child,
+                "value",
+            )
+            or ""
+        ).strip()
 
-    if "serviceport_ext" in lower:
-        return False
+        if (
+            prop_name in property_names
+            and prop_value
+        ):
+            return prop_value
 
-    return True
+    return ""
+
+
+def get_service_interface_name(elem):
+    """
+    Get service interface instance/name.
+    """
+
+    return (
+        rtc_attr(elem, "instanceName")
+        or rtc_attr(elem, "name")
+        or get_attr(elem, "instanceName")
+        or get_attr(elem, "instance_name")
+        or get_attr(elem, "name")
+        or get_property_value(
+            elem,
+            {
+                "instance_name",
+                "interface.instance_name",
+                "service.instance_name",
+            },
+        )
+        or ""
+    ).strip()
+
+
+def get_service_interface_type(elem):
+    """
+    Get the actual service interface type.
+
+    Try explicit RTC attributes first and then
+    extension Properties.
+
+    Generic xsi:type is not used.
+    """
+
+    value = (
+        rtc_attr(elem, "type")
+        or rtc_attr(elem, "interfaceType")
+        or get_property_value(
+            elem,
+            {
+                "interface_type",
+                "interfacetype",
+                "service.interface_type",
+                "service.interface.type",
+                "interface.type",
+            },
+        )
+        or ""
+    )
+
+    return value.strip()
+
+
+def get_service_interface_direction(elem):
+    """
+    Get Provider / Consumer direction.
+    """
+
+    value = (
+        rtc_attr(elem, "direction")
+        or rtc_attr(elem, "polarity")
+        or get_attr(elem, "direction")
+        or get_attr(elem, "polarity")
+        or get_property_value(
+            elem,
+            {
+                "direction",
+                "polarity",
+                "interface.direction",
+                "service.interface.direction",
+            },
+        )
+        or ""
+    )
+
+    return normalize_service_direction(
+        value
+    )
 
 
 def parse_service_ports(root):
     """
-    Parse ServicePorts and interfaces.
+    Parse ServicePorts and their interfaces.
+
+    Supports interface information stored as:
+
+        rtc:name
+        rtc:instanceName
+        rtc:type
+        rtc:interfaceType
+        rtc:direction
+        rtc:polarity
+
+    and selected Properties representations.
     """
 
     service_ports = []
@@ -674,112 +512,74 @@ def parse_service_ports(root):
         "corbainterface",
     }
 
-    for element in root.iter():
+    for elem in root.iter():
 
         tag = local_name(
-            element.tag
+            elem.tag
         ).lower()
 
         if tag not in valid_port_tags:
             continue
 
         port_name = (
-            get_attribute(
-                element,
-                "name",
-            )
+            rtc_attr(elem, "name")
+            or get_attr(elem, "name")
             or ""
-        )
+        ).strip()
 
         interfaces = []
         seen_interfaces = set()
 
-        for child in element.iter():
+        for child in elem.iter():
 
-            if child is element:
+            if child is elem:
                 continue
 
             child_tag = local_name(
                 child.tag
             ).lower()
 
-            if child_tag not in valid_interface_tags:
+            if (
+                child_tag
+                not in valid_interface_tags
+            ):
                 continue
 
             interface_name = (
-                get_attribute(
-                    child,
-                    "name",
+                get_service_interface_name(
+                    child
                 )
-                or get_attribute(
-                    child,
-                    "instanceName",
-                )
-                or get_attribute(
-                    child,
-                    "instance_name",
-                )
-                or ""
             )
 
             interface_type = (
-                get_attribute(
-                    child,
-                    "interfaceType",
+                get_service_interface_type(
+                    child
                 )
-                or get_attribute(
-                    child,
-                    "interface_type",
-                )
-                or ""
             )
 
-            #
-            # Generic "type" may also contain XML extension type.
-            #
-            type_attr = get_attribute(
-                child,
-                "type",
-            )
-
-            if (
-                not interface_type
-                and is_service_interface_type(
-                    type_attr
+            interface_direction = (
+                get_service_interface_direction(
+                    child
                 )
-            ):
-                interface_type = type_attr
-
-            direction = (
-                get_attribute(
-                    child,
-                    "direction",
-                )
-                or get_attribute(
-                    child,
-                    "polarity",
-                )
-                or ""
-            )
-
-            direction = normalize_service_direction(
-                direction
             )
 
             if not (
                 interface_name
                 or interface_type
-                or direction
+                or interface_direction
             ):
                 continue
 
             interface_key = (
                 interface_name,
                 interface_type,
-                direction,
+                interface_direction,
             )
 
-            if interface_key in seen_interfaces:
+            if (
+                interface_key
+                in seen_interfaces
+            ):
                 continue
 
             seen_interfaces.add(
@@ -790,11 +590,14 @@ def parse_service_ports(root):
                 {
                     "name": interface_name,
                     "type": interface_type,
-                    "direction": direction,
+                    "direction": interface_direction,
                 }
             )
 
-        if not port_name and not interfaces:
+        if (
+            not port_name
+            and not interfaces
+        ):
             continue
 
         port_key = (
@@ -831,26 +634,21 @@ def parse_language(root):
     Parse implementation language.
     """
 
-    for element in root.iter():
+    for elem in root.iter():
 
-        tag = local_name(
-            element.tag
-        ).lower()
-
-        if tag != "language":
+        if (
+            local_name(elem.tag).lower()
+            != "language"
+        ):
             continue
 
         value = (
-            get_attribute(
-                element,
-                "kind",
-            )
-            or get_attribute(
-                element,
-                "name",
-            )
+            rtc_attr(elem, "kind")
+            or rtc_attr(elem, "name")
+            or get_attr(elem, "kind")
+            or get_attr(elem, "name")
             or (
-                element.text or ""
+                elem.text or ""
             ).strip()
         )
 
@@ -903,9 +701,7 @@ def is_valid_rtc(rtc):
         .strip()
     )
 
-    return bool(
-        component_name
-    )
+    return bool(component_name)
 
 
 def get_repository_info(item):
@@ -929,7 +725,10 @@ def get_repository_info(item):
         "default_branch"
     )
 
-    if not default_branch and repository_api_url:
+    if (
+        not default_branch
+        and repository_api_url
+    ):
 
         try:
 
@@ -937,8 +736,10 @@ def get_repository_info(item):
                 repository_api_url
             )
 
-            default_branch = repo_data.get(
-                "default_branch"
+            default_branch = (
+                repo_data.get(
+                    "default_branch"
+                )
             )
 
         except Exception as e:
@@ -995,14 +796,14 @@ def create_catalog_entry(
         item
     )
 
-    path = item[
-        "path"
-    ]
+    path = item["path"]
 
-    directory_url = build_directory_url(
-        repository_url,
-        path,
-        default_branch,
+    directory_url = (
+        build_directory_url(
+            repository_url,
+            path,
+            default_branch,
+        )
     )
 
     return {
@@ -1117,6 +918,13 @@ def print_rtc(entry, index):
             "dataPorts"
         ]:
 
+            port_type = (
+                port.get(
+                    "portType"
+                )
+                or "(unknown)"
+            )
+
             data_type = (
                 port.get(
                     "dataType"
@@ -1126,7 +934,7 @@ def print_rtc(entry, index):
 
             print(
                 "        "
-                f"{port['direction']} "
+                f"{port_type} "
                 f"{port['name']} : "
                 f"{data_type}"
             )
@@ -1148,13 +956,21 @@ def print_rtc(entry, index):
         ]:
 
             print(
-                f"        {port['name']}"
+                f"        "
+                f"{port['name']}"
             )
 
             for interface in port.get(
                 "interfaces",
                 [],
             ):
+
+                interface_name = (
+                    interface.get(
+                        "name"
+                    )
+                    or "(unnamed)"
+                )
 
                 interface_type = (
                     interface.get(
@@ -1163,10 +979,17 @@ def print_rtc(entry, index):
                     or "(unknown)"
                 )
 
+                interface_direction = (
+                    interface.get(
+                        "direction"
+                    )
+                    or "(unknown)"
+                )
+
                 print(
                     "          "
-                    f"{interface['direction']} "
-                    f"{interface['name']} : "
+                    f"{interface_direction} "
+                    f"{interface_name} : "
                     f"{interface_type}"
                 )
 
@@ -1268,12 +1091,16 @@ def main():
 
         try:
 
-            xml_text = get_file_content(
-                item
+            xml_text = (
+                get_file_content(
+                    item
+                )
             )
 
-            rtc = parse_rtc_xml(
-                xml_text
+            rtc = (
+                parse_rtc_xml(
+                    xml_text
+                )
             )
 
             if not is_valid_rtc(
@@ -1289,9 +1116,11 @@ def main():
 
                 continue
 
-            entry = create_catalog_entry(
-                item,
-                rtc,
+            entry = (
+                create_catalog_entry(
+                    item,
+                    rtc,
+                )
             )
 
             catalog.append(
