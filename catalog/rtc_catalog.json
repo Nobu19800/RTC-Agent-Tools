@@ -1933,6 +1933,20 @@
       "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/EV3Simulator/RTC.xml20170401034932"
     },
     {
+      "componentName": "PIDController",
+      "description": "PID Controller",
+      "category": "Control",
+      "vendor": "Miyamoto Nobuhiko",
+      "version": "1.0.0",
+      "language": "C++",
+      "dataPorts": [],
+      "servicePorts": [],
+      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
+      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/PIDController",
+      "path": "SettingRTSystem/SettingRTSystem/Components/PIDController/RTC.xml20150726152639",
+      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/PIDController/RTC.xml20150726152639"
+    },
+    {
       "componentName": "LeapVehicle",
       "description": "Leap Motion RTC",
       "category": "input",
@@ -3001,18 +3015,54 @@
       "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/RMC/RTC.xml20150726230233"
     },
     {
-      "componentName": "PIDController",
-      "description": "PID Controller",
-      "category": "Control",
-      "vendor": "Miyamoto Nobuhiko",
+      "componentName": "RaspberryPiMouseGUI",
+      "description": "Raspberry Pi Mouse GUI",
+      "category": "GUI",
+      "vendor": "AIST",
       "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
+      "language": "Python",
+      "dataPorts": [
+        {
+          "name": "current_velocity",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedVelocity2D"
+        },
+        {
+          "name": "ir_sensor",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedShortSeq"
+        },
+        {
+          "name": "orientation",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedOrientation3D"
+        },
+        {
+          "name": "current_pose",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedPose2D"
+        },
+        {
+          "name": "target_velocity",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedVelocity2D"
+        },
+        {
+          "name": "target_position",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedPoint2D"
+        },
+        {
+          "name": "update_pose",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedPose2D"
+        }
+      ],
       "servicePorts": [],
       "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/PIDController",
-      "path": "SettingRTSystem/SettingRTSystem/Components/PIDController/RTC.xml20150726152639",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/PIDController/RTC.xml20150726152639"
+      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/RaspberryPiMouseGUI",
+      "path": "SettingRTSystem/SettingRTSystem/Components/RaspberryPiMouseGUI/RTC.xml",
+      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/RaspberryPiMouseGUI/RTC.xml"
     },
     {
       "componentName": "JoystickPySDL2",
@@ -4035,56 +4085,6 @@
       "directoryUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin/tree/master/samples/TankJoystickControllerRTC_Py",
       "path": "samples/TankJoystickControllerRTC_Py/RTC.xml20170427141340",
       "rtcXmlUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin/blob/2a610f6142645aa6b2f297f02bea8af131b398cb/samples/TankJoystickControllerRTC_Py/RTC.xml20170427141340"
-    },
-    {
-      "componentName": "RaspberryPiMouseGUI",
-      "description": "Raspberry Pi Mouse GUI",
-      "category": "GUI",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "current_velocity",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedVelocity2D"
-        },
-        {
-          "name": "ir_sensor",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedShortSeq"
-        },
-        {
-          "name": "orientation",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedOrientation3D"
-        },
-        {
-          "name": "current_pose",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedPose2D"
-        },
-        {
-          "name": "target_velocity",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        },
-        {
-          "name": "target_position",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedPoint2D"
-        },
-        {
-          "name": "update_pose",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedPose2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/RaspberryPiMouseGUI",
-      "path": "SettingRTSystem/SettingRTSystem/Components/RaspberryPiMouseGUI/RTC.xml",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/RaspberryPiMouseGUI/RTC.xml"
     },
     {
       "componentName": "Trot_Gait_Controller",
