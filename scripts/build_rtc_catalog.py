@@ -426,6 +426,10 @@ def search_rtc_xml():
                 "",
             )
 
+            # RTC.xml以外のファイルを除外
+            if Path(path).name != "RTC.xml":
+                continue
+
             key = (
                 repository_name,
                 path,
