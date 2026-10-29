@@ -1705,6 +1705,7 @@ def main():
     skipped = 0
 
     seen = set()
+    seen_rtc_names = set()
 
     for item in items:
 
@@ -1777,6 +1778,12 @@ def main():
 
                 continue
 
+            rtc_name = rtc["componentName"].strip()
+            if rtc_name in seen_rtc_names:
+                skipped += 1
+                print(f"  Skip: duplicate RTC name: {rtc_name}")
+                continue
+
             entry = (
                 create_catalog_entry(
                     item,
@@ -1787,6 +1794,8 @@ def main():
             catalog.append(
                 entry
             )
+
+            seen_rtc_names.add(rtc_name)
 
             print_rtc(
                 entry,
