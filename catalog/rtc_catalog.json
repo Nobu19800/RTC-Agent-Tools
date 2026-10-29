@@ -635,76 +635,6 @@
       "rtcXmlUrl": "https://github.com/ogata-lab-admin/WacomTabletRTC/blob/62d520c6c40c56508799e4eaa19f1a9679114f81/RTC.xml"
     },
     {
-      "componentName": "DirectInput",
-      "description": "DirectInput Component",
-      "category": "Experimental",
-      "vendor": "ysuga_net",
-      "version": "1.1",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "lP",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedLongSeq"
-        },
-        {
-          "name": "lR",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedLongSeq"
-        },
-        {
-          "name": "rglSlider0",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedLong"
-        },
-        {
-          "name": "rglSlider1",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedLong"
-        },
-        {
-          "name": "POV0",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedLongSeq"
-        },
-        {
-          "name": "POV1",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedLongSeq"
-        },
-        {
-          "name": "rgbButtons",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedBooleanSeq"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/sugarsweetrobotics/DirectInputRTC",
-      "directoryUrl": "https://github.com/sugarsweetrobotics/DirectInputRTC",
-      "path": "RTC.xml",
-      "rtcXmlUrl": "https://github.com/sugarsweetrobotics/DirectInputRTC/blob/128574e831c4ae548106877efb76469be926ecba/RTC.xml"
-    },
-    {
-      "componentName": "SampleWordLogger",
-      "description": "SampleWordLogger RTC",
-      "category": "Category",
-      "vendor": "NEDO",
-      "version": "0.0.1",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "result",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedWString"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/tork-a/openrtm_tutorial",
-      "directoryUrl": "https://github.com/tork-a/openrtm_tutorial/tree/devel/demo/SampleWordLogger",
-      "path": "demo/SampleWordLogger/RTC.xml",
-      "rtcXmlUrl": "https://github.com/tork-a/openrtm_tutorial/blob/3c017c4658f09a74bd6dd875066662c4d2b7f453/demo/SampleWordLogger/RTC.xml"
-    },
-    {
       "componentName": "myCobot",
       "description": "myCobot Controller Component",
       "category": "Manipulator",
@@ -870,34 +800,6 @@
       "rtcXmlUrl": "https://github.com/W-kudo/DetectObstaclesRTC/blob/2a8d9dde2765a67ad724b36b6d1dcf23d496ca66/RTC.xml"
     },
     {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/sugarsweetrobotics/UrgRTC",
-      "directoryUrl": "https://github.com/sugarsweetrobotics/UrgRTC",
-      "path": "RTC.xml20130623133749",
-      "rtcXmlUrl": "https://github.com/sugarsweetrobotics/UrgRTC/blob/970db57e09e75c050eb5f5af4ee0f11504c07b65/RTC.xml20130623133749"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/ysuga/LeapVehicle",
-      "directoryUrl": "https://github.com/ysuga/LeapVehicle",
-      "path": "RTC.xml20130917095222",
-      "rtcXmlUrl": "https://github.com/ysuga/LeapVehicle/blob/4a493fce009ca98647bdebbf775c2e4cecc21ff6/RTC.xml20130917095222"
-    },
-    {
       "componentName": "sender",
       "description": "ModuleDescription",
       "category": "Category",
@@ -916,20 +818,6 @@
       "directoryUrl": "https://github.com/m0-masudamaria/test_Ubiquitous/tree/main/sender",
       "path": "sender/RTC.xml",
       "rtcXmlUrl": "https://github.com/m0-masudamaria/test_Ubiquitous/blob/f25f134af4f8f75067d534668fe7ef06221164f2/sender/RTC.xml"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/FaBoPlatform/RTC-RobotARM",
-      "directoryUrl": "https://github.com/FaBoPlatform/RTC-RobotARM/tree/master/RobotARMRTC",
-      "path": "RobotARMRTC/RTC.xml20180112102143",
-      "rtcXmlUrl": "https://github.com/FaBoPlatform/RTC-RobotARM/blob/9dbe18fda3ccd2169e694ad4e58a1ff06120f727/RobotARMRTC/RTC.xml20180112102143"
     },
     {
       "componentName": "Motor",
@@ -1522,20 +1410,6 @@
       "rtcXmlUrl": "https://github.com/OpenRTM/ImageProcessing/blob/2e47a62e71f13a69b7e0167aba89e61db8752fef/opencv/components/Dilationerosion/RTC.xml"
     },
     {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/rizgiak/OpenRTM_AutonomousObjectTrackingMobileRobot",
-      "directoryUrl": "https://github.com/rizgiak/OpenRTM_AutonomousObjectTrackingMobileRobot/tree/main/SFMLJoystick",
-      "path": "SFMLJoystick/RTC.xml20150113093039",
-      "rtcXmlUrl": "https://github.com/rizgiak/OpenRTM_AutonomousObjectTrackingMobileRobot/blob/cb41084a54f06dc844390f6c206b8377a8e29209/SFMLJoystick/RTC.xml20150113093039"
-    },
-    {
       "componentName": "NavigationManager",
       "description": "Mapper Viewer RTC",
       "category": "Navigation",
@@ -1622,199 +1496,6 @@
       "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial/blob/6a3374e921433703c7263325ab716a14e9c6d10f/Navigation/NavigationManager/RTC.xml"
     },
     {
-      "componentName": "SpeechSample",
-      "description": "EV3 Speech Sample",
-      "category": "Sample",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedString"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_ROBOMECH2019",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_ROBOMECH2019/tree/master/sample/ext/SpeechSample",
-      "path": "sample/ext/SpeechSample/RTC.xml20180601154528",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_ROBOMECH2019/blob/aff2ae50e37d0fdda030c9a6c188c3bf7bf2e056/sample/ext/SpeechSample/RTC.xml20180601154528"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Test",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_ROBOMECH2019",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_ROBOMECH2019/tree/master/sample/ext/SpeechSample",
-      "path": "sample/ext/SpeechSample/RTC.xml20180601154039",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_ROBOMECH2019/blob/aff2ae50e37d0fdda030c9a6c188c3bf7bf2e056/sample/ext/SpeechSample/RTC.xml20180601154039"
-    },
-    {
-      "componentName": "selector",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "result_a",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedLong"
-        },
-        {
-          "name": "result_m",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedLong"
-        },
-        {
-          "name": "result_t",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedString"
-        },
-        {
-          "name": "footage_drink_type",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedString"
-        },
-        {
-          "name": "footage_drink_weight",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedLong"
-        },
-        {
-          "name": "sound_type",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedString"
-        },
-        {
-          "name": "sound_value",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedString"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/shibaura0213/RT-test",
-      "directoryUrl": "https://github.com/shibaura0213/RT-test/tree/main/selector",
-      "path": "selector/RTC.xml20241129160018",
-      "rtcXmlUrl": "https://github.com/shibaura0213/RT-test/blob/3eb3ee50933ba23595ef7df17fd75810aa02aee7/selector/RTC.xml20241129160018"
-    },
-    {
-      "componentName": "acceleration",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "acceleration_x",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedFloat"
-        },
-        {
-          "name": "acceleration_y",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedFloat"
-        },
-        {
-          "name": "acceleration_z",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedFloat"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/shibaura0213/RT-test",
-      "directoryUrl": "https://github.com/shibaura0213/RT-test/tree/main/acceleration",
-      "path": "acceleration/RTC.xml20241128190212",
-      "rtcXmlUrl": "https://github.com/shibaura0213/RT-test/blob/3eb3ee50933ba23595ef7df17fd75810aa02aee7/acceleration/RTC.xml20241128190212"
-    },
-    {
-      "componentName": "JoystickPySDL2",
-      "description": "Joystick using PySDL2",
-      "category": "Device",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "axes_1",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVector2D"
-        },
-        {
-          "name": "axes_2",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVector2D"
-        },
-        {
-          "name": "buttons",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedBooleanSeq"
-        },
-        {
-          "name": "hats",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedBooleanSeq"
-        },
-        {
-          "name": "balls",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVector2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin",
-      "directoryUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin/tree/master/samples/JoystickPySDL2",
-      "path": "samples/JoystickPySDL2/RTC.xml20170427123152",
-      "rtcXmlUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin/blob/2a610f6142645aa6b2f297f02bea8af131b398cb/samples/JoystickPySDL2/RTC.xml20170427123152"
-    },
-    {
-      "componentName": "calculator_temperature",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "temperature",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedFloat"
-        },
-        {
-          "name": "result_t",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedFloat"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/shibaura0213/RT-test",
-      "directoryUrl": "https://github.com/shibaura0213/RT-test/tree/main/calculator_temperature",
-      "path": "calculator_temperature/RTC.xml20241127080119",
-      "rtcXmlUrl": "https://github.com/shibaura0213/RT-test/blob/3eb3ee50933ba23595ef7df17fd75810aa02aee7/calculator_temperature/RTC.xml20241127080119"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/itsuku-kito/RTM-management-of-coordinate-systems",
-      "directoryUrl": "https://github.com/itsuku-kito/RTM-management-of-coordinate-systems/tree/main/RTC/Coordinate_Transformation_RTC_typecasting",
-      "path": "RTC/Coordinate_Transformation_RTC_typecasting/RTC.xml20231113193206",
-      "rtcXmlUrl": "https://github.com/itsuku-kito/RTM-management-of-coordinate-systems/blob/87673b1ed29ac06d115ae9ee07f7e85c2f8775b2/RTC/Coordinate_Transformation_RTC_typecasting/RTC.xml20231113193206"
-    },
-    {
       "componentName": "Bias",
       "description": "Bias",
       "category": "Math",
@@ -1879,31 +1560,6 @@
       "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/Backlash/RTC.xml"
     },
     {
-      "componentName": "rtcConfSet",
-      "description": "rtcConfSet",
-      "category": "TES",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [],
-      "servicePorts": [
-        {
-          "name": "rtcconf",
-          "interfaces": [
-            {
-              "name": "rtcconf",
-              "type": "RTCConfData::ConfDataInterface",
-              "direction": "Provider"
-            }
-          ]
-        }
-      ],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/rtcConfSet",
-      "path": "SettingRTSystem/SettingRTSystem/rtcConfSet/RTC.xml20150513154110",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/rtcConfSet/RTC.xml20150513154110"
-    },
-    {
       "componentName": "EncodeSeqData",
       "description": "Encode inputData component",
       "category": "DataConversion",
@@ -1959,20 +1615,6 @@
       "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/PulseGenerator/RTC.xml"
     },
     {
-      "componentName": "Scope",
-      "description": "Scope",
-      "category": "Viewer",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/Scope",
-      "path": "SettingRTSystem/SettingRTSystem/Components/Scope/RTC.xml20150725182849",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/Scope/RTC.xml20150725182849"
-    },
-    {
       "componentName": "LeapVehicle",
       "description": "Leap Motion RTC",
       "category": "input",
@@ -1996,20 +1638,6 @@
       "directoryUrl": "https://github.com/ysuga/LeapVehicle",
       "path": "RTC.xml",
       "rtcXmlUrl": "https://github.com/ysuga/LeapVehicle/blob/4a493fce009ca98647bdebbf775c2e4cecc21ff6/RTC.xml"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/rt-net/kobuki_rtc",
-      "directoryUrl": "https://github.com/rt-net/kobuki_rtc",
-      "path": "RTC.xml20130303233854",
-      "rtcXmlUrl": "https://github.com/rt-net/kobuki_rtc/blob/abad202a2575b7262c2bce05d729cc36781e3e11/RTC.xml20130303233854"
     },
     {
       "componentName": "PortTest",
@@ -2092,144 +1720,6 @@
       "rtcXmlUrl": "https://github.com/TaskManagingSystem/task-managing-system/blob/612cc806259dcd7846ca4caa78867e3756ddafd7/id2signal/RTC.xml"
     },
     {
-      "componentName": "RaspberryPiMouseSimulator",
-      "description": "RaspberryPiMouse Simulator",
-      "category": "Simulator",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "target_velocity_in",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedVelocity2D"
-        },
-        {
-          "name": "pose_update",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedPose2D"
-        },
-        {
-          "name": "current_velocity_out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        },
-        {
-          "name": "current_pose_out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedPose2D"
-        },
-        {
-          "name": "ir_sensor_out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedShortSeq"
-        },
-        {
-          "name": "ir_sensor_metre_out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDoubleSeq"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/RasPiMouseSimulatorRTC",
-      "directoryUrl": "https://github.com/Nobu19800/RasPiMouseSimulatorRTC",
-      "path": "RTC.xml20170409222620",
-      "rtcXmlUrl": "https://github.com/Nobu19800/RasPiMouseSimulatorRTC/blob/61ce5c141a773b93eed80be37fe41c36b5d52bd3/RTC.xml20170409222620"
-    },
-    {
-      "componentName": "template_java",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "Java",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/sec-airgraph/AirGraph",
-      "directoryUrl": "https://github.com/sec-airgraph/AirGraph/tree/master/release_app/rtm_templates/template_java",
-      "path": "release_app/rtm_templates/template_java/RTC.xml20170217201248",
-      "rtcXmlUrl": "https://github.com/sec-airgraph/AirGraph/blob/f5381c6f23e62c7689a4b6c9d3d12303dcdb5b65/release_app/rtm_templates/template_java/RTC.xml20170217201248"
-    },
-    {
-      "componentName": "CrawlerController",
-      "description": "Crawler Controller",
-      "category": "Crawler",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "acc",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedAcceleration3D"
-        },
-        {
-          "name": "magn",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedDoubleSeq"
-        },
-        {
-          "name": "gyro",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedAngularVelocity3D"
-        },
-        {
-          "name": "range0",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedDouble"
-        },
-        {
-          "name": "range1",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedDouble"
-        },
-        {
-          "name": "range2",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedDouble"
-        },
-        {
-          "name": "range3",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedDouble"
-        },
-        {
-          "name": "in0",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedDouble"
-        },
-        {
-          "name": "in1",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedDouble"
-        },
-        {
-          "name": "pos",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedPose2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/CrawlerController",
-      "directoryUrl": "https://github.com/Nobu19800/CrawlerController",
-      "path": "RTC.xml20150831025814",
-      "rtcXmlUrl": "https://github.com/Nobu19800/CrawlerController/blob/b47f744cbe656e1fcc0fd1a37da9983345137a78/RTC.xml20150831025814"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "TEST",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/ConvertImage",
-      "directoryUrl": "https://github.com/Nobu19800/ConvertImage",
-      "path": "RTC.xml20150717201834",
-      "rtcXmlUrl": "https://github.com/Nobu19800/ConvertImage/blob/d70a99926403d83ec761a500c48f497ae2caf2ae/RTC.xml20150717201834"
-    },
-    {
       "componentName": "PointCloud_Viewer",
       "description": "PointCloud Viewer",
       "category": "Viewer",
@@ -2263,40 +1753,6 @@
       "directoryUrl": "https://github.com/yukimeat1999/2D-LiDAR-to-3D-CaveSurvey/tree/main/PointCloud_Viewer",
       "path": "PointCloud_Viewer/RTC.xml",
       "rtcXmlUrl": "https://github.com/yukimeat1999/2D-LiDAR-to-3D-CaveSurvey/blob/937e4a74c4c11d7ba46297cb25cf861896a1a107/PointCloud_Viewer/RTC.xml"
-    },
-    {
-      "componentName": "Sota_control",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "text",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedString"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/sota2800/librarysystem",
-      "directoryUrl": "https://github.com/sota2800/librarysystem/tree/main/Sota_control",
-      "path": "Sota_control/RTC.xml20230317135841",
-      "rtcXmlUrl": "https://github.com/sota2800/librarysystem/blob/bd58c8e2842915883ed56cde66f88943b24f30ac/Sota_control/RTC.xml20230317135841"
-    },
-    {
-      "componentName": "Sota_control",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/sota2800/librarysystem",
-      "directoryUrl": "https://github.com/sota2800/librarysystem/tree/main/Sota_control",
-      "path": "Sota_control/RTC.xml20221208170312",
-      "rtcXmlUrl": "https://github.com/sota2800/librarysystem/blob/bd58c8e2842915883ed56cde66f88943b24f30ac/Sota_control/RTC.xml20221208170312"
     },
     {
       "componentName": "ImageCalibration",
@@ -2445,131 +1901,6 @@
       "rtcXmlUrl": "https://github.com/rizgiak/OpenRTM_AutonomousObjectTrackingMobileRobot/blob/cb41084a54f06dc844390f6c206b8377a8e29209/SFMLJoystickToVelocity/RTC.xml"
     },
     {
-      "componentName": "Manager",
-      "description": "Manager",
-      "category": "Manager",
-      "vendor": "rsdlab",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "safety",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedBoolean"
-        },
-        {
-          "name": "stop",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedBoolean"
-        }
-      ],
-      "servicePorts": [
-        {
-          "name": "ManipulatorCommonInterface_Common",
-          "interfaces": [
-            {
-              "name": "ManipulatorCommonInterface_Common",
-              "type": "JARA_ARM::ManipulatorCommonInterface_Common",
-              "direction": "Consumer"
-            }
-          ]
-        },
-        {
-          "name": "ManipulatorCommonInterface_Middle",
-          "interfaces": [
-            {
-              "name": "ManipulatorCommonInterface_Middle",
-              "type": "JARA_ARM::ManipulatorCommonInterface_Middle",
-              "direction": "Consumer"
-            }
-          ]
-        }
-      ],
-      "repositoryUrl": "https://github.com/rsdlab/HumanDetection",
-      "directoryUrl": "https://github.com/rsdlab/HumanDetection/tree/master/RTC/Manager",
-      "path": "RTC/Manager/RTC.xml20211211185309",
-      "rtcXmlUrl": "https://github.com/rsdlab/HumanDetection/blob/9108027ab1a6e0bfe320d1ac25637bb11d49b669/RTC/Manager/RTC.xml20211211185309"
-    },
-    {
-      "componentName": "Motor",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "Nishimura Shunsei",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "Signal",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedBoolean"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/cy22257/project",
-      "directoryUrl": "https://github.com/cy22257/project/tree/main/motor/Motor",
-      "path": "motor/Motor/RTC.xml20241107140707",
-      "rtcXmlUrl": "https://github.com/cy22257/project/blob/4fbfa43ba922031d271ae8ff2583e891576dad39/motor/Motor/RTC.xml20241107140707"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/cy22257/project",
-      "directoryUrl": "https://github.com/cy22257/project/tree/main/motor/Motor",
-      "path": "motor/Motor/RTC.xml20241024174943",
-      "rtcXmlUrl": "https://github.com/cy22257/project/blob/4fbfa43ba922031d271ae8ff2583e891576dad39/motor/Motor/RTC.xml20241024174943"
-    },
-    {
-      "componentName": "ObjectTracking",
-      "description": "Objecttrack component",
-      "category": "Category",
-      "vendor": "AIST",
-      "version": "1.2.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "img_original",
-          "portType": "DataInPort",
-          "dataType": "RTC::CameraImage"
-        },
-        {
-          "name": "m_event",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedLong"
-        },
-        {
-          "name": "m_x",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedLong"
-        },
-        {
-          "name": "m_y",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedLong"
-        },
-        {
-          "name": "img_output",
-          "portType": "DataOutPort",
-          "dataType": "RTC::CameraImage"
-        },
-        {
-          "name": "img_hist",
-          "portType": "DataOutPort",
-          "dataType": "RTC::CameraImage"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/rizgiak/OpenRTM_AutonomousObjectTrackingMobileRobot",
-      "directoryUrl": "https://github.com/rizgiak/OpenRTM_AutonomousObjectTrackingMobileRobot/tree/main/ObjectTracking",
-      "path": "ObjectTracking/RTC.xml20210713120531",
-      "rtcXmlUrl": "https://github.com/rizgiak/OpenRTM_AutonomousObjectTrackingMobileRobot/blob/cb41084a54f06dc844390f6c206b8377a8e29209/ObjectTracking/RTC.xml20210713120531"
-    },
-    {
       "componentName": "KeystoneCorrection",
       "description": "ModuleDescription",
       "category": "Category",
@@ -2595,45 +1926,6 @@
       "rtcXmlUrl": "https://github.com/Ruchi12377/AutoEraser/blob/a6154e2489f0aeaa4ccca738c8396079d00e4e0f/RT_Middleware/KeystoneCorrection/RTC.xml"
     },
     {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Ruchi12377/AutoEraser",
-      "directoryUrl": "https://github.com/Ruchi12377/AutoEraser/tree/main/RT_Middleware/Erase",
-      "path": "RT_Middleware/Erase/RTC.xml20221118174405",
-      "rtcXmlUrl": "https://github.com/Ruchi12377/AutoEraser/blob/a6154e2489f0aeaa4ccca738c8396079d00e4e0f/RT_Middleware/Erase/RTC.xml20221118174405"
-    },
-    {
-      "componentName": "Serial",
-      "description": "Serial communication",
-      "category": "Category",
-      "vendor": "Ruchi",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "Write",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedString"
-        },
-        {
-          "name": "Read",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedString"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Ruchi12377/AutoEraser",
-      "directoryUrl": "https://github.com/Ruchi12377/AutoEraser/tree/main/RT_Middleware/Serial",
-      "path": "RT_Middleware/Serial/RTC.xml20221103090825",
-      "rtcXmlUrl": "https://github.com/Ruchi12377/AutoEraser/blob/a6154e2489f0aeaa4ccca738c8396079d00e4e0f/RT_Middleware/Serial/RTC.xml20221103090825"
-    },
-    {
       "componentName": "Roomba_OutPort",
       "description": "",
       "category": "Robot",
@@ -2657,163 +1949,6 @@
       "directoryUrl": "https://github.com/yukimeat1999/GNG-Unk-Env-Navi_RTC/tree/main/Roomba_OutPort",
       "path": "Roomba_OutPort/RTC.xml",
       "rtcXmlUrl": "https://github.com/yukimeat1999/GNG-Unk-Env-Navi_RTC/blob/ba866d315de3764ecf4627e0edc4963df94e4648/Roomba_OutPort/RTC.xml"
-    },
-    {
-      "componentName": "SampleTouchSensor",
-      "description": "Raspberry Pi Mouse Controller by Touch Sensor",
-      "category": "Sample",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "touch",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedBooleanSeq"
-        },
-        {
-          "name": "target_velocity",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_ROBOMECH2019",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_ROBOMECH2019/tree/master/sample/ext/SampleTouchSensor",
-      "path": "sample/ext/SampleTouchSensor/RTC.xml20180601091026",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_ROBOMECH2019/blob/aff2ae50e37d0fdda030c9a6c188c3bf7bf2e056/sample/ext/SampleTouchSensor/RTC.xml20180601091026"
-    },
-    {
-      "componentName": "SpeechSample",
-      "description": "EV3 Speech Sample",
-      "category": "Sample",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedString"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial/tree/master/sample/ext/SpeechSample",
-      "path": "sample/ext/SpeechSample/RTC.xml20180601154528",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial/blob/6a3374e921433703c7263325ab716a14e9c6d10f/sample/ext/SpeechSample/RTC.xml20180601154528"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Test",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial/tree/master/sample/ext/SpeechSample",
-      "path": "sample/ext/SpeechSample/RTC.xml20180601154039",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial/blob/6a3374e921433703c7263325ab716a14e9c6d10f/sample/ext/SpeechSample/RTC.xml20180601154039"
-    },
-    {
-      "componentName": "SpeechSample",
-      "description": "EV3 Speech Sample",
-      "category": "Sample",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedString"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_JapanRobotWeek2018",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_JapanRobotWeek2018/tree/master/sample/ext/SpeechSample",
-      "path": "sample/ext/SpeechSample/RTC.xml20180601154528",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_JapanRobotWeek2018/blob/23d466e9be82b7b6c0ec9ecb36e8a336aa153861/sample/ext/SpeechSample/RTC.xml20180601154528"
-    },
-    {
-      "componentName": "SpeechSample",
-      "description": "EV3 Speech Sample",
-      "category": "Sample",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedString"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_Waseda2018",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_Waseda2018/tree/master/sample/ext/SpeechSample",
-      "path": "sample/ext/SpeechSample/RTC.xml20180601154528",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_Waseda2018/blob/f98d1f23c478516a1f32292a824257e0cbedcfea/sample/ext/SpeechSample/RTC.xml20180601154528"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Test",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_JapanRobotWeek2018",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_JapanRobotWeek2018/tree/master/sample/ext/SpeechSample",
-      "path": "sample/ext/SpeechSample/RTC.xml20180601154039",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_JapanRobotWeek2018/blob/23d466e9be82b7b6c0ec9ecb36e8a336aa153861/sample/ext/SpeechSample/RTC.xml20180601154039"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Test",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_Waseda2018",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_Waseda2018/tree/master/sample/ext/SpeechSample",
-      "path": "sample/ext/SpeechSample/RTC.xml20180601154039",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_Waseda2018/blob/f98d1f23c478516a1f32292a824257e0cbedcfea/sample/ext/SpeechSample/RTC.xml20180601154039"
-    },
-    {
-      "componentName": "RaspberryPiMouseIo",
-      "description": "RaspberryPi Mouse Controller for Choreonoid Simulator",
-      "category": "Simulator",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [
-        {
-          "name": "velocity",
-          "portType": "DataInPort",
-          "dataType": "RTC::Velocity2D"
-        },
-        {
-          "name": "ir_sensor",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedShortSeq"
-        },
-        {
-          "name": "distance",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDoubleSeq"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial/tree/master/sample/RaspberryPiMouseIo",
-      "path": "sample/RaspberryPiMouseIo/RTC.xml20220524163915",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial/blob/6a3374e921433703c7263325ab716a14e9c6d10f/sample/RaspberryPiMouseIo/RTC.xml20220524163915"
     },
     {
       "componentName": "SimpleServiceProvider",
@@ -2937,65 +2072,6 @@
       "rtcXmlUrl": "https://github.com/itsuku-kito/RTM-management-of-coordinate-systems/blob/87673b1ed29ac06d115ae9ee07f7e85c2f8775b2/RTC/Coordinate_Transformation_RTC_typecasting/RTC.xml"
     },
     {
-      "componentName": "SpeechSample",
-      "description": "EV3 Speech Sample",
-      "category": "Sample",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedString"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_RaspberryPiMouse",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_RaspberryPiMouse/tree/master/sample/ext/SpeechSample",
-      "path": "sample/ext/SpeechSample/RTC.xml20180601154528",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_RaspberryPiMouse/blob/971856381d058c1d8a8e6535fd1e10076266354c/sample/ext/SpeechSample/RTC.xml20180601154528"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Test",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_RaspberryPiMouse",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_RaspberryPiMouse/tree/master/sample/ext/SpeechSample",
-      "path": "sample/ext/SpeechSample/RTC.xml20180601154039",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_RaspberryPiMouse/blob/971856381d058c1d8a8e6535fd1e10076266354c/sample/ext/SpeechSample/RTC.xml20180601154039"
-    },
-    {
-      "componentName": "calculator_acceleration",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "acceleration",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedFloat"
-        },
-        {
-          "name": "result_a",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedLong"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/shibaura0213/RT-test",
-      "directoryUrl": "https://github.com/shibaura0213/RT-test/tree/main/calculator_acceleration",
-      "path": "calculator_acceleration/RTC.xml20241214095019",
-      "rtcXmlUrl": "https://github.com/shibaura0213/RT-test/blob/3eb3ee50933ba23595ef7df17fd75810aa02aee7/calculator_acceleration/RTC.xml20241214095019"
-    },
-    {
       "componentName": "rtcdControlPy",
       "description": "rtcdControlPy",
       "category": "TES",
@@ -3019,144 +2095,6 @@
       "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/rtcdControlPy",
       "path": "SettingRTSystem/SettingRTSystem/rtcdControlPy/RTC.xml",
       "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/rtcdControlPy/RTC.xml"
-    },
-    {
-      "componentName": "RMC",
-      "description": "Robot Model Creator",
-      "category": "Viewer",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "pos",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedFloatSeq"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/RMC",
-      "path": "SettingRTSystem/SettingRTSystem/Components/RMC/RTC.xml",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/RMC/RTC.xml"
-    },
-    {
-      "componentName": "TankJoystickControllerRTC_Py",
-      "description": "TankJoystickControllerRTC using Python",
-      "category": "Controller",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "angles",
-          "portType": "DataInPort",
-          "dataType": "RTC::PanTiltAngles"
-        },
-        {
-          "name": "axes_1",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedVector2D"
-        },
-        {
-          "name": "axes_2",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedVector2D"
-        },
-        {
-          "name": "buttons",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedBooleanSeq"
-        },
-        {
-          "name": "velocities",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        },
-        {
-          "name": "torques",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDoubleSeq"
-        },
-        {
-          "name": "lightSwitch",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedBooleanSeq"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin",
-      "directoryUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin/tree/master/samples/TankJoystickControllerRTC_Py",
-      "path": "samples/TankJoystickControllerRTC_Py/RTC.xml20170427131821",
-      "rtcXmlUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin/blob/2a610f6142645aa6b2f297f02bea8af131b398cb/samples/TankJoystickControllerRTC_Py/RTC.xml20170427131821"
-    },
-    {
-      "componentName": "EV3Simulator",
-      "description": "LRGO MINDSTORMS EV3 Simulator",
-      "category": "Simulator",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/EV3Simulator",
-      "path": "SettingRTSystem/SettingRTSystem/Components/EV3Simulator/RTC.xml20170401034932",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/EV3Simulator/RTC.xml20170401034932"
-    },
-    {
-      "componentName": "PIDController",
-      "description": "PID Controller",
-      "category": "Control",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/PIDController",
-      "path": "SettingRTSystem/SettingRTSystem/Components/PIDController/RTC.xml20150726152639",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/PIDController/RTC.xml20150726152639"
-    },
-    {
-      "componentName": "JoystickPySDL2",
-      "description": "Joystick using PySDL2",
-      "category": "Device",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "axes_1",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVector2D"
-        },
-        {
-          "name": "axes_2",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVector2D"
-        },
-        {
-          "name": "buttons",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedBooleanSeq"
-        },
-        {
-          "name": "hats",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedBooleanSeq"
-        },
-        {
-          "name": "balls",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVector2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/JoystickPySDL2",
-      "path": "SettingRTSystem/SettingRTSystem/Components/JoystickPySDL2/RTC.xml20170427124318",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/JoystickPySDL2/RTC.xml20170427124318"
     },
     {
       "componentName": "MyFirstComponent",
@@ -3396,54 +2334,6 @@
       "rtcXmlUrl": "https://github.com/kawansou/save_image/blob/d8bf4134fed95e136151b8ae4254db55d114d786/RTC.xml"
     },
     {
-      "componentName": "facedirection",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "NanamiSaito",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "facedirection",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedOrientation3D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Shichimi/facedirection",
-      "directoryUrl": "https://github.com/Shichimi/facedirection",
-      "path": "RTC.xml20181128121559",
-      "rtcXmlUrl": "https://github.com/Shichimi/facedirection/blob/7881d31fc9fa5be44ff2dd09a9539e8d961adf6b/RTC.xml20181128121559"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/openrtc-hm/WiimoteRTC",
-      "directoryUrl": "https://github.com/openrtc-hm/WiimoteRTC",
-      "path": "RTC.xml20130418142508",
-      "rtcXmlUrl": "https://github.com/openrtc-hm/WiimoteRTC/blob/619df42ed72588b6c9bbd571ca2f3303b6322f2d/RTC.xml20130418142508"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/ConvertImage",
-      "directoryUrl": "https://github.com/Nobu19800/ConvertImage",
-      "path": "RTC.xml20141026230212",
-      "rtcXmlUrl": "https://github.com/Nobu19800/ConvertImage/blob/d70a99926403d83ec761a500c48f497ae2caf2ae/RTC.xml20141026230212"
-    },
-    {
       "componentName": "GraspPathPlanConsumer",
       "description": "consumer for GraspPathPlanner",
       "category": "Planne",
@@ -3547,26 +2437,6 @@
       "directoryUrl": "https://github.com/m0-masudamaria/test_Ubiquitous/tree/main/cal_inverse_kinematics",
       "path": "cal_inverse_kinematics/RTC.xml",
       "rtcXmlUrl": "https://github.com/m0-masudamaria/test_Ubiquitous/blob/f25f134af4f8f75067d534668fe7ef06221164f2/cal_inverse_kinematics/RTC.xml"
-    },
-    {
-      "componentName": "callstaff",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "callstaff",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedBoolean"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/sota2800/librarysystem",
-      "directoryUrl": "https://github.com/sota2800/librarysystem/tree/main/callstaff",
-      "path": "callstaff/RTC.xml20230919165153",
-      "rtcXmlUrl": "https://github.com/sota2800/librarysystem/blob/bd58c8e2842915883ed56cde66f88943b24f30ac/callstaff/RTC.xml20230919165153"
     },
     {
       "componentName": "RTWiimote",
@@ -3759,93 +2629,34 @@
       "rtcXmlUrl": "https://github.com/shibaura0213/RT-test/blob/3eb3ee50933ba23595ef7df17fd75810aa02aee7/selector/RTC.xml"
     },
     {
-      "componentName": "ModuleName",
+      "componentName": "weather_api",
       "description": "ModuleDescription",
       "category": "Category",
-      "vendor": "VenderName",
+      "vendor": "Ayaka",
       "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Ruchi12377/AutoEraser",
-      "directoryUrl": "https://github.com/Ruchi12377/AutoEraser/tree/main/RT_Middleware/MoveInitial",
-      "path": "RT_Middleware/MoveInitial/RTC.xml20221118171353",
-      "rtcXmlUrl": "https://github.com/Ruchi12377/AutoEraser/blob/a6154e2489f0aeaa4ccca738c8396079d00e4e0f/RT_Middleware/MoveInitial/RTC.xml20221118171353"
-    },
-    {
-      "componentName": "SampleTouchSensor",
-      "description": "Raspberry Pi Mouse Controller by Touch Sensor",
-      "category": "Sample",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
+      "language": "Python",
       "dataPorts": [
         {
-          "name": "touch",
+          "name": "date_in",
           "portType": "DataInPort",
-          "dataType": "RTC::TimedBooleanSeq"
+          "dataType": "RTC::TimedString"
         },
         {
-          "name": "target_velocity",
+          "name": "spot_in",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedString"
+        },
+        {
+          "name": "mtmn_out",
           "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
+          "dataType": "RTC::TimedString"
         }
       ],
       "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial/tree/master/sample/ext/SampleTouchSensor",
-      "path": "sample/ext/SampleTouchSensor/RTC.xml20180601091026",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial/blob/6a3374e921433703c7263325ab716a14e9c6d10f/sample/ext/SampleTouchSensor/RTC.xml20180601091026"
-    },
-    {
-      "componentName": "SampleTouchSensor",
-      "description": "Raspberry Pi Mouse Controller by Touch Sensor",
-      "category": "Sample",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "touch",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedBooleanSeq"
-        },
-        {
-          "name": "target_velocity",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_JapanRobotWeek2018",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_JapanRobotWeek2018/tree/master/sample/ext/SampleTouchSensor",
-      "path": "sample/ext/SampleTouchSensor/RTC.xml20180601091026",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_JapanRobotWeek2018/blob/23d466e9be82b7b6c0ec9ecb36e8a336aa153861/sample/ext/SampleTouchSensor/RTC.xml20180601091026"
-    },
-    {
-      "componentName": "SampleTouchSensor",
-      "description": "Raspberry Pi Mouse Controller by Touch Sensor",
-      "category": "Sample",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "touch",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedBooleanSeq"
-        },
-        {
-          "name": "target_velocity",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_Waseda2018",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_Waseda2018/tree/master/sample/ext/SampleTouchSensor",
-      "path": "sample/ext/SampleTouchSensor/RTC.xml20180601091026",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_Waseda2018/blob/f98d1f23c478516a1f32292a824257e0cbedcfea/sample/ext/SampleTouchSensor/RTC.xml20180601091026"
+      "repositoryUrl": "https://github.com/ayakangel/Checker-of-Belongings",
+      "directoryUrl": "https://github.com/ayakangel/Checker-of-Belongings/tree/main/weather_api",
+      "path": "weather_api/RTC.xml",
+      "rtcXmlUrl": "https://github.com/ayakangel/Checker-of-Belongings/blob/3d06a911e507c593fbfa41d148c4351424294218/weather_api/RTC.xml"
     },
     {
       "componentName": "youtubeAPI_comment",
@@ -3873,216 +2684,6 @@
       "rtcXmlUrl": "https://github.com/tbou30897/OpenRTM_SNS_filter_system/blob/6d0f8e2fe42543d56f706686600bad63a6cee7b9/RTC/OtherScrapingComponents/youtubeAPIcomment/RTC.xml"
     },
     {
-      "componentName": "KeystoneCorrection",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "tbou30897",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "ImageIn",
-          "portType": "DataInPort",
-          "dataType": "RTC::CameraImage"
-        },
-        {
-          "name": "ImageOut",
-          "portType": "DataOutPort",
-          "dataType": "RTC::CameraImage"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Ruchi12377/AutoEraser",
-      "directoryUrl": "https://github.com/Ruchi12377/AutoEraser/tree/main/RT_Middleware/KeystoneCorrection",
-      "path": "RT_Middleware/KeystoneCorrection/RTC.xml20221214000100",
-      "rtcXmlUrl": "https://github.com/Ruchi12377/AutoEraser/blob/a6154e2489f0aeaa4ccca738c8396079d00e4e0f/RT_Middleware/KeystoneCorrection/RTC.xml20221214000100"
-    },
-    {
-      "componentName": "SampleTouchSensor",
-      "description": "Raspberry Pi Mouse Controller by Touch Sensor",
-      "category": "Sample",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "touch",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedBooleanSeq"
-        },
-        {
-          "name": "target_velocity",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_RaspberryPiMouse",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_RaspberryPiMouse/tree/master/sample/ext/SampleTouchSensor",
-      "path": "sample/ext/SampleTouchSensor/RTC.xml20180601091026",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_RaspberryPiMouse/blob/971856381d058c1d8a8e6535fd1e10076266354c/sample/ext/SampleTouchSensor/RTC.xml20180601091026"
-    },
-    {
-      "componentName": "JoystickPySDL2",
-      "description": "Joystick using PySDL2",
-      "category": "Device",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "axes_1",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVector2D"
-        },
-        {
-          "name": "axes_2",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVector2D"
-        },
-        {
-          "name": "buttons",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedBooleanSeq"
-        },
-        {
-          "name": "hats",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedBooleanSeq"
-        },
-        {
-          "name": "balls",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVector2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin",
-      "directoryUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin/tree/master/samples/JoystickPySDL2",
-      "path": "samples/JoystickPySDL2/RTC.xml20170427124318",
-      "rtcXmlUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin/blob/2a610f6142645aa6b2f297f02bea8af131b398cb/samples/JoystickPySDL2/RTC.xml20170427124318"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "arUcoPose3D",
-          "portType": "DataInPort",
-          "dataType": "arUco::arUcoPose3D"
-        },
-        {
-          "name": "TimedPose3D",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedPose3D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/itsuku-kito/RTM-management-of-coordinate-systems",
-      "directoryUrl": "https://github.com/itsuku-kito/RTM-management-of-coordinate-systems/tree/main/RTC/Coordinate_Transformation_RTC_typecasting",
-      "path": "RTC/Coordinate_Transformation_RTC_typecasting/RTC.xml20231113193507",
-      "rtcXmlUrl": "https://github.com/itsuku-kito/RTM-management-of-coordinate-systems/blob/87673b1ed29ac06d115ae9ee07f7e85c2f8775b2/RTC/Coordinate_Transformation_RTC_typecasting/RTC.xml20231113193507"
-    },
-    {
-      "componentName": "QuadrupedRobot_Choreonoid",
-      "description": "Choreonoid Simulator Sample",
-      "category": "Simulator",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "in",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedDoubleSeq"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin",
-      "directoryUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin/tree/master/samples/QuadrupedRobot_Choreonoid",
-      "path": "samples/QuadrupedRobot_Choreonoid/RTC.xml20171202121700",
-      "rtcXmlUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin/blob/2a610f6142645aa6b2f297f02bea8af131b398cb/samples/QuadrupedRobot_Choreonoid/RTC.xml20171202121700"
-    },
-    {
-      "componentName": "Gain",
-      "description": "Gain",
-      "category": "Math",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "in",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedDouble"
-        },
-        {
-          "name": "out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDouble"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/Gain",
-      "path": "SettingRTSystem/SettingRTSystem/Components/Gain/RTC.xml",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/Gain/RTC.xml"
-    },
-    {
-      "componentName": "TankJoystickControllerRTC_Py",
-      "description": "TankJoystickControllerRTC using Python",
-      "category": "Controller",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "angles",
-          "portType": "DataInPort",
-          "dataType": "RTC::PanTiltAngles"
-        },
-        {
-          "name": "axes_1",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedVector2D"
-        },
-        {
-          "name": "axes_2",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedVector2D"
-        },
-        {
-          "name": "buttons",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedBooleanSeq"
-        },
-        {
-          "name": "velocities",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        },
-        {
-          "name": "torques",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDoubleSeq"
-        },
-        {
-          "name": "lightSwitch",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedBooleanSeq"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin",
-      "directoryUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin/tree/master/samples/TankJoystickControllerRTC_Py",
-      "path": "samples/TankJoystickControllerRTC_Py/RTC.xml20170427141340",
-      "rtcXmlUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin/blob/2a610f6142645aa6b2f297f02bea8af131b398cb/samples/TankJoystickControllerRTC_Py/RTC.xml20170427141340"
-    },
-    {
       "componentName": "RMC",
       "description": "Robot Model Creator",
       "category": "Viewer",
@@ -4099,8 +2700,8 @@
       "servicePorts": [],
       "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
       "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/RMC",
-      "path": "SettingRTSystem/SettingRTSystem/Components/RMC/RTC.xml20150726230233",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/RMC/RTC.xml20150726230233"
+      "path": "SettingRTSystem/SettingRTSystem/Components/RMC/RTC.xml",
+      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/RMC/RTC.xml"
     },
     {
       "componentName": "RaspberryPiMouseGUI",
@@ -4197,183 +2798,6 @@
       "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/Trot_Gait_Controller",
       "path": "SettingRTSystem/SettingRTSystem/Components/Trot_Gait_Controller/RTC.xml",
       "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/Trot_Gait_Controller/RTC.xml"
-    },
-    {
-      "componentName": "SqrtFunction",
-      "description": "Sqrt Function",
-      "category": "Math",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/SqrtFunction",
-      "path": "SettingRTSystem/SettingRTSystem/Components/SqrtFunction/RTC.xml20150723223618",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/SqrtFunction/RTC.xml20150723223618"
-    },
-    {
-      "componentName": "RampFunction",
-      "description": "Ramp Function",
-      "category": "Math",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/RampFunction",
-      "path": "SettingRTSystem/SettingRTSystem/Components/RampFunction/RTC.xml20150724162128",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/RampFunction/RTC.xml20150724162128"
-    },
-    {
-      "componentName": "RasPiMouseSampleCPP",
-      "description": "Raspberry Pi Mouse Sample",
-      "category": "TEST",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "distance_sensor",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedShortSeq"
-        },
-        {
-          "name": "target_velocity",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/RasPiMouseSampleCPP",
-      "path": "SettingRTSystem/SettingRTSystem/Components/RasPiMouseSampleCPP/RTC.xml20160423152236",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/RasPiMouseSampleCPP/RTC.xml20160423152236"
-    },
-    {
-      "componentName": "RasPiMouseSampleCPP",
-      "description": "Raspberry Pi Mouse Sample",
-      "category": "TEST",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "distance_sensor",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedShortSeq"
-        },
-        {
-          "name": "target_velocity",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/RasPiMouseSampleCPP",
-      "path": "SettingRTSystem/SettingRTSystem/Components/RasPiMouseSampleCPP/RTC.xml20160423154455",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/RasPiMouseSampleCPP/RTC.xml20160423154455"
-    },
-    {
-      "componentName": "Crawl_Gait_Controller",
-      "description": "Crawl Gait Controller Component",
-      "category": "Controller",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "target_velocity",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedVelocity2D"
-        },
-        {
-          "name": "foot_pos_lf",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedPose3D"
-        },
-        {
-          "name": "foot_pos_lb",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedPose3D"
-        },
-        {
-          "name": "foot_pos_rb",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedPose3D"
-        },
-        {
-          "name": "foot_pos_rf",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedPose3D"
-        },
-        {
-          "name": "current_pose",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedPose3D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/Crawl_Gait_Controller",
-      "path": "SettingRTSystem/SettingRTSystem/Components/Crawl_Gait_Controller/RTC.xml20160707191744",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/Crawl_Gait_Controller/RTC.xml20160707191744"
-    },
-    {
-      "componentName": "NineAxisSensor_RT_USB",
-      "description": "RT-USB-9AXIS-00 Component",
-      "category": "Sensor",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "acc",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedAcceleration3D"
-        },
-        {
-          "name": "magn",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDoubleSeq"
-        },
-        {
-          "name": "gyro",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedAngularVelocity3D"
-        },
-        {
-          "name": "temp",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDouble"
-        },
-        {
-          "name": "rot",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedOrientation3D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/NineAxisSensor_RT_USB",
-      "path": "SettingRTSystem/SettingRTSystem/Components/NineAxisSensor_RT_USB/RTC.xml20160406124659",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/NineAxisSensor_RT_USB/RTC.xml20160406124659"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "TEST",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/projects/test/Components/C++/MyFirstComponent",
-      "path": "SettingRTSystem/SettingRTSystem/projects/test/Components/C++/MyFirstComponent/RTC.xml20150526161419",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/projects/test/Components/C++/MyFirstComponent/RTC.xml20150526161419"
     },
     {
       "componentName": "MyServiceConsumer",
@@ -4494,48 +2918,6 @@
       "directoryUrl": "https://github.com/kawansou/RBtoRasPyMouse",
       "path": "RTC.xml",
       "rtcXmlUrl": "https://github.com/kawansou/RBtoRasPyMouse/blob/6f9898788122d7d27e636c45e62b50cf322993d9/RTC.xml"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/ysuga/VelocitySmoother",
-      "directoryUrl": "https://github.com/ysuga/VelocitySmoother",
-      "path": "RTC.xml20131101164237",
-      "rtcXmlUrl": "https://github.com/ysuga/VelocitySmoother/blob/31677f90579b0f9a39d6611782e6b8d0c7d3adb6/RTC.xml20131101164237"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/ysuga/KobukiSafetyFilter",
-      "directoryUrl": "https://github.com/ysuga/KobukiSafetyFilter",
-      "path": "RTC.xml20131101185752",
-      "rtcXmlUrl": "https://github.com/ysuga/KobukiSafetyFilter/blob/6c9ab02acb709fb66dc478af18cb33828d95f433/RTC.xml20131101185752"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/kawansou/RBtoRasPyMouse",
-      "directoryUrl": "https://github.com/kawansou/RBtoRasPyMouse",
-      "path": "RTC.xml20220825153703",
-      "rtcXmlUrl": "https://github.com/kawansou/RBtoRasPyMouse/blob/6f9898788122d7d27e636c45e62b50cf322993d9/RTC.xml20220825153703"
     },
     {
       "componentName": "serial_for_arduino",
@@ -4669,45 +3051,6 @@
       "rtcXmlUrl": "https://github.com/OpenRTM/ImageProcessing/blob/2e47a62e71f13a69b7e0167aba89e61db8752fef/opencv/components/OpenCVCamera/RTC.xml"
     },
     {
-      "componentName": "RealSense_RGBD_Camera",
-      "description": "Access to RealSense RGB-D Camera with librealsense2",
-      "category": "Sensor",
-      "vendor": "ha-ves",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "ColorFrame",
-          "portType": "DataOutPort",
-          "dataType": "RTC::CameraImage"
-        },
-        {
-          "name": "PointCloud",
-          "portType": "DataOutPort",
-          "dataType": "RTC::PointCloud"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/m0-masudamaria/test_Ubiquitous",
-      "directoryUrl": "https://github.com/m0-masudamaria/test_Ubiquitous/tree/main/RealsenseRGBD",
-      "path": "RealsenseRGBD/RTC.xml20240626220244",
-      "rtcXmlUrl": "https://github.com/m0-masudamaria/test_Ubiquitous/blob/f25f134af4f8f75067d534668fe7ef06221164f2/RealsenseRGBD/RTC.xml20240626220244"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RasPiMouse_with_MRPT",
-      "directoryUrl": "https://github.com/OpenRTM/RasPiMouse_with_MRPT/tree/master/src/rtcs/SFMLJoystick",
-      "path": "src/rtcs/SFMLJoystick/RTC.xml20150113093039",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RasPiMouse_with_MRPT/blob/0c463760839d03560f2e419f882796abc468168a/src/rtcs/SFMLJoystick/RTC.xml20150113093039"
-    },
-    {
       "componentName": "RobotController",
       "description": "Robot Controller Component",
       "category": "Controller",
@@ -4778,36 +3121,6 @@
       "rtcXmlUrl": "https://github.com/Ruchi12377/AutoEraser/blob/a6154e2489f0aeaa4ccca738c8396079d00e4e0f/RT_Middleware/ConsoleIn/RTC.xml"
     },
     {
-      "componentName": "weather_api",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "Ayaka",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "date_in",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedString"
-        },
-        {
-          "name": "spot_in",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedString"
-        },
-        {
-          "name": "mtmn_out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedString"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/ayakangel/Checker-of-Belongings",
-      "directoryUrl": "https://github.com/ayakangel/Checker-of-Belongings/tree/main/weather_api",
-      "path": "weather_api/RTC.xml",
-      "rtcXmlUrl": "https://github.com/ayakangel/Checker-of-Belongings/blob/3d06a911e507c593fbfa41d148c4351424294218/weather_api/RTC.xml"
-    },
-    {
       "componentName": "RobotController",
       "description": "Robot Controller Component",
       "category": "Controller",
@@ -4858,26 +3171,6 @@
       "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_RaspberryPiMouse/blob/971856381d058c1d8a8e6535fd1e10076266354c/sample/RobotController/RTC.xml"
     },
     {
-      "componentName": "Camera",
-      "description": "Output image from camera",
-      "category": "Image",
-      "vendor": "Ruchi",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "image",
-          "portType": "DataOutPort",
-          "dataType": "RTC::CameraImage"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Ruchi12377/AutoEraser",
-      "directoryUrl": "https://github.com/Ruchi12377/AutoEraser/tree/main/RT_Middleware/Camera",
-      "path": "RT_Middleware/Camera/RTC.xml20220809004959",
-      "rtcXmlUrl": "https://github.com/Ruchi12377/AutoEraser/blob/a6154e2489f0aeaa4ccca738c8396079d00e4e0f/RT_Middleware/Camera/RTC.xml20220809004959"
-    },
-    {
       "componentName": "calculator_mass",
       "description": "ModuleDescription",
       "category": "Category",
@@ -4903,60 +3196,29 @@
       "rtcXmlUrl": "https://github.com/shibaura0213/RT-test/blob/3eb3ee50933ba23595ef7df17fd75810aa02aee7/calculator_mass/RTC.xml"
     },
     {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
+      "componentName": "Gain",
+      "description": "Gain",
+      "category": "Math",
+      "vendor": "Miyamoto Nobuhiko",
       "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
+      "language": "C++",
+      "dataPorts": [
+        {
+          "name": "in",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedDouble"
+        },
+        {
+          "name": "out",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedDouble"
+        }
+      ],
       "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_Waseda2018",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_Waseda2018/tree/master/sample/RobotController_py",
-      "path": "sample/RobotController_py/RTC.xml20171114213040",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_Waseda2018/blob/f98d1f23c478516a1f32292a824257e0cbedcfea/sample/RobotController_py/RTC.xml20171114213040"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/shibaura0213/RT-test",
-      "directoryUrl": "https://github.com/shibaura0213/RT-test/tree/main/footage",
-      "path": "footage/RTC.xml20241127165218",
-      "rtcXmlUrl": "https://github.com/shibaura0213/RT-test/blob/3eb3ee50933ba23595ef7df17fd75810aa02aee7/footage/RTC.xml20241127165218"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/shibaura0213/RT-test",
-      "directoryUrl": "https://github.com/shibaura0213/RT-test/tree/main/temperature",
-      "path": "temperature/RTC.xml20241113170719",
-      "rtcXmlUrl": "https://github.com/shibaura0213/RT-test/blob/3eb3ee50933ba23595ef7df17fd75810aa02aee7/temperature/RTC.xml20241113170719"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/shibaura0213/RT-test",
-      "directoryUrl": "https://github.com/shibaura0213/RT-test/tree/main/acceleration",
-      "path": "acceleration/RTC.xml20241118170146",
-      "rtcXmlUrl": "https://github.com/shibaura0213/RT-test/blob/3eb3ee50933ba23595ef7df17fd75810aa02aee7/acceleration/RTC.xml20241118170146"
+      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
+      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/Gain",
+      "path": "SettingRTSystem/SettingRTSystem/Components/Gain/RTC.xml",
+      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/Gain/RTC.xml"
     },
     {
       "componentName": "UnaryMinus",
@@ -5015,45 +3277,6 @@
       "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/DataBaseInPut/RTC.xml"
     },
     {
-      "componentName": "rtcdControl",
-      "description": "rtcdControl",
-      "category": "TEST",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [
-        {
-          "name": "rtcControl_py",
-          "interfaces": [
-            {
-              "name": "rtcControl_py",
-              "type": "rtcControl::RTCDataInterface",
-              "direction": "Provider"
-            }
-          ]
-        }
-      ],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/rtcdControl",
-      "path": "SettingRTSystem/SettingRTSystem/rtcdControl/RTC.xml20150525105051",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/rtcdControl/RTC.xml20150525105051"
-    },
-    {
-      "componentName": "SumFunction",
-      "description": "Sum Function",
-      "category": "Math",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/SumFunction",
-      "path": "SettingRTSystem/SettingRTSystem/Components/SumFunction/RTC.xml20150723041504",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/SumFunction/RTC.xml20150723041504"
-    },
-    {
       "componentName": "Four_legged_Robot_Simulator",
       "description": "Four legged Robot Simulator",
       "category": "Simulator",
@@ -5072,46 +3295,6 @@
       "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/Four_legged_Robot_Simulator",
       "path": "SettingRTSystem/SettingRTSystem/Components/Four_legged_Robot_Simulator/RTC.xml",
       "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/Four_legged_Robot_Simulator/RTC.xml"
-    },
-    {
-      "componentName": "NineAxisSensor_RT_USB",
-      "description": "RT-USB-9AXIS-00 Component",
-      "category": "Sensor",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "acc",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedAcceleration3D"
-        },
-        {
-          "name": "magn",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDoubleSeq"
-        },
-        {
-          "name": "gyro",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedAngularVelocity3D"
-        },
-        {
-          "name": "temp",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDouble"
-        },
-        {
-          "name": "rot",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedOrientation3D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/NineAxisSensor_RT_USB",
-      "path": "SettingRTSystem/SettingRTSystem/Components/NineAxisSensor_RT_USB/RTC.xml20160406144007",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/NineAxisSensor_RT_USB/RTC.xml20160406144007"
     },
     {
       "componentName": "PenKobu",
@@ -5385,31 +3568,6 @@
       "rtcXmlUrl": "https://github.com/yukimeat1999/2D-LiDAR-to-3D-CaveSurvey/blob/937e4a74c4c11d7ba46297cb25cf861896a1a107/Registration/RTC.xml"
     },
     {
-      "componentName": "id2signal",
-      "description": "ChangeIdIntoSignal",
-      "category": "Category",
-      "vendor": "Haruto Furuyama",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "latest_task",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedStringSeq"
-        },
-        {
-          "name": "signal_out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedBoolean"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/TaskManagingSystem/task-managing-system",
-      "directoryUrl": "https://github.com/TaskManagingSystem/task-managing-system/tree/main/id2signal",
-      "path": "id2signal/RTC.xml20221031223125",
-      "rtcXmlUrl": "https://github.com/TaskManagingSystem/task-managing-system/blob/612cc806259dcd7846ca4caa78867e3756ddafd7/id2signal/RTC.xml20221031223125"
-    },
-    {
       "componentName": "MyServiceConsumer",
       "description": "MyService Consumer Sample component",
       "category": "example",
@@ -5458,212 +3616,6 @@
       "directoryUrl": "https://github.com/OpenRTM/OpenRTM-toppers/tree/topic_lwip_refactor/examples/MyServiceConsumer",
       "path": "examples/MyServiceConsumer/RTC.xml",
       "rtcXmlUrl": "https://github.com/OpenRTM/OpenRTM-toppers/blob/9eb6ff05ca1f45eb82118beffd6d4b4846488e5a/examples/MyServiceConsumer/RTC.xml"
-    },
-    {
-      "componentName": "footage",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "footage",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedString"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/shibaura0213/RT-test",
-      "directoryUrl": "https://github.com/shibaura0213/RT-test/tree/main/footage",
-      "path": "footage/RTC.xml20241127170623",
-      "rtcXmlUrl": "https://github.com/shibaura0213/RT-test/blob/3eb3ee50933ba23595ef7df17fd75810aa02aee7/footage/RTC.xml20241127170623"
-    },
-    {
-      "componentName": "calculator_temperature",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "temperature",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedFloat"
-        },
-        {
-          "name": "result_t",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedString"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/shibaura0213/RT-test",
-      "directoryUrl": "https://github.com/shibaura0213/RT-test/tree/main/calculator_temperature",
-      "path": "calculator_temperature/RTC.xml",
-      "rtcXmlUrl": "https://github.com/shibaura0213/RT-test/blob/3eb3ee50933ba23595ef7df17fd75810aa02aee7/calculator_temperature/RTC.xml"
-    },
-    {
-      "componentName": "daymtmn_get",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "Ayaka",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "day_in",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedString"
-        },
-        {
-          "name": "mtmn_in",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedString"
-        },
-        {
-          "name": "daymtmn_out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedString"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/ayakangel/Checker-of-Belongings",
-      "directoryUrl": "https://github.com/ayakangel/Checker-of-Belongings/tree/main/daymtmn_get",
-      "path": "daymtmn_get/RTC.xml20241114163854",
-      "rtcXmlUrl": "https://github.com/ayakangel/Checker-of-Belongings/blob/3d06a911e507c593fbfa41d148c4351424294218/daymtmn_get/RTC.xml20241114163854"
-    },
-    {
-      "componentName": "WordControlpy",
-      "description": "Word Control Component",
-      "category": "Office",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "word",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedString"
-        },
-        {
-          "name": "fontSize",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedFloat"
-        },
-        {
-          "name": "fontName",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedString"
-        },
-        {
-          "name": "wsCharacter",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedShort"
-        },
-        {
-          "name": "wsWord",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedShort"
-        },
-        {
-          "name": "wsLine",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedShort"
-        },
-        {
-          "name": "wsParagraph",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedShort"
-        },
-        {
-          "name": "wsWindow",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedShort"
-        },
-        {
-          "name": "wsScreen",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedShort"
-        },
-        {
-          "name": "Char_color",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedRGBColour"
-        },
-        {
-          "name": "MovementType",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedBoolean"
-        },
-        {
-          "name": "Italic",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedBoolean"
-        },
-        {
-          "name": "Bold",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedBoolean"
-        },
-        {
-          "name": "Underline",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedBoolean"
-        },
-        {
-          "name": "Shadow",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedBoolean"
-        },
-        {
-          "name": "Strikeout",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedBoolean"
-        },
-        {
-          "name": "Contoured",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedBoolean"
-        },
-        {
-          "name": "Emphasis",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedBoolean"
-        },
-        {
-          "name": "Back_color",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedRGBColour"
-        },
-        {
-          "name": "selWord",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedString"
-        },
-        {
-          "name": "copyWord",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedString"
-        }
-      ],
-      "servicePorts": [
-        {
-          "name": "Writer",
-          "interfaces": [
-            {
-              "name": "writer",
-              "type": "Writer::mWriter",
-              "direction": "Provider"
-            }
-          ]
-        }
-      ],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/WordControlpy/WordControlpy",
-      "path": "WordControlpy/WordControlpy/RTC.xml",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/WordControlpy/WordControlpy/RTC.xml"
     },
     {
       "componentName": "Polynomial",
@@ -5787,20 +3739,6 @@
       "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/PresentationView/RTC.xml"
     },
     {
-      "componentName": "Bias",
-      "description": "Bias",
-      "category": "Math",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/Bias",
-      "path": "SettingRTSystem/SettingRTSystem/Components/Bias/RTC.xml20150723231008",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/Bias/RTC.xml20150723231008"
-    },
-    {
       "componentName": "PowerPointControlpy",
       "description": "PowerPoint Control Component",
       "category": "Office",
@@ -5836,20 +3774,6 @@
       "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/PowerPointControlpy/RTC.xml"
     },
     {
-      "componentName": "DeadZone",
-      "description": "Dead Zone",
-      "category": "Math",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/DeadZone",
-      "path": "SettingRTSystem/SettingRTSystem/Components/DeadZone/RTC.xml20150722185645",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/DeadZone/RTC.xml20150722185645"
-    },
-    {
       "componentName": "CoulombAndViscousFriction",
       "description": "Coulomb and Viscous Friction",
       "category": "Math",
@@ -5873,151 +3797,6 @@
       "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/CoulombAndViscousFriction",
       "path": "SettingRTSystem/SettingRTSystem/Components/CoulombAndViscousFriction/RTC.xml",
       "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/CoulombAndViscousFriction/RTC.xml"
-    },
-    {
-      "componentName": "RampFunction",
-      "description": "Ramp Function",
-      "category": "Math",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/RampFunction",
-      "path": "SettingRTSystem/SettingRTSystem/Components/RampFunction/RTC.xml20150724162207",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/RampFunction/RTC.xml20150724162207"
-    },
-    {
-      "componentName": "RobotArmSimulator",
-      "description": "Robot Arm Simulator",
-      "category": "TES",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "jpos",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDoubleSeq"
-        }
-      ],
-      "servicePorts": [
-        {
-          "name": "ManipulatorCommonInterface_Common",
-          "interfaces": [
-            {
-              "name": "ManipulatorCommonInterface_Common",
-              "type": "JARA_ARM::ManipulatorCommonInterface_Common",
-              "direction": "Provider"
-            }
-          ]
-        },
-        {
-          "name": "ManipulatorCommonInterface_Middle",
-          "interfaces": [
-            {
-              "name": "ManipulatorCommonInterface_Middle",
-              "type": "JARA_ARM::ManipulatorCommonInterface_Middle",
-              "direction": "Provider"
-            }
-          ]
-        }
-      ],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/RobotArmSimulator",
-      "path": "SettingRTSystem/SettingRTSystem/Components/RobotArmSimulator/RTC.xml20150717200107",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/RobotArmSimulator/RTC.xml20150717200107"
-    },
-    {
-      "componentName": "RasPiMouseSamplePy",
-      "description": "Raspberry Pi Mouse Sample",
-      "category": "TEST",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "distance_sensor",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedShortSeq"
-        },
-        {
-          "name": "target_velocity",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/RasPiMouseSamplePy",
-      "path": "SettingRTSystem/SettingRTSystem/Components/RasPiMouseSamplePy/RTC.xml20160423152222",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/RasPiMouseSamplePy/RTC.xml20160423152222"
-    },
-    {
-      "componentName": "Trot_Gait_Controller",
-      "description": "Trot Gait Controller Component",
-      "category": "Controller",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "target_velocity",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedVelocity2D"
-        },
-        {
-          "name": "update_pose",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedPose2D"
-        },
-        {
-          "name": "Trajectory",
-          "portType": "DataOutPort",
-          "dataType": "RTC::LeggedRobot"
-        },
-        {
-          "name": "current_pose",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedPose2D"
-        },
-        {
-          "name": "stability_margin",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDouble"
-        },
-        {
-          "name": "NE_stability_margin",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDouble"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/Trot_Gait_Controller",
-      "path": "SettingRTSystem/SettingRTSystem/Components/Trot_Gait_Controller/RTC.xml20160929161340",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/Trot_Gait_Controller/RTC.xml20160929161340"
-    },
-    {
-      "componentName": "Four_legged_Robot_Simulator",
-      "description": "Four legged Robot Simulator",
-      "category": "Simulator",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "servo",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedDoubleSeq"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/Four_legged_Robot_Simulator",
-      "path": "SettingRTSystem/SettingRTSystem/Components/Four_legged_Robot_Simulator/RTC.xml20160628115004",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/Four_legged_Robot_Simulator/RTC.xml20160628115004"
     },
     {
       "componentName": "MyFirstComponent",
@@ -6056,29 +3835,24 @@
       "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/projects/test/Components/Python/MyFirstComponent/RTC.xml"
     },
     {
-      "componentName": "Emphasis",
-      "description": "",
-      "category": "",
-      "vendor": "",
-      "version": "1.0.0",
-      "language": "",
+      "componentName": "SampleWordLogger",
+      "description": "SampleWordLogger RTC",
+      "category": "Category",
+      "vendor": "NEDO",
+      "version": "0.0.1",
+      "language": "C++",
       "dataPorts": [
         {
-          "name": "indata",
-          "portType": "",
-          "dataType": ""
-        },
-        {
-          "name": "outdata",
-          "portType": "",
-          "dataType": ""
+          "name": "result",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedWString"
         }
       ],
       "servicePorts": [],
-      "repositoryUrl": "https://github.com/yosuke/OpenHRIVoice",
-      "directoryUrl": "https://github.com/yosuke/OpenHRIVoice/tree/master/semvalidator",
-      "path": "semvalidator/samplertc.xml",
-      "rtcXmlUrl": "https://github.com/yosuke/OpenHRIVoice/blob/5cd051fc3a0427968c404dfcbdca8d03fe2e31da/semvalidator/samplertc.xml"
+      "repositoryUrl": "https://github.com/tork-a/openrtm_tutorial",
+      "directoryUrl": "https://github.com/tork-a/openrtm_tutorial/tree/devel/demo/SampleWordLogger",
+      "path": "demo/SampleWordLogger/RTC.xml",
+      "rtcXmlUrl": "https://github.com/tork-a/openrtm_tutorial/blob/3c017c4658f09a74bd6dd875066662c4d2b7f453/demo/SampleWordLogger/RTC.xml"
     },
     {
       "componentName": "KobukiRTC",
@@ -6189,40 +3963,6 @@
       "directoryUrl": "https://github.com/syogakusya/WebCamRTC",
       "path": "RTC.xml",
       "rtcXmlUrl": "https://github.com/syogakusya/WebCamRTC/blob/be800f52e617afc04c3fd59ce304aee37dfeef8e/RTC.xml"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/ysuga/Mapper_gmapping",
-      "directoryUrl": "https://github.com/ysuga/Mapper_gmapping",
-      "path": "RTC.xml20140816104732",
-      "rtcXmlUrl": "https://github.com/ysuga/Mapper_gmapping/blob/104aa4d79bff629852945fd6892632e0a3e28fed/RTC.xml20140816104732"
-    },
-    {
-      "componentName": "facedirection",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "facedirection",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedOrientation3D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Shichimi/facedirection",
-      "directoryUrl": "https://github.com/Shichimi/facedirection",
-      "path": "RTC.xml20181128121427",
-      "rtcXmlUrl": "https://github.com/Shichimi/facedirection/blob/7881d31fc9fa5be44ff2dd09a9539e8d961adf6b/RTC.xml20181128121427"
     },
     {
       "componentName": "Log",
@@ -6386,84 +4126,6 @@
       "rtcXmlUrl": "https://github.com/yukimeat1999/Mapping-by-3D-CaveSurvey/blob/0b3ab2e6dcd41385a4c2ebff20d1a1f7c61e63b8/Registration/RTC.xml"
     },
     {
-      "componentName": "RaspberryPiMouseSimulator",
-      "description": "RaspberryPiMouse Simulator",
-      "category": "Simulator",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/RasPiMouseSimulatorRTC",
-      "directoryUrl": "https://github.com/Nobu19800/RasPiMouseSimulatorRTC",
-      "path": "RTC.xml20170409184609",
-      "rtcXmlUrl": "https://github.com/Nobu19800/RasPiMouseSimulatorRTC/blob/61ce5c141a773b93eed80be37fe41c36b5d52bd3/RTC.xml20170409184609"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/kawansou/usbCameraRTC_hand_py",
-      "directoryUrl": "https://github.com/kawansou/usbCameraRTC_hand_py",
-      "path": "RTC.xml20230616162539",
-      "rtcXmlUrl": "https://github.com/kawansou/usbCameraRTC_hand_py/blob/4344b66382b7758c72b764e657592ea4f63a42eb/RTC.xml20230616162539"
-    },
-    {
-      "componentName": "WebCam",
-      "description": "get Image in WebCamera",
-      "category": "Camera",
-      "vendor": "TsuchidaYuta",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "CameraImageOut",
-          "portType": "DataOutPort",
-          "dataType": "RTC::CameraImage"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/syogakusya/WebCamRTC",
-      "directoryUrl": "https://github.com/syogakusya/WebCamRTC",
-      "path": "RTC.xml20240503141801",
-      "rtcXmlUrl": "https://github.com/syogakusya/WebCamRTC/blob/be800f52e617afc04c3fd59ce304aee37dfeef8e/RTC.xml20240503141801"
-    },
-    {
-      "componentName": "RBtoRasPyMouse",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "x_In",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedLongSeq"
-        },
-        {
-          "name": "Yaw_In",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedDoubleSeq"
-        },
-        {
-          "name": "Vel_Out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/kawansou/RBtoRasPyMouse",
-      "directoryUrl": "https://github.com/kawansou/RBtoRasPyMouse",
-      "path": "RTC.xml20220826032029",
-      "rtcXmlUrl": "https://github.com/kawansou/RBtoRasPyMouse/blob/6f9898788122d7d27e636c45e62b50cf322993d9/RTC.xml20220826032029"
-    },
-    {
       "componentName": "SFMLJoystick",
       "description": "",
       "category": "HumanInterface",
@@ -6487,20 +4149,6 @@
       "directoryUrl": "https://github.com/OpenRTM/RasPiMouse_with_MRPT/tree/master/src/rtcs/SFMLJoystick",
       "path": "src/rtcs/SFMLJoystick/RTC.xml",
       "rtcXmlUrl": "https://github.com/OpenRTM/RasPiMouse_with_MRPT/blob/0c463760839d03560f2e419f882796abc468168a/src/rtcs/SFMLJoystick/RTC.xml"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/sota2800/librarysystem",
-      "directoryUrl": "https://github.com/sota2800/librarysystem/tree/main/Log",
-      "path": "Log/RTC.xml20230507174459",
-      "rtcXmlUrl": "https://github.com/sota2800/librarysystem/blob/bd58c8e2842915883ed56cde66f88943b24f30ac/Log/RTC.xml20230507174459"
     },
     {
       "componentName": "Template",
@@ -6613,38 +4261,29 @@
       "rtcXmlUrl": "https://github.com/rizgiak/OpenRTM_AutonomousObjectTrackingMobileRobot/blob/cb41084a54f06dc844390f6c206b8377a8e29209/ObjectTracking/RTC.xml"
     },
     {
-      "componentName": "testVelocity3DOut",
-      "description": "TimedVelocity3D type test component.",
-      "category": "Test",
-      "vendor": "AIST",
+      "componentName": "SimpleServiceProvider",
+      "description": "Simple Service Provider",
+      "category": "Example",
+      "vendor": "Baron Yong",
       "version": "1.0.0",
       "language": "C++",
-      "dataPorts": [
+      "dataPorts": [],
+      "servicePorts": [
         {
-          "name": "out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity3D"
+          "name": "simpleService",
+          "interfaces": [
+            {
+              "name": "simpleServiceProvider",
+              "type": "service::SimpleService",
+              "direction": "Provider"
+            }
+          ]
         }
       ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/testOpenRTMSerializer",
-      "directoryUrl": "https://github.com/Nobu19800/testOpenRTMSerializer/tree/main/testVelocity3DOut",
-      "path": "testVelocity3DOut/RTC.xml20221108133450",
-      "rtcXmlUrl": "https://github.com/Nobu19800/testOpenRTMSerializer/blob/eedc5818b00cc1e8b60ca94e42deccc3d34080a1/testVelocity3DOut/RTC.xml20221108133450"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/m0-masudamaria/test_Ubiquitous",
-      "directoryUrl": "https://github.com/m0-masudamaria/test_Ubiquitous/tree/main/FloatSeqToVelocity",
-      "path": "FloatSeqToVelocity/RTC.xml20240624194531",
-      "rtcXmlUrl": "https://github.com/m0-masudamaria/test_Ubiquitous/blob/f25f134af4f8f75067d534668fe7ef06221164f2/FloatSeqToVelocity/RTC.xml20240624194531"
+      "repositoryUrl": "https://github.com/BaronYSYong/openrtm-tutorial",
+      "directoryUrl": "https://github.com/BaronYSYong/openrtm-tutorial/tree/master/SimpleServiceProvider",
+      "path": "SimpleServiceProvider/RTC.xml",
+      "rtcXmlUrl": "https://github.com/BaronYSYong/openrtm-tutorial/blob/fdfebd1da565e58457a776346dfd3b076067cd57/SimpleServiceProvider/RTC.xml"
     },
     {
       "componentName": "MoveInitial",
@@ -6672,218 +4311,160 @@
       "rtcXmlUrl": "https://github.com/Ruchi12377/AutoEraser/blob/a6154e2489f0aeaa4ccca738c8396079d00e4e0f/RT_Middleware/MoveInitial/RTC.xml"
     },
     {
-      "componentName": "ModuleName",
+      "componentName": "calculator_temperature",
       "description": "ModuleDescription",
       "category": "Category",
       "vendor": "VenderName",
       "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/cy22257/project",
-      "directoryUrl": "https://github.com/cy22257/project/tree/main/sevseg/SevSeg",
-      "path": "sevseg/SevSeg/RTC.xml20241024141819",
-      "rtcXmlUrl": "https://github.com/cy22257/project/blob/4fbfa43ba922031d271ae8ff2583e891576dad39/sevseg/SevSeg/RTC.xml20241024141819"
-    },
-    {
-      "componentName": "ObjectTracking",
-      "description": "Objecttrack component",
-      "category": "Category",
-      "vendor": "AIST",
-      "version": "1.2.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "img_original",
-          "portType": "DataInPort",
-          "dataType": "RTC::CameraImage"
-        },
-        {
-          "name": "m_event",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedLong"
-        },
-        {
-          "name": "m_x",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedLong"
-        },
-        {
-          "name": "m_y",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedLong"
-        },
-        {
-          "name": "img_output",
-          "portType": "DataOutPort",
-          "dataType": "RTC::CameraImage"
-        },
-        {
-          "name": "img_hist",
-          "portType": "DataOutPort",
-          "dataType": "RTC::CameraImage"
-        },
-        {
-          "name": "x_out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedLong"
-        },
-        {
-          "name": "y_out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedLong"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/rizgiak/OpenRTM_AutonomousObjectTrackingMobileRobot",
-      "directoryUrl": "https://github.com/rizgiak/OpenRTM_AutonomousObjectTrackingMobileRobot/tree/main/ObjectTracking",
-      "path": "ObjectTracking/RTC.xml20210713121749",
-      "rtcXmlUrl": "https://github.com/rizgiak/OpenRTM_AutonomousObjectTrackingMobileRobot/blob/cb41084a54f06dc844390f6c206b8377a8e29209/ObjectTracking/RTC.xml20210713121749"
-    },
-    {
-      "componentName": "testARToolKit",
-      "description": "test ARToolKitPlus",
-      "category": "Sample",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "marker_pos",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedPose3D"
-        },
-        {
-          "name": "target_vel",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_ROBOMECH2019",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_ROBOMECH2019/tree/master/sample/ext/testARToolKit",
-      "path": "sample/ext/testARToolKit/RTC.xml20180528160316",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_ROBOMECH2019/blob/aff2ae50e37d0fdda030c9a6c188c3bf7bf2e056/sample/ext/testARToolKit/RTC.xml20180528160316"
-    },
-    {
-      "componentName": "PathPlanComp",
-      "description": "wanna play Apex",
-      "category": "Controller",
-      "vendor": "VenderName",
-      "version": "1.1.1",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "Goal",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedPose2D"
-        },
-        {
-          "name": "Position",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedPose2D"
-        },
-        {
-          "name": "TopoMap",
-          "portType": "DataInPort",
-          "dataType": "Gng_path"
-        },
-        {
-          "name": "Direction",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedPose2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/yukimeat1999/GNG-Unk-Env-Navi_RTC",
-      "directoryUrl": "https://github.com/yukimeat1999/GNG-Unk-Env-Navi_RTC/tree/main/PathPlanComp",
-      "path": "PathPlanComp/RTC.xml",
-      "rtcXmlUrl": "https://github.com/yukimeat1999/GNG-Unk-Env-Navi_RTC/blob/ba866d315de3764ecf4627e0edc4963df94e4648/PathPlanComp/RTC.xml"
-    },
-    {
-      "componentName": "Serial",
-      "description": "Serial communication",
-      "category": "Category",
-      "vendor": "Ruchi",
-      "version": "1.0.0",
       "language": "Python",
       "dataPorts": [
         {
-          "name": "Write",
+          "name": "temperature",
           "portType": "DataInPort",
-          "dataType": "RTC::TimedString"
+          "dataType": "RTC::TimedFloat"
         },
         {
-          "name": "Read",
+          "name": "result_t",
           "portType": "DataOutPort",
           "dataType": "RTC::TimedString"
         }
       ],
       "servicePorts": [],
-      "repositoryUrl": "https://github.com/Ruchi12377/AutoEraser",
-      "directoryUrl": "https://github.com/Ruchi12377/AutoEraser/tree/main/RT_Middleware/Serial",
-      "path": "RT_Middleware/Serial/RTC.xml20221103090139",
-      "rtcXmlUrl": "https://github.com/Ruchi12377/AutoEraser/blob/a6154e2489f0aeaa4ccca738c8396079d00e4e0f/RT_Middleware/Serial/RTC.xml20221103090139"
+      "repositoryUrl": "https://github.com/shibaura0213/RT-test",
+      "directoryUrl": "https://github.com/shibaura0213/RT-test/tree/main/calculator_temperature",
+      "path": "calculator_temperature/RTC.xml",
+      "rtcXmlUrl": "https://github.com/shibaura0213/RT-test/blob/3eb3ee50933ba23595ef7df17fd75810aa02aee7/calculator_temperature/RTC.xml"
     },
     {
-      "componentName": "Select",
-      "description": "ModuleDescription",
-      "category": "GUI",
-      "vendor": "Ruchi",
+      "componentName": "WordControlpy",
+      "description": "Word Control Component",
+      "category": "Office",
+      "vendor": "Miyamoto Nobuhiko",
       "version": "1.0.0",
       "language": "Python",
       "dataPorts": [
         {
-          "name": "ShowImage",
+          "name": "word",
           "portType": "DataInPort",
-          "dataType": "RTC::CameraImage"
+          "dataType": "RTC::TimedString"
         },
         {
-          "name": "StartPoint",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedPoint2D"
+          "name": "fontSize",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedFloat"
         },
         {
-          "name": "EndPoint",
+          "name": "fontName",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedString"
+        },
+        {
+          "name": "wsCharacter",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedShort"
+        },
+        {
+          "name": "wsWord",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedShort"
+        },
+        {
+          "name": "wsLine",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedShort"
+        },
+        {
+          "name": "wsParagraph",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedShort"
+        },
+        {
+          "name": "wsWindow",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedShort"
+        },
+        {
+          "name": "wsScreen",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedShort"
+        },
+        {
+          "name": "Char_color",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedRGBColour"
+        },
+        {
+          "name": "MovementType",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedBoolean"
+        },
+        {
+          "name": "Italic",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedBoolean"
+        },
+        {
+          "name": "Bold",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedBoolean"
+        },
+        {
+          "name": "Underline",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedBoolean"
+        },
+        {
+          "name": "Shadow",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedBoolean"
+        },
+        {
+          "name": "Strikeout",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedBoolean"
+        },
+        {
+          "name": "Contoured",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedBoolean"
+        },
+        {
+          "name": "Emphasis",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedBoolean"
+        },
+        {
+          "name": "Back_color",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedRGBColour"
+        },
+        {
+          "name": "selWord",
           "portType": "DataOutPort",
-          "dataType": "RTC::TimedPoint2D"
+          "dataType": "RTC::TimedString"
+        },
+        {
+          "name": "copyWord",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedString"
         }
       ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Ruchi12377/AutoEraser",
-      "directoryUrl": "https://github.com/Ruchi12377/AutoEraser/tree/main/RT_Middleware/Select",
-      "path": "RT_Middleware/Select/RTC.xml20221104225751",
-      "rtcXmlUrl": "https://github.com/Ruchi12377/AutoEraser/blob/a6154e2489f0aeaa4ccca738c8396079d00e4e0f/RT_Middleware/Select/RTC.xml20221104225751"
-    },
-    {
-      "componentName": "Select",
-      "description": "ModuleDescription",
-      "category": "GUI",
-      "vendor": "Ruchi",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
+      "servicePorts": [
         {
-          "name": "ShowImage",
-          "portType": "DataInPort",
-          "dataType": "RTC::CameraImage"
-        },
-        {
-          "name": "StartPoint",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedPoint2D"
-        },
-        {
-          "name": "EndPoint",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedPoint2D"
+          "name": "Writer",
+          "interfaces": [
+            {
+              "name": "writer",
+              "type": "Writer::mWriter",
+              "direction": "Provider"
+            }
+          ]
         }
       ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Ruchi12377/AutoEraser",
-      "directoryUrl": "https://github.com/Ruchi12377/AutoEraser/tree/main/RT_Middleware/Select",
-      "path": "RT_Middleware/Select/RTC.xml20221104225450",
-      "rtcXmlUrl": "https://github.com/Ruchi12377/AutoEraser/blob/a6154e2489f0aeaa4ccca738c8396079d00e4e0f/RT_Middleware/Select/RTC.xml20221104225450"
+      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
+      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/WordControlpy/WordControlpy",
+      "path": "WordControlpy/WordControlpy/RTC.xml",
+      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/WordControlpy/WordControlpy/RTC.xml"
     },
     {
       "componentName": "EV3SamplePy",
@@ -6914,20 +4495,6 @@
       "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/EV3SamplePy",
       "path": "SettingRTSystem/SettingRTSystem/Components/EV3SamplePy/RTC.xml",
       "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/EV3SamplePy/RTC.xml"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "TEST",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/testECpy",
-      "path": "SettingRTSystem/SettingRTSystem/Components/testECpy/RTC.xml20150906021919",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/testECpy/RTC.xml20150906021919"
     },
     {
       "componentName": "SimulationManager",
@@ -6996,134 +4563,39 @@
       "rtcXmlUrl": "https://github.com/OpenRTM/RasPiMouse_with_MRPT/blob/0c463760839d03560f2e419f882796abc468168a/src/rtcs/SimplePathFollower/RTC.xml"
     },
     {
-      "componentName": "SendOctetSeq",
-      "description": "Output console input data as OctetSeq",
-      "category": "generic",
-      "vendor": "TakeshiSasaki",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedOctetSeq"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/sasaki-t/USBtoGPIO_SerialCommunication-RTCs",
-      "directoryUrl": "https://github.com/sasaki-t/USBtoGPIO_SerialCommunication-RTCs/tree/main/SendOctetSeq",
-      "path": "SendOctetSeq/RTC.xml",
-      "rtcXmlUrl": "https://github.com/sasaki-t/USBtoGPIO_SerialCommunication-RTCs/blob/abbae1236c1c6bc429c8875788ca8fdd077eb099/SendOctetSeq/RTC.xml"
-    },
-    {
-      "componentName": "ArmController",
-      "description": "Arm Controller Component",
+      "componentName": "PathPlanComp",
+      "description": "wanna play Apex",
       "category": "Controller",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [
-        {
-          "name": "middle",
-          "interfaces": [
-            {
-              "name": "JARA_ARM_ManipulatorCommonInterface_Middle",
-              "type": "JARA_ARM::ManipulatorCommonInterface_Middle",
-              "direction": "Consumer"
-            }
-          ]
-        },
-        {
-          "name": "common",
-          "interfaces": [
-            {
-              "name": "JARA_ARM_ManipulatorCommonInterface_Common",
-              "type": "JARA_ARM::ManipulatorCommonInterface_Common",
-              "direction": "Consumer"
-            }
-          ]
-        }
-      ],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial/tree/master/sample/ArmController",
-      "path": "sample/ArmController/RTC.xml",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial/blob/6a3374e921433703c7263325ab716a14e9c6d10f/sample/ArmController/RTC.xml"
-    },
-    {
-      "componentName": "testARToolKit",
-      "description": "test ARToolKitPlus",
-      "category": "Sample",
-      "vendor": "AIST",
-      "version": "1.0.0",
+      "vendor": "VenderName",
+      "version": "1.1.1",
       "language": "C++",
       "dataPorts": [
         {
-          "name": "marker_pos",
+          "name": "Goal",
           "portType": "DataInPort",
-          "dataType": "RTC::TimedPose3D"
+          "dataType": "RTC::TimedPose2D"
         },
         {
-          "name": "target_vel",
+          "name": "Position",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedPose2D"
+        },
+        {
+          "name": "TopoMap",
+          "portType": "DataInPort",
+          "dataType": "Gng_path"
+        },
+        {
+          "name": "Direction",
           "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
+          "dataType": "RTC::TimedPose2D"
         }
       ],
       "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial/tree/master/sample/ext/testARToolKit",
-      "path": "sample/ext/testARToolKit/RTC.xml20180528160316",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial/blob/6a3374e921433703c7263325ab716a14e9c6d10f/sample/ext/testARToolKit/RTC.xml20180528160316"
-    },
-    {
-      "componentName": "testARToolKit",
-      "description": "test ARToolKitPlus",
-      "category": "Sample",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "marker_pos",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedPose3D"
-        },
-        {
-          "name": "target_vel",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_JapanRobotWeek2018",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_JapanRobotWeek2018/tree/master/sample/ext/testARToolKit",
-      "path": "sample/ext/testARToolKit/RTC.xml20180528160316",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_JapanRobotWeek2018/blob/23d466e9be82b7b6c0ec9ecb36e8a336aa153861/sample/ext/testARToolKit/RTC.xml20180528160316"
-    },
-    {
-      "componentName": "testARToolKit",
-      "description": "test ARToolKitPlus",
-      "category": "Sample",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "marker_pos",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedPose3D"
-        },
-        {
-          "name": "target_vel",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_Waseda2018",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_Waseda2018/tree/master/sample/ext/testARToolKit",
-      "path": "sample/ext/testARToolKit/RTC.xml20180528160316",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_Waseda2018/blob/f98d1f23c478516a1f32292a824257e0cbedcfea/sample/ext/testARToolKit/RTC.xml20180528160316"
+      "repositoryUrl": "https://github.com/yukimeat1999/GNG-Unk-Env-Navi_RTC",
+      "directoryUrl": "https://github.com/yukimeat1999/GNG-Unk-Env-Navi_RTC/tree/main/PathPlanComp",
+      "path": "PathPlanComp/RTC.xml",
+      "rtcXmlUrl": "https://github.com/yukimeat1999/GNG-Unk-Env-Navi_RTC/blob/ba866d315de3764ecf4627e0edc4963df94e4648/PathPlanComp/RTC.xml"
     },
     {
       "componentName": "PeriodicConsoleOut",
@@ -7138,84 +4610,6 @@
       "directoryUrl": "https://github.com/ysuga/OpenRTMTutorial_C/tree/master/PeriodicConsoleOut",
       "path": "PeriodicConsoleOut/RTC.xml",
       "rtcXmlUrl": "https://github.com/ysuga/OpenRTMTutorial_C/blob/5229bf4c89957b9fedc37225fb08c39105eeb864/PeriodicConsoleOut/RTC.xml"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/shibaura0213/RT-test",
-      "directoryUrl": "https://github.com/shibaura0213/RT-test/tree/main/mass",
-      "path": "mass/RTC.xml20241113171015",
-      "rtcXmlUrl": "https://github.com/shibaura0213/RT-test/blob/3eb3ee50933ba23595ef7df17fd75810aa02aee7/mass/RTC.xml20241113171015"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/ayakangel/Checker-of-Belongings",
-      "directoryUrl": "https://github.com/ayakangel/Checker-of-Belongings/tree/main/daymtmn_get",
-      "path": "daymtmn_get/RTC.xml20241108160324",
-      "rtcXmlUrl": "https://github.com/ayakangel/Checker-of-Belongings/blob/3d06a911e507c593fbfa41d148c4351424294218/daymtmn_get/RTC.xml20241108160324"
-    },
-    {
-      "componentName": "testARToolKit",
-      "description": "test ARToolKitPlus",
-      "category": "Sample",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "marker_pos",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedPose3D"
-        },
-        {
-          "name": "target_vel",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_RaspberryPiMouse",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_RaspberryPiMouse/tree/master/sample/ext/testARToolKit",
-      "path": "sample/ext/testARToolKit/RTC.xml20180528160316",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_RaspberryPiMouse/blob/971856381d058c1d8a8e6535fd1e10076266354c/sample/ext/testARToolKit/RTC.xml20180528160316"
-    },
-    {
-      "componentName": "calculator_temperature",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "temperature",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedLong"
-        },
-        {
-          "name": "result_t",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedString"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/shibaura0213/RT-test",
-      "directoryUrl": "https://github.com/shibaura0213/RT-test/tree/main/calculator_temperature",
-      "path": "calculator_temperature/RTC.xml20241129162127",
-      "rtcXmlUrl": "https://github.com/shibaura0213/RT-test/blob/3eb3ee50933ba23595ef7df17fd75810aa02aee7/calculator_temperature/RTC.xml20241129162127"
     },
     {
       "componentName": "IfElse",
@@ -7311,537 +4705,6 @@
       "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/Saturation",
       "path": "SettingRTSystem/SettingRTSystem/Components/Saturation/RTC.xml",
       "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/Saturation/RTC.xml"
-    },
-    {
-      "componentName": "MyFirstComponent",
-      "description": "",
-      "category": "Category",
-      "vendor": "Vendor",
-      "version": "1.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "in",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedDouble"
-        },
-        {
-          "name": "out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDouble"
-        }
-      ],
-      "servicePorts": [
-        {
-          "name": "service",
-          "interfaces": [
-            {
-              "name": "moveService",
-              "type": "MoveService",
-              "direction": "Provider"
-            }
-          ]
-        }
-      ],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/MyFirstComponent",
-      "path": "SettingRTSystem/SettingRTSystem/Components/MyFirstComponent/RTC.xml",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/MyFirstComponent/RTC.xml"
-    },
-    {
-      "componentName": "UniformRandomNumber",
-      "description": "Uniform Random Number",
-      "category": "Math",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDouble"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/UniformRandomNumber",
-      "path": "SettingRTSystem/SettingRTSystem/Components/UniformRandomNumber/RTC.xml",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/UniformRandomNumber/RTC.xml"
-    },
-    {
-      "componentName": "Crawl_Gait_Controller",
-      "description": "Crawl Gait Controller Component",
-      "category": "Controller",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "target_velocity",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedVelocity2D"
-        },
-        {
-          "name": "update_pose",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedPose2D"
-        },
-        {
-          "name": "Trajectory",
-          "portType": "DataOutPort",
-          "dataType": "WalkingRobot::LeggedRobot"
-        },
-        {
-          "name": "current_pose",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedPose2D"
-        },
-        {
-          "name": "stability_margin",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDouble"
-        },
-        {
-          "name": "NE_stability_margin",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDouble"
-        }
-      ],
-      "servicePorts": [
-        {
-          "name": "LeggedRobotCommonInterface_Robot",
-          "interfaces": [
-            {
-              "name": "LeggedRobotCommonInterface_Robot",
-              "type": "WalkingRobot::LeggedRobotCommonInterface_Robot",
-              "direction": "Consumer"
-            }
-          ]
-        }
-      ],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/Crawl_Gait_Controller",
-      "path": "SettingRTSystem/SettingRTSystem/Components/Crawl_Gait_Controller/RTC.xml",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/Crawl_Gait_Controller/RTC.xml"
-    },
-    {
-      "componentName": "Saturation",
-      "description": "Saturation",
-      "category": "Math",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/Saturation",
-      "path": "SettingRTSystem/SettingRTSystem/Components/Saturation/RTC.xml20150721012606",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/Saturation/RTC.xml20150721012606"
-    },
-    {
-      "componentName": "Foot_Position_Controller",
-      "description": "Control the position of the foot",
-      "category": "Controller",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "Trajectory",
-          "portType": "DataInPort",
-          "dataType": "WalkingRobot::LeggedRobot"
-        },
-        {
-          "name": "motor_pos",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDoubleSeq"
-        },
-        {
-          "name": "motor_pos_0",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDoubleSeq"
-        },
-        {
-          "name": "motor_pos_1",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDoubleSeq"
-        },
-        {
-          "name": "motor_pos_2",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDoubleSeq"
-        },
-        {
-          "name": "motor_pos_3",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedDoubleSeq"
-        }
-      ],
-      "servicePorts": [
-        {
-          "name": "LeggedRobotCommonInterface_Robot",
-          "interfaces": [
-            {
-              "name": "LeggedRobotCommonInterface_Robot",
-              "type": "WalkingRobot::LeggedRobotCommonInterface_Robot",
-              "direction": "Provider"
-            }
-          ]
-        },
-        {
-          "name": "ServoControllerService",
-          "interfaces": [
-            {
-              "name": "ServoControllerService",
-              "type": "OpenHRP::ServoControllerService",
-              "direction": "Consumer"
-            }
-          ]
-        }
-      ],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/Foot_Position_Controller",
-      "path": "SettingRTSystem/SettingRTSystem/Components/Foot_Position_Controller/RTC.xml",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/Foot_Position_Controller/RTC.xml"
-    },
-    {
-      "componentName": "MuxFunction",
-      "description": "Mux Function",
-      "category": "Math",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/MuxFunction",
-      "path": "SettingRTSystem/SettingRTSystem/Components/MuxFunction/RTC.xml20150724142526",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/MuxFunction/RTC.xml20150724142526"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "TEST",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/ArmController",
-      "path": "SettingRTSystem/SettingRTSystem/Components/ArmController/RTC.xml20150525031938",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/ArmController/RTC.xml20150525031938"
-    },
-    {
-      "componentName": "PIDController",
-      "description": "PID Controller",
-      "category": "Control",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/PIDController",
-      "path": "SettingRTSystem/SettingRTSystem/Components/PIDController/RTC.xml20150726072022",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/PIDController/RTC.xml20150726072022"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/MySecondComponent",
-      "path": "SettingRTSystem/SettingRTSystem/Components/MySecondComponent/RTC.xml20150212025936",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/MySecondComponent/RTC.xml20150212025936"
-    },
-    {
-      "componentName": "CoulombAndViscousFriction",
-      "description": "Coulomb and Viscous Friction",
-      "category": "Math",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/CoulombAndViscousFriction",
-      "path": "SettingRTSystem/SettingRTSystem/Components/CoulombAndViscousFriction/RTC.xml20150722171911",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/CoulombAndViscousFriction/RTC.xml20150722171911"
-    },
-    {
-      "componentName": "RaspberryPiMouseController_DistanceSensor",
-      "description": "Raspberry Pi Mouse Controller",
-      "category": "Controller",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "target_velocity_in",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedVelocity2D"
-        },
-        {
-          "name": "ir_sensor",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedShortSeq"
-        },
-        {
-          "name": "target_velocity_out",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/RasPiMouseController_DistanceSensor",
-      "path": "SettingRTSystem/SettingRTSystem/Components/RasPiMouseController_DistanceSensor/RTC.xml20170328180926",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/RasPiMouseController_DistanceSensor/RTC.xml20170328180926"
-    },
-    {
-      "componentName": "test_ArmController",
-      "description": "test ArmController",
-      "category": "Manipulator",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [],
-      "servicePorts": [
-        {
-          "name": "ManipulatorCommonInterface_Common",
-          "interfaces": [
-            {
-              "name": "ManipulatorCommonInterface_Common",
-              "type": "JARA_ARM::ManipulatorCommonInterface_Common",
-              "direction": "Consumer"
-            }
-          ]
-        },
-        {
-          "name": "ManipulatorCommonInterface_Middle",
-          "interfaces": [
-            {
-              "name": "ManipulatorCommonInterface_Middle",
-              "type": "JARA_ARM::ManipulatorCommonInterface_Middle",
-              "direction": "Consumer"
-            }
-          ]
-        }
-      ],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/test_ArmController",
-      "path": "SettingRTSystem/SettingRTSystem/Components/test_ArmController/RTC.xml",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/test_ArmController/RTC.xml"
-    },
-    {
-      "componentName": "test_ArmController",
-      "description": "test ArmController",
-      "category": "Manipulator",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [],
-      "servicePorts": [
-        {
-          "name": "ManipulatorCommonInterface_Common",
-          "interfaces": [
-            {
-              "name": "ManipulatorCommonInterface_Common",
-              "type": "JARA_ARM::ManipulatorCommonInterface_Common",
-              "direction": "Consumer"
-            }
-          ]
-        },
-        {
-          "name": "ManipulatorCommonInterface_Middle",
-          "interfaces": [
-            {
-              "name": "ManipulatorCommonInterface_Middle",
-              "type": "JARA_ARM::ManipulatorCommonInterface_Middle",
-              "direction": "Consumer"
-            }
-          ]
-        }
-      ],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/test_ArmController",
-      "path": "SettingRTSystem/SettingRTSystem/Components/test_ArmController/RTC.xml20170401032223",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/test_ArmController/RTC.xml20170401032223"
-    },
-    {
-      "componentName": "SimpleServiceProvider",
-      "description": "Simple Service Provider",
-      "category": "Example",
-      "vendor": "Baron Yong",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [
-        {
-          "name": "simpleService",
-          "interfaces": [
-            {
-              "name": "simpleServiceProvider",
-              "type": "service::SimpleService",
-              "direction": "Provider"
-            }
-          ]
-        }
-      ],
-      "repositoryUrl": "https://github.com/BaronYSYong/openrtm-tutorial",
-      "directoryUrl": "https://github.com/BaronYSYong/openrtm-tutorial/tree/master/SimpleServiceProvider",
-      "path": "SimpleServiceProvider/RTC.xml",
-      "rtcXmlUrl": "https://github.com/BaronYSYong/openrtm-tutorial/blob/fdfebd1da565e58457a776346dfd3b076067cd57/SimpleServiceProvider/RTC.xml"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Test",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_ROBOMECH2019",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_ROBOMECH2019/tree/master/sample/ext/FloatSeqToVelocity",
-      "path": "sample/ext/FloatSeqToVelocity/RTC.xml20180601151351",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_ROBOMECH2019/blob/aff2ae50e37d0fdda030c9a6c188c3bf7bf2e056/sample/ext/FloatSeqToVelocity/RTC.xml20180601151351"
-    },
-    {
-      "componentName": "ConfigurationTest",
-      "description": "Configuration Test",
-      "category": "Example",
-      "vendor": "ysugaet",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/ysuga/OpenRTMTutorial_C",
-      "directoryUrl": "https://github.com/ysuga/OpenRTMTutorial_C/tree/master/ConfigurationTest",
-      "path": "ConfigurationTest/RTC.xml",
-      "rtcXmlUrl": "https://github.com/ysuga/OpenRTMTutorial_C/blob/5229bf4c89957b9fedc37225fb08c39105eeb864/ConfigurationTest/RTC.xml"
-    },
-    {
-      "componentName": "TankIoRTC_Py",
-      "description": "TankIoRTC using Python",
-      "category": "Simulator",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "velocities",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedVelocity2D"
-        },
-        {
-          "name": "torques",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedDoubleSeq"
-        },
-        {
-          "name": "lightSwitch",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedBooleanSeq"
-        },
-        {
-          "name": "angles",
-          "portType": "DataOutPort",
-          "dataType": "RTC::PanTiltAngles"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin",
-      "directoryUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin/tree/master/samples/TankIoRTC_Py",
-      "path": "samples/TankIoRTC_Py/RTC.xml",
-      "rtcXmlUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin/blob/2a610f6142645aa6b2f297f02bea8af131b398cb/samples/TankIoRTC_Py/RTC.xml"
-    },
-    {
-      "componentName": "SimpleServiceConsumer",
-      "description": "SimpleServiceConsumer",
-      "category": "Tes",
-      "vendor": "ysuga_net",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [
-        {
-          "name": "simpleService",
-          "interfaces": [
-            {
-              "name": "simpleServiceConsumer",
-              "type": "ysuga::SimpleService",
-              "direction": "Consumer"
-            }
-          ]
-        }
-      ],
-      "repositoryUrl": "https://github.com/ysuga/OpenRTMTutorial_C",
-      "directoryUrl": "https://github.com/ysuga/OpenRTMTutorial_C/tree/master/SimpleServiceConsumer",
-      "path": "SimpleServiceConsumer/RTC.xml",
-      "rtcXmlUrl": "https://github.com/ysuga/OpenRTMTutorial_C/blob/5229bf4c89957b9fedc37225fb08c39105eeb864/SimpleServiceConsumer/RTC.xml"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Test",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial/tree/master/sample/ext/FloatSeqToVelocity",
-      "path": "sample/ext/FloatSeqToVelocity/RTC.xml20180601151351",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial/blob/6a3374e921433703c7263325ab716a14e9c6d10f/sample/ext/FloatSeqToVelocity/RTC.xml20180601151351"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Test",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_JapanRobotWeek2018",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_JapanRobotWeek2018/tree/master/sample/ext/FloatSeqToVelocity",
-      "path": "sample/ext/FloatSeqToVelocity/RTC.xml20180601151351",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_JapanRobotWeek2018/blob/23d466e9be82b7b6c0ec9ecb36e8a336aa153861/sample/ext/FloatSeqToVelocity/RTC.xml20180601151351"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Test",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_Waseda2018",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_Waseda2018/tree/master/sample/ext/FloatSeqToVelocity",
-      "path": "sample/ext/FloatSeqToVelocity/RTC.xml20180601151351",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_Waseda2018/blob/f98d1f23c478516a1f32292a824257e0cbedcfea/sample/ext/FloatSeqToVelocity/RTC.xml20180601151351"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Test",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_RaspberryPiMouse",
-      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial_RaspberryPiMouse/tree/master/sample/ext/FloatSeqToVelocity",
-      "path": "sample/ext/FloatSeqToVelocity/RTC.xml20180601151351",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial_RaspberryPiMouse/blob/971856381d058c1d8a8e6535fd1e10076266354c/sample/ext/FloatSeqToVelocity/RTC.xml20180601151351"
     },
     {
       "componentName": "WordControlpy",
@@ -7975,167 +4838,346 @@
       "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/WordControlpy/RTC.xml"
     },
     {
-      "componentName": "EV3SamplePy",
-      "description": "EV3 Sample Component",
-      "category": "Controller",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "touch",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedBooleanSeq"
-        },
-        {
-          "name": "target_velocity",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        },
-        {
-          "name": "sound",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedString"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/EV3SamplePy",
-      "path": "SettingRTSystem/SettingRTSystem/Components/EV3SamplePy/RTC.xml20160516224259",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/EV3SamplePy/RTC.xml20160516224259"
-    },
-    {
-      "componentName": "EV3SampleCPP",
-      "description": "EV3 Sample Component",
-      "category": "Controller",
-      "vendor": "AIST",
-      "version": "1.0.0",
+      "componentName": "MyFirstComponent",
+      "description": "",
+      "category": "Category",
+      "vendor": "Vendor",
+      "version": "1.0",
       "language": "C++",
       "dataPorts": [
         {
-          "name": "touch",
+          "name": "in",
           "portType": "DataInPort",
-          "dataType": "RTC::TimedBooleanSeq"
+          "dataType": "RTC::TimedDouble"
         },
         {
-          "name": "target_velocity",
+          "name": "out",
           "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        },
-        {
-          "name": "sound",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedString"
+          "dataType": "RTC::TimedDouble"
         }
       ],
-      "servicePorts": [],
+      "servicePorts": [
+        {
+          "name": "service",
+          "interfaces": [
+            {
+              "name": "moveService",
+              "type": "MoveService",
+              "direction": "Provider"
+            }
+          ]
+        }
+      ],
       "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/EV3SampleCPP",
-      "path": "SettingRTSystem/SettingRTSystem/Components/EV3SampleCPP/RTC.xml20160516224319",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/EV3SampleCPP/RTC.xml20160516224319"
+      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/MyFirstComponent",
+      "path": "SettingRTSystem/SettingRTSystem/Components/MyFirstComponent/RTC.xml",
+      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/MyFirstComponent/RTC.xml"
     },
     {
-      "componentName": "EV3Simulator",
-      "description": "LRGO MINDSTORMS EV3 Simulator",
-      "category": "Simulator",
+      "componentName": "UniformRandomNumber",
+      "description": "Uniform Random Number",
+      "category": "Math",
       "vendor": "Miyamoto Nobuhiko",
       "version": "1.0.0",
       "language": "C++",
       "dataPorts": [
         {
-          "name": "velocity2D",
+          "name": "out",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedDouble"
+        }
+      ],
+      "servicePorts": [],
+      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
+      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/UniformRandomNumber",
+      "path": "SettingRTSystem/SettingRTSystem/Components/UniformRandomNumber/RTC.xml",
+      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/UniformRandomNumber/RTC.xml"
+    },
+    {
+      "componentName": "Crawl_Gait_Controller",
+      "description": "Crawl Gait Controller Component",
+      "category": "Controller",
+      "vendor": "AIST",
+      "version": "1.0.0",
+      "language": "C++",
+      "dataPorts": [
+        {
+          "name": "target_velocity",
           "portType": "DataInPort",
           "dataType": "RTC::TimedVelocity2D"
         },
         {
-          "name": "angle",
+          "name": "update_pose",
           "portType": "DataInPort",
-          "dataType": "RTC::TimedDouble"
+          "dataType": "RTC::TimedPose2D"
         },
         {
-          "name": "odometry",
+          "name": "Trajectory",
+          "portType": "DataOutPort",
+          "dataType": "WalkingRobot::LeggedRobot"
+        },
+        {
+          "name": "current_pose",
           "portType": "DataOutPort",
           "dataType": "RTC::TimedPose2D"
         },
         {
-          "name": "ultrasonic",
-          "portType": "DataOutPort",
-          "dataType": "RTC::RangeData"
-        },
-        {
-          "name": "gyro",
+          "name": "stability_margin",
           "portType": "DataOutPort",
           "dataType": "RTC::TimedDouble"
         },
         {
-          "name": "light_reflect",
+          "name": "NE_stability_margin",
           "portType": "DataOutPort",
           "dataType": "RTC::TimedDouble"
+        }
+      ],
+      "servicePorts": [
+        {
+          "name": "LeggedRobotCommonInterface_Robot",
+          "interfaces": [
+            {
+              "name": "LeggedRobotCommonInterface_Robot",
+              "type": "WalkingRobot::LeggedRobotCommonInterface_Robot",
+              "direction": "Consumer"
+            }
+          ]
+        }
+      ],
+      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
+      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/Crawl_Gait_Controller",
+      "path": "SettingRTSystem/SettingRTSystem/Components/Crawl_Gait_Controller/RTC.xml",
+      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/Crawl_Gait_Controller/RTC.xml"
+    },
+    {
+      "componentName": "Foot_Position_Controller",
+      "description": "Control the position of the foot",
+      "category": "Controller",
+      "vendor": "AIST",
+      "version": "1.0.0",
+      "language": "C++",
+      "dataPorts": [
+        {
+          "name": "Trajectory",
+          "portType": "DataInPort",
+          "dataType": "WalkingRobot::LeggedRobot"
         },
         {
-          "name": "touch",
+          "name": "motor_pos",
           "portType": "DataOutPort",
-          "dataType": "RTC::TimedBooleanSeq"
+          "dataType": "RTC::TimedDoubleSeq"
+        },
+        {
+          "name": "motor_pos_0",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedDoubleSeq"
+        },
+        {
+          "name": "motor_pos_1",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedDoubleSeq"
+        },
+        {
+          "name": "motor_pos_2",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedDoubleSeq"
+        },
+        {
+          "name": "motor_pos_3",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedDoubleSeq"
+        }
+      ],
+      "servicePorts": [
+        {
+          "name": "LeggedRobotCommonInterface_Robot",
+          "interfaces": [
+            {
+              "name": "LeggedRobotCommonInterface_Robot",
+              "type": "WalkingRobot::LeggedRobotCommonInterface_Robot",
+              "direction": "Provider"
+            }
+          ]
+        },
+        {
+          "name": "ServoControllerService",
+          "interfaces": [
+            {
+              "name": "ServoControllerService",
+              "type": "OpenHRP::ServoControllerService",
+              "direction": "Consumer"
+            }
+          ]
+        }
+      ],
+      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
+      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/Foot_Position_Controller",
+      "path": "SettingRTSystem/SettingRTSystem/Components/Foot_Position_Controller/RTC.xml",
+      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/Foot_Position_Controller/RTC.xml"
+    },
+    {
+      "componentName": "test_ArmController",
+      "description": "test ArmController",
+      "category": "Manipulator",
+      "vendor": "Miyamoto Nobuhiko",
+      "version": "1.0.0",
+      "language": "Python",
+      "dataPorts": [],
+      "servicePorts": [
+        {
+          "name": "ManipulatorCommonInterface_Common",
+          "interfaces": [
+            {
+              "name": "ManipulatorCommonInterface_Common",
+              "type": "JARA_ARM::ManipulatorCommonInterface_Common",
+              "direction": "Consumer"
+            }
+          ]
+        },
+        {
+          "name": "ManipulatorCommonInterface_Middle",
+          "interfaces": [
+            {
+              "name": "ManipulatorCommonInterface_Middle",
+              "type": "JARA_ARM::ManipulatorCommonInterface_Middle",
+              "direction": "Consumer"
+            }
+          ]
+        }
+      ],
+      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
+      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/test_ArmController",
+      "path": "SettingRTSystem/SettingRTSystem/Components/test_ArmController/RTC.xml",
+      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/test_ArmController/RTC.xml"
+    },
+    {
+      "componentName": "SendOctetSeq",
+      "description": "Output console input data as OctetSeq",
+      "category": "generic",
+      "vendor": "TakeshiSasaki",
+      "version": "1.0.0",
+      "language": "Python",
+      "dataPorts": [
+        {
+          "name": "out",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedOctetSeq"
         }
       ],
       "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/EV3Simulator",
-      "path": "SettingRTSystem/SettingRTSystem/Components/EV3Simulator/RTC.xml20170409100337",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/EV3Simulator/RTC.xml20170409100337"
+      "repositoryUrl": "https://github.com/sasaki-t/USBtoGPIO_SerialCommunication-RTCs",
+      "directoryUrl": "https://github.com/sasaki-t/USBtoGPIO_SerialCommunication-RTCs/tree/main/SendOctetSeq",
+      "path": "SendOctetSeq/RTC.xml",
+      "rtcXmlUrl": "https://github.com/sasaki-t/USBtoGPIO_SerialCommunication-RTCs/blob/abbae1236c1c6bc429c8875788ca8fdd077eb099/SendOctetSeq/RTC.xml"
     },
     {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
+      "componentName": "ArmController",
+      "description": "Arm Controller Component",
+      "category": "Controller",
+      "vendor": "AIST",
       "version": "1.0.0",
-      "language": "",
+      "language": "C++",
+      "dataPorts": [],
+      "servicePorts": [
+        {
+          "name": "middle",
+          "interfaces": [
+            {
+              "name": "JARA_ARM_ManipulatorCommonInterface_Middle",
+              "type": "JARA_ARM::ManipulatorCommonInterface_Middle",
+              "direction": "Consumer"
+            }
+          ]
+        },
+        {
+          "name": "common",
+          "interfaces": [
+            {
+              "name": "JARA_ARM_ManipulatorCommonInterface_Common",
+              "type": "JARA_ARM::ManipulatorCommonInterface_Common",
+              "direction": "Consumer"
+            }
+          ]
+        }
+      ],
+      "repositoryUrl": "https://github.com/OpenRTM/RTM_Tutorial",
+      "directoryUrl": "https://github.com/OpenRTM/RTM_Tutorial/tree/master/sample/ArmController",
+      "path": "sample/ArmController/RTC.xml",
+      "rtcXmlUrl": "https://github.com/OpenRTM/RTM_Tutorial/blob/6a3374e921433703c7263325ab716a14e9c6d10f/sample/ArmController/RTC.xml"
+    },
+    {
+      "componentName": "ConfigurationTest",
+      "description": "Configuration Test",
+      "category": "Example",
+      "vendor": "ysugaet",
+      "version": "1.0.0",
+      "language": "C++",
       "dataPorts": [],
       "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/ConvertImage",
-      "path": "SettingRTSystem/SettingRTSystem/Components/ConvertImage/RTC.xml20141026230212",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/ConvertImage/RTC.xml20141026230212"
+      "repositoryUrl": "https://github.com/ysuga/OpenRTMTutorial_C",
+      "directoryUrl": "https://github.com/ysuga/OpenRTMTutorial_C/tree/master/ConfigurationTest",
+      "path": "ConfigurationTest/RTC.xml",
+      "rtcXmlUrl": "https://github.com/ysuga/OpenRTMTutorial_C/blob/5229bf4c89957b9fedc37225fb08c39105eeb864/ConfigurationTest/RTC.xml"
     },
     {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "TEST",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/RobotArmSimulator",
-      "path": "SettingRTSystem/SettingRTSystem/Components/RobotArmSimulator/RTC.xml20150601000852",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/RobotArmSimulator/RTC.xml20150601000852"
-    },
-    {
-      "componentName": "RasPiMouseSamplePy",
-      "description": "Raspberry Pi Mouse Sample",
-      "category": "TEST",
+      "componentName": "TankIoRTC_Py",
+      "description": "TankIoRTC using Python",
+      "category": "Simulator",
       "vendor": "AIST",
       "version": "1.0.0",
       "language": "Python",
       "dataPorts": [
         {
-          "name": "distance_sensor",
+          "name": "velocities",
           "portType": "DataInPort",
-          "dataType": "RTC::TimedShortSeq"
+          "dataType": "RTC::TimedVelocity2D"
         },
         {
-          "name": "target_velocity",
+          "name": "torques",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedDoubleSeq"
+        },
+        {
+          "name": "lightSwitch",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedBooleanSeq"
+        },
+        {
+          "name": "angles",
           "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
+          "dataType": "RTC::PanTiltAngles"
         }
       ],
       "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/RasPiMouseSamplePy",
-      "path": "SettingRTSystem/SettingRTSystem/Components/RasPiMouseSamplePy/RTC.xml20160423155339",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/RasPiMouseSamplePy/RTC.xml20160423155339"
+      "repositoryUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin",
+      "directoryUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin/tree/master/samples/TankIoRTC_Py",
+      "path": "samples/TankIoRTC_Py/RTC.xml",
+      "rtcXmlUrl": "https://github.com/Nobu19800/OpenRTMPythonPlugin/blob/2a610f6142645aa6b2f297f02bea8af131b398cb/samples/TankIoRTC_Py/RTC.xml"
+    },
+    {
+      "componentName": "SimpleServiceConsumer",
+      "description": "SimpleServiceConsumer",
+      "category": "Tes",
+      "vendor": "ysuga_net",
+      "version": "1.0.0",
+      "language": "C++",
+      "dataPorts": [],
+      "servicePorts": [
+        {
+          "name": "simpleService",
+          "interfaces": [
+            {
+              "name": "simpleServiceConsumer",
+              "type": "ysuga::SimpleService",
+              "direction": "Consumer"
+            }
+          ]
+        }
+      ],
+      "repositoryUrl": "https://github.com/ysuga/OpenRTMTutorial_C",
+      "directoryUrl": "https://github.com/ysuga/OpenRTMTutorial_C/tree/master/SimpleServiceConsumer",
+      "path": "SimpleServiceConsumer/RTC.xml",
+      "rtcXmlUrl": "https://github.com/ysuga/OpenRTMTutorial_C/blob/5229bf4c89957b9fedc37225fb08c39105eeb864/SimpleServiceConsumer/RTC.xml"
     },
     {
       "componentName": "RobotARM_RTC",
@@ -8150,70 +5192,6 @@
       "directoryUrl": "https://github.com/FaBoPlatform/RTC-RobotARM/tree/master/RobotARMRTC",
       "path": "RobotARMRTC/RTC.xml",
       "rtcXmlUrl": "https://github.com/FaBoPlatform/RTC-RobotARM/blob/9dbe18fda3ccd2169e694ad4e58a1ff06120f727/RobotARMRTC/RTC.xml"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/m0-yamauchikaname/arMarkerProcessingForTestRTC",
-      "directoryUrl": "https://github.com/m0-yamauchikaname/arMarkerProcessingForTestRTC",
-      "path": "RTC.xml20210807195917",
-      "rtcXmlUrl": "https://github.com/m0-yamauchikaname/arMarkerProcessingForTestRTC/blob/793c88ba8beae5c2993cda8411e8ae5ef232864d/RTC.xml20210807195917"
-    },
-    {
-      "componentName": "GraspPathPlanConsumer",
-      "description": "consumer for GraspPathPlanner",
-      "category": "Planne",
-      "vendor": "AIST",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [],
-      "servicePorts": [
-        {
-          "name": "GraspPathPlan",
-          "interfaces": [
-            {
-              "name": "planGraspPath",
-              "type": "planGraspPath",
-              "direction": "Provider"
-            }
-          ]
-        }
-      ],
-      "repositoryUrl": "https://github.com/kensuke-harada/graspPlugin",
-      "directoryUrl": "https://github.com/kensuke-harada/graspPlugin/tree/master/RtcGraspPathPlan/GraspPathPlanConsumer",
-      "path": "RtcGraspPathPlan/GraspPathPlanConsumer/RTC.xml20111002230049",
-      "rtcXmlUrl": "https://github.com/kensuke-harada/graspPlugin/blob/267301ed9b4f932a28b3671c6b50de8377b63f11/RtcGraspPathPlan/GraspPathPlanConsumer/RTC.xml20111002230049"
-    },
-    {
-      "componentName": "KeystoneCorrection",
-      "description": "ModuleDescription",
-      "category": "Category",
-      "vendor": "VenderName",
-      "version": "1.0.0",
-      "language": "Python",
-      "dataPorts": [
-        {
-          "name": "ImageIn",
-          "portType": "DataInPort",
-          "dataType": "RTC::CameraImage"
-        },
-        {
-          "name": "ImageOut",
-          "portType": "DataOutPort",
-          "dataType": "RTC::CameraImage"
-        }
-      ],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Ruchi12377/AutoEraser",
-      "directoryUrl": "https://github.com/Ruchi12377/AutoEraser/tree/main/RT_Middleware/KeystoneCorrection",
-      "path": "RT_Middleware/KeystoneCorrection/RTC.xml20221214000022",
-      "rtcXmlUrl": "https://github.com/Ruchi12377/AutoEraser/blob/a6154e2489f0aeaa4ccca738c8396079d00e4e0f/RT_Middleware/KeystoneCorrection/RTC.xml20221214000022"
     },
     {
       "componentName": "QuadrupedRobot_Choreonoid",
@@ -8269,20 +5247,6 @@
       "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/PowerPointControlpy/PowerPointControlpy",
       "path": "PowerPointControlpy/PowerPointControlpy/RTC.xml",
       "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/PowerPointControlpy/PowerPointControlpy/RTC.xml"
-    },
-    {
-      "componentName": "ModuleName",
-      "description": "ModuleDescription",
-      "category": "TEST",
-      "vendor": "Miyamoto Nobuhiko",
-      "version": "1.0.0",
-      "language": "",
-      "dataPorts": [],
-      "servicePorts": [],
-      "repositoryUrl": "https://github.com/Nobu19800/openrtm_utils",
-      "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Composite/ECandStateSharedComposite",
-      "path": "SettingRTSystem/SettingRTSystem/Composite/ECandStateSharedComposite/RTC.xml20150903144704",
-      "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Composite/ECandStateSharedComposite/RTC.xml20150903144704"
     }
   ]
 }
