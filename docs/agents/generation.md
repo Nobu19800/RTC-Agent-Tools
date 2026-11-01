@@ -6,7 +6,9 @@ All command examples and workspace paths are relative to the repository root unl
 
 ## Phase 11: Handle generated RTCs
 
-For each RTC used by the final `nodes` whose origin is `generated`:
+Complete the applicable [environment checks](environment.md) first, including a bounded probe of the actual Java executable and required Builder libraries. Preserve failed-tool logs and clean up only verified task-owned hung generator processes.
+
+For each final `components` entry whose `data.moduleKind` is `rtc` and whose source is explicitly classified as `generated`:
 
 1. Create:
 
@@ -14,7 +16,7 @@ For each RTC used by the final `nodes` whose origin is `generated`:
 build/generated/<RTCName>/
 ```
 
-2. Use the final node/template metadata as the source of truth.
+2. Use the final `component.data` metadata as the source of truth. Do not generate RTC profiles or skeletons for `moduleKind: "hakoniwa"`, and do not infer generated origin from missing provenance.
 3. Read:
    - ports
    - service interfaces
@@ -120,7 +122,7 @@ Inspect the local launcher and prerequisites before execution. The current launc
 
 The local launcher accepts IDL file paths after `-i` (multiple paths may follow a single `-i`). Its Python wrapper maps these to the containing directories required by the bundled Java library. For ServicePorts, the compatibility bridge restores the IDL source paths that the bundled profile loader otherwise retains only as display values, then delegates generation to the original RTC Builder libraries. Preserve actual upstream IDL contents and dependencies.
 
-For the camera/color/arm example verified in this repository, `scripts/prepare_final_session.py` validates `work/final-session.json`, saves the authoritative snapshot under `build/system/`, and exports semantic profiles for instantiated generated RTCs. Use `idlSourceDirectory` and `idlIncludeDirectories` in the final generated-RTC metadata to identify the actual service IDLs and their include dependencies. The current myCobot design uses the installed OpenRTM Python SDK's JARA_ARM IDLs, with source paths and SHA256 recorded in the design. The script retains a legacy UR IDL fallback for earlier designs; inspect the resolution before using it for another system. `scripts/generate_final_skeletons.py` verifies the canonical JSON/XML and generates the skeletons with recorded compatibility corrections:
+For the legacy camera/color/arm example verified in this repository, `scripts/prepare_final_session.py` validates `work/final-session.json`, saves the authoritative snapshot under `build/system/`, and exports semantic profiles for instantiated generated RTCs. This helper expects `nodes` / `rtcTemplates` and is not a version 2 validator/exporter; adapt and verify it before use with `components`. Use `idlSourceDirectory` and `idlIncludeDirectories` in the final generated-RTC metadata to identify the actual service IDLs and their include dependencies. The current myCobot design uses the installed OpenRTM Python SDK's JARA_ARM IDLs, with source paths and SHA256 recorded in the design. The script retains a legacy UR IDL fallback for earlier designs; inspect the resolution before using it for another system. `scripts/generate_final_skeletons.py` verifies the canonical JSON/XML and generates the skeletons with recorded compatibility corrections:
 
 - The bundled builder rejects empty string configuration defaults. Use a separate temporary profile under `work/builder-inputs/` only for generation, then restore the exact authoritative defaults in generated C++ and component configuration. Do not change the saved final session or canonical RTC JSON/XML to hide the limitation.
 - Escape quotation marks, backslashes, and other C++ string-literal characters in generated configuration defaults, including the generated test scaffold. Legacy converter fixtures may contain JSON text, but do not introduce JSON-valued runtime defaults in new RTC implementations.

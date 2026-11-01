@@ -1,0 +1,96 @@
+{
+  "target_standard": "ISO 22166-202:2025",
+  "namespace": "urn:hakoniwa:iso22166-202:mapping:0.1",
+  "conformance": "not-assessed; local mapping draft",
+  "modules": [
+    {
+      "id": "drone-service",
+      "module_id": "urn:uuid:e44b31c4-d7bc-5e79-8e5c-f7460fed3692",
+      "file": "drone-service.xml",
+      "catalog_references": [
+        {
+          "component_id": "hakoniwa-drone-core",
+          "path": "catalog/components/hakoniwa-drone-core.yaml",
+          "relationship": "implementation-profile",
+          "scope": "Tested built-in-physics legacy API execution profile; not the complete product interface."
+        }
+      ]
+    },
+    {
+      "id": "position-command",
+      "module_id": "urn:uuid:2ce04029-db39-5a07-b294-1ff81b0a79fb",
+      "file": "position-command.xml",
+      "catalog_references": [
+        {
+          "component_id": "hakoniwa-drone-core",
+          "path": "catalog/components/hakoniwa-drone-core.yaml",
+          "relationship": "controls",
+          "scope": "Recipe-local controller using the cataloged simulator; no standalone controller catalog entry is asserted."
+        }
+      ]
+    },
+    {
+      "id": "visual-state-publisher",
+      "module_id": "urn:uuid:24dba563-7140-5c7e-a61c-8b273e3c0555",
+      "file": "visual-state-publisher.xml",
+      "catalog_references": [
+        {
+          "component_id": "hakoniwa-drone-core",
+          "path": "catalog/components/hakoniwa-drone-core.yaml",
+          "relationship": "recipe-local-adapter-for",
+          "scope": "Local Python pose adapter for the simulator; distinct from its native VisualStatePublisher distribution artifact."
+        }
+      ]
+    },
+    {
+      "id": "web-bridge",
+      "module_id": "urn:uuid:02b8eb49-33b4-5dd2-9332-6dc57542e212",
+      "file": "web-bridge.xml",
+      "catalog_references": [
+        {
+          "component_id": "hakoniwa-pdu-bridge-core",
+          "path": "catalog/components/hakoniwa-pdu-bridge-core.yaml",
+          "relationship": "implementation-profile",
+          "scope": "Tested Core-aware fleets WebSocket forwarding profile."
+        }
+      ]
+    }
+  ],
+  "path_references": {
+    "${RECIPE_ROOT}": "Resolved recipe runtime root supplied by the deployment environment",
+    "${FOUNDATION_ROOT}": "Selected compatible Foundation root supplied by the deployment environment",
+    "${DRONE_ROOT}": "Compatible Drone distribution root supplied by the deployment environment",
+    "${BUSINESS_PACK_ROOT}": "Business Pack checkout root supplied by the deployment environment"
+  },
+  "connections": [
+    {
+      "from": "position-command",
+      "to": "drone-service",
+      "pdu": "Drone.drone_cmd_move",
+      "direction": "request and response",
+      "channel": 7,
+      "capacity_bytes": 104
+    },
+    {
+      "from": "drone-service",
+      "to": "visual-state-publisher",
+      "pdu": "Drone.pos",
+      "channel": 1,
+      "capacity_bytes": 72
+    },
+    {
+      "from": "visual-state-publisher",
+      "to": "web-bridge",
+      "pdu": "DroneVisualStatePublisher.drone_visual_state_array_0",
+      "channel": 0,
+      "capacity_bytes": 32768
+    },
+    {
+      "from": "web-bridge",
+      "to": "external Three.js browser (not a registered asset)",
+      "transport": "WebSocket",
+      "port": 8765,
+      "wire_version": "v2"
+    }
+  ]
+}

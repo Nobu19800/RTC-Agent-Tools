@@ -23,6 +23,19 @@ python rtc_search.py catalog/rtc_catalog.json --all --json
 
 Do not replace catalog searches with guesses when a potentially reusable RTC may exist.
 
+### Hakoniwa asset catalog
+
+For every new system design, search this XML-derived local catalog alongside the RTC catalog, then select the suitable module kinds for the requirement:
+
+```bash
+python hakoniwa_search.py catalog/hakoniwa_catalog.json --all
+python hakoniwa_search.py catalog/hakoniwa_catalog.json HakoDroneCmdMove --json
+```
+
+Read [catalog/README.md](../../catalog/README.md) for its source, fields and regeneration/check commands. Entries are in `assets`, with `moduleKind:hakoniwa`; do not treat them as RTCs or pass them to RTC Builder. This catalog contains four integration profiles derived from the supplied Business Pack XML, not every Hakoniwa product capability. Preserve source hashes, channel capacities, semantics and conformance limitations. The RTC catalog refresh below does not refresh or replace this file.
+
+Before using it for design, run `python scripts/build_hakoniwa_catalog.py --check`. Regenerate from the XML if changed. If the source checkout is unavailable, state that freshness is unverified and preserve the saved source identity/hash while making a provisional proposal. Search both catalogs for each capability, using `--all` for asset coverage when focused terms miss. Generate one version 2 session from the combined selections, following [design.md](design.md) and [session-format.md](session-format.md). Use the required [custom interface and serializer](hakoniwa-serializer.md) for RTC/Hakoniwa DataPort edges.
+
 ### RTC catalog
 
 Do not assume that `catalog/rtc_catalog.json` in the repository is current.

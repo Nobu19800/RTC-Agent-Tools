@@ -28,9 +28,13 @@ curl -L \
 5. Treat the downloaded final session as authoritative. Do not continue using stale assumptions from the initial proposal if the user modified the design.
 6. Summarize material differences when they affect implementation.
 
+For mixed designs, reconcile `work/connection-contracts.json` and any companion provenance record with the downloaded final session as required by [session-format.md](session-format.md). Preserve a matching copy with the final session under `build/system/`. Verify selected asset catalog IDs/XML hashes and update every mixed-edge custom-interface/serializer mapping to the final endpoints. A removed or changed edge cannot retain an active stale binding; unresolved mappings remain blocked for execution. Implement the required OpenRTM-aist custom interface and serializers only from the approved final design.
+
 ---
 
 ## Phase 9: Prepare the build workspace
+
+Apply [environment and dependency checks](environment.md). Record the selected source/submodule revisions, native ABI/build configuration, executable paths and required non-code assets. Rebuilding from these records must not depend on another Recipe's incidental deployment directory. XML asset profiles are owned by this repository under `profiles/`; Business Pack evidence and executable implementations retain their separate provenance and roots.
 
 Use:
 
@@ -66,9 +70,9 @@ build/system/final-session.json
 
 ## Phase 10: Download existing RTCs selected in the final design
 
-Determine which RTCs are actually used by `nodes` in the final design.
+Determine which RTCs are actually instantiated in the final `components` list, selecting only entries with `data.moduleKind == "rtc"`. Read metadata from `component.data`; version 2 does not require `rtcTemplates` or `nodes`.
 
-Do not download every RTC in `rtcTemplates` if it is not instantiated in the final `nodes` list.
+Handle `data.moduleKind == "hakoniwa"` as Hakoniwa assets with their own verified source/deployment requirements. Do not put them through RTC.xml, RTC Builder or RTC lifecycle procedures merely because their diagram `type` is `rtc`. Missing provenance is unresolved and must not be treated as generated source.
 
 For each used RTC whose origin is `catalog` or which has a catalog repository URL:
 

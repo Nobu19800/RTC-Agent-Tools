@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='utf-8'?>
+<hb:Module xmlns:hb="urn:hakoniwa:iso22166-202:mapping:0.1" targetStandard="ISO 22166-202:2025" profileVersion="0.1" conformanceStatus="not-assessed">
+  <!-- Local mapping draft. NOT an ISO Annex B conformant/certified document; official XSD was not available. -->
+  <hb:GenInfo>
+    <hb:ModuleName>Foundation Python Drone visual-state publisher</hb:ModuleName>
+    <hb:Description>Reads actual pose and publishes a one-drone visual-state packet; does not generate physics.</hb:Description>
+    <hb:Manufacturer>Local Hakoniwa Business Pack implementation; legal manufacturer not assigned</hb:Manufacturer>
+    <hb:Examples>Validated Windows 11 + WSL2 three-point simulated Drone composition</hb:Examples>
+  </hb:GenInfo>
+  <hb:IDnType>
+    <hb:ID>urn:uuid:24dba563-7140-5c7e-a61c-8b273e3c0555</hb:ID>
+    <hb:InformationModelVersion>local-mapping-0.1; ISO target edition 2025</hb:InformationModelVersion>
+    <hb:IdentifierPolicy>Locally generated UUID URN; not an ISO-assigned provider/module identifier</hb:IdentifierPolicy>
+  </hb:IDnType>
+  <hb:CatalogReferences>
+    <hb:CatalogReference componentId="hakoniwa-drone-core" path="catalog/components/hakoniwa-drone-core.yaml" relationship="recipe-local-adapter-for">Local Python pose adapter for the simulator; distinct from its native VisualStatePublisher distribution artifact.</hb:CatalogReference>
+  </hb:CatalogReferences>
+  <hb:ModuleProp>
+    <hb:Property name="stepUsec">20000</hb:Property>
+    <hb:Property name="validDroneCount">1</hb:Property>
+    <hb:Property name="chunkCount">1</hb:Property>
+    <hb:Property name="pwmPresentation">[0,0,0,0]</hb:Property>
+  </hb:ModuleProp>
+  <hb:IOVariables>
+    <hb:Variable id="drone-pose-input" direction="input" dataType="geometry_msgs/Twist" robot="Drone" channel="1" capacityBytes="72" transport="Hakoniwa mmap PDU" pduName="pos">
+      <hb:Description />
+      <hb:Field name="linear.x/y/z" dataType="float64[3]" unit="m">Position; this Twist carries pose, not a velocity command</hb:Field>
+      <hb:Field name="angular.x/y/z" dataType="float64[3]" unit="rad">Euler attitude as forwarded by the publisher</hb:Field>
+    </hb:Variable>
+    <hb:Variable id="visual-array-output" direction="output" dataType="hako_msgs/DroneVisualStateArray" robot="DroneVisualStatePublisher" channel="0" capacityBytes="32768" transport="Hakoniwa mmap PDU" pduName="drone_visual_state_array_0">
+      <hb:Description>One drone, one chunk. Fixed channel capacity; unused tail is padded.</hb:Description>
+      <hb:Field name="sequence_id" dataType="uint32" unit="">Packet sequence</hb:Field>
+      <hb:Field name="chunk_index/chunk_count/start_index/valid_count" dataType="uint32[4]" unit="">Chunk and valid-element descriptors</hb:Field>
+      <hb:Field name="drones[].x/y/z" dataType="float32[3]" unit="m">Drone positions</hb:Field>
+      <hb:Field name="drones[].roll/pitch/yaw" dataType="float32[3]" unit="rad">Drone attitudes</hb:Field>
+      <hb:Field name="drones[].pwm_duty" dataType="float32[]" unit="">Four values are zero in this local Python adapter; not rotor telemetry</hb:Field>
+    </hb:Variable>
+  </hb:IOVariables>
+  <hb:Status>
+    <hb:Description>Declared states/observations, not a live status snapshot or a newly implemented status service.</hb:Description>
+    <hb:State>WAIT START</hb:State>
+    <hb:State>WAIT RUNNING</hb:State>
+    <hb:State>Publishing</hb:State>
+    <hb:State>Failure causes nonzero process exit</hb:State>
+  </hb:Status>
+  <hb:Services>
+    <hb:Service name="pose-to-visual-state" kind="periodic PDU conversion">Copy position and Euler attitude from pose PDU every 20 simulation milliseconds. Unwritten input is skipped.</hb:Service>
+  </hb:Services>
+  <hb:Infra>
+    <hb:Requirement>Windows 11 host; Ubuntu 24.04 WSL2 x86_64 execution</hb:Requirement>
+    <hb:Requirement>Shared compatible Foundation Core / PDU definitions / isolated mmap domain</hb:Requirement>
+    <hb:Requirement>One Conductor owned by Drone service; do not start a second owner</hb:Requirement>
+    <hb:Requirement>Launcher before_start asset; hako-cmd start begins simulation time</hb:Requirement>
+    <hb:Requirement>Foundation CPython 3.12, SOABI-tagged hakopy and hakoniwa_pdu from the same Foundation</hb:Requirement>
+  </hb:Infra>
+  <hb:SafeSecure>
+    <hb:Constraint>PWM is a zero presentation value, not measured rotor output.</hb:Constraint>
+    <hb:Constraint>This Python adapter replaces the native VSP for the tested composition.</hb:Constraint>
+    <hb:Constraint>Live reset sequence-number behaviour is not verified; current reset callback does not explicitly reset the Python counter.</hb:Constraint>
+  </hb:SafeSecure>
+  <hb:Modelling>
+    <hb:Description>Static integration datasheet for the tested profile; no safety certification, formal model or timing guarantee is claimed.</hb:Description>
+  </hb:Modelling>
+  <hb:ExecutableForm>
+    <hb:Command>${FOUNDATION_ROOT}/install/python/bin/python3</hb:Command>
+    <hb:Argument>${BUSINESS_PACK_ROOT}/tools/recipe/drone_gui_visual_state.py</hb:Argument>
+    <hb:Argument>${RECIPE_ROOT}/config/pdudef/gui-visual.json</hb:Argument>
+    <hb:WorkingDirectory>${RECIPE_ROOT}</hb:WorkingDirectory>
+    <hb:Environment name="HAKO_CONFIG_PATH">${RECIPE_ROOT}/config/cpp_core_config.json</hb:Environment>
+    <hb:Environment name="HAKO_PROFILE_SERVICE_CLIENT">0</hb:Environment>
+    <hb:Environment name="PYTHONUNBUFFERED">1</hb:Environment>
+    <hb:PathReference name="${RECIPE_ROOT}">Resolved recipe runtime root supplied by the deployment environment</hb:PathReference>
+    <hb:PathReference name="${FOUNDATION_ROOT}">Selected compatible Foundation root supplied by the deployment environment</hb:PathReference>
+    <hb:PathReference name="${DRONE_ROOT}">Compatible Drone distribution root supplied by the deployment environment</hb:PathReference>
+    <hb:PathReference name="${BUSINESS_PACK_ROOT}">Business Pack checkout root supplied by the deployment environment</hb:PathReference>
+    <hb:Dependency>drone-service-1</hb:Dependency>
+  </hb:ExecutableForm>
+  <hb:Evidence>
+    <hb:Source sha256="041e1fd5acdd8753fbd06070ff879d492d1aa8f5a67db4964c2a049ef4869cd7">tools/recipe/drone_gui_visual_state.py</hb:Source>
+    <hb:Source sha256="1622ef1bffe8b9fffb2d2aac1478903902494c3018c0611b69b602588f737c46">docs/validation/drone-three-point-pdu-2026-10-30/launcher.json</hb:Source>
+    <hb:Source sha256="991db46e8a67389f4c9960d5acb7695c6ea4db802ae674054ec5ce10386f2b5f">docs/validation/drone-three-point-pdu-2026-10-30.md</hb:Source>
+    <hb:Verification>Registration, PDU movement and/or composition evidence is scoped to the cited local tests. Full declared interface coverage is not claimed.</hb:Verification>
+    <hb:Conformance>ISO Annex B exact tags, types, cardinalities and official XSD validation remain unverified. All XML elements use an explicitly local namespace.</hb:Conformance>
+  </hb:Evidence>
+</hb:Module>

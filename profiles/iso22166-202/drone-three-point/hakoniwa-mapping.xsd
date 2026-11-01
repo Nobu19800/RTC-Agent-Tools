@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:hb="urn:hakoniwa:iso22166-202:mapping:0.1"
+ targetNamespace="urn:hakoniwa:iso22166-202:mapping:0.1" elementFormDefault="qualified">
+ <xs:annotation><xs:documentation>Project-local mapping schema. NOT the ISO 22166-202 Annex B schema and NOT a conformity test.</xs:documentation></xs:annotation>
+ <xs:complexType name="Section"><xs:sequence><xs:any namespace="##targetNamespace" minOccurs="0" maxOccurs="unbounded" processContents="lax"/></xs:sequence></xs:complexType>
+ <xs:element name="GenInfo"><xs:complexType><xs:sequence>
+  <xs:element name="ModuleName" type="xs:string"/><xs:element name="Description" type="xs:string"/>
+  <xs:element name="Manufacturer" type="xs:string"/><xs:element name="Examples" type="xs:string"/>
+ </xs:sequence></xs:complexType></xs:element>
+ <xs:element name="IDnType"><xs:complexType><xs:sequence>
+  <xs:element name="ID" type="xs:anyURI"/><xs:element name="InformationModelVersion" type="xs:string"/>
+  <xs:element name="IdentifierPolicy" type="xs:string"/>
+ </xs:sequence></xs:complexType></xs:element>
+ <xs:element name="Property"><xs:complexType><xs:simpleContent><xs:extension base="xs:string"><xs:attribute name="name" type="xs:string" use="required"/></xs:extension></xs:simpleContent></xs:complexType></xs:element>
+ <xs:element name="ModuleProp"><xs:complexType><xs:sequence><xs:element ref="hb:Property" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
+ <xs:element name="Field"><xs:complexType><xs:simpleContent><xs:extension base="xs:string">
+  <xs:attribute name="name" type="xs:string" use="required"/><xs:attribute name="dataType" type="xs:string" use="required"/><xs:attribute name="unit" type="xs:string"/>
+ </xs:extension></xs:simpleContent></xs:complexType></xs:element>
+ <xs:element name="Variable"><xs:complexType><xs:sequence>
+  <xs:element name="Description" type="xs:string"/><xs:element ref="hb:Field" minOccurs="0" maxOccurs="unbounded"/>
+ </xs:sequence><xs:attribute name="id" type="xs:ID" use="required"/>
+ <xs:attribute name="direction" use="required"><xs:simpleType><xs:restriction base="xs:string"><xs:enumeration value="input"/><xs:enumeration value="output"/><xs:enumeration value="inout"/></xs:restriction></xs:simpleType></xs:attribute>
+ <xs:attribute name="dataType" type="xs:string" use="required"/><xs:attribute name="transport" type="xs:string"/>
+ <xs:attribute name="robot" type="xs:string"/><xs:attribute name="pduName" type="xs:string"/>
+ <xs:attribute name="channel" type="xs:nonNegativeInteger"/><xs:attribute name="capacityBytes" type="xs:positiveInteger"/>
+ </xs:complexType></xs:element>
+ <xs:element name="IOVariables"><xs:complexType><xs:sequence><xs:element ref="hb:Variable" maxOccurs="unbounded"/></xs:sequence></xs:complexType></xs:element>
+ <xs:element name="Status" type="hb:Section"/><xs:element name="Services" type="hb:Section"/>
+ <xs:element name="Infra" type="hb:Section"/><xs:element name="SafeSecure" type="hb:Section"/>
+ <xs:element name="Modelling" type="hb:Section"/><xs:element name="ExecutableForm" type="hb:Section"/>
+ <xs:element name="Evidence" type="hb:Section"/>
+ <xs:element name="CatalogReferences"><xs:complexType><xs:sequence>
+  <xs:element name="CatalogReference" maxOccurs="unbounded"><xs:complexType><xs:simpleContent><xs:extension base="xs:string">
+   <xs:attribute name="componentId" type="xs:string" use="required"/>
+   <xs:attribute name="path" type="xs:string" use="required"/>
+   <xs:attribute name="relationship" use="required"><xs:simpleType><xs:restriction base="xs:string">
+    <xs:enumeration value="implementation-profile"/><xs:enumeration value="controls"/><xs:enumeration value="recipe-local-adapter-for"/>
+   </xs:restriction></xs:simpleType></xs:attribute>
+  </xs:extension></xs:simpleContent></xs:complexType></xs:element>
+ </xs:sequence></xs:complexType></xs:element>
+ <xs:element name="Module"><xs:complexType><xs:sequence>
+  <xs:element ref="hb:GenInfo"/><xs:element ref="hb:IDnType"/><xs:element ref="hb:CatalogReferences"/><xs:element ref="hb:ModuleProp"/>
+  <xs:element ref="hb:IOVariables"/><xs:element ref="hb:Status"/><xs:element ref="hb:Services"/>
+  <xs:element ref="hb:Infra"/><xs:element ref="hb:SafeSecure"/><xs:element ref="hb:Modelling"/>
+  <xs:element ref="hb:ExecutableForm"/><xs:element ref="hb:Evidence"/>
+ </xs:sequence><xs:attribute name="targetStandard" type="xs:string" fixed="ISO 22166-202:2025" use="required"/>
+ <xs:attribute name="profileVersion" type="xs:string" fixed="0.1" use="required"/>
+ <xs:attribute name="conformanceStatus" type="xs:string" fixed="not-assessed" use="required"/>
+ </xs:complexType></xs:element>
+</xs:schema>

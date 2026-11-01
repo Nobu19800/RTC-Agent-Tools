@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='utf-8'?>
+<hb:Module xmlns:hb="urn:hakoniwa:iso22166-202:mapping:0.1" targetStandard="ISO 22166-202:2025" profileVersion="0.1" conformanceStatus="not-assessed">
+  <!-- Local mapping draft. NOT an ISO Annex B conformant/certified document; official XSD was not available. -->
+  <hb:GenInfo>
+    <hb:ModuleName>Hakoniwa Drone legacy API simulator</hb:ModuleName>
+    <hb:Description>Single simulated Drone using built-in physics and legacy PDU API; owns the built-in Conductor.</hb:Description>
+    <hb:Manufacturer>toppers/hakoniwa-drone-core; legal manufacturer not verified</hb:Manufacturer>
+    <hb:Examples>Validated Windows 11 + WSL2 three-point simulated Drone composition</hb:Examples>
+  </hb:GenInfo>
+  <hb:IDnType>
+    <hb:ID>urn:uuid:e44b31c4-d7bc-5e79-8e5c-f7460fed3692</hb:ID>
+    <hb:InformationModelVersion>local-mapping-0.1; ISO target edition 2025</hb:InformationModelVersion>
+    <hb:IdentifierPolicy>Locally generated UUID URN; not an ISO-assigned provider/module identifier</hb:IdentifierPolicy>
+  </hb:IDnType>
+  <hb:CatalogReferences>
+    <hb:CatalogReference componentId="hakoniwa-drone-core" path="catalog/components/hakoniwa-drone-core.yaml" relationship="implementation-profile">Tested built-in-physics legacy API execution profile; not the complete product interface.</hb:CatalogReference>
+  </hb:CatalogReferences>
+  <hb:ModuleProp>
+    <hb:Property name="serviceMode">api</hb:Property>
+    <hb:Property name="apiServiceMode">legacy-api</hb:Property>
+    <hb:Property name="physics">built-in Drone dynamics</hb:Property>
+    <hb:Property name="simulationStepUsec">1000</hb:Property>
+    <hb:Property name="realSleepMsec">1</hb:Property>
+  </hb:ModuleProp>
+  <hb:IOVariables>
+    <hb:Variable id="drone-move-input" direction="input" dataType="hako_msgs/HakoDroneCmdMove" robot="Drone" channel="7" capacityBytes="104" transport="Hakoniwa mmap PDU" pduName="drone_cmd_move">
+      <hb:Description>Request and response share one channel. Current Python converter emits 80 bytes; writes are zero-padded to channel capacity.</hb:Description>
+      <hb:Field name="header.request" dataType="boolean" unit="">Request flag</hb:Field>
+      <hb:Field name="header.result" dataType="boolean" unit="">Completion response flag</hb:Field>
+      <hb:Field name="header.result_code" dataType="int32" unit="">Completion code; 0 is accepted by this controller</hb:Field>
+      <hb:Field name="x" dataType="float64" unit="m">Absolute simulation ROS-frame X</hb:Field>
+      <hb:Field name="y" dataType="float64" unit="m">Absolute simulation ROS-frame Y</hb:Field>
+      <hb:Field name="z" dataType="float64" unit="m">Absolute simulation ROS-frame Z</hb:Field>
+      <hb:Field name="speed" dataType="float64" unit="m/s">Requested speed</hb:Field>
+      <hb:Field name="yaw_deg" dataType="float64" unit="deg">Target yaw</hb:Field>
+    </hb:Variable>
+    <hb:Variable id="drone-move-output" direction="output" dataType="hako_msgs/HakoDroneCmdMove" robot="Drone" channel="7" capacityBytes="104" transport="Hakoniwa mmap PDU" pduName="drone_cmd_move">
+      <hb:Description>Request and response share one channel. Current Python converter emits 80 bytes; writes are zero-padded to channel capacity.</hb:Description>
+      <hb:Field name="header.request" dataType="boolean" unit="">Request flag</hb:Field>
+      <hb:Field name="header.result" dataType="boolean" unit="">Completion response flag</hb:Field>
+      <hb:Field name="header.result_code" dataType="int32" unit="">Completion code; 0 is accepted by this controller</hb:Field>
+      <hb:Field name="x" dataType="float64" unit="m">Absolute simulation ROS-frame X</hb:Field>
+      <hb:Field name="y" dataType="float64" unit="m">Absolute simulation ROS-frame Y</hb:Field>
+      <hb:Field name="z" dataType="float64" unit="m">Absolute simulation ROS-frame Z</hb:Field>
+      <hb:Field name="speed" dataType="float64" unit="m/s">Requested speed</hb:Field>
+      <hb:Field name="yaw_deg" dataType="float64" unit="deg">Target yaw</hb:Field>
+    </hb:Variable>
+    <hb:Variable id="drone-pose-output" direction="output" dataType="geometry_msgs/Twist" robot="Drone" channel="1" capacityBytes="72" transport="Hakoniwa mmap PDU" pduName="pos">
+      <hb:Description />
+      <hb:Field name="linear.x/y/z" dataType="float64[3]" unit="m">Position; this Twist carries pose, not a velocity command</hb:Field>
+      <hb:Field name="angular.x/y/z" dataType="float64[3]" unit="rad">Euler attitude as forwarded by the publisher</hb:Field>
+    </hb:Variable>
+    <hb:Variable id="takeoff-request-response" direction="inout" dataType="hako_msgs/HakoDroneCmdTakeoff" robot="Drone" channel="6" capacityBytes="88" transport="Hakoniwa mmap PDU" pduName="drone_cmd_takeoff">
+      <hb:Description>Preparation client requests takeoff; completion response uses the same channel.</hb:Description>
+    </hb:Variable>
+    <hb:Variable id="land-request-response" direction="inout" dataType="hako_msgs/HakoDroneCmdLand" robot="Drone" channel="8" capacityBytes="88" transport="Hakoniwa mmap PDU" pduName="drone_cmd_land">
+      <hb:Description>Supported landing PDU; the live route does not automatically land.</hb:Description>
+    </hb:Variable>
+  </hb:IOVariables>
+  <hb:Status>
+    <hb:Description>Declared states/observations, not a live status snapshot or a newly implemented status service.</hb:Description>
+    <hb:State>WAIT START</hb:State>
+    <hb:State>WAIT RUNNING</hb:State>
+    <hb:State>Running</hb:State>
+  </hb:Status>
+  <hb:Services>
+    <hb:Service name="legacy-position-control" kind="pdu-request-response">Receive target coordinates and publish completion on channel 7.</hb:Service>
+    <hb:Service name="simulation-lifecycle" kind="Core lifecycle">Initialize, advance physics and respond to Core lifecycle; one built-in Conductor.</hb:Service>
+  </hb:Services>
+  <hb:Infra>
+    <hb:Requirement>Windows 11 host; Ubuntu 24.04 WSL2 x86_64 execution</hb:Requirement>
+    <hb:Requirement>Shared compatible Foundation Core / PDU definitions / isolated mmap domain</hb:Requirement>
+    <hb:Requirement>One Conductor owned by Drone service; do not start a second owner</hb:Requirement>
+    <hb:Requirement>Launcher before_start asset; hako-cmd start begins simulation time</hb:Requirement>
+  </hb:Infra>
+  <hb:SafeSecure>
+    <hb:Constraint>Simulation only; no real actuator or flight-controller connection.</hb:Constraint>
+    <hb:Constraint>Public Drone license and commercial entitlement are separate; no new rights granted.</hb:Constraint>
+    <hb:Constraint>Model fidelity and production suitability are not established.</hb:Constraint>
+  </hb:SafeSecure>
+  <hb:Modelling>
+    <hb:Description>Static integration datasheet for the tested profile; no safety certification, formal model or timing guarantee is claimed.</hb:Description>
+  </hb:Modelling>
+  <hb:ExecutableForm>
+    <hb:Command>${DRONE_ROOT}/lnx/linux-main_hako_drone_service</hb:Command>
+    <hb:Argument>config/drone/fleets/api-1.json</hb:Argument>
+    <hb:Argument>config/pdudef/drone-pdudef-1.json</hb:Argument>
+    <hb:Argument>--real-sleep-msec</hb:Argument>
+    <hb:Argument>1</hb:Argument>
+    <hb:WorkingDirectory>${RECIPE_ROOT}</hb:WorkingDirectory>
+    <hb:Environment name="HAKO_CONFIG_PATH">${RECIPE_ROOT}/config/cpp_core_config.json</hb:Environment>
+    <hb:Environment name="HAKO_PROFILE_SERVICE_CLIENT">0</hb:Environment>
+    <hb:Environment name="PYTHONUNBUFFERED">1</hb:Environment>
+    <hb:PathReference name="${RECIPE_ROOT}">Resolved recipe runtime root supplied by the deployment environment</hb:PathReference>
+    <hb:PathReference name="${FOUNDATION_ROOT}">Selected compatible Foundation root supplied by the deployment environment</hb:PathReference>
+    <hb:PathReference name="${DRONE_ROOT}">Compatible Drone distribution root supplied by the deployment environment</hb:PathReference>
+    <hb:PathReference name="${BUSINESS_PACK_ROOT}">Business Pack checkout root supplied by the deployment environment</hb:PathReference>
+  </hb:ExecutableForm>
+  <hb:Evidence>
+    <hb:Source sha256="86b1d19bb9dc0e528934bd1d07757b17048b7a8ad10073899e0dec8e2896a213">catalog/components/hakoniwa-drone-core.yaml</hb:Source>
+    <hb:Source sha256="1622ef1bffe8b9fffb2d2aac1478903902494c3018c0611b69b602588f737c46">docs/validation/drone-three-point-pdu-2026-10-30/launcher.json</hb:Source>
+    <hb:Source sha256="991db46e8a67389f4c9960d5acb7695c6ea4db802ae674054ec5ce10386f2b5f">docs/validation/drone-three-point-pdu-2026-10-30.md</hb:Source>
+    <hb:Verification>Registration, PDU movement and/or composition evidence is scoped to the cited local tests. Full declared interface coverage is not claimed.</hb:Verification>
+    <hb:Conformance>ISO Annex B exact tags, types, cardinalities and official XSD validation remain unverified. All XML elements use an explicitly local namespace.</hb:Conformance>
+  </hb:Evidence>
+</hb:Module>
