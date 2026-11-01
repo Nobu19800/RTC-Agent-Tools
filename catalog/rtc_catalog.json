@@ -635,6 +635,56 @@
       "rtcXmlUrl": "https://github.com/ogata-lab-admin/WacomTabletRTC/blob/62d520c6c40c56508799e4eaa19f1a9679114f81/RTC.xml"
     },
     {
+      "componentName": "DirectInput",
+      "description": "DirectInput Component",
+      "category": "Experimental",
+      "vendor": "ysuga_net",
+      "version": "1.1",
+      "language": "C++",
+      "dataPorts": [
+        {
+          "name": "lP",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedLongSeq"
+        },
+        {
+          "name": "lR",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedLongSeq"
+        },
+        {
+          "name": "rglSlider0",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedLong"
+        },
+        {
+          "name": "rglSlider1",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedLong"
+        },
+        {
+          "name": "POV0",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedLongSeq"
+        },
+        {
+          "name": "POV1",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedLongSeq"
+        },
+        {
+          "name": "rgbButtons",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedBooleanSeq"
+        }
+      ],
+      "servicePorts": [],
+      "repositoryUrl": "https://github.com/sugarsweetrobotics/DirectInputRTC",
+      "directoryUrl": "https://github.com/sugarsweetrobotics/DirectInputRTC",
+      "path": "RTC.xml",
+      "rtcXmlUrl": "https://github.com/sugarsweetrobotics/DirectInputRTC/blob/128574e831c4ae548106877efb76469be926ecba/RTC.xml"
+    },
+    {
       "componentName": "myCobot",
       "description": "myCobot Controller Component",
       "category": "Manipulator",
@@ -3640,47 +3690,6 @@
       "rtcXmlUrl": "https://github.com/ogata-lab-admin/SimulationManager/blob/ba364554ae148ebd9c4a920ddf3ee8d56ddb6d1e/RTC.xml"
     },
     {
-      "componentName": "SimplePathFollower",
-      "description": "Simple Algorithm Path Follower",
-      "category": "Navigation",
-      "vendor": "Sugar Sweet Robotics",
-      "version": "1.0.0",
-      "language": "C++",
-      "dataPorts": [
-        {
-          "name": "currentPose",
-          "portType": "DataInPort",
-          "dataType": "RTC::TimedPose2D"
-        },
-        {
-          "name": "path",
-          "portType": "DataInPort",
-          "dataType": "RTC::Path2D"
-        },
-        {
-          "name": "velocity",
-          "portType": "DataOutPort",
-          "dataType": "RTC::TimedVelocity2D"
-        }
-      ],
-      "servicePorts": [
-        {
-          "name": "PathFollower",
-          "interfaces": [
-            {
-              "name": "pathFollower",
-              "type": "RTC::PathFollower",
-              "direction": "Provider"
-            }
-          ]
-        }
-      ],
-      "repositoryUrl": "https://github.com/OpenRTM/RasPiMouse_with_MRPT",
-      "directoryUrl": "https://github.com/OpenRTM/RasPiMouse_with_MRPT/tree/master/src/rtcs/SimplePathFollower",
-      "path": "src/rtcs/SimplePathFollower/RTC.xml",
-      "rtcXmlUrl": "https://github.com/OpenRTM/RasPiMouse_with_MRPT/blob/0c463760839d03560f2e419f882796abc468168a/src/rtcs/SimplePathFollower/RTC.xml"
-    },
-    {
       "componentName": "PathPlanComp",
       "description": "wanna play Apex",
       "category": "Controller",
@@ -4000,6 +4009,47 @@
       "directoryUrl": "https://github.com/Nobu19800/openrtm_utils/tree/master/SettingRTSystem/SettingRTSystem/Components/test_ArmController",
       "path": "SettingRTSystem/SettingRTSystem/Components/test_ArmController/RTC.xml",
       "rtcXmlUrl": "https://github.com/Nobu19800/openrtm_utils/blob/1429152a5c571cf9c32b3b1b85329211ed357aa0/SettingRTSystem/SettingRTSystem/Components/test_ArmController/RTC.xml"
+    },
+    {
+      "componentName": "SimplePathFollower",
+      "description": "Simple Algorithm Path Follower",
+      "category": "Navigation",
+      "vendor": "Sugar Sweet Robotics",
+      "version": "1.0.0",
+      "language": "C++",
+      "dataPorts": [
+        {
+          "name": "currentPose",
+          "portType": "DataInPort",
+          "dataType": "RTC::TimedPose2D"
+        },
+        {
+          "name": "path",
+          "portType": "DataInPort",
+          "dataType": "RTC::Path2D"
+        },
+        {
+          "name": "velocity",
+          "portType": "DataOutPort",
+          "dataType": "RTC::TimedVelocity2D"
+        }
+      ],
+      "servicePorts": [
+        {
+          "name": "PathFollower",
+          "interfaces": [
+            {
+              "name": "pathFollower",
+              "type": "RTC::PathFollower",
+              "direction": "Provider"
+            }
+          ]
+        }
+      ],
+      "repositoryUrl": "https://github.com/OpenRTM/RasPiMouse_with_MRPT",
+      "directoryUrl": "https://github.com/OpenRTM/RasPiMouse_with_MRPT/tree/master/src/rtcs/SimplePathFollower",
+      "path": "src/rtcs/SimplePathFollower/RTC.xml",
+      "rtcXmlUrl": "https://github.com/OpenRTM/RasPiMouse_with_MRPT/blob/0c463760839d03560f2e419f882796abc468168a/src/rtcs/SimplePathFollower/RTC.xml"
     },
     {
       "componentName": "SendOctetSeq",
