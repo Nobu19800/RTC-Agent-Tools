@@ -60,6 +60,41 @@ Preserve available `origin`, `catalogId`, `repositoryUrl`, `directoryUrl`, `rtcX
 
 Use `implementation.summary` for responsibility, `requirements` for intended behavior, `constraints` for interface/runtime restrictions, and `notes` for unresolved assumptions.
 
+### Portable path references
+
+Use logical references for local paths in design JSON and companion design records. This includes `deployment.executable`, `workingDirectory`, paths inside `arguments` / `environment`, IDL and plugin locations, asset XML source locations, connection contracts and the four `implementation` strings. Do not copy the current checkout, user home, Windows drive, UNC share or WSL mount path into a reusable design simply because it was discovered during inspection.
+
+Use the following conventions where appropriate; add references when needed and document their meaning. These names are a design convention, not additional required fields in the Designer schema.
+
+| Reference | Meaning |
+| --- | --- |
+| `${WORKSPACE_ROOT}` | Root of the RTC-Agent-Tools workspace on the component's deployment host |
+| `${FOUNDATION_ROOT}` | Selected compatible Hakoniwa Foundation installation root |
+| `${DRONE_ROOT}` / `${VIEWER_ROOT}` | Selected Drone distribution / viewer checkout root |
+| `${BUSINESS_PACK_ROOT}` | Referenced Business Pack checkout root |
+| `${RECIPE_ROOT}` | This composition's prepared deployment/configuration directory |
+| `${PYTHON_EXECUTABLE}` | Selected Python executable on the target host |
+
+For example, a Python RTC's deployment metadata can express its paths as follows:
+
+```json
+{
+  "host": "WSL2-Ubuntu",
+  "executable": "${PYTHON_EXECUTABLE}",
+  "workingDirectory": "${WORKSPACE_ROOT}",
+  "arguments": "\"${WORKSPACE_ROOT}/build/generated/ExampleRTC/ExampleRTC.py\" -f \"${RECIPE_ROOT}/ExampleRTC.conf\"",
+  "environment": "HAKO_CONFIG_PATH=${RECIPE_ROOT}/config/cpp_core_config.json"
+}
+```
+
+This is design metadata, not a ready-to-run shell command. Do not assume that the Designer/server, rtc.conf loader, command interpreter or environment field performs variable expansion. Resolve path references through the deployment preparation procedure in [workspace.md](workspace.md), preserving arguments as data and applying the target tool's quoting rules.
+
+Record reference definitions and required target hosts with the design, using a companion record keyed by component ID when the Designer cannot retain them. Keep concrete bindings in local deployment settings such as an env/INI file, outside the portable session and source/connection companions. A reference may have different Windows and WSL bindings; never reuse one host's path on the other without a verified translation. Relative paths must identify their base (for example, an XML path relative to a named source repository at a recorded revision). Preserve source URLs, revisions, hashes and catalog identity independently of local checkout locations.
+
+Before upload or after design revision, inspect path-valued fields and embedded strings for machine-specific absolute paths, including drive-letter, UNC, `/home/`, `/Users/` and `/mnt/<drive>/` forms. Do not treat that short pattern list as exhaustive or blindly replace matching text: distinguish public URLs, semantic identifiers and evidence quotations from filesystem locations. Confirm all variable references have a documented meaning; missing local bindings may remain unresolved during design review but must block the affected execution. Retain a concrete design path only for an explicit user requirement or a verified external-format constraint, recording the reason, target host and limitation.
+
+Do not apply this portability rule retroactively to original logs, resolved deployment snapshots or historical evidence. Those records must preserve the actual paths and revision tested. Keep resolved runtime artifacts separate from the portable authoritative design, with provenance linking them to its revision/hash.
+
 ### Ports and connections
 
 Port IDs are unique within a component. DataPorts have `portType: "data"`, `direction: "in"` or `"out"`, and `dataType` with the exact qualified type name. Hakoniwa ports in the supplied sample also have integer `channelId` values:

@@ -158,6 +158,8 @@ Before uploading:
 10. Confirm every component has all four `implementation` string fields.
 11. Confirm both RTC and Hakoniwa provenance is preserved when available, including asset catalog IDs and XML hashes. Missing source classification is unresolved, not evidence that a module is generated. Confirm every mixed edge has a connection contract with `dataport.interface_type:hakoniwa` and an implemented or explicitly planned serializer. Keep format validation separate from implementation and runtime readiness.
 
+12. Apply the portable-path checks in [session-format.md](session-format.md): use named references or explicitly based relative paths instead of machine-specific local absolute paths, including paths embedded in arguments, environment and implementation notes. Document reference meanings and hosts; keep actual bindings in separate deployment settings. Record the reason for any permitted concrete-path exception. Unresolved deployment bindings do not by themselves invalidate a reviewable design, but must block affected execution.
+
 If validation fails, fix the JSON before uploading.
 
 ---

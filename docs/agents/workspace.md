@@ -36,6 +36,10 @@ For mixed designs, reconcile `work/connection-contracts.json` and any companion 
 
 Apply [environment and dependency checks](environment.md). Record the selected source/submodule revisions, native ABI/build configuration, executable paths and required non-code assets. Rebuilding from these records must not depend on another Recipe's incidental deployment directory. XML asset profiles are owned by this repository under `profiles/`; Business Pack evidence and executable implementations retain their separate provenance and roots.
 
+Keep the downloaded authoritative session portable according to [session-format.md](session-format.md). Define local values for its named path references in separate environment-specific deployment settings (env/INI or the target tool's supported configuration format). Record the target host and the design revision/hash used to generate resolved artifacts. Actual executable/source paths belong in these deployment or verification records, not back in the portable session or reusable design companions.
+
+Resolve only documented path references and path-bearing arguments, without shell `eval` or interpreting design text as code. Validate required bindings, host-specific syntax, executable/file availability and access on the intended host before generating rtc.conf or launch/connect commands. Fail the affected deployment clearly on undefined references; do not guess values from another machine or silently substitute the current working directory. Quote resolved arguments for the target tool/shell, including paths containing spaces. Keep source URLs, component identities and historical evidence unchanged. A resolved deployment snapshot may contain absolute paths but must remain a separate local artifact rather than overwrite `final-session.json`.
+
 Use:
 
 ```text

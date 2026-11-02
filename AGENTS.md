@@ -46,6 +46,14 @@ Keep transport deployment outside RTC source: load interface/serializer plugins 
 
 The user-provided mixed-system JSON is format reference data, not authorization to implement or activate its sample system. Existing helpers such as `scripts/prepare_final_session.py` and `scripts/generate_runtime_batches.py` still expect the legacy format and example-specific metadata. Do not use them on version 2 input without adapting and verifying them, and do not rewrite an authoritative version 2 design into the old format to bypass that limitation.
 
+## Portable paths in design information
+
+Keep design information independent of a particular machine. By default, do not put local absolute paths (Windows drive/UNC paths, user home directories, WSL mount paths, or installation directories) into proposed/final session JSON, connection contracts, provenance companions or implementation instructions. Use named references such as `${WORKSPACE_ROOT}`, `${FOUNDATION_ROOT}`, `${DRONE_ROOT}`, `${VIEWER_ROOT}`, `${BUSINESS_PACK_ROOT}`, `${RECIPE_ROOT}` or `${PYTHON_EXECUTABLE}`. Repository-relative paths are also suitable when their base repository/root is explicitly identified. Apply this rule to paths embedded in arguments, environment strings, lists and notes as well as dedicated path fields.
+
+Define each reference's meaning and target host; keep its actual local value in environment-specific deployment settings outside the portable design. Resolve and validate references when preparing deployment, then generate correctly quoted host-specific settings/commands without replacing references in the authoritative design. `${NAME}` is design notation, not a claim that RTSystemDesigner, the session server, rtc.conf or every shell expands it automatically. Missing bindings remain explicit and block the affected execution, not design review. Never invent local values or use shell evaluation to resolve design strings.
+
+Preserve public source URLs, component IDs and revisions as identities rather than replacing them with path variables. Actual paths in original logs and verification evidence remain valid historical facts; do not rewrite that evidence to make it portable. Include a concrete local path in reusable design information only when the user explicitly requires it or a verified external format makes it unavoidable; document the reason, host and portability limitation. Follow the detailed examples and validation rules in [Session format](docs/agents/session-format.md) and the deployment resolution procedure in [Approved design/workspace](docs/agents/workspace.md).
+
 ## Workflow gates
 
 1. For a new system, complete design phases 1-7, provide the Designer link, and wait for explicit design completion. Do not download sources, implement, or build before that gate.
