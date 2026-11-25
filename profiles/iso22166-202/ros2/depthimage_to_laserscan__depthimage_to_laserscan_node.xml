@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ros:Module xmlns:ros="urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1" targetStandard="ISO 22166-202:2025" profileVersion="0.1" conformanceStatus="not-assessed">
+  <ros:GenInfo>
+    <ros:ModuleName>depthimage_to_laserscan_node</ros:ModuleName>
+    <ros:Description>Converts a camera depth image into a planar laser scan.</ros:Description>
+  </ros:GenInfo>
+  <ros:IDnType>
+    <ros:ID>urn:uuid:58638a5d-6cad-57d3-a1f0-97df746a2f76</ros:ID>
+    <ros:InformationModelVersion>local-mapping-0.1</ros:InformationModelVersion>
+  </ros:IDnType>
+  <ros:ModuleProp>
+    <ros:Property name="rosPackage">depthimage_to_laserscan</ros:Property>
+    <ros:Property name="category">Scan conversion</ros:Property>
+  </ros:ModuleProp>
+  <ros:IOVariables>
+    <ros:Description>Uses a depth Image and CameraInfo and publishes scan as LaserScan.</ros:Description>
+    <ros:Variable direction="output" transport="ROS 2 topic" name="scan" />
+  </ros:IOVariables>
+  <ros:Services />
+  <ros:Infra>
+    <ros:Requirement kind="report-distribution-note">The executable was verified on the upstream ros2 branch. Jazzy binary availability was not checked.</ros:Requirement>
+  </ros:Infra>
+  <ros:ExecutableForm>
+    <ros:Command>ros2</ros:Command>
+    <ros:Argument>run</ros:Argument>
+    <ros:Argument>depthimage_to_laserscan</ros:Argument>
+    <ros:Argument>depthimage_to_laserscan_node</ros:Argument>
+  </ros:ExecutableForm>
+  <ros:Evidence>
+    <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="61">deep-research-report.md</ros:Report>
+    <ros:Source>https://github.com/ros-perception/depthimage_to_laserscan</ros:Source>
+    <ros:UpstreamSource status="other-ref-registration">https://github.com/ros-perception/depthimage_to_laserscan/blob/ros2/CMakeLists.txt</ros:UpstreamSource>
+    <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
+  </ros:Evidence>
+</ros:Module>

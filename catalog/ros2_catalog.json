@@ -1,0 +1,4559 @@
+{
+  "schemaVersion": "1.0",
+  "catalogKind": "ros2-nodes",
+  "nodes": [
+    {
+      "catalogId": "ros2:robot_state_publisher/robot_state_publisher",
+      "moduleId": "urn:uuid:601657db-fafd-515f-910f-4f08c18eacac",
+      "moduleKind": "ros2",
+      "package": "robot_state_publisher",
+      "executable": "robot_state_publisher",
+      "category": "Coordinate transforms",
+      "description": "Publishes the robot's link transforms from its URDF and joint states.",
+      "interfaceSummary": "Subscribes to joint_states and publishes dynamic and static TF. The robot_description parameter supplies the URDF, which is also published on robot_description.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "joint_states",
+          "dataType": "sensor_msgs/msg/JointState"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "robot_description",
+          "dataType": "std_msgs/msg/String"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "/tf",
+          "dataType": "tf2_msgs/msg/TFMessage"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "/tf_static",
+          "dataType": "tf2_msgs/msg/TFMessage"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists Jazzy support. Check URDF and timestamp handling for the selected configuration.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "robot_state_publisher",
+          "robot_state_publisher"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/robot_state_publisher__robot_state_publisher.xml",
+        "profileSha256": "f8b4cbbbc16420632b8ac05856bd11369ab3fffd32fe2d85689d293ba6722f54",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 1,
+        "urls": [
+          "https://github.com/ros/robot_state_publisher"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros/robot_state_publisher/blob/jazzy/CMakeLists.txt",
+          "status": "jazzy-registration"
+        },
+        "implementationUrl": "https://github.com/ros/robot_state_publisher/blob/jazzy/src/robot_state_publisher.cpp"
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:joint_state_publisher/joint_state_publisher",
+      "moduleId": "urn:uuid:0f77f7c6-dc89-5d08-a0e9-632bfc8e60dd",
+      "moduleKind": "ros2",
+      "package": "joint_state_publisher",
+      "executable": "joint_state_publisher",
+      "category": "State publishing",
+      "description": "Generates joint states for movable joints defined in a URDF.",
+      "interfaceSummary": "Publishes JointState messages. Avoid publishing synthetic states for joints already reported by hardware.",
+      "topics": [
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "/joint_states",
+          "dataType": "sensor_msgs/msg/JointState"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "joint_state_publisher",
+          "joint_state_publisher"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/joint_state_publisher__joint_state_publisher.xml",
+        "profileSha256": "ca033d164512fb1a6a7e853a5adfcca8df1f6beff30de13d977b19d5d2a0cc47",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 2,
+        "urls": [
+          "https://github.com/ros/joint_state_publisher"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros/joint_state_publisher/blob/ros2/joint_state_publisher/setup.py",
+          "status": "other-ref-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:joint_state_publisher_gui/joint_state_publisher_gui",
+      "moduleId": "urn:uuid:1b291e10-438d-5f79-a106-00e75201f3f6",
+      "moduleKind": "ros2",
+      "package": "joint_state_publisher_gui",
+      "executable": "joint_state_publisher_gui",
+      "category": "State publishing",
+      "description": "Uses GUI sliders to set joint positions for a URDF model.",
+      "interfaceSummary": "Publishes JointState messages. Requires a graphical environment.",
+      "topics": [
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "/joint_states",
+          "dataType": "sensor_msgs/msg/JointState"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "joint_state_publisher_gui",
+          "joint_state_publisher_gui"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/joint_state_publisher_gui__joint_state_publisher_gui.xml",
+        "profileSha256": "a95633f690dc33e4924e715a237da2a8b0a776f0984160a99048074f3a52b3ee",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 3,
+        "urls": [
+          "https://github.com/ros/joint_state_publisher"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros/joint_state_publisher/blob/ros2/joint_state_publisher_gui/setup.py",
+          "status": "other-ref-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:tf2_ros/static_transform_publisher",
+      "moduleId": "urn:uuid:b92e4a8a-effd-5260-b7b3-39d94effbcf3",
+      "moduleKind": "ros2",
+      "package": "tf2_ros",
+      "executable": "static_transform_publisher",
+      "category": "TF",
+      "description": "Publishes a fixed transform between two frames.",
+      "interfaceSummary": "Publishes TFMessage on /tf_static.",
+      "topics": [
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "/tf_static",
+          "dataType": "tf2_msgs/msg/TFMessage"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report cites Jazzy releases of geometry2.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "tf2_ros",
+          "static_transform_publisher"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/tf2_ros__static_transform_publisher.xml",
+        "profileSha256": "f759c1957917899e8ef6a91a1858afb42c5c97c17802dcf16d88169bf600a27d",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 4,
+        "urls": [
+          "https://github.com/ros2/geometry2"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros2/geometry2/blob/jazzy/tf2_ros/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:tf2_ros/buffer_server",
+      "moduleId": "urn:uuid:50a49d1b-b6e2-5fd5-bbc5-d86360e747b5",
+      "moduleKind": "ros2",
+      "package": "tf2_ros",
+      "executable": "buffer_server",
+      "category": "TF",
+      "description": "Serves transform lookups from a TF buffer.",
+      "interfaceSummary": "Subscribes to /tf and /tf_static and serves the lookup_transform action.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "/tf"
+        },
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "/tf_static"
+        }
+      ],
+      "servicesAndActions": [
+        {
+          "kind": "action",
+          "name": "lookup_transform",
+          "dataType": "tf2_msgs/action/LookupTransform"
+        }
+      ],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "tf2_ros",
+          "buffer_server"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/tf2_ros__buffer_server.xml",
+        "profileSha256": "69740ce9c8f743a418216345ef5db81c306f699394c383a0e0ebfcb4fdb6e12e",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 5,
+        "urls": [
+          "https://github.com/ros2/geometry2/blob/rolling/tf2_ros/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros2/geometry2/blob/jazzy/tf2_ros/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:robot_localization/ekf_node",
+      "moduleId": "urn:uuid:af464588-81d4-5f17-aa90-6ba1f7b79d5f",
+      "moduleKind": "ros2",
+      "package": "robot_localization",
+      "executable": "ekf_node",
+      "category": "State estimation",
+      "description": "Fuses configurable odometry and sensor measurements with an extended Kalman filter.",
+      "interfaceSummary": "Accepts configured odometry, IMU, pose, and twist inputs. Publishes filtered odometry and optionally TF.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "odomN",
+          "dataType": "nav_msgs/msg/Odometry"
+        },
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "imuN",
+          "dataType": "sensor_msgs/msg/Imu"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "/odometry/filtered",
+          "dataType": "nav_msgs/msg/Odometry"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report cites Jazzy releases after 2025.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "robot_localization",
+          "ekf_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/robot_localization__ekf_node.xml",
+        "profileSha256": "2cc1a112fadf185987543e97047d26c876591c0f82b51b5225a3e65aeb1ed540",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 6,
+        "urls": [
+          "https://github.com/cra-ros-pkg/robot_localization"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/cra-ros-pkg/robot_localization/blob/ros2/CMakeLists.txt",
+          "status": "other-ref-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:robot_localization/ukf_node",
+      "moduleId": "urn:uuid:3780cbcf-4e34-5cda-a2a5-5174307e0b6a",
+      "moduleKind": "ros2",
+      "package": "robot_localization",
+      "executable": "ukf_node",
+      "category": "State estimation",
+      "description": "Fuses configurable sensor measurements with an unscented Kalman filter.",
+      "interfaceSummary": "Accepts configured odometry, IMU, pose, and twist inputs. Publishes filtered odometry and optionally TF.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists Jazzy support. UKF has broadly similar parameters to EKF and a higher computational cost.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "robot_localization",
+          "ukf_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/robot_localization__ukf_node.xml",
+        "profileSha256": "1905df068262e19ac7e35adb7c0440c79d5e1728d22b2b35e48c04513f6c0535",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 7,
+        "urls": [
+          "https://github.com/cra-ros-pkg/robot_localization"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/cra-ros-pkg/robot_localization/blob/ros2/CMakeLists.txt",
+          "status": "other-ref-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:robot_localization/navsat_transform_node",
+      "moduleId": "urn:uuid:47bc09a8-ca74-5943-9f37-20072ec049a7",
+      "moduleKind": "ros2",
+      "package": "robot_localization",
+      "executable": "navsat_transform_node",
+      "category": "GNSS",
+      "description": "Converts GNSS fixes into odometry in the robot's world frame.",
+      "interfaceSummary": "Accepts GPS fixes, IMU orientation, and filtered odometry. Publishes GPS-derived odometry. Yaw reference and magnetic declination affect the result.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "gps/fix",
+          "dataType": "sensor_msgs/msg/NavSatFix"
+        },
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "imu",
+          "dataType": "sensor_msgs/msg/Imu"
+        },
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "odometry/filtered",
+          "dataType": "nav_msgs/msg/Odometry"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "odometry/gps",
+          "dataType": "nav_msgs/msg/Odometry"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "robot_localization",
+          "navsat_transform_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/robot_localization__navsat_transform_node.xml",
+        "profileSha256": "973fc9e90023ac3c874728c07df91c4a2649c37f1518a7cee2a1df104b5c9bb9",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 8,
+        "urls": [
+          "https://github.com/cra-ros-pkg/robot_localization/blob/rolling-devel/doc/navsat_transform_node.rst"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/cra-ros-pkg/robot_localization/blob/ros2/CMakeLists.txt",
+          "status": "other-ref-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:robot_localization/robot_localization_listener_node",
+      "moduleId": "urn:uuid:6e74364a-7e96-52ab-9543-cbaea083794c",
+      "moduleKind": "ros2",
+      "package": "robot_localization",
+      "executable": "robot_localization_listener_node",
+      "category": "State estimation",
+      "description": "Provides a time-indexed view of robot_localization filter state.",
+      "interfaceSummary": "Uses the robot_localization listener and TF. Consult the selected source version for exposed interfaces.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists Jazzy support. Check the API in the installed version.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "robot_localization",
+          "robot_localization_listener_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/robot_localization__robot_localization_listener_node.xml",
+        "profileSha256": "cdba0f5af2048d58d34a7f946e15e726e1d5c49baa54124a558fadd4f96d98cc",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 9,
+        "urls": [
+          "https://github.com/cra-ros-pkg/robot_localization/blob/rolling-devel/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/cra-ros-pkg/robot_localization/blob/ros2/CMakeLists.txt",
+          "status": "other-ref-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:controller_manager/ros2_control_node",
+      "moduleId": "urn:uuid:a14b4d23-7ed8-5726-81f9-2e707ad8c0be",
+      "moduleKind": "ros2",
+      "package": "controller_manager",
+      "executable": "ros2_control_node",
+      "category": "Control",
+      "description": "Runs the ros2_control controller manager and hardware interfaces.",
+      "interfaceSummary": "Exposes controller manager services. Hardware state and command interfaces come from the URDF and hardware plugins. Controllers supply their own ROS interfaces.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "Jazzy has upstream controller manager documentation. Controller APIs can differ by distribution.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "controller_manager",
+          "ros2_control_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/controller_manager__ros2_control_node.xml",
+        "profileSha256": "f1022937b470f8a18aeaea93f239e4efb05191a232762879e0f0a1cffba8b663",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 10,
+        "urls": [
+          "https://control.ros.org/jazzy/doc/ros2_control/controller_manager/doc/userdoc.html"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-controls/ros2_control/blob/jazzy/controller_manager/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:nav2_amcl/amcl",
+      "moduleId": "urn:uuid:5d78477d-8da4-5471-9edc-311d5a4316aa",
+      "moduleKind": "ros2",
+      "package": "nav2_amcl",
+      "executable": "amcl",
+      "category": "Nav2",
+      "description": "Estimates a robot pose on a known map using adaptive Monte Carlo localization.",
+      "interfaceSummary": "Subscribes to laser scans and an occupancy map. Publishes the estimated pose and can publish TF.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "/scan",
+          "dataType": "sensor_msgs/msg/LaserScan"
+        },
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "/map",
+          "dataType": "nav_msgs/msg/OccupancyGrid"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "/amcl_pose",
+          "dataType": "geometry_msgs/msg/PoseWithCovarianceStamped"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "nav2_amcl",
+          "amcl"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/nav2_amcl__amcl.xml",
+        "profileSha256": "5ac882557729b26525871fdde7adb208a886d114c65c4a857e527f4b6b4af703",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 11,
+        "urls": [
+          "https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_amcl"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_amcl/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:nav2_map_server/map_server",
+      "moduleId": "urn:uuid:10651482-24b5-56af-8fe3-d7fcf4a7f84d",
+      "moduleKind": "ros2",
+      "package": "nav2_map_server",
+      "executable": "map_server",
+      "category": "Nav2",
+      "description": "Loads and serves a two-dimensional occupancy map.",
+      "interfaceSummary": "Publishes the map and exposes the load_map service.",
+      "topics": [
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "/map",
+          "dataType": "nav_msgs/msg/OccupancyGrid"
+        }
+      ],
+      "servicesAndActions": [
+        {
+          "kind": "service",
+          "name": "load_map",
+          "dataType": "nav2_msgs/srv/LoadMap"
+        }
+      ],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "nav2_map_server",
+          "map_server"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/nav2_map_server__map_server.xml",
+        "profileSha256": "6193e78a0377388050965430e065667d5cdc99c104612f04fbc076feda616a0c",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 12,
+        "urls": [
+          "https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_map_server"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_map_server/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:nav2_map_server/map_saver_server",
+      "moduleId": "urn:uuid:b3459aaf-c03a-5558-8526-36c27b642815",
+      "moduleKind": "ros2",
+      "package": "nav2_map_server",
+      "executable": "map_saver_server",
+      "category": "Nav2",
+      "description": "Saves an occupancy map to image and metadata files.",
+      "interfaceSummary": "Exposes the save_map service and reads a selected occupancy-grid topic during saving.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "/map",
+          "dataType": "nav_msgs/msg/OccupancyGrid"
+        }
+      ],
+      "servicesAndActions": [
+        {
+          "kind": "service",
+          "name": "save_map",
+          "dataType": "nav2_msgs/srv/SaveMap"
+        }
+      ],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "nav2_map_server",
+          "map_saver_server"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/nav2_map_server__map_saver_server.xml",
+        "profileSha256": "96e8a4983a4192030d76b623bbe380f8ea2b8051b939028cc9d2b4d7f0b2c6ae",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 13,
+        "urls": [
+          "https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_map_server"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_map_server/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:nav2_map_server/costmap_filter_info_server",
+      "moduleId": "urn:uuid:b397d26e-4697-5ba5-a48d-4125327c711e",
+      "moduleKind": "ros2",
+      "package": "nav2_map_server",
+      "executable": "costmap_filter_info_server",
+      "category": "Nav2",
+      "description": "Publishes costmap filter metadata for keepout or speed filters.",
+      "interfaceSummary": "Publishes CostmapFilterInfo pointing to the associated mask topic.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists Jazzy support. Verify the filter configuration file format.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "nav2_map_server",
+          "costmap_filter_info_server"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/nav2_map_server__costmap_filter_info_server.xml",
+        "profileSha256": "464ae4bf96d282ec3e8228a20e648fd50bfac7585d0349583e65c5fdc0eda241",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 14,
+        "urls": [
+          "https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_map_server"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_map_server/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:nav2_planner/planner_server",
+      "moduleId": "urn:uuid:6b8a2234-db66-5899-82e4-7a8ec98903e1",
+      "moduleKind": "ros2",
+      "package": "nav2_planner",
+      "executable": "planner_server",
+      "category": "Nav2",
+      "description": "Computes global paths using configurable planner plugins.",
+      "interfaceSummary": "Serves compute_path_to_pose and compute_path_through_poses actions and publishes the planned path.",
+      "topics": [
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "/plan",
+          "dataType": "nav_msgs/msg/Path"
+        }
+      ],
+      "servicesAndActions": [
+        {
+          "kind": "action",
+          "name": "compute_path_to_pose"
+        },
+        {
+          "kind": "action",
+          "name": "compute_path_through_poses"
+        }
+      ],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "nav2_planner",
+          "planner_server"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/nav2_planner__planner_server.xml",
+        "profileSha256": "df23b315a089e2cfd2a411bdc3678b497a17ab7fc15a5865828a61c8e27be7f8",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 15,
+        "urls": [
+          "https://docs.nav2.org/jazzy/configuration_and_development/configuration_guide/core_servers/configuring_planner_server/"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_planner/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:nav2_controller/controller_server",
+      "moduleId": "urn:uuid:1abd19ca-7f07-5b2b-89ac-b1fa747bb08b",
+      "moduleKind": "ros2",
+      "package": "nav2_controller",
+      "executable": "controller_server",
+      "category": "Nav2",
+      "description": "Follows a global path using configurable local controller plugins.",
+      "interfaceSummary": "Serves follow_path and publishes velocity commands. Twist versus TwistStamped depends on the selected version and configuration.",
+      "topics": [
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "/cmd_vel"
+        }
+      ],
+      "servicesAndActions": [
+        {
+          "kind": "action",
+          "name": "follow_path",
+          "dataType": "nav2_msgs/action/FollowPath"
+        }
+      ],
+      "distributionNote": "The report lists Jazzy support. The velocity command type varies across distributions.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "nav2_controller",
+          "controller_server"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/nav2_controller__controller_server.xml",
+        "profileSha256": "a62081d88b3530525bab955a87309f3e6f3b9cc87ce5060d6b33f3e3f368dc40",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 16,
+        "urls": [
+          "https://docs.nav2.org/jazzy/configuration_and_development/configuration_guide/core_servers/controller_server/"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_controller/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:nav2_smoother/smoother_server",
+      "moduleId": "urn:uuid:8b7895c6-5e9f-55ad-8daf-1713d062c158",
+      "moduleKind": "ros2",
+      "package": "nav2_smoother",
+      "executable": "smoother_server",
+      "category": "Nav2",
+      "description": "Smooths global paths using configurable plugins.",
+      "interfaceSummary": "Accepts and returns a path via the smooth_path action.",
+      "topics": [],
+      "servicesAndActions": [
+        {
+          "kind": "action",
+          "name": "smooth_path",
+          "dataType": "nav2_msgs/action/SmoothPath"
+        }
+      ],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "nav2_smoother",
+          "smoother_server"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/nav2_smoother__smoother_server.xml",
+        "profileSha256": "3a9c0a6979955cb94c914791fc94ab0b3d41537ebc1344ba8fa5b55ddc679431",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 17,
+        "urls": [
+          "https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_smoother"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_smoother/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:nav2_behaviors/behavior_server",
+      "moduleId": "urn:uuid:d7dacbf8-d7ab-52fe-a249-fd89dc824075",
+      "moduleKind": "ros2",
+      "package": "nav2_behaviors",
+      "executable": "behavior_server",
+      "category": "Nav2",
+      "description": "Runs configured navigation behaviors such as spinning, backing up, and waiting.",
+      "interfaceSummary": "Exposes behavior-specific actions. Motion behaviors can publish velocity commands.",
+      "topics": [
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "/cmd_vel"
+        }
+      ],
+      "servicesAndActions": [
+        {
+          "kind": "action",
+          "name": "spin"
+        },
+        {
+          "kind": "action",
+          "name": "backup"
+        },
+        {
+          "kind": "action",
+          "name": "drive_on_heading"
+        },
+        {
+          "kind": "action",
+          "name": "wait"
+        }
+      ],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "nav2_behaviors",
+          "behavior_server"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/nav2_behaviors__behavior_server.xml",
+        "profileSha256": "b6fc057ed529e0d5ce61c69249b8d80d4020e743c7d08d0a4fbd0fd5f3a2808b",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 18,
+        "urls": [
+          "https://docs.nav2.org/jazzy/configuration_and_development/configuration_guide/core_servers/configuring_behavior_server/"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_behaviors/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:nav2_bt_navigator/bt_navigator",
+      "moduleId": "urn:uuid:f9bc8f05-63d5-534f-becf-db761b06536a",
+      "moduleKind": "ros2",
+      "package": "nav2_bt_navigator",
+      "executable": "bt_navigator",
+      "category": "Nav2",
+      "description": "Coordinates navigation with configurable behavior trees.",
+      "interfaceSummary": "Provides navigation actions such as navigate_to_pose and navigate_through_poses.",
+      "topics": [],
+      "servicesAndActions": [
+        {
+          "kind": "action",
+          "name": "navigate_to_pose"
+        },
+        {
+          "kind": "action",
+          "name": "navigate_through_poses"
+        }
+      ],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "nav2_bt_navigator",
+          "bt_navigator"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/nav2_bt_navigator__bt_navigator.xml",
+        "profileSha256": "811fd505b1810eaa662fe504b87f4f02f5faace61e80a92fbd7af1c1f116678a",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 19,
+        "urls": [
+          "https://docs.nav2.org/jazzy/getting_started/navigation_concepts/navigation_servers/"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_bt_navigator/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:nav2_waypoint_follower/waypoint_follower",
+      "moduleId": "urn:uuid:e4af9b5e-2a4e-5968-8ff8-26099346fa14",
+      "moduleKind": "ros2",
+      "package": "nav2_waypoint_follower",
+      "executable": "waypoint_follower",
+      "category": "Nav2",
+      "description": "Visits ordered waypoints and optionally runs a task at each waypoint.",
+      "interfaceSummary": "Serves the follow_waypoints action.",
+      "topics": [],
+      "servicesAndActions": [
+        {
+          "kind": "action",
+          "name": "follow_waypoints",
+          "dataType": "nav2_msgs/action/FollowWaypoints"
+        }
+      ],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "nav2_waypoint_follower",
+          "waypoint_follower"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/nav2_waypoint_follower__waypoint_follower.xml",
+        "profileSha256": "b9d6d07484bb768f78519d5959bcf6aad321fdc81b729d95592b01d84eea0fe6",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 20,
+        "urls": [
+          "https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_waypoint_follower"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_waypoint_follower/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:nav2_lifecycle_manager/lifecycle_manager",
+      "moduleId": "urn:uuid:4ba697e9-f8a7-54cf-9113-c2c3d4d8d457",
+      "moduleKind": "ros2",
+      "package": "nav2_lifecycle_manager",
+      "executable": "lifecycle_manager",
+      "category": "Nav2",
+      "description": "Manages ordered lifecycle transitions for a group of Nav2 nodes.",
+      "interfaceSummary": "Provides the manage_nodes service and calls the managed nodes' lifecycle services.",
+      "topics": [],
+      "servicesAndActions": [
+        {
+          "kind": "service",
+          "name": "manage_nodes",
+          "dataType": "nav2_msgs/srv/ManageLifecycleNodes"
+        }
+      ],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "nav2_lifecycle_manager",
+          "lifecycle_manager"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/nav2_lifecycle_manager__lifecycle_manager.xml",
+        "profileSha256": "f952104890eabbb4773abc8d4da8cca208d9db77b61040ec465d5430f4a552c8",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 21,
+        "urls": [
+          "https://docs.nav2.org/jazzy/configuration_and_development/configuration_guide/core_servers/configuring_lifecycle_manager/"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_lifecycle_manager/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:nav2_velocity_smoother/velocity_smoother",
+      "moduleId": "urn:uuid:c48b2c34-1bde-5ab4-9bc8-f2b77f104450",
+      "moduleKind": "ros2",
+      "package": "nav2_velocity_smoother",
+      "executable": "velocity_smoother",
+      "category": "Nav2",
+      "description": "Limits acceleration and deceleration of velocity commands.",
+      "interfaceSummary": "Reads cmd_vel and publishes cmd_vel_smoothed. Closed-loop operation uses odometry feedback.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "/cmd_vel"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "/cmd_vel_smoothed"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "nav2_velocity_smoother",
+          "velocity_smoother"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/nav2_velocity_smoother__velocity_smoother.xml",
+        "profileSha256": "3ea70964fa7241f78eda50b3487bc9ec245390106ab3e06ffb9466605d586e68",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 22,
+        "urls": [
+          "https://docs.nav2.org/jazzy/configuration_and_development/configuration_guide/core_servers/configuring_velocity_smoother/"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_velocity_smoother/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:nav2_collision_monitor/collision_monitor",
+      "moduleId": "urn:uuid:d7426a14-20f3-5746-9fd5-eed58589f061",
+      "moduleKind": "ros2",
+      "package": "nav2_collision_monitor",
+      "executable": "collision_monitor",
+      "category": "Nav2",
+      "description": "Applies stop or slowdown behavior based on sensor observations in configured zones.",
+      "interfaceSummary": "Reads velocity commands and configured scan, point-cloud, or range inputs and publishes the resulting velocity command.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "nav2_collision_monitor",
+          "collision_monitor"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/nav2_collision_monitor__collision_monitor.xml",
+        "profileSha256": "e2cdfaa29bb07d46f0cfc98d6de524caa240304cceae27915e89933b6199cf74",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 23,
+        "urls": [
+          "https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_collision_monitor"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_collision_monitor/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:nav2_collision_monitor/collision_detector",
+      "moduleId": "urn:uuid:a1775dbe-8a02-5e72-a73a-63725d8f981b",
+      "moduleKind": "ros2",
+      "package": "nav2_collision_monitor",
+      "executable": "collision_detector",
+      "category": "Nav2",
+      "description": "Reports whether sensor observations enter configured collision zones.",
+      "interfaceSummary": "Reads configured scans or point clouds and publishes collision detection state. It does not modify velocity commands.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "nav2_collision_monitor",
+          "collision_detector"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/nav2_collision_monitor__collision_detector.xml",
+        "profileSha256": "38557bfef978441bf564bcffe0ff67cdb7d372abbb1f3647b12257dc7e951185",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 24,
+        "urls": [
+          "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_collision_monitor/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_collision_monitor/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:nav2_route/route_server",
+      "moduleId": "urn:uuid:389c2e55-ac49-5e33-bb37-2807bc38363a",
+      "moduleKind": "ros2",
+      "package": "nav2_route",
+      "executable": "route_server",
+      "category": "Nav2",
+      "description": "Computes and tracks routes on a navigation graph.",
+      "interfaceSummary": "Exposes route actions and graph-related interfaces. Consult the selected Nav2 version for the installed API.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "nav2_route",
+          "route_server"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/nav2_route__route_server.xml",
+        "profileSha256": "588379f1d677148f29630fab0cfdb401b7ec6a44a91e43ee2aa14073b1005725",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 25,
+        "urls": [
+          "https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_route"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_route/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:opennav_docking/opennav_docking",
+      "moduleId": "urn:uuid:7930487f-2a08-58e3-b3af-4d8b6e1cce20",
+      "moduleKind": "ros2",
+      "package": "opennav_docking",
+      "executable": "opennav_docking",
+      "category": "Nav2",
+      "description": "Coordinates robot docking and undocking using dock plugins.",
+      "interfaceSummary": "Serves dock_robot and undock_robot. Uses transforms and plugin-specific detection and motion interfaces.",
+      "topics": [],
+      "servicesAndActions": [
+        {
+          "kind": "action",
+          "name": "dock_robot"
+        },
+        {
+          "kind": "action",
+          "name": "undock_robot"
+        }
+      ],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "opennav_docking",
+          "opennav_docking"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/opennav_docking__opennav_docking.xml",
+        "profileSha256": "8601873f41ed3c46aeeb9c664f58caeb707eea4f2ac4a1da380e1158c5610f30",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 26,
+        "urls": [
+          "https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_docking"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_docking/opennav_docking/CMakeLists.txt",
+          "status": "jazzy-registration"
+        },
+        "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_docking/opennav_docking/src/docking_server.cpp",
+        "reviewNote": "The Jazzy package and executable are both opennav_docking. The default ROS node name is docking_server."
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:moveit_ros_move_group/move_group",
+      "moduleId": "urn:uuid:2825e0a3-0c4e-502f-9ba8-54551be20fa9",
+      "moduleKind": "ros2",
+      "package": "moveit_ros_move_group",
+      "executable": "move_group",
+      "category": "MoveIt2",
+      "description": "Provides MoveIt planning, kinematics, planning-scene management, and trajectory execution.",
+      "interfaceSummary": "Uses joint states and TF, exposes planning and execution actions and kinematics services, and can call controller trajectory actions. Requires robot and planning configuration.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "/joint_states"
+        }
+      ],
+      "servicesAndActions": [
+        {
+          "kind": "action",
+          "name": "move_action"
+        },
+        {
+          "kind": "action",
+          "name": "execute_trajectory"
+        },
+        {
+          "kind": "service",
+          "name": "compute_ik"
+        },
+        {
+          "kind": "service",
+          "name": "compute_fk"
+        },
+        {
+          "kind": "service",
+          "name": "plan_kinematic_path"
+        }
+      ],
+      "distributionNote": "The report lists Jazzy support. Plugins and APIs can differ from the upstream main branch.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "moveit_ros_move_group",
+          "move_group"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/moveit_ros_move_group__move_group.xml",
+        "profileSha256": "09815c01ce4225ac3da2fbe5aff29ff9f40e42cccb8dd61daa52b3773261255e",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 27,
+        "urls": [
+          "https://moveit.picknik.ai/main/doc/concepts/move_group.html"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/moveit/moveit2/blob/jazzy/moveit_ros/move_group/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:moveit_servo/servo_node",
+      "moduleId": "urn:uuid:3c15260c-7f9e-537e-8358-b7ab3b7a443d",
+      "moduleKind": "ros2",
+      "package": "moveit_servo",
+      "executable": "servo_node",
+      "category": "MoveIt2",
+      "description": "Converts Cartesian or joint jog commands into robot joint commands.",
+      "interfaceSummary": "Accepts configured twist, pose, or joint-jog commands and joint-state feedback. Publishes configured joint trajectory or command output.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists Jazzy support. Check the installed Servo message and topic configuration.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "moveit_servo",
+          "servo_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/moveit_servo__servo_node.xml",
+        "profileSha256": "e00068150ee16538aa5840fd7200d52f09fac9d18c9e8bb88faf94ddccd1ea42",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 28,
+        "urls": [
+          "https://moveit.picknik.ai/main/doc/examples/realtime_servo/realtime_servo_tutorial.html"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/moveit/moveit2/blob/jazzy/moveit_ros/moveit_servo/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:slam_toolbox/async_slam_toolbox_node",
+      "moduleId": "urn:uuid:b0d9541f-6b1f-54df-ae96-df4579c704b9",
+      "moduleKind": "ros2",
+      "package": "slam_toolbox",
+      "executable": "async_slam_toolbox_node",
+      "category": "SLAM",
+      "description": "Builds a two-dimensional map with asynchronous laser-scan processing.",
+      "interfaceSummary": "Uses laser scans and TF, publishes an occupancy map and transforms, and provides pose-graph serialization interfaces.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "/scan"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "/map"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "slam_toolbox",
+          "async_slam_toolbox_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/slam_toolbox__async_slam_toolbox_node.xml",
+        "profileSha256": "3cc06608f533cec3e2c02b469b2dc91e174f10a278df0b5c3b47eba8e1082045",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 29,
+        "urls": [
+          "https://github.com/SteveMacenski/slam_toolbox"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/SteveMacenski/slam_toolbox/blob/jazzy/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:slam_toolbox/sync_slam_toolbox_node",
+      "moduleId": "urn:uuid:81bcbeb4-8562-53de-b89c-ea3349b6af0a",
+      "moduleKind": "ros2",
+      "package": "slam_toolbox",
+      "executable": "sync_slam_toolbox_node",
+      "category": "SLAM",
+      "description": "Builds a two-dimensional map with synchronous laser-scan processing.",
+      "interfaceSummary": "Uses laser scans and TF and produces map and transform output.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "slam_toolbox",
+          "sync_slam_toolbox_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/slam_toolbox__sync_slam_toolbox_node.xml",
+        "profileSha256": "618aaf6676b5e3c2f366cdaa6d132bf704d8e842db5e26ec0ddcfffa81630216",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 30,
+        "urls": [
+          "https://github.com/SteveMacenski/slam_toolbox/blob/ros2/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/SteveMacenski/slam_toolbox/blob/jazzy/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:slam_toolbox/localization_slam_toolbox_node",
+      "moduleId": "urn:uuid:d0783bc8-b888-579e-af34-42f1ba59661c",
+      "moduleKind": "ros2",
+      "package": "slam_toolbox",
+      "executable": "localization_slam_toolbox_node",
+      "category": "SLAM",
+      "description": "Localizes a robot using a previously saved SLAM pose graph.",
+      "interfaceSummary": "Uses laser scans, TF, and an initial pose. Produces localization pose or transforms.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "slam_toolbox",
+          "localization_slam_toolbox_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/slam_toolbox__localization_slam_toolbox_node.xml",
+        "profileSha256": "e248f780a9765832e36eaeb60342f0f5f69dfc87f4057725a8bc195f4c8040b4",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 31,
+        "urls": [
+          "https://github.com/SteveMacenski/slam_toolbox/blob/ros2/src/slam_toolbox_localization.cpp"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/SteveMacenski/slam_toolbox/blob/jazzy/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:slam_toolbox/lifelong_slam_toolbox_node",
+      "moduleId": "urn:uuid:9d2291c1-5667-5011-abe8-fe64c49d478a",
+      "moduleKind": "ros2",
+      "package": "slam_toolbox",
+      "executable": "lifelong_slam_toolbox_node",
+      "category": "SLAM",
+      "description": "Updates a pose graph during long-running mapping.",
+      "interfaceSummary": "Uses laser scans and TF and updates the occupancy map and pose graph.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "slam_toolbox",
+          "lifelong_slam_toolbox_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/slam_toolbox__lifelong_slam_toolbox_node.xml",
+        "profileSha256": "4284cb2d16ee3cb498c7a78b7e03ce2373edb154b3ea4ae8a7f0a984072db671",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 32,
+        "urls": [
+          "https://github.com/SteveMacenski/slam_toolbox/blob/ros2/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/SteveMacenski/slam_toolbox/blob/jazzy/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:slam_toolbox/map_and_localization_slam_toolbox_node",
+      "moduleId": "urn:uuid:4ae39f9f-5cd1-52da-b64f-870b2baa1855",
+      "moduleKind": "ros2",
+      "package": "slam_toolbox",
+      "executable": "map_and_localization_slam_toolbox_node",
+      "category": "SLAM",
+      "description": "Supports mapping and localization within the same SLAM Toolbox process.",
+      "interfaceSummary": "Uses laser scans and TF and produces map, pose, or transform output.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "slam_toolbox",
+          "map_and_localization_slam_toolbox_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/slam_toolbox__map_and_localization_slam_toolbox_node.xml",
+        "profileSha256": "53f29efd9d605ae4103ec6c8c2932415d1454b535caac09261d1048a6fc536f9",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 33,
+        "urls": [
+          "https://github.com/SteveMacenski/slam_toolbox/blob/ros2/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/SteveMacenski/slam_toolbox/blob/jazzy/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:slam_toolbox/decentralized_multirobot_slam_toolbox_node",
+      "moduleId": "urn:uuid:738cfa7d-fa21-53f7-888a-0fad41006e32",
+      "moduleKind": "ros2",
+      "package": "slam_toolbox",
+      "executable": "decentralized_multirobot_slam_toolbox_node",
+      "category": "SLAM",
+      "description": "Shares mapping observations across robots for decentralized SLAM.",
+      "interfaceSummary": "Uses per-robot scans and transforms and exchanges mapping information.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The executable was found on the upstream ros2 branch. Its registration was not found in the reviewed Jazzy CMake file.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "slam_toolbox",
+          "decentralized_multirobot_slam_toolbox_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/slam_toolbox__decentralized_multirobot_slam_toolbox_node.xml",
+        "profileSha256": "ad540c770d42f9669a67f2deb1fce3bd4957ad44236b1f2498ced2b477eed8fc",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 34,
+        "urls": [
+          "https://github.com/SteveMacenski/slam_toolbox/blob/ros2/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/SteveMacenski/slam_toolbox/blob/ros2/CMakeLists.txt",
+          "status": "other-ref-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:image_proc/rectify_node",
+      "moduleId": "urn:uuid:dbe5bbd1-86f1-59eb-930f-01c7d5cfdd1e",
+      "moduleKind": "ros2",
+      "package": "image_proc",
+      "executable": "rectify_node",
+      "category": "Image processing",
+      "description": "Corrects image distortion using camera calibration.",
+      "interfaceSummary": "Reads image and camera_info and publishes image_rect.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "image"
+        },
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "camera_info"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "image_rect"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists Jazzy support with configurable image_transport and QoS.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "image_proc",
+          "rectify_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/image_proc__rectify_node.xml",
+        "profileSha256": "d8ddcda599755c8d0ebbf672884889c10063792cd3f774ec4421ddaa5149b4aa",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 35,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/tree/rolling/image_proc"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:image_proc/debayer_node",
+      "moduleId": "urn:uuid:d9666941-73df-52c3-97c8-5ebb389c4b28",
+      "moduleKind": "ros2",
+      "package": "image_proc",
+      "executable": "debayer_node",
+      "category": "Image processing",
+      "description": "Converts a Bayer image into color and monochrome images.",
+      "interfaceSummary": "Reads image_raw and publishes image_color and image_mono.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "image_raw"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "image_color"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "image_mono"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "image_proc",
+          "debayer_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/image_proc__debayer_node.xml",
+        "profileSha256": "ee0c53f7a504e475f79a7e58d0b8c8c0ec2323a4206f2c187b71d224473e829b",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 36,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/tree/rolling/image_proc"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:image_proc/resize_node",
+      "moduleId": "urn:uuid:260f5965-c911-5dd2-ad04-467d5f77a97e",
+      "moduleKind": "ros2",
+      "package": "image_proc",
+      "executable": "resize_node",
+      "category": "Image processing",
+      "description": "Resizes images and updates the corresponding camera calibration.",
+      "interfaceSummary": "Accepts an image and CameraInfo and emits resized image and calibration data.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "image_proc",
+          "resize_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/image_proc__resize_node.xml",
+        "profileSha256": "4e93bd45600a45094eedf62ebce4b8c2cef92de53edd85dd758646d3008bbc9e",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 37,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/image_proc/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:image_proc/crop_decimate_node",
+      "moduleId": "urn:uuid:0ea71094-49d7-57d8-ac88-339d73f69085",
+      "moduleKind": "ros2",
+      "package": "image_proc",
+      "executable": "crop_decimate_node",
+      "category": "Image processing",
+      "description": "Crops and decimates images while adjusting camera calibration.",
+      "interfaceSummary": "Accepts an image and CameraInfo and publishes the cropped or decimated result.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "image_proc",
+          "crop_decimate_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/image_proc__crop_decimate_node.xml",
+        "profileSha256": "679de82395cd0ca9ce38a20c600d9c72dbff1708529214482ba5d0e5c388073e",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 38,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/image_proc/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:image_proc/crop_non_zero_node",
+      "moduleId": "urn:uuid:e3d42d2e-8674-5fa0-b67c-4df5b2c2b7ed",
+      "moduleKind": "ros2",
+      "package": "image_proc",
+      "executable": "crop_non_zero_node",
+      "category": "Image processing",
+      "description": "Crops an image to the region containing nonzero pixels.",
+      "interfaceSummary": "Accepts and emits images.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "image_proc",
+          "crop_non_zero_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/image_proc__crop_non_zero_node.xml",
+        "profileSha256": "e909b359629c1ce6cad94e4097833c83d7d06c9b88d5a73055eb0ac729559519",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 39,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/image_proc/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:image_proc/track_marker_node",
+      "moduleId": "urn:uuid:d28e89ed-653d-56f1-be66-1df5e348d897",
+      "moduleKind": "ros2",
+      "package": "image_proc",
+      "executable": "track_marker_node",
+      "category": "Image processing",
+      "description": "Processes a camera image to track a marker.",
+      "interfaceSummary": "Reads an Image input. See the selected source for the marker and image outputs.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "image",
+          "dataType": "sensor_msgs/msg/Image"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "image_proc",
+          "track_marker_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/image_proc__track_marker_node.xml",
+        "profileSha256": "a3b2796fab26ac342a92f10b39fbe193a69d531a6bf2504f8f5954671a35e027",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 40,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/image_proc/src/track_marker.cpp"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:depth_image_proc/convert_metric_node",
+      "moduleId": "urn:uuid:657a1f40-2d33-5645-bb1b-75b879502e23",
+      "moduleKind": "ros2",
+      "package": "depth_image_proc",
+      "executable": "convert_metric_node",
+      "category": "Depth imaging",
+      "description": "Converts depth-image units to meters.",
+      "interfaceSummary": "Accepts and emits depth images.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "depth_image_proc",
+          "convert_metric_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/depth_image_proc__convert_metric_node.xml",
+        "profileSha256": "052dd51f003090f97322f07325dcab4ff0cff270f3416ab2fb3c4ff339b42cfd",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 41,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/depth_image_proc/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:depth_image_proc/crop_foremost_node",
+      "moduleId": "urn:uuid:b5afea64-56e9-5c98-a896-7eb0eebfdfcd",
+      "moduleKind": "ros2",
+      "package": "depth_image_proc",
+      "executable": "crop_foremost_node",
+      "category": "Depth imaging",
+      "description": "Retains only depth samples near the closest observed surface.",
+      "interfaceSummary": "Accepts a depth image and publishes a filtered depth image.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "depth_image_proc",
+          "crop_foremost_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/depth_image_proc__crop_foremost_node.xml",
+        "profileSha256": "2532f0c748336dfcbcc6bfa0ffd215470ab976779ede8f3b3f402dd422c819a3",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 42,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/depth_image_proc/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:depth_image_proc/disparity_node",
+      "moduleId": "urn:uuid:6735829b-61f3-5a33-994c-41ec9d71c888",
+      "moduleKind": "ros2",
+      "package": "depth_image_proc",
+      "executable": "disparity_node",
+      "category": "Depth imaging",
+      "description": "Computes a disparity image from depth and camera calibration.",
+      "interfaceSummary": "Takes depth Image and CameraInfo and publishes a DisparityImage.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "depth_image_proc",
+          "disparity_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/depth_image_proc__disparity_node.xml",
+        "profileSha256": "cc622a85a0f9b959761c97895f4d3c6748a6e3113281338427746c2098b85528",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 43,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/depth_image_proc/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:depth_image_proc/point_cloud_xyz_node",
+      "moduleId": "urn:uuid:2b4ee32b-fd09-5b81-a61f-a526d9afd53f",
+      "moduleKind": "ros2",
+      "package": "depth_image_proc",
+      "executable": "point_cloud_xyz_node",
+      "category": "Depth point clouds",
+      "description": "Projects a rectified depth image into an XYZ point cloud.",
+      "interfaceSummary": "Takes depth Image and CameraInfo and publishes PointCloud2.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "depth_image_proc",
+          "point_cloud_xyz_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/depth_image_proc__point_cloud_xyz_node.xml",
+        "profileSha256": "754559e8dd1f86164b31e03b543b2830e6935a7e14b77b54aa6af48ecb83e0d5",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 44,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/depth_image_proc/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:depth_image_proc/point_cloud_xyzrgb_node",
+      "moduleId": "urn:uuid:c5f04c15-9e10-5c6b-ba33-9fd5824872ef",
+      "moduleKind": "ros2",
+      "package": "depth_image_proc",
+      "executable": "point_cloud_xyzrgb_node",
+      "category": "Depth point clouds",
+      "description": "Colors an XYZ point cloud using registered depth and RGB images.",
+      "interfaceSummary": "Takes depth and color images plus calibration and publishes PointCloud2.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "depth_image_proc",
+          "point_cloud_xyzrgb_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/depth_image_proc__point_cloud_xyzrgb_node.xml",
+        "profileSha256": "c2f87650b0b2b53b376630e219fa445014aceb96eabdb63b49057d62e714cdc0",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 45,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/depth_image_proc/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:depth_image_proc/point_cloud_xyzi_node",
+      "moduleId": "urn:uuid:73aeee85-167c-5ee0-bf76-c5749c7ee01b",
+      "moduleKind": "ros2",
+      "package": "depth_image_proc",
+      "executable": "point_cloud_xyzi_node",
+      "category": "Depth point clouds",
+      "description": "Adds intensity to an XYZ point cloud derived from depth.",
+      "interfaceSummary": "Takes depth and intensity images and publishes PointCloud2.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "depth_image_proc",
+          "point_cloud_xyzi_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/depth_image_proc__point_cloud_xyzi_node.xml",
+        "profileSha256": "486a129d33658754f464fa60406b8818d468d83f27d00320637f844b39fff830",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 46,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/depth_image_proc/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:depth_image_proc/point_cloud_xyz_radial_node",
+      "moduleId": "urn:uuid:49a5d6ff-4842-51e3-9abc-49a14c80677f",
+      "moduleKind": "ros2",
+      "package": "depth_image_proc",
+      "executable": "point_cloud_xyz_radial_node",
+      "category": "Depth point clouds",
+      "description": "Projects an unrectified radial depth image into an XYZ point cloud.",
+      "interfaceSummary": "Takes radial depth and CameraInfo and publishes PointCloud2.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists Jazzy support. Radial depth topic names can vary by release.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "depth_image_proc",
+          "point_cloud_xyz_radial_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/depth_image_proc__point_cloud_xyz_radial_node.xml",
+        "profileSha256": "c1cf4cabdd07daaf36a786da95542126af0d9d825b5af8d327ea0a563f5e6c74",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 47,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/depth_image_proc/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:depth_image_proc/point_cloud_xyzi_radial_node",
+      "moduleId": "urn:uuid:ae896459-3e47-529e-acdc-fe3c60cf4e26",
+      "moduleKind": "ros2",
+      "package": "depth_image_proc",
+      "executable": "point_cloud_xyzi_radial_node",
+      "category": "Depth point clouds",
+      "description": "Projects radial depth and intensity into an XYZI point cloud.",
+      "interfaceSummary": "Takes depth and intensity images plus calibration and publishes PointCloud2.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists Jazzy support. Check the radial point-cloud API in the installed version.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "depth_image_proc",
+          "point_cloud_xyzi_radial_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/depth_image_proc__point_cloud_xyzi_radial_node.xml",
+        "profileSha256": "66af75880d2542db807ac25b268bec0235d37e7603da46b0ae72ef2f730f1f74",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 48,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/depth_image_proc/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:depth_image_proc/point_cloud_xyzrgb_radial_node",
+      "moduleId": "urn:uuid:bdd0457e-49b7-5224-ae35-10e7254cca8f",
+      "moduleKind": "ros2",
+      "package": "depth_image_proc",
+      "executable": "point_cloud_xyzrgb_radial_node",
+      "category": "Depth point clouds",
+      "description": "Projects radial depth and RGB observations into an XYZRGB point cloud.",
+      "interfaceSummary": "Takes depth and color images plus calibration and publishes PointCloud2.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists Jazzy support. Check radial depth topic names in the installed version.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "depth_image_proc",
+          "point_cloud_xyzrgb_radial_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/depth_image_proc__point_cloud_xyzrgb_radial_node.xml",
+        "profileSha256": "b0ef2bdeed9aaa10c0cec835993caa63759b8a097d2c1b1c6542e1e241266a4a",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 49,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/depth_image_proc/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:depth_image_proc/register_node",
+      "moduleId": "urn:uuid:4be2fb44-0b97-53c6-b70b-b7a995a59b23",
+      "moduleKind": "ros2",
+      "package": "depth_image_proc",
+      "executable": "register_node",
+      "category": "Depth imaging",
+      "description": "Reprojects depth measurements into the frame of another camera.",
+      "interfaceSummary": "Uses depth, camera calibration, and TF and publishes registered depth.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "depth_image_proc",
+          "register_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/depth_image_proc__register_node.xml",
+        "profileSha256": "3d866c084fbe6054ecdf4566fe3b43bc72b69643986ff0abac789047fc66dde3",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 50,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/depth_image_proc/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:stereo_image_proc/disparity_node",
+      "moduleId": "urn:uuid:0bc5062c-4457-54a1-992d-cb6a447fcf69",
+      "moduleKind": "ros2",
+      "package": "stereo_image_proc",
+      "executable": "disparity_node",
+      "category": "Stereo",
+      "description": "Computes disparity from a rectified stereo image pair.",
+      "interfaceSummary": "Takes left and right images and CameraInfo and publishes DisparityImage.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists Jazzy support and notes QoS overrides.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "stereo_image_proc",
+          "disparity_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/stereo_image_proc__disparity_node.xml",
+        "profileSha256": "ba5face52019f08dd8898932ebc5081a5dd9bc113a15270b3b1a1e38169e9f49",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 51,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/stereo_image_proc/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/stereo_image_proc/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:stereo_image_proc/point_cloud_node",
+      "moduleId": "urn:uuid:33843b64-b8e0-593b-8382-341c87215803",
+      "moduleKind": "ros2",
+      "package": "stereo_image_proc",
+      "executable": "point_cloud_node",
+      "category": "Stereo",
+      "description": "Reconstructs a point cloud from stereo disparity and calibration.",
+      "interfaceSummary": "Uses stereo image, calibration, and disparity data and publishes PointCloud2.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "stereo_image_proc",
+          "point_cloud_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/stereo_image_proc__point_cloud_node.xml",
+        "profileSha256": "3508c1c10281c3c1de7cf18f641243ae6b8cadd92da29cc2be4bf29fd9138a10",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 52,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/stereo_image_proc/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/stereo_image_proc/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:image_view/disparity_view",
+      "moduleId": "urn:uuid:7c7d7f7e-4afa-5282-b94f-bd23b0c12d0d",
+      "moduleKind": "ros2",
+      "package": "image_view",
+      "executable": "disparity_view",
+      "category": "Visualization",
+      "description": "Displays a stereo disparity image.",
+      "interfaceSummary": "Subscribes to DisparityImage.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists Jazzy support. Display requires GUI and OpenCV dependencies.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "image_view",
+          "disparity_view"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/image_view__disparity_view.xml",
+        "profileSha256": "6d60ad6b02fe0195d67a47a4ced6546a6aa29cc4399f82b5cc8b51c553828da2",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 53,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/image_view/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:image_view/image_view",
+      "moduleId": "urn:uuid:08603017-7071-5ea6-86b1-02604e668770",
+      "moduleKind": "ros2",
+      "package": "image_view",
+      "executable": "image_view",
+      "category": "Visualization",
+      "description": "Displays a ROS image stream.",
+      "interfaceSummary": "Subscribes to Image.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "image_view",
+          "image_view"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/image_view__image_view.xml",
+        "profileSha256": "0cd89fb411010f98710d1dec50aefc9187cee69644e381a54211e8cfc5e3b304",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 54,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/image_view/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:image_view/stereo_view",
+      "moduleId": "urn:uuid:67635142-3476-52da-9eda-5312a433b00e",
+      "moduleKind": "ros2",
+      "package": "image_view",
+      "executable": "stereo_view",
+      "category": "Visualization",
+      "description": "Displays stereo image streams.",
+      "interfaceSummary": "Subscribes to stereo images. See the selected source for synchronization and additional inputs.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "image_view",
+          "stereo_view"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/image_view__stereo_view.xml",
+        "profileSha256": "2407fd3f78a874002992a3b551896bbc32923ce0382483d24bd5e0289679c7ad",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 55,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/image_view/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:image_view/extract_images",
+      "moduleId": "urn:uuid:2a78e92e-9250-5acd-b8d7-11504e1a291c",
+      "moduleKind": "ros2",
+      "package": "image_view",
+      "executable": "extract_images",
+      "category": "Image capture",
+      "description": "Writes images from a ROS image stream to files.",
+      "interfaceSummary": "Subscribes to Image and produces image files.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "image_view",
+          "extract_images"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/image_view__extract_images.xml",
+        "profileSha256": "ade27cfcd0f493124b58d06207328e5494e61ed17fb1dca06c714cf972896ac3",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 56,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/image_view/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:image_view/image_saver",
+      "moduleId": "urn:uuid:fb049ab5-450d-5339-94b0-4f249904174f",
+      "moduleKind": "ros2",
+      "package": "image_view",
+      "executable": "image_saver",
+      "category": "Image capture",
+      "description": "Saves incoming images to disk under configured save conditions.",
+      "interfaceSummary": "Subscribes to Image and writes image files. Trigger behavior depends on configuration.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "image_view",
+          "image_saver"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/image_view__image_saver.xml",
+        "profileSha256": "ecbe49c2e7ff09b5db31b11352e18ad2f09ce6bbed7dd13ab134d11578f69767",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 57,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/image_view/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:image_view/video_recorder",
+      "moduleId": "urn:uuid:06106efe-0ae4-53c6-ace7-c2684a514232",
+      "moduleKind": "ros2",
+      "package": "image_view",
+      "executable": "video_recorder",
+      "category": "Video recording",
+      "description": "Encodes a ROS image stream into a video file.",
+      "interfaceSummary": "Subscribes to Image and writes a video file.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "image_view",
+          "video_recorder"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/image_view__video_recorder.xml",
+        "profileSha256": "c44c6fbe91c687d6ec99df75e9d3fa9bedcb4c030ff1e16395a762c9a443fe90",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 58,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/blob/rolling/image_view/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:pointcloud_to_laserscan/pointcloud_to_laserscan_node",
+      "moduleId": "urn:uuid:e0e7c86f-8667-5d90-bb6c-cae4cae06949",
+      "moduleKind": "ros2",
+      "package": "pointcloud_to_laserscan",
+      "executable": "pointcloud_to_laserscan_node",
+      "category": "Scan conversion",
+      "description": "Projects a 3D point cloud onto a planar laser scan.",
+      "interfaceSummary": "Subscribes to cloud_in as PointCloud2 and publishes scan as LaserScan.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "cloud_in",
+          "dataType": "sensor_msgs/msg/PointCloud2"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "scan",
+          "dataType": "sensor_msgs/msg/LaserScan"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The executable was verified on the Humble branch. Jazzy binary availability was not checked.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "pointcloud_to_laserscan",
+          "pointcloud_to_laserscan_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/pointcloud_to_laserscan__pointcloud_to_laserscan_node.xml",
+        "profileSha256": "93906e3d287bb5fc3b2098565c2173b3228743e516cd3cc45a25a6fdc5237b34",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 59,
+        "urls": [
+          "https://github.com/ros-perception/pointcloud_to_laserscan"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/pointcloud_to_laserscan/blob/humble/CMakeLists.txt",
+          "status": "other-ref-registration"
+        },
+        "implementationUrl": "https://github.com/ros-perception/pointcloud_to_laserscan/blob/humble/src/pointcloud_to_laserscan_node.cpp"
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:pointcloud_to_laserscan/laserscan_to_pointcloud_node",
+      "moduleId": "urn:uuid:22fac438-cbe0-5535-97a5-3b011fd0eb0f",
+      "moduleKind": "ros2",
+      "package": "pointcloud_to_laserscan",
+      "executable": "laserscan_to_pointcloud_node",
+      "category": "Scan conversion",
+      "description": "Projects a planar laser scan into a point cloud.",
+      "interfaceSummary": "Subscribes to scan_in as LaserScan and publishes cloud as PointCloud2. Can use TF.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "scan_in",
+          "dataType": "sensor_msgs/msg/LaserScan"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "cloud",
+          "dataType": "sensor_msgs/msg/PointCloud2"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The executable was verified on the Humble branch. Jazzy binary availability was not checked.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "pointcloud_to_laserscan",
+          "laserscan_to_pointcloud_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/pointcloud_to_laserscan__laserscan_to_pointcloud_node.xml",
+        "profileSha256": "72aeb3b1c4c691e485d1a1091fa2125cd3cfde69ec97a2e7fa81d76d8ba78d09",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 60,
+        "urls": [
+          "https://github.com/ros-perception/pointcloud_to_laserscan"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/pointcloud_to_laserscan/blob/humble/CMakeLists.txt",
+          "status": "other-ref-registration"
+        },
+        "implementationUrl": "https://github.com/ros-perception/pointcloud_to_laserscan/blob/humble/src/laserscan_to_pointcloud_node.cpp"
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:depthimage_to_laserscan/depthimage_to_laserscan_node",
+      "moduleId": "urn:uuid:58638a5d-6cad-57d3-a1f0-97df746a2f76",
+      "moduleKind": "ros2",
+      "package": "depthimage_to_laserscan",
+      "executable": "depthimage_to_laserscan_node",
+      "category": "Scan conversion",
+      "description": "Converts a camera depth image into a planar laser scan.",
+      "interfaceSummary": "Uses a depth Image and CameraInfo and publishes scan as LaserScan.",
+      "topics": [
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "scan"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The executable was verified on the upstream ros2 branch. Jazzy binary availability was not checked.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "depthimage_to_laserscan",
+          "depthimage_to_laserscan_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/depthimage_to_laserscan__depthimage_to_laserscan_node.xml",
+        "profileSha256": "b5f0529b7b42de32cd25968f531b4d5d7d4fe961eb6d4bf180ef19ffdb0e2293",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 61,
+        "urls": [
+          "https://github.com/ros-perception/depthimage_to_laserscan"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/depthimage_to_laserscan/blob/ros2/CMakeLists.txt",
+          "status": "other-ref-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:pcl_ros/filter_extract_indices_node",
+      "moduleId": "urn:uuid:e8de4a34-6a91-5ee5-92bc-21f852187aa0",
+      "moduleKind": "ros2",
+      "package": "pcl_ros",
+      "executable": "filter_extract_indices_node",
+      "category": "Point-cloud processing",
+      "description": "Selects or removes points using point indices.",
+      "interfaceSummary": "Reads PointCloud2 and point indices and emits PointCloud2.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "pcl_ros",
+          "filter_extract_indices_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/pcl_ros__filter_extract_indices_node.xml",
+        "profileSha256": "b178f8f9cf081b417ec4d07ec836288eeb9a79080a5529773262482037ffe00e",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 62,
+        "urls": [
+          "https://github.com/ros-perception/perception_pcl/blob/ros2/pcl_ros/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:pcl_ros/filter_passthrough_node",
+      "moduleId": "urn:uuid:58321d41-e9a9-589d-80bd-21cf158abeb0",
+      "moduleKind": "ros2",
+      "package": "pcl_ros",
+      "executable": "filter_passthrough_node",
+      "category": "Point-cloud processing",
+      "description": "Filters point-cloud values using limits on a selected field.",
+      "interfaceSummary": "Reads PointCloud2 and emits filtered PointCloud2.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "pcl_ros",
+          "filter_passthrough_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/pcl_ros__filter_passthrough_node.xml",
+        "profileSha256": "2fb21b006164ede9fb0c5768a92d782d5ca839c76b757df5b7faee606ca471bc",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 63,
+        "urls": [
+          "https://github.com/ros-perception/perception_pcl/blob/ros2/pcl_ros/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:pcl_ros/filter_project_inliers_node",
+      "moduleId": "urn:uuid:0e53df62-babd-5e14-8446-d75b15133c6f",
+      "moduleKind": "ros2",
+      "package": "pcl_ros",
+      "executable": "filter_project_inliers_node",
+      "category": "Point-cloud processing",
+      "description": "Projects points onto a model such as a plane.",
+      "interfaceSummary": "Reads a point cloud and model information and emits projected PointCloud2.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "pcl_ros",
+          "filter_project_inliers_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/pcl_ros__filter_project_inliers_node.xml",
+        "profileSha256": "da4d5933a17a21c032e15e4b10ed9d2fb7def724e92f41ae3c92f391297cac38",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 64,
+        "urls": [
+          "https://github.com/ros-perception/perception_pcl/blob/ros2/pcl_ros/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:pcl_ros/filter_radius_outlier_removal_node",
+      "moduleId": "urn:uuid:c6d063e4-c44b-597d-a05d-dd97b11ffdb5",
+      "moduleKind": "ros2",
+      "package": "pcl_ros",
+      "executable": "filter_radius_outlier_removal_node",
+      "category": "Point-cloud processing",
+      "description": "Removes points that have too few neighbors within a radius.",
+      "interfaceSummary": "Reads PointCloud2 and emits filtered PointCloud2.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "pcl_ros",
+          "filter_radius_outlier_removal_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/pcl_ros__filter_radius_outlier_removal_node.xml",
+        "profileSha256": "38c4e29e96dcbf56782095ead22e48f93a89edfa89224508508433df128a7e52",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 65,
+        "urls": [
+          "https://github.com/ros-perception/perception_pcl/blob/ros2/pcl_ros/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:pcl_ros/filter_statistical_outlier_removal_node",
+      "moduleId": "urn:uuid:4594c879-0874-5d83-ac63-88d098cfd21d",
+      "moduleKind": "ros2",
+      "package": "pcl_ros",
+      "executable": "filter_statistical_outlier_removal_node",
+      "category": "Point-cloud processing",
+      "description": "Removes point-cloud outliers using neighbor-distance statistics.",
+      "interfaceSummary": "Reads PointCloud2 and emits filtered PointCloud2.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "pcl_ros",
+          "filter_statistical_outlier_removal_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/pcl_ros__filter_statistical_outlier_removal_node.xml",
+        "profileSha256": "9a558db567f108ec843ebf1d4264e26e137491a4bed8bfa3a6b94539159073d0",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 66,
+        "urls": [
+          "https://github.com/ros-perception/perception_pcl/blob/ros2/pcl_ros/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:pcl_ros/filter_crop_box_node",
+      "moduleId": "urn:uuid:5f3089d0-df44-5bd1-ac57-c2749b779fd2",
+      "moduleKind": "ros2",
+      "package": "pcl_ros",
+      "executable": "filter_crop_box_node",
+      "category": "Point-cloud processing",
+      "description": "Keeps or removes points within a configured three-dimensional box.",
+      "interfaceSummary": "Reads PointCloud2 and emits filtered PointCloud2.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "pcl_ros",
+          "filter_crop_box_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/pcl_ros__filter_crop_box_node.xml",
+        "profileSha256": "a34e907ba458548988bad25fec28579942ca704c5e5885db2e3234ceeb90b056",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 67,
+        "urls": [
+          "https://github.com/ros-perception/perception_pcl/blob/ros2/pcl_ros/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:pcl_ros/filter_voxel_grid_node",
+      "moduleId": "urn:uuid:92e70fc3-3beb-52cb-bce4-560e02068030",
+      "moduleKind": "ros2",
+      "package": "pcl_ros",
+      "executable": "filter_voxel_grid_node",
+      "category": "Point-cloud processing",
+      "description": "Reduces point-cloud density with a voxel grid.",
+      "interfaceSummary": "Reads PointCloud2 and emits downsampled PointCloud2.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "pcl_ros",
+          "filter_voxel_grid_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/pcl_ros__filter_voxel_grid_node.xml",
+        "profileSha256": "9d1826c58193433760d4c2c094af26d038e2835ea8917422967fd38730c80768",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 68,
+        "urls": [
+          "https://github.com/ros-perception/perception_pcl/blob/ros2/pcl_ros/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:pcl_ros/pcd_to_pointcloud",
+      "moduleId": "urn:uuid:be4d9a25-88b7-54af-9e5b-2a6cddd3986a",
+      "moduleKind": "ros2",
+      "package": "pcl_ros",
+      "executable": "pcd_to_pointcloud",
+      "category": "Point-cloud I/O",
+      "description": "Publishes a PCD file as a ROS point cloud.",
+      "interfaceSummary": "Reads a PCD file and publishes PointCloud2.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "pcl_ros",
+          "pcd_to_pointcloud"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/pcl_ros__pcd_to_pointcloud.xml",
+        "profileSha256": "64efb815b5ecaef6b151e97724842a436cd69799d8de9e7f1daea863eb0b217d",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 69,
+        "urls": [
+          "https://github.com/ros-perception/perception_pcl/blob/ros2/pcl_ros/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:pcl_ros/pointcloud_to_pcd",
+      "moduleId": "urn:uuid:a876dc48-22ad-54c7-be93-477f31bbcff9",
+      "moduleKind": "ros2",
+      "package": "pcl_ros",
+      "executable": "pointcloud_to_pcd",
+      "category": "Point-cloud I/O",
+      "description": "Saves received point clouds to PCD files.",
+      "interfaceSummary": "Subscribes to PointCloud2 and writes PCD files.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "pcl_ros",
+          "pointcloud_to_pcd"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/pcl_ros__pointcloud_to_pcd.xml",
+        "profileSha256": "a7fec3cec8e274330c519b951771878a234c99ab287e1eb9ce18d86d6803baf5",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 70,
+        "urls": [
+          "https://github.com/ros-perception/perception_pcl/blob/ros2/pcl_ros/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:pcl_ros/combined_pointcloud_to_pcd",
+      "moduleId": "urn:uuid:f2c6133f-78f8-5fc8-83c7-398acff1d29e",
+      "moduleKind": "ros2",
+      "package": "pcl_ros",
+      "executable": "combined_pointcloud_to_pcd",
+      "category": "Point-cloud I/O",
+      "description": "Accumulates point clouds and writes a combined PCD file.",
+      "interfaceSummary": "Reads point-cloud data and writes a PCD file.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "pcl_ros",
+          "combined_pointcloud_to_pcd"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/pcl_ros__combined_pointcloud_to_pcd.xml",
+        "profileSha256": "63a256dfc2a36f612ae71ba94828740a64ac893a510aac829dd28f574f56c3d7",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 71,
+        "urls": [
+          "https://github.com/ros-perception/perception_pcl/blob/ros2/pcl_ros/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:pcl_ros/bag_to_pcd",
+      "moduleId": "urn:uuid:cc4bf18d-a920-5c8e-b8a8-b8cdc8397f86",
+      "moduleKind": "ros2",
+      "package": "pcl_ros",
+      "executable": "bag_to_pcd",
+      "category": "Point-cloud I/O",
+      "description": "Extracts point clouds from a recorded bag into PCD files.",
+      "interfaceSummary": "Reads bag storage containing PointCloud2 and writes PCD files.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "Registered on the upstream ros2 branch. The Jazzy CMake file does not enable this executable.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "pcl_ros",
+          "bag_to_pcd"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/pcl_ros__bag_to_pcd.xml",
+        "profileSha256": "00cad10fda5c6ac1332b399b9ba3d2135c7aff1962ca1016e8f5ad3f3db777bf",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 72,
+        "urls": [
+          "https://github.com/ros-perception/perception_pcl/blob/ros2/pcl_ros/CMakeLists.txt"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/perception_pcl/blob/ros2/pcl_ros/CMakeLists.txt",
+          "status": "other-ref-registration"
+        },
+        "reviewNote": "The Jazzy build file leaves this executable disabled: https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt"
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:topic_tools/relay",
+      "moduleId": "urn:uuid:ba5da65f-b579-5121-8d64-60b7d0076785",
+      "moduleKind": "ros2",
+      "package": "topic_tools",
+      "executable": "relay",
+      "category": "Topic utility",
+      "description": "Republishes messages from one topic to another without a fixed message type.",
+      "interfaceSummary": "Bridges a configurable input and output topic of the same type.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "topic_tools",
+          "relay"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/topic_tools__relay.xml",
+        "profileSha256": "1a6f3e4d70b8b6b40e79a4b4433d95f200e552fad3caa98f489a4dac2c082c29",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 73,
+        "urls": [
+          "https://github.com/ros-tooling/topic_tools"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:topic_tools/relay_field",
+      "moduleId": "urn:uuid:dda08580-5eed-55a5-9e0b-c4602e615dfa",
+      "moduleKind": "ros2",
+      "package": "topic_tools",
+      "executable": "relay_field",
+      "category": "Topic utility",
+      "description": "Republishes a selected field from messages on an input topic.",
+      "interfaceSummary": "Reads a field of a configured message and publishes the result.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "topic_tools",
+          "relay_field"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/topic_tools__relay_field.xml",
+        "profileSha256": "23b431f3f90475edaed6d3a1ce9972e84f29161c0e23a7f9c01aaf0d2e36c319",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 74,
+        "urls": [
+          "https://github.com/ros-tooling/topic_tools"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/topic_tools/setup.cfg",
+          "status": "jazzy-registration"
+        },
+        "implementationUrl": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/topic_tools/relay_field.py"
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:topic_tools/transform",
+      "moduleId": "urn:uuid:0e4f30bc-b2fa-51ec-9c97-9b88819732de",
+      "moduleKind": "ros2",
+      "package": "topic_tools",
+      "executable": "transform",
+      "category": "Topic utility",
+      "description": "Computes and republishes transformed values from an input topic.",
+      "interfaceSummary": "Reads a configured topic and publishes transformed values.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "topic_tools",
+          "transform"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/topic_tools__transform.xml",
+        "profileSha256": "3e97c854b6f5eef4a0b5e0b1868bddb99077de6457742e9bec374ac92f8d2a61",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 75,
+        "urls": [
+          "https://github.com/ros-tooling/topic_tools"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/topic_tools/setup.cfg",
+          "status": "jazzy-registration"
+        },
+        "implementationUrl": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/topic_tools/transform.py"
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:topic_tools/throttle",
+      "moduleId": "urn:uuid:c5acd39c-678c-5c1b-acfd-40b4ad6a900d",
+      "moduleKind": "ros2",
+      "package": "topic_tools",
+      "executable": "throttle",
+      "category": "Topic utility",
+      "description": "Limits the message rate or bandwidth of a topic.",
+      "interfaceSummary": "Reads a configured topic and republishes a throttled stream.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "topic_tools",
+          "throttle"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/topic_tools__throttle.xml",
+        "profileSha256": "29febce07e289e933052e611b40ffca48ed052195f74543c584dae7fe194e34e",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 76,
+        "urls": [
+          "https://github.com/ros-tooling/topic_tools"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:topic_tools/drop",
+      "moduleId": "urn:uuid:1fee4a0e-8045-59f6-8fdc-4404fd98ff93",
+      "moduleKind": "ros2",
+      "package": "topic_tools",
+      "executable": "drop",
+      "category": "Topic utility",
+      "description": "Drops messages according to a configurable pattern.",
+      "interfaceSummary": "Reads a configured topic and publishes a reduced stream.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "topic_tools",
+          "drop"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/topic_tools__drop.xml",
+        "profileSha256": "90b20c6773c8e81bec06f5b23f76973ce4b1116aea041b2dc86f1f4394aec4b2",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 77,
+        "urls": [
+          "https://github.com/ros-tooling/topic_tools"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:topic_tools/mux",
+      "moduleId": "urn:uuid:d7530c53-c0cc-5886-9742-b7e65a61d5bf",
+      "moduleKind": "ros2",
+      "package": "topic_tools",
+      "executable": "mux",
+      "category": "Topic utility",
+      "description": "Selects one of several input topics for an output topic.",
+      "interfaceSummary": "Uses configurable inputs and output and exposes selection services.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "topic_tools",
+          "mux"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/topic_tools__mux.xml",
+        "profileSha256": "3ebb79d49cd67d11eef8b1917253c87d4a447abbb5df42545ef39ddf886e5fb4",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 78,
+        "urls": [
+          "https://github.com/ros-tooling/topic_tools"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:topic_tools/demux",
+      "moduleId": "urn:uuid:b9e30386-b268-5268-8733-109119704c6f",
+      "moduleKind": "ros2",
+      "package": "topic_tools",
+      "executable": "demux",
+      "category": "Topic utility",
+      "description": "Routes an input topic to one of several outputs.",
+      "interfaceSummary": "Uses configurable input and outputs and exposes selection services.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "topic_tools",
+          "demux"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/topic_tools__demux.xml",
+        "profileSha256": "8e05ad1277a8f78fffae44227db2677ebf2e033a3ee19f1283e423f9fa1d5e2c",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 79,
+        "urls": [
+          "https://github.com/ros-tooling/topic_tools"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:topic_tools/delay",
+      "moduleId": "urn:uuid:c5f6a014-1a10-5937-8c8e-08d30019387d",
+      "moduleKind": "ros2",
+      "package": "topic_tools",
+      "executable": "delay",
+      "category": "Topic utility",
+      "description": "Delays messages before republishing them.",
+      "interfaceSummary": "Reads a configured topic and publishes delayed messages.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "topic_tools",
+          "delay"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/topic_tools__delay.xml",
+        "profileSha256": "7eba92c2bfc7be82677e34de6fe27d342eba5b12bdc6d151ad02946069937246",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 80,
+        "urls": [
+          "https://github.com/ros-tooling/topic_tools"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:domain_bridge/domain_bridge",
+      "moduleId": "urn:uuid:7cf68766-3a3f-57eb-b82c-b98ac0a6d66f",
+      "moduleKind": "ros2",
+      "package": "domain_bridge",
+      "executable": "domain_bridge",
+      "category": "Communication",
+      "description": "Bridges selected topics across ROS domain IDs.",
+      "interfaceSummary": "Topic names, types, and domain IDs are configured for each bridge.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "Jazzy availability was not confirmed in the report. Check supported dependencies and package availability for the target system.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "domain_bridge",
+          "domain_bridge"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/domain_bridge__domain_bridge.xml",
+        "profileSha256": "947987ee73eede028a13282957ef2ba36df2a58078ef098e4c14d3b967b92e1a",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 81,
+        "urls": [
+          "https://github.com/ros2/domain_bridge"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros2/domain_bridge/blob/main/CMakeLists.txt",
+          "status": "other-ref-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:rosbridge_server/rosbridge_websocket",
+      "moduleId": "urn:uuid:dbe8d379-6cb7-5762-9142-519c100a5285",
+      "moduleKind": "ros2",
+      "package": "rosbridge_server",
+      "executable": "rosbridge_websocket",
+      "category": "Web communication",
+      "description": "Exposes ROS graph operations over a WebSocket connection.",
+      "interfaceSummary": "Bridges WebSocket clients to ROS topics, services, and actions.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "rosbridge_server",
+          "rosbridge_websocket"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/rosbridge_server__rosbridge_websocket.xml",
+        "profileSha256": "627e2e35098226337855fd450faeae17829a874393266fe793fe7cb1ad93cea0",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 82,
+        "urls": [
+          "https://github.com/RobotWebTools/rosbridge_suite"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/RobotWebTools/rosbridge_suite/blob/jazzy/rosbridge_server/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:rosapi/rosapi_node",
+      "moduleId": "urn:uuid:08c543a5-c42f-500b-a2c3-10201029271f",
+      "moduleKind": "ros2",
+      "package": "rosapi",
+      "executable": "rosapi_node",
+      "category": "Web communication",
+      "description": "Provides ROS graph and type introspection services.",
+      "interfaceSummary": "Exposes services for discovering topics, services, and message types.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "rosapi",
+          "rosapi_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/rosapi__rosapi_node.xml",
+        "profileSha256": "3bf60a335d94e2cc2df3d54f437ea1d946658a4e7d5f98fc4cb735da5d78f93c",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 83,
+        "urls": [
+          "https://github.com/RobotWebTools/rosbridge_suite"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/RobotWebTools/rosbridge_suite/blob/jazzy/rosapi/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:rosbridge_server/rosbridge_tcp",
+      "moduleId": "urn:uuid:439b6bd8-446d-5443-907d-21b9866842ac",
+      "moduleKind": "ros2",
+      "package": "rosbridge_server",
+      "executable": "rosbridge_tcp",
+      "category": "Web communication",
+      "description": "The report lists a standalone TCP transport for rosbridge.",
+      "interfaceSummary": "The reviewed Jazzy package installs a WebSocket entry point. This entry has no verified ROS 2 interfaces.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "No standalone rosbridge_tcp executable was found in the reviewed Jazzy package.",
+      "launch": null,
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/rosbridge_server__rosbridge_tcp.xml",
+        "profileSha256": "f19bde1adca063b4c63b90ba251be06a2176f6d6d676833a91a1427dbe91bcf8",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 84,
+        "urls": [
+          "https://github.com/RobotWebTools/rosbridge_suite"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/RobotWebTools/rosbridge_suite/blob/jazzy/rosbridge_server/CMakeLists.txt",
+          "status": "not-registered"
+        },
+        "reviewNote": "The Jazzy build installs the WebSocket entry point. The standalone TCP executable listed in the report is absent from the install rules."
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:foxglove_bridge/foxglove_bridge",
+      "moduleId": "urn:uuid:90c4d4b1-5f15-5f85-8c29-a83587f97e12",
+      "moduleKind": "ros2",
+      "package": "foxglove_bridge",
+      "executable": "foxglove_bridge",
+      "category": "Visualization bridge",
+      "description": "Exposes ROS data to Foxglove clients over WebSocket.",
+      "interfaceSummary": "Provides access to ROS topics, services, parameters, and assets according to configuration.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "Verify the installed Jazzy package and the compatible Foxglove protocol version.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "foxglove_bridge",
+          "foxglove_bridge"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/foxglove_bridge__foxglove_bridge.xml",
+        "profileSha256": "13480827da3c46dac7eafb74941e4e0ecccde7fb61b3d5cca77987d274a1ff00",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 85,
+        "urls": [
+          "https://github.com/foxglove/foxglove-sdk/tree/main/ros/src/foxglove_bridge"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/foxglove/foxglove-sdk/blob/main/ros/src/foxglove_bridge/CMakeLists.txt",
+          "status": "other-ref-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:rosbag2_transport/recorder",
+      "moduleId": "urn:uuid:74a25ce9-b76e-5984-8204-920e5d9be495",
+      "moduleKind": "ros2",
+      "package": "rosbag2_transport",
+      "executable": "recorder",
+      "category": "Recording and playback",
+      "description": "Records selected ROS topics to rosbag2 storage.",
+      "interfaceSummary": "Discovers or subscribes to configured topics and provides recording-control services.",
+      "topics": [],
+      "servicesAndActions": [
+        {
+          "kind": "service",
+          "name": "pause"
+        },
+        {
+          "kind": "service",
+          "name": "resume"
+        },
+        {
+          "kind": "service",
+          "name": "snapshot"
+        },
+        {
+          "kind": "service",
+          "name": "stop"
+        }
+      ],
+      "distributionNote": "The report cites rosbag2 0.26 series releases for Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "rosbag2_transport",
+          "recorder"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/rosbag2_transport__recorder.xml",
+        "profileSha256": "83d0bf18f6fc26cc896fc0aeb7238329b5bed229cb3fd67f27426baeafaa8907",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 86,
+        "urls": [
+          "https://github.com/ros2/rosbag2"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros2/rosbag2/blob/jazzy/rosbag2_transport/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:rosbag2_transport/player",
+      "moduleId": "urn:uuid:a7840330-f26d-5a0c-8e0f-fdcc3cc2126b",
+      "moduleKind": "ros2",
+      "package": "rosbag2_transport",
+      "executable": "player",
+      "category": "Recording and playback",
+      "description": "Replays recorded messages from rosbag2 storage.",
+      "interfaceSummary": "Reads a recording, publishes its selected topics, and provides playback-control services.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "rosbag2_transport",
+          "player"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/rosbag2_transport__player.xml",
+        "profileSha256": "4f4375cef6f8e2bd228e913b6cd2981979d5427cbf8284ea4c5f89edfe6ca1ac",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 87,
+        "urls": [
+          "https://github.com/ros2/rosbag2"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros2/rosbag2/blob/jazzy/rosbag2_transport/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:ros_gz_bridge/parameter_bridge",
+      "moduleId": "urn:uuid:aabcd17c-6de6-5563-99ac-3899a126c9e4",
+      "moduleKind": "ros2",
+      "package": "ros_gz_bridge",
+      "executable": "parameter_bridge",
+      "category": "Simulation bridge",
+      "description": "Bridges configured topics and services between Gazebo Transport and ROS 2.",
+      "interfaceSummary": "Bridge mappings specify the ROS and Gazebo types and direction. A common example bridges simulation clock data from Gazebo to ROS.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report identifies Gazebo Harmonic as the default binary pairing for Jazzy. Verify the installed combination.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "ros_gz_bridge",
+          "parameter_bridge"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/ros_gz_bridge__parameter_bridge.xml",
+        "profileSha256": "1f58c4579a898399b756f95d11bddeec344586fe5d80cb716a44903ecba8b9ac",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 88,
+        "urls": [
+          "https://github.com/gazebosim/ros_gz/tree/jazzy/ros_gz_bridge"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_bridge/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:ros_gz_image/image_bridge",
+      "moduleId": "urn:uuid:03e365bc-d75e-55cc-8e61-58b827795ad3",
+      "moduleKind": "ros2",
+      "package": "ros_gz_image",
+      "executable": "image_bridge",
+      "category": "Simulation bridge",
+      "description": "Bridges Gazebo image streams into ROS image_transport.",
+      "interfaceSummary": "Reads Gazebo images and publishes sensor_msgs/msg/Image.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report describes Jazzy with Gazebo Harmonic. Verify the installed ros_gz and Gazebo versions.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "ros_gz_image",
+          "image_bridge"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/ros_gz_image__image_bridge.xml",
+        "profileSha256": "d716e03160f22c67520dde6253d4948b309f173d9a4f48b8ab484ddb57d745ff",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 89,
+        "urls": [
+          "https://github.com/gazebosim/ros_gz"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_image/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:diagnostic_aggregator/aggregator_node",
+      "moduleId": "urn:uuid:e3f761c6-d927-5b0e-8bec-7fe989fd9e3d",
+      "moduleKind": "ros2",
+      "package": "diagnostic_aggregator",
+      "executable": "aggregator_node",
+      "category": "Diagnostics",
+      "description": "Groups diagnostic reports using configurable analyzers.",
+      "interfaceSummary": "Subscribes to /diagnostics and publishes aggregate diagnostic messages.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "/diagnostics",
+          "dataType": "diagnostic_msgs/msg/DiagnosticArray"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "/diagnostics_agg"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report cites diagnostics 4.2.x releases for Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "diagnostic_aggregator",
+          "aggregator_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/diagnostic_aggregator__aggregator_node.xml",
+        "profileSha256": "3d35440f7905319248ca98c090d1298ccf7a004fd25cc1a943083d19437e87e6",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 90,
+        "urls": [
+          "https://github.com/ros/diagnostics/blob/ros2/diagnostic_aggregator/mainpage.dox"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros/diagnostics/blob/rolling/diagnostic_aggregator/CMakeLists.txt",
+          "status": "other-ref-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:diagnostic_remote_logging/influxdb_connector",
+      "moduleId": "urn:uuid:2d26a981-b0b3-5d27-80fc-21b8d62f515c",
+      "moduleKind": "ros2",
+      "package": "diagnostic_remote_logging",
+      "executable": "influxdb_connector",
+      "category": "Diagnostics",
+      "description": "Writes ROS diagnostic data to InfluxDB v2.",
+      "interfaceSummary": "Reads diagnostics and sends them to a configured database. Credentials are supplied at deployment.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "/diagnostics_agg"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists this entry for ROS 2 Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "diagnostic_remote_logging",
+          "influxdb_connector"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/diagnostic_remote_logging__influxdb_connector.xml",
+        "profileSha256": "50f0d88c5f19f2ef0b31fa3574c6de74fa76b51235c30169f18e5f8af162f804",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 91,
+        "urls": [
+          "https://github.com/ros/diagnostics/tree/ros2/diagnostic_remote_logging"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros/diagnostics/blob/ros2/diagnostic_remote_logging/CMakeLists.txt",
+          "status": "other-ref-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:joy/joy_node",
+      "moduleId": "urn:uuid:30a76c40-c023-532d-bb19-858129145911",
+      "moduleKind": "ros2",
+      "package": "joy",
+      "executable": "joy_node",
+      "category": "Input devices",
+      "description": "Publishes joystick input as ROS Joy messages.",
+      "interfaceSummary": "Publishes joy. Device access, deadzone, and autorepeat are configurable.",
+      "topics": [
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "joy",
+          "dataType": "sensor_msgs/msg/Joy"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report describes Jazzy use. Check SDL and device permissions.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "joy",
+          "joy_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/joy__joy_node.xml",
+        "profileSha256": "239a56d434ad55b5d4d344221cc450a9fce94f2590e0fb3c40cecae01abda635",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 92,
+        "urls": [
+          "https://github.com/ros-drivers/joystick_drivers/tree/ros2/joy"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-drivers/joystick_drivers/blob/ros2/joy/CMakeLists.txt",
+          "status": "other-ref-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:joy/game_controller_node",
+      "moduleId": "urn:uuid:c9c49227-5763-51c0-8c75-0d44b1671bc4",
+      "moduleKind": "ros2",
+      "package": "joy",
+      "executable": "game_controller_node",
+      "category": "Input devices",
+      "description": "Publishes game-controller input using SDL controller mappings.",
+      "interfaceSummary": "Publishes joy. Button and axis mapping depends on the controller and SDL configuration.",
+      "topics": [
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "joy",
+          "dataType": "sensor_msgs/msg/Joy"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists Jazzy support. SDL2 controller mappings can differ by device.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "joy",
+          "game_controller_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/joy__game_controller_node.xml",
+        "profileSha256": "58b03538cfee08fb4b45c6702dcf133750b25115d877afc2c68e11ec9b8213fa",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 93,
+        "urls": [
+          "https://github.com/ros-drivers/joystick_drivers/tree/ros2/joy"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-drivers/joystick_drivers/blob/ros2/joy/CMakeLists.txt",
+          "status": "other-ref-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:teleop_twist_joy/teleop_node",
+      "moduleId": "urn:uuid:613d6b6f-6cd6-5cf0-b575-9bdfc17767ca",
+      "moduleKind": "ros2",
+      "package": "teleop_twist_joy",
+      "executable": "teleop_node",
+      "category": "Teleoperation",
+      "description": "Converts joystick input into velocity commands.",
+      "interfaceSummary": "Subscribes to joy and publishes cmd_vel. Enable, turbo, and axis mappings are configurable.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "joy",
+          "dataType": "sensor_msgs/msg/Joy"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "cmd_vel"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report cites teleop_twist_joy 2.6.x releases for Jazzy.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "teleop_twist_joy",
+          "teleop_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/teleop_twist_joy__teleop_node.xml",
+        "profileSha256": "9de99eb3d8951eabc333af518ee8e919d4ee491940d5b3fe5b6e9d5eaea20e30",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 94,
+        "urls": [
+          "https://github.com/ros2/teleop_twist_joy"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros2/teleop_twist_joy/blob/rolling/CMakeLists.txt",
+          "status": "other-ref-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:twist_mux/twist_mux",
+      "moduleId": "urn:uuid:f94a17a5-bd86-586b-af3d-3167ee59108a",
+      "moduleKind": "ros2",
+      "package": "twist_mux",
+      "executable": "twist_mux",
+      "category": "Teleoperation",
+      "description": "Arbitrates between velocity command inputs using priorities, timeouts, and locks.",
+      "interfaceSummary": "Reads configured velocity inputs and Boolean locks and publishes the selected velocity command.",
+      "topics": [
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "cmd_vel_out"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report cites twist_mux 4.5.0 on Jazzy. Verify compatibility with the selected stamped velocity message configuration.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "twist_mux",
+          "twist_mux"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/twist_mux__twist_mux.xml",
+        "profileSha256": "1b4ced4ac9b02d1215e319bfc12b041874434685c0b996af20f99f870d4df61e",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 95,
+        "urls": [
+          "https://github.com/ros-teleop/twist_mux"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-teleop/twist_mux/blob/rolling/CMakeLists.txt",
+          "status": "other-ref-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:camera_calibration/cameracalibrator",
+      "moduleId": "urn:uuid:0f8eafe2-5507-54f0-b2b2-9dc2d29f8c92",
+      "moduleKind": "ros2",
+      "package": "camera_calibration",
+      "executable": "cameracalibrator",
+      "category": "Camera calibration",
+      "description": "Calibrates a camera using images of a calibration target.",
+      "interfaceSummary": "Uses camera images and calibration information and can call set_camera_info to store the result.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "image"
+        }
+      ],
+      "servicesAndActions": [
+        {
+          "kind": "service",
+          "name": "camera/set_camera_info",
+          "dataType": "sensor_msgs/srv/SetCameraInfo"
+        }
+      ],
+      "distributionNote": "The report lists Jazzy image_pipeline releases. Check GUI, OpenCV, and NumPy compatibility.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "camera_calibration",
+          "cameracalibrator"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/camera_calibration__cameracalibrator.xml",
+        "profileSha256": "7510cf5b84400dc0f35a6c2af136f53a996f9bbedf1646d866674255c36c82de",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 96,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/tree/rolling/camera_calibration"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/camera_calibration/setup.py",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:imu_filter_madgwick/imu_filter_madgwick_node",
+      "moduleId": "urn:uuid:df9774ca-7209-585b-bf42-8da8a50c2a5e",
+      "moduleKind": "ros2",
+      "package": "imu_filter_madgwick",
+      "executable": "imu_filter_madgwick_node",
+      "category": "IMU",
+      "description": "Estimates IMU orientation using the Madgwick filter.",
+      "interfaceSummary": "Reads IMU measurements and optionally magnetic field. Publishes filtered IMU and optionally TF.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report cites a Jazzy release in September 2026.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "imu_filter_madgwick",
+          "imu_filter_madgwick_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/imu_filter_madgwick__imu_filter_madgwick_node.xml",
+        "profileSha256": "9b52e34ceff7f0c5f8bfe84d94a1d01ed33ce38b6173a7ed2b611fa82cd686f5",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 97,
+        "urls": [
+          "https://github.com/CCNYRoboticsLab/imu_tools/tree/rolling/imu_filter_madgwick"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/CCNYRoboticsLab/imu_tools/blob/jazzy/imu_filter_madgwick/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:imu_complementary_filter/complementary_filter_node",
+      "moduleId": "urn:uuid:421c334a-9e92-538e-9222-ad587a44505f",
+      "moduleKind": "ros2",
+      "package": "imu_complementary_filter",
+      "executable": "complementary_filter_node",
+      "category": "IMU",
+      "description": "Estimates IMU orientation using a complementary filter.",
+      "interfaceSummary": "Reads IMU measurements and optionally magnetic field and publishes filtered IMU.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report cites Jazzy releases of imu_tools.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "imu_complementary_filter",
+          "complementary_filter_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/imu_complementary_filter__complementary_filter_node.xml",
+        "profileSha256": "a324d0b5125fd419398e2b9a0ce10b26a70ca10d03a48c6c5986d06b43c8db95",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 98,
+        "urls": [
+          "https://github.com/CCNYRoboticsLab/imu_tools/tree/rolling/imu_complementary_filter"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/CCNYRoboticsLab/imu_tools/blob/jazzy/imu_complementary_filter/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:image_publisher/image_publisher_node",
+      "moduleId": "urn:uuid:f57e1125-f4ba-56e5-a443-1170c2d33159",
+      "moduleKind": "ros2",
+      "package": "image_publisher",
+      "executable": "image_publisher_node",
+      "category": "Image publishing",
+      "description": "Publishes images from a file or other supported source.",
+      "interfaceSummary": "Publishes image_raw and camera_info.",
+      "topics": [
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "image_raw",
+          "dataType": "sensor_msgs/msg/Image"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "camera_info",
+          "dataType": "sensor_msgs/msg/CameraInfo"
+        }
+      ],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists Jazzy support and notes configurable QoS.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "image_publisher",
+          "image_publisher_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/image_publisher__image_publisher_node.xml",
+        "profileSha256": "03ae2ec66b306bdaff443ca1855e3e62b908c800fd4ddbe6fa7150ba9067e339",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 99,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/tree/rolling/image_publisher"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_publisher/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:image_rotate/image_rotate",
+      "moduleId": "urn:uuid:cc607491-6276-520b-a86b-bb55d62df4ed",
+      "moduleKind": "ros2",
+      "package": "image_rotate",
+      "executable": "image_rotate",
+      "category": "Image processing",
+      "description": "Rotates camera images according to transform or rotation settings.",
+      "interfaceSummary": "Uses image, camera calibration, and optionally TF and publishes the rotated image.",
+      "topics": [],
+      "servicesAndActions": [],
+      "distributionNote": "The report lists Jazzy support. Check compiler requirements if using main or Rolling.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "image_rotate",
+          "image_rotate"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/image_rotate__image_rotate.xml",
+        "profileSha256": "79423f9d3c7383fef382f1d9de5d052e47141f3fc08bdc5e53458afdedcf0204",
+        "report": "deep-research-report.md",
+        "reportSha256": "a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6",
+        "reportRow": 100,
+        "urls": [
+          "https://github.com/ros-perception/image_pipeline/tree/rolling/image_rotate"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_rotate/CMakeLists.txt",
+          "status": "jazzy-registration"
+        }
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    }
+  ]
+}

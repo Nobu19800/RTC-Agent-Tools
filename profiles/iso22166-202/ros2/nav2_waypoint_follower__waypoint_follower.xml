@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ros:Module xmlns:ros="urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1" targetStandard="ISO 22166-202:2025" profileVersion="0.1" conformanceStatus="not-assessed">
+  <ros:GenInfo>
+    <ros:ModuleName>waypoint_follower</ros:ModuleName>
+    <ros:Description>Visits ordered waypoints and optionally runs a task at each waypoint.</ros:Description>
+  </ros:GenInfo>
+  <ros:IDnType>
+    <ros:ID>urn:uuid:e4af9b5e-2a4e-5968-8ff8-26099346fa14</ros:ID>
+    <ros:InformationModelVersion>local-mapping-0.1</ros:InformationModelVersion>
+  </ros:IDnType>
+  <ros:ModuleProp>
+    <ros:Property name="rosPackage">nav2_waypoint_follower</ros:Property>
+    <ros:Property name="category">Nav2</ros:Property>
+  </ros:ModuleProp>
+  <ros:IOVariables>
+    <ros:Description>Serves the follow_waypoints action.</ros:Description>
+  </ros:IOVariables>
+  <ros:Services>
+    <ros:Service kind="action" name="follow_waypoints" dataType="nav2_msgs/action/FollowWaypoints" />
+  </ros:Services>
+  <ros:Infra>
+    <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
+  </ros:Infra>
+  <ros:ExecutableForm>
+    <ros:Command>ros2</ros:Command>
+    <ros:Argument>run</ros:Argument>
+    <ros:Argument>nav2_waypoint_follower</ros:Argument>
+    <ros:Argument>waypoint_follower</ros:Argument>
+  </ros:ExecutableForm>
+  <ros:Evidence>
+    <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="20">deep-research-report.md</ros:Report>
+    <ros:Source>https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_waypoint_follower</ros:Source>
+    <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_waypoint_follower/CMakeLists.txt</ros:UpstreamSource>
+    <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
+  </ros:Evidence>
+</ros:Module>

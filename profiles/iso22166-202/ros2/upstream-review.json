@@ -1,0 +1,477 @@
+{
+  "1": {
+    "url": "https://github.com/ros/robot_state_publisher/blob/jazzy/CMakeLists.txt",
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros/robot_state_publisher/blob/jazzy/src/robot_state_publisher.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "joint_states",
+        "sensor_msgs/msg/JointState"
+      ],
+      [
+        "publish",
+        "robot_description",
+        "std_msgs/msg/String"
+      ],
+      [
+        "publish",
+        "/tf",
+        "tf2_msgs/msg/TFMessage"
+      ],
+      [
+        "publish",
+        "/tf_static",
+        "tf2_msgs/msg/TFMessage"
+      ]
+    ]
+  },
+  "2": {
+    "url": "https://github.com/ros/joint_state_publisher/blob/ros2/joint_state_publisher/setup.py",
+    "status": "other-ref-registration"
+  },
+  "3": {
+    "url": "https://github.com/ros/joint_state_publisher/blob/ros2/joint_state_publisher_gui/setup.py",
+    "status": "other-ref-registration"
+  },
+  "4": {
+    "url": "https://github.com/ros2/geometry2/blob/jazzy/tf2_ros/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "5": {
+    "url": "https://github.com/ros2/geometry2/blob/jazzy/tf2_ros/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "6": {
+    "url": "https://github.com/cra-ros-pkg/robot_localization/blob/ros2/CMakeLists.txt",
+    "status": "other-ref-registration"
+  },
+  "7": {
+    "url": "https://github.com/cra-ros-pkg/robot_localization/blob/ros2/CMakeLists.txt",
+    "status": "other-ref-registration"
+  },
+  "8": {
+    "url": "https://github.com/cra-ros-pkg/robot_localization/blob/ros2/CMakeLists.txt",
+    "status": "other-ref-registration"
+  },
+  "9": {
+    "url": "https://github.com/cra-ros-pkg/robot_localization/blob/ros2/CMakeLists.txt",
+    "status": "other-ref-registration"
+  },
+  "10": {
+    "url": "https://github.com/ros-controls/ros2_control/blob/jazzy/controller_manager/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "11": {
+    "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_amcl/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "12": {
+    "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_map_server/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "13": {
+    "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_map_server/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "14": {
+    "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_map_server/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "15": {
+    "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_planner/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "16": {
+    "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_controller/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "17": {
+    "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_smoother/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "18": {
+    "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_behaviors/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "19": {
+    "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_bt_navigator/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "20": {
+    "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_waypoint_follower/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "21": {
+    "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_lifecycle_manager/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "22": {
+    "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_velocity_smoother/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "23": {
+    "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_collision_monitor/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "24": {
+    "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_collision_monitor/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "25": {
+    "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_route/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "26": {
+    "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_docking/opennav_docking/CMakeLists.txt",
+    "status": "jazzy-registration",
+    "package": "opennav_docking",
+    "executable": "opennav_docking",
+    "note": "The Jazzy package and executable are both opennav_docking. The default ROS node name is docking_server.",
+    "interfaces": [
+      [
+        "action",
+        "dock_robot",
+        null
+      ],
+      [
+        "action",
+        "undock_robot",
+        null
+      ]
+    ],
+    "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_docking/opennav_docking/src/docking_server.cpp"
+  },
+  "27": {
+    "url": "https://github.com/moveit/moveit2/blob/jazzy/moveit_ros/move_group/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "28": {
+    "url": "https://github.com/moveit/moveit2/blob/jazzy/moveit_ros/moveit_servo/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "29": {
+    "url": "https://github.com/SteveMacenski/slam_toolbox/blob/jazzy/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "30": {
+    "url": "https://github.com/SteveMacenski/slam_toolbox/blob/jazzy/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "31": {
+    "url": "https://github.com/SteveMacenski/slam_toolbox/blob/jazzy/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "32": {
+    "url": "https://github.com/SteveMacenski/slam_toolbox/blob/jazzy/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "33": {
+    "url": "https://github.com/SteveMacenski/slam_toolbox/blob/jazzy/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "34": {
+    "url": "https://github.com/SteveMacenski/slam_toolbox/blob/ros2/CMakeLists.txt",
+    "status": "other-ref-registration",
+    "distributionNote": "The executable was found on the upstream ros2 branch. Its registration was not found in the reviewed Jazzy CMake file."
+  },
+  "35": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "36": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "37": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "38": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "39": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "40": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "41": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "42": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "43": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "44": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "45": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "46": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "47": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "48": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "49": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "50": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "51": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/stereo_image_proc/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "52": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/stereo_image_proc/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "53": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "54": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "55": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "56": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "57": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "58": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "59": {
+    "url": "https://github.com/ros-perception/pointcloud_to_laserscan/blob/humble/CMakeLists.txt",
+    "status": "other-ref-registration",
+    "interfaces": [
+      [
+        "subscribe",
+        "cloud_in",
+        "sensor_msgs/msg/PointCloud2"
+      ],
+      [
+        "publish",
+        "scan",
+        "sensor_msgs/msg/LaserScan"
+      ]
+    ],
+    "implementationUrl": "https://github.com/ros-perception/pointcloud_to_laserscan/blob/humble/src/pointcloud_to_laserscan_node.cpp",
+    "distributionNote": "The executable was verified on the Humble branch. Jazzy binary availability was not checked."
+  },
+  "60": {
+    "url": "https://github.com/ros-perception/pointcloud_to_laserscan/blob/humble/CMakeLists.txt",
+    "status": "other-ref-registration",
+    "interfaces": [
+      [
+        "subscribe",
+        "scan_in",
+        "sensor_msgs/msg/LaserScan"
+      ],
+      [
+        "publish",
+        "cloud",
+        "sensor_msgs/msg/PointCloud2"
+      ]
+    ],
+    "implementationUrl": "https://github.com/ros-perception/pointcloud_to_laserscan/blob/humble/src/laserscan_to_pointcloud_node.cpp",
+    "distributionNote": "The executable was verified on the Humble branch. Jazzy binary availability was not checked."
+  },
+  "61": {
+    "url": "https://github.com/ros-perception/depthimage_to_laserscan/blob/ros2/CMakeLists.txt",
+    "status": "other-ref-registration",
+    "distributionNote": "The executable was verified on the upstream ros2 branch. Jazzy binary availability was not checked."
+  },
+  "62": {
+    "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "63": {
+    "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "64": {
+    "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "65": {
+    "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "66": {
+    "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "67": {
+    "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "68": {
+    "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "69": {
+    "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "70": {
+    "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "71": {
+    "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "72": {
+    "url": "https://github.com/ros-perception/perception_pcl/blob/ros2/pcl_ros/CMakeLists.txt",
+    "status": "other-ref-registration",
+    "distributionNote": "Registered on the upstream ros2 branch. The Jazzy CMake file does not enable this executable.",
+    "note": "The Jazzy build file leaves this executable disabled: https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt"
+  },
+  "73": {
+    "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "74": {
+    "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/topic_tools/setup.cfg",
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/topic_tools/relay_field.py"
+  },
+  "75": {
+    "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/topic_tools/setup.cfg",
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/topic_tools/transform.py"
+  },
+  "76": {
+    "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "77": {
+    "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "78": {
+    "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "79": {
+    "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "80": {
+    "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "81": {
+    "url": "https://github.com/ros2/domain_bridge/blob/main/CMakeLists.txt",
+    "status": "other-ref-registration"
+  },
+  "82": {
+    "url": "https://github.com/RobotWebTools/rosbridge_suite/blob/jazzy/rosbridge_server/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "83": {
+    "url": "https://github.com/RobotWebTools/rosbridge_suite/blob/jazzy/rosapi/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "84": {
+    "url": "https://github.com/RobotWebTools/rosbridge_suite/blob/jazzy/rosbridge_server/CMakeLists.txt",
+    "status": "not-registered",
+    "note": "The Jazzy build installs the WebSocket entry point. The standalone TCP executable listed in the report is absent from the install rules.",
+    "distributionNote": "No standalone rosbridge_tcp executable was found in the reviewed Jazzy package."
+  },
+  "85": {
+    "url": "https://github.com/foxglove/foxglove-sdk/blob/main/ros/src/foxglove_bridge/CMakeLists.txt",
+    "status": "other-ref-registration"
+  },
+  "86": {
+    "url": "https://github.com/ros2/rosbag2/blob/jazzy/rosbag2_transport/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "87": {
+    "url": "https://github.com/ros2/rosbag2/blob/jazzy/rosbag2_transport/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "88": {
+    "url": "https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_bridge/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "89": {
+    "url": "https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_image/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "90": {
+    "url": "https://github.com/ros/diagnostics/blob/rolling/diagnostic_aggregator/CMakeLists.txt",
+    "status": "other-ref-registration"
+  },
+  "91": {
+    "url": "https://github.com/ros/diagnostics/blob/ros2/diagnostic_remote_logging/CMakeLists.txt",
+    "status": "other-ref-registration"
+  },
+  "92": {
+    "url": "https://github.com/ros-drivers/joystick_drivers/blob/ros2/joy/CMakeLists.txt",
+    "status": "other-ref-registration"
+  },
+  "93": {
+    "url": "https://github.com/ros-drivers/joystick_drivers/blob/ros2/joy/CMakeLists.txt",
+    "status": "other-ref-registration"
+  },
+  "94": {
+    "url": "https://github.com/ros2/teleop_twist_joy/blob/rolling/CMakeLists.txt",
+    "status": "other-ref-registration"
+  },
+  "95": {
+    "url": "https://github.com/ros-teleop/twist_mux/blob/rolling/CMakeLists.txt",
+    "status": "other-ref-registration"
+  },
+  "96": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/camera_calibration/setup.py",
+    "status": "jazzy-registration"
+  },
+  "97": {
+    "url": "https://github.com/CCNYRoboticsLab/imu_tools/blob/jazzy/imu_filter_madgwick/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "98": {
+    "url": "https://github.com/CCNYRoboticsLab/imu_tools/blob/jazzy/imu_complementary_filter/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "99": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_publisher/CMakeLists.txt",
+    "status": "jazzy-registration"
+  },
+  "100": {
+    "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_rotate/CMakeLists.txt",
+    "status": "jazzy-registration"
+  }
+}

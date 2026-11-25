@@ -4,6 +4,24 @@
 | --- | --- | --- |
 | `rtc_catalog.json` | OpenRTMのRT-Component | `rtc_search.py` |
 | `hakoniwa_catalog.json` | 箱庭アセットのXML由来プロファイル | `hakoniwa_search.py` |
+| `ros2_catalog.json` | ROS 2 ノードの XML 由来プロファイル | `python scripts/ros2_system.py search "<keyword>"` |
+
+## ROS 2 ノード
+
+`profiles/iso22166-202/ros2/*.xml` から100件を生成します。各エントリは `moduleKind: ros2` で、`catalogId` は `ros2:<package>/<executable>` です。英語の入出力概要は `interfaceSummary`、構造化できたトピックは `topics`、サービスとアクションは `servicesAndActions` に格納します。`source` には生成元 XML の相対パスと SHA-256、レポートの項目番号、上流の確認先と照合結果を記録します。上流の確認対象に実行ファイルの登録がない項目では `launch` は `null` です。
+
+RTC-Agent-Tools のルートで実行します。
+
+```powershell
+# 既存の XML からカタログを再生成
+python scripts/build_ros2_catalog.py
+# カタログと XML の一致を検証
+python scripts/build_ros2_catalog.py --check
+# 元レポートから XML を作り直してカタログを更新
+python scripts/build_ros2_catalog.py --report "$env:USERPROFILE/Downloads/deep-research-report.md"
+```
+
+収録範囲と適合性については [ROS 2 プロファイルの説明](../profiles/iso22166-202/ros2/README.md) を参照してください。
 
 ## 箱庭アセット
 

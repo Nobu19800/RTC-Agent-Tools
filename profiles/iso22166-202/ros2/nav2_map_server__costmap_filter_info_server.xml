@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ros:Module xmlns:ros="urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1" targetStandard="ISO 22166-202:2025" profileVersion="0.1" conformanceStatus="not-assessed">
+  <ros:GenInfo>
+    <ros:ModuleName>costmap_filter_info_server</ros:ModuleName>
+    <ros:Description>Publishes costmap filter metadata for keepout or speed filters.</ros:Description>
+  </ros:GenInfo>
+  <ros:IDnType>
+    <ros:ID>urn:uuid:b397d26e-4697-5ba5-a48d-4125327c711e</ros:ID>
+    <ros:InformationModelVersion>local-mapping-0.1</ros:InformationModelVersion>
+  </ros:IDnType>
+  <ros:ModuleProp>
+    <ros:Property name="rosPackage">nav2_map_server</ros:Property>
+    <ros:Property name="category">Nav2</ros:Property>
+  </ros:ModuleProp>
+  <ros:IOVariables>
+    <ros:Description>Publishes CostmapFilterInfo pointing to the associated mask topic.</ros:Description>
+  </ros:IOVariables>
+  <ros:Services />
+  <ros:Infra>
+    <ros:Requirement kind="report-distribution-note">The report lists Jazzy support. Verify the filter configuration file format.</ros:Requirement>
+  </ros:Infra>
+  <ros:ExecutableForm>
+    <ros:Command>ros2</ros:Command>
+    <ros:Argument>run</ros:Argument>
+    <ros:Argument>nav2_map_server</ros:Argument>
+    <ros:Argument>costmap_filter_info_server</ros:Argument>
+  </ros:ExecutableForm>
+  <ros:Evidence>
+    <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="14">deep-research-report.md</ros:Report>
+    <ros:Source>https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_map_server</ros:Source>
+    <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_map_server/CMakeLists.txt</ros:UpstreamSource>
+    <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
+  </ros:Evidence>
+</ros:Module>

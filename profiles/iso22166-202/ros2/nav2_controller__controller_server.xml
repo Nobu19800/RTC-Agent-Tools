@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ros:Module xmlns:ros="urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1" targetStandard="ISO 22166-202:2025" profileVersion="0.1" conformanceStatus="not-assessed">
+  <ros:GenInfo>
+    <ros:ModuleName>controller_server</ros:ModuleName>
+    <ros:Description>Follows a global path using configurable local controller plugins.</ros:Description>
+  </ros:GenInfo>
+  <ros:IDnType>
+    <ros:ID>urn:uuid:1abd19ca-7f07-5b2b-89ac-b1fa747bb08b</ros:ID>
+    <ros:InformationModelVersion>local-mapping-0.1</ros:InformationModelVersion>
+  </ros:IDnType>
+  <ros:ModuleProp>
+    <ros:Property name="rosPackage">nav2_controller</ros:Property>
+    <ros:Property name="category">Nav2</ros:Property>
+  </ros:ModuleProp>
+  <ros:IOVariables>
+    <ros:Description>Serves follow_path and publishes velocity commands. Twist versus TwistStamped depends on the selected version and configuration.</ros:Description>
+    <ros:Variable direction="output" transport="ROS 2 topic" name="/cmd_vel" />
+  </ros:IOVariables>
+  <ros:Services>
+    <ros:Service kind="action" name="follow_path" dataType="nav2_msgs/action/FollowPath" />
+  </ros:Services>
+  <ros:Infra>
+    <ros:Requirement kind="report-distribution-note">The report lists Jazzy support. The velocity command type varies across distributions.</ros:Requirement>
+  </ros:Infra>
+  <ros:ExecutableForm>
+    <ros:Command>ros2</ros:Command>
+    <ros:Argument>run</ros:Argument>
+    <ros:Argument>nav2_controller</ros:Argument>
+    <ros:Argument>controller_server</ros:Argument>
+  </ros:ExecutableForm>
+  <ros:Evidence>
+    <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="16">deep-research-report.md</ros:Report>
+    <ros:Source>https://docs.nav2.org/jazzy/configuration_and_development/configuration_guide/core_servers/controller_server/</ros:Source>
+    <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_controller/CMakeLists.txt</ros:UpstreamSource>
+    <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
+  </ros:Evidence>
+</ros:Module>

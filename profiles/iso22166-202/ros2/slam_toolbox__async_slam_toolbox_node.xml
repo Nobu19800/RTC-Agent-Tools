@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ros:Module xmlns:ros="urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1" targetStandard="ISO 22166-202:2025" profileVersion="0.1" conformanceStatus="not-assessed">
+  <ros:GenInfo>
+    <ros:ModuleName>async_slam_toolbox_node</ros:ModuleName>
+    <ros:Description>Builds a two-dimensional map with asynchronous laser-scan processing.</ros:Description>
+  </ros:GenInfo>
+  <ros:IDnType>
+    <ros:ID>urn:uuid:b0d9541f-6b1f-54df-ae96-df4579c704b9</ros:ID>
+    <ros:InformationModelVersion>local-mapping-0.1</ros:InformationModelVersion>
+  </ros:IDnType>
+  <ros:ModuleProp>
+    <ros:Property name="rosPackage">slam_toolbox</ros:Property>
+    <ros:Property name="category">SLAM</ros:Property>
+  </ros:ModuleProp>
+  <ros:IOVariables>
+    <ros:Description>Uses laser scans and TF, publishes an occupancy map and transforms, and provides pose-graph serialization interfaces.</ros:Description>
+    <ros:Variable direction="input" transport="ROS 2 topic" name="/scan" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="/map" />
+  </ros:IOVariables>
+  <ros:Services />
+  <ros:Infra>
+    <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
+  </ros:Infra>
+  <ros:ExecutableForm>
+    <ros:Command>ros2</ros:Command>
+    <ros:Argument>run</ros:Argument>
+    <ros:Argument>slam_toolbox</ros:Argument>
+    <ros:Argument>async_slam_toolbox_node</ros:Argument>
+  </ros:ExecutableForm>
+  <ros:Evidence>
+    <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="29">deep-research-report.md</ros:Report>
+    <ros:Source>https://github.com/SteveMacenski/slam_toolbox</ros:Source>
+    <ros:UpstreamSource status="jazzy-registration">https://github.com/SteveMacenski/slam_toolbox/blob/jazzy/CMakeLists.txt</ros:UpstreamSource>
+    <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
+  </ros:Evidence>
+</ros:Module>

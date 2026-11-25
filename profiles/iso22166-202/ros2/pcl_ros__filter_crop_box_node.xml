@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ros:Module xmlns:ros="urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1" targetStandard="ISO 22166-202:2025" profileVersion="0.1" conformanceStatus="not-assessed">
+  <ros:GenInfo>
+    <ros:ModuleName>filter_crop_box_node</ros:ModuleName>
+    <ros:Description>Keeps or removes points within a configured three-dimensional box.</ros:Description>
+  </ros:GenInfo>
+  <ros:IDnType>
+    <ros:ID>urn:uuid:5f3089d0-df44-5bd1-ac57-c2749b779fd2</ros:ID>
+    <ros:InformationModelVersion>local-mapping-0.1</ros:InformationModelVersion>
+  </ros:IDnType>
+  <ros:ModuleProp>
+    <ros:Property name="rosPackage">pcl_ros</ros:Property>
+    <ros:Property name="category">Point-cloud processing</ros:Property>
+  </ros:ModuleProp>
+  <ros:IOVariables>
+    <ros:Description>Reads PointCloud2 and emits filtered PointCloud2.</ros:Description>
+  </ros:IOVariables>
+  <ros:Services />
+  <ros:Infra>
+    <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
+  </ros:Infra>
+  <ros:ExecutableForm>
+    <ros:Command>ros2</ros:Command>
+    <ros:Argument>run</ros:Argument>
+    <ros:Argument>pcl_ros</ros:Argument>
+    <ros:Argument>filter_crop_box_node</ros:Argument>
+  </ros:ExecutableForm>
+  <ros:Evidence>
+    <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="67">deep-research-report.md</ros:Report>
+    <ros:Source>https://github.com/ros-perception/perception_pcl/blob/ros2/pcl_ros/CMakeLists.txt</ros:Source>
+    <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt</ros:UpstreamSource>
+    <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
+  </ros:Evidence>
+</ros:Module>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ros:Module xmlns:ros="urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1" targetStandard="ISO 22166-202:2025" profileVersion="0.1" conformanceStatus="not-assessed">
+  <ros:GenInfo>
+    <ros:ModuleName>rosbridge_tcp</ros:ModuleName>
+    <ros:Description>The report lists a standalone TCP transport for rosbridge.</ros:Description>
+  </ros:GenInfo>
+  <ros:IDnType>
+    <ros:ID>urn:uuid:439b6bd8-446d-5443-907d-21b9866842ac</ros:ID>
+    <ros:InformationModelVersion>local-mapping-0.1</ros:InformationModelVersion>
+  </ros:IDnType>
+  <ros:ModuleProp>
+    <ros:Property name="rosPackage">rosbridge_server</ros:Property>
+    <ros:Property name="category">Web communication</ros:Property>
+  </ros:ModuleProp>
+  <ros:IOVariables>
+    <ros:Description>The reviewed Jazzy package installs a WebSocket entry point. This entry has no verified ROS 2 interfaces.</ros:Description>
+  </ros:IOVariables>
+  <ros:Services />
+  <ros:Infra>
+    <ros:Requirement kind="report-distribution-note">No standalone rosbridge_tcp executable was found in the reviewed Jazzy package.</ros:Requirement>
+  </ros:Infra>
+  <ros:Evidence>
+    <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="84">deep-research-report.md</ros:Report>
+    <ros:Source>https://github.com/RobotWebTools/rosbridge_suite</ros:Source>
+    <ros:UpstreamSource status="not-registered">https://github.com/RobotWebTools/rosbridge_suite/blob/jazzy/rosbridge_server/CMakeLists.txt</ros:UpstreamSource>
+    <ros:SourceReviewNote>The Jazzy build installs the WebSocket entry point. The standalone TCP executable listed in the report is absent from the install rules.</ros:SourceReviewNote>
+    <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
+  </ros:Evidence>
+</ros:Module>

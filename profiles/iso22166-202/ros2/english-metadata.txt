@@ -1,0 +1,101 @@
+# Report row | Description | Interface summary | Distribution note (optional)
+1 | Publishes the robot's link transforms from its URDF and joint states. | Subscribes to joint_states and publishes dynamic and static TF. The robot_description parameter supplies the URDF, which is also published on robot_description. | The report lists Jazzy support. Check URDF and timestamp handling for the selected configuration.
+2 | Generates joint states for movable joints defined in a URDF. | Publishes JointState messages. Avoid publishing synthetic states for joints already reported by hardware.
+3 | Uses GUI sliders to set joint positions for a URDF model. | Publishes JointState messages. Requires a graphical environment.
+4 | Publishes a fixed transform between two frames. | Publishes TFMessage on /tf_static. | The report cites Jazzy releases of geometry2.
+5 | Serves transform lookups from a TF buffer. | Subscribes to /tf and /tf_static and serves the lookup_transform action.
+6 | Fuses configurable odometry and sensor measurements with an extended Kalman filter. | Accepts configured odometry, IMU, pose, and twist inputs. Publishes filtered odometry and optionally TF. | The report cites Jazzy releases after 2025.
+7 | Fuses configurable sensor measurements with an unscented Kalman filter. | Accepts configured odometry, IMU, pose, and twist inputs. Publishes filtered odometry and optionally TF. | The report lists Jazzy support. UKF has broadly similar parameters to EKF and a higher computational cost.
+8 | Converts GNSS fixes into odometry in the robot's world frame. | Accepts GPS fixes, IMU orientation, and filtered odometry. Publishes GPS-derived odometry. Yaw reference and magnetic declination affect the result.
+9 | Provides a time-indexed view of robot_localization filter state. | Uses the robot_localization listener and TF. Consult the selected source version for exposed interfaces. | The report lists Jazzy support. Check the API in the installed version.
+10 | Runs the ros2_control controller manager and hardware interfaces. | Exposes controller manager services. Hardware state and command interfaces come from the URDF and hardware plugins. Controllers supply their own ROS interfaces. | Jazzy has upstream controller manager documentation. Controller APIs can differ by distribution.
+11 | Estimates a robot pose on a known map using adaptive Monte Carlo localization. | Subscribes to laser scans and an occupancy map. Publishes the estimated pose and can publish TF.
+12 | Loads and serves a two-dimensional occupancy map. | Publishes the map and exposes the load_map service.
+13 | Saves an occupancy map to image and metadata files. | Exposes the save_map service and reads a selected occupancy-grid topic during saving.
+14 | Publishes costmap filter metadata for keepout or speed filters. | Publishes CostmapFilterInfo pointing to the associated mask topic. | The report lists Jazzy support. Verify the filter configuration file format.
+15 | Computes global paths using configurable planner plugins. | Serves compute_path_to_pose and compute_path_through_poses actions and publishes the planned path.
+16 | Follows a global path using configurable local controller plugins. | Serves follow_path and publishes velocity commands. Twist versus TwistStamped depends on the selected version and configuration. | The report lists Jazzy support. The velocity command type varies across distributions.
+17 | Smooths global paths using configurable plugins. | Accepts and returns a path via the smooth_path action.
+18 | Runs configured navigation behaviors such as spinning, backing up, and waiting. | Exposes behavior-specific actions. Motion behaviors can publish velocity commands.
+19 | Coordinates navigation with configurable behavior trees. | Provides navigation actions such as navigate_to_pose and navigate_through_poses.
+20 | Visits ordered waypoints and optionally runs a task at each waypoint. | Serves the follow_waypoints action.
+21 | Manages ordered lifecycle transitions for a group of Nav2 nodes. | Provides the manage_nodes service and calls the managed nodes' lifecycle services.
+22 | Limits acceleration and deceleration of velocity commands. | Reads cmd_vel and publishes cmd_vel_smoothed. Closed-loop operation uses odometry feedback.
+23 | Applies stop or slowdown behavior based on sensor observations in configured zones. | Reads velocity commands and configured scan, point-cloud, or range inputs and publishes the resulting velocity command.
+24 | Reports whether sensor observations enter configured collision zones. | Reads configured scans or point clouds and publishes collision detection state. It does not modify velocity commands.
+25 | Computes and tracks routes on a navigation graph. | Exposes route actions and graph-related interfaces. Consult the selected Nav2 version for the installed API.
+26 | Coordinates robot docking and undocking using dock plugins. | Serves dock_robot and undock_robot. Uses transforms and plugin-specific detection and motion interfaces.
+27 | Provides MoveIt planning, kinematics, planning-scene management, and trajectory execution. | Uses joint states and TF, exposes planning and execution actions and kinematics services, and can call controller trajectory actions. Requires robot and planning configuration. | The report lists Jazzy support. Plugins and APIs can differ from the upstream main branch.
+28 | Converts Cartesian or joint jog commands into robot joint commands. | Accepts configured twist, pose, or joint-jog commands and joint-state feedback. Publishes configured joint trajectory or command output. | The report lists Jazzy support. Check the installed Servo message and topic configuration.
+29 | Builds a two-dimensional map with asynchronous laser-scan processing. | Uses laser scans and TF, publishes an occupancy map and transforms, and provides pose-graph serialization interfaces.
+30 | Builds a two-dimensional map with synchronous laser-scan processing. | Uses laser scans and TF and produces map and transform output.
+31 | Localizes a robot using a previously saved SLAM pose graph. | Uses laser scans, TF, and an initial pose. Produces localization pose or transforms.
+32 | Updates a pose graph during long-running mapping. | Uses laser scans and TF and updates the occupancy map and pose graph.
+33 | Supports mapping and localization within the same SLAM Toolbox process. | Uses laser scans and TF and produces map, pose, or transform output.
+34 | Shares mapping observations across robots for decentralized SLAM. | Uses per-robot scans and transforms and exchanges mapping information.
+35 | Corrects image distortion using camera calibration. | Reads image and camera_info and publishes image_rect. | The report lists Jazzy support with configurable image_transport and QoS.
+36 | Converts a Bayer image into color and monochrome images. | Reads image_raw and publishes image_color and image_mono.
+37 | Resizes images and updates the corresponding camera calibration. | Accepts an image and CameraInfo and emits resized image and calibration data.
+38 | Crops and decimates images while adjusting camera calibration. | Accepts an image and CameraInfo and publishes the cropped or decimated result.
+39 | Crops an image to the region containing nonzero pixels. | Accepts and emits images.
+40 | Processes a camera image to track a marker. | Reads an Image input. See the selected source for the marker and image outputs.
+41 | Converts depth-image units to meters. | Accepts and emits depth images.
+42 | Retains only depth samples near the closest observed surface. | Accepts a depth image and publishes a filtered depth image.
+43 | Computes a disparity image from depth and camera calibration. | Takes depth Image and CameraInfo and publishes a DisparityImage.
+44 | Projects a rectified depth image into an XYZ point cloud. | Takes depth Image and CameraInfo and publishes PointCloud2.
+45 | Colors an XYZ point cloud using registered depth and RGB images. | Takes depth and color images plus calibration and publishes PointCloud2.
+46 | Adds intensity to an XYZ point cloud derived from depth. | Takes depth and intensity images and publishes PointCloud2.
+47 | Projects an unrectified radial depth image into an XYZ point cloud. | Takes radial depth and CameraInfo and publishes PointCloud2. | The report lists Jazzy support. Radial depth topic names can vary by release.
+48 | Projects radial depth and intensity into an XYZI point cloud. | Takes depth and intensity images plus calibration and publishes PointCloud2. | The report lists Jazzy support. Check the radial point-cloud API in the installed version.
+49 | Projects radial depth and RGB observations into an XYZRGB point cloud. | Takes depth and color images plus calibration and publishes PointCloud2. | The report lists Jazzy support. Check radial depth topic names in the installed version.
+50 | Reprojects depth measurements into the frame of another camera. | Uses depth, camera calibration, and TF and publishes registered depth.
+51 | Computes disparity from a rectified stereo image pair. | Takes left and right images and CameraInfo and publishes DisparityImage. | The report lists Jazzy support and notes QoS overrides.
+52 | Reconstructs a point cloud from stereo disparity and calibration. | Uses stereo image, calibration, and disparity data and publishes PointCloud2.
+53 | Displays a stereo disparity image. | Subscribes to DisparityImage. | The report lists Jazzy support. Display requires GUI and OpenCV dependencies.
+54 | Displays a ROS image stream. | Subscribes to Image.
+55 | Displays stereo image streams. | Subscribes to stereo images. See the selected source for synchronization and additional inputs.
+56 | Writes images from a ROS image stream to files. | Subscribes to Image and produces image files.
+57 | Saves incoming images to disk under configured save conditions. | Subscribes to Image and writes image files. Trigger behavior depends on configuration.
+58 | Encodes a ROS image stream into a video file. | Subscribes to Image and writes a video file.
+59 | Projects a 3D point cloud onto a planar laser scan. | Subscribes to cloud_in as PointCloud2 and publishes scan as LaserScan.
+60 | Projects a planar laser scan into a point cloud. | Subscribes to scan_in as LaserScan and publishes cloud as PointCloud2. Can use TF.
+61 | Converts a camera depth image into a planar laser scan. | Uses a depth Image and CameraInfo and publishes scan as LaserScan.
+62 | Selects or removes points using point indices. | Reads PointCloud2 and point indices and emits PointCloud2.
+63 | Filters point-cloud values using limits on a selected field. | Reads PointCloud2 and emits filtered PointCloud2.
+64 | Projects points onto a model such as a plane. | Reads a point cloud and model information and emits projected PointCloud2.
+65 | Removes points that have too few neighbors within a radius. | Reads PointCloud2 and emits filtered PointCloud2.
+66 | Removes point-cloud outliers using neighbor-distance statistics. | Reads PointCloud2 and emits filtered PointCloud2.
+67 | Keeps or removes points within a configured three-dimensional box. | Reads PointCloud2 and emits filtered PointCloud2.
+68 | Reduces point-cloud density with a voxel grid. | Reads PointCloud2 and emits downsampled PointCloud2.
+69 | Publishes a PCD file as a ROS point cloud. | Reads a PCD file and publishes PointCloud2.
+70 | Saves received point clouds to PCD files. | Subscribes to PointCloud2 and writes PCD files.
+71 | Accumulates point clouds and writes a combined PCD file. | Reads point-cloud data and writes a PCD file.
+72 | Extracts point clouds from a recorded bag into PCD files. | Reads bag storage containing PointCloud2 and writes PCD files.
+73 | Republishes messages from one topic to another without a fixed message type. | Bridges a configurable input and output topic of the same type.
+74 | Republishes a selected field from messages on an input topic. | Reads a field of a configured message and publishes the result.
+75 | Computes and republishes transformed values from an input topic. | Reads a configured topic and publishes transformed values.
+76 | Limits the message rate or bandwidth of a topic. | Reads a configured topic and republishes a throttled stream.
+77 | Drops messages according to a configurable pattern. | Reads a configured topic and publishes a reduced stream.
+78 | Selects one of several input topics for an output topic. | Uses configurable inputs and output and exposes selection services.
+79 | Routes an input topic to one of several outputs. | Uses configurable input and outputs and exposes selection services.
+80 | Delays messages before republishing them. | Reads a configured topic and publishes delayed messages.
+81 | Bridges selected topics across ROS domain IDs. | Topic names, types, and domain IDs are configured for each bridge. | Jazzy availability was not confirmed in the report. Check supported dependencies and package availability for the target system.
+82 | Exposes ROS graph operations over a WebSocket connection. | Bridges WebSocket clients to ROS topics, services, and actions.
+83 | Provides ROS graph and type introspection services. | Exposes services for discovering topics, services, and message types.
+84 | The report lists a standalone TCP transport for rosbridge. | The reviewed Jazzy package installs a WebSocket entry point. This entry has no verified ROS 2 interfaces. | The report lists the parent package for Jazzy. Review the deployment security boundary.
+85 | Exposes ROS data to Foxglove clients over WebSocket. | Provides access to ROS topics, services, parameters, and assets according to configuration. | Verify the installed Jazzy package and the compatible Foxglove protocol version.
+86 | Records selected ROS topics to rosbag2 storage. | Discovers or subscribes to configured topics and provides recording-control services. | The report cites rosbag2 0.26 series releases for Jazzy.
+87 | Replays recorded messages from rosbag2 storage. | Reads a recording, publishes its selected topics, and provides playback-control services.
+88 | Bridges configured topics and services between Gazebo Transport and ROS 2. | Bridge mappings specify the ROS and Gazebo types and direction. A common example bridges simulation clock data from Gazebo to ROS. | The report identifies Gazebo Harmonic as the default binary pairing for Jazzy. Verify the installed combination.
+89 | Bridges Gazebo image streams into ROS image_transport. | Reads Gazebo images and publishes sensor_msgs/msg/Image. | The report describes Jazzy with Gazebo Harmonic. Verify the installed ros_gz and Gazebo versions.
+90 | Groups diagnostic reports using configurable analyzers. | Subscribes to /diagnostics and publishes aggregate diagnostic messages. | The report cites diagnostics 4.2.x releases for Jazzy.
+91 | Writes ROS diagnostic data to InfluxDB v2. | Reads diagnostics and sends them to a configured database. Credentials are supplied at deployment.
+92 | Publishes joystick input as ROS Joy messages. | Publishes joy. Device access, deadzone, and autorepeat are configurable. | The report describes Jazzy use. Check SDL and device permissions.
+93 | Publishes game-controller input using SDL controller mappings. | Publishes joy. Button and axis mapping depends on the controller and SDL configuration. | The report lists Jazzy support. SDL2 controller mappings can differ by device.
+94 | Converts joystick input into velocity commands. | Subscribes to joy and publishes cmd_vel. Enable, turbo, and axis mappings are configurable. | The report cites teleop_twist_joy 2.6.x releases for Jazzy.
+95 | Arbitrates between velocity command inputs using priorities, timeouts, and locks. | Reads configured velocity inputs and Boolean locks and publishes the selected velocity command. | The report cites twist_mux 4.5.0 on Jazzy. Verify compatibility with the selected stamped velocity message configuration.
+96 | Calibrates a camera using images of a calibration target. | Uses camera images and calibration information and can call set_camera_info to store the result. | The report lists Jazzy image_pipeline releases. Check GUI, OpenCV, and NumPy compatibility.
+97 | Estimates IMU orientation using the Madgwick filter. | Reads IMU measurements and optionally magnetic field. Publishes filtered IMU and optionally TF. | The report cites a Jazzy release in September 2026.
+98 | Estimates IMU orientation using a complementary filter. | Reads IMU measurements and optionally magnetic field and publishes filtered IMU. | The report cites Jazzy releases of imu_tools.
+99 | Publishes images from a file or other supported source. | Publishes image_raw and camera_info. | The report lists Jazzy support and notes configurable QoS.
+100 | Rotates camera images according to transform or rotation settings. | Uses image, camera calibration, and optionally TF and publishes the rotated image. | The report lists Jazzy support. Check compiler requirements if using main or Rolling.

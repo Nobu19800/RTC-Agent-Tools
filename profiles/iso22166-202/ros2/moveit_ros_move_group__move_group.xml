@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ros:Module xmlns:ros="urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1" targetStandard="ISO 22166-202:2025" profileVersion="0.1" conformanceStatus="not-assessed">
+  <ros:GenInfo>
+    <ros:ModuleName>move_group</ros:ModuleName>
+    <ros:Description>Provides MoveIt planning, kinematics, planning-scene management, and trajectory execution.</ros:Description>
+  </ros:GenInfo>
+  <ros:IDnType>
+    <ros:ID>urn:uuid:2825e0a3-0c4e-502f-9ba8-54551be20fa9</ros:ID>
+    <ros:InformationModelVersion>local-mapping-0.1</ros:InformationModelVersion>
+  </ros:IDnType>
+  <ros:ModuleProp>
+    <ros:Property name="rosPackage">moveit_ros_move_group</ros:Property>
+    <ros:Property name="category">MoveIt2</ros:Property>
+  </ros:ModuleProp>
+  <ros:IOVariables>
+    <ros:Description>Uses joint states and TF, exposes planning and execution actions and kinematics services, and can call controller trajectory actions. Requires robot and planning configuration.</ros:Description>
+    <ros:Variable direction="input" transport="ROS 2 topic" name="/joint_states" />
+  </ros:IOVariables>
+  <ros:Services>
+    <ros:Service kind="action" name="move_action" />
+    <ros:Service kind="action" name="execute_trajectory" />
+    <ros:Service kind="service" name="compute_ik" />
+    <ros:Service kind="service" name="compute_fk" />
+    <ros:Service kind="service" name="plan_kinematic_path" />
+  </ros:Services>
+  <ros:Infra>
+    <ros:Requirement kind="report-distribution-note">The report lists Jazzy support. Plugins and APIs can differ from the upstream main branch.</ros:Requirement>
+  </ros:Infra>
+  <ros:ExecutableForm>
+    <ros:Command>ros2</ros:Command>
+    <ros:Argument>run</ros:Argument>
+    <ros:Argument>moveit_ros_move_group</ros:Argument>
+    <ros:Argument>move_group</ros:Argument>
+  </ros:ExecutableForm>
+  <ros:Evidence>
+    <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="27">deep-research-report.md</ros:Report>
+    <ros:Source>https://moveit.picknik.ai/main/doc/concepts/move_group.html</ros:Source>
+    <ros:UpstreamSource status="jazzy-registration">https://github.com/moveit/moveit2/blob/jazzy/moveit_ros/move_group/CMakeLists.txt</ros:UpstreamSource>
+    <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
+  </ros:Evidence>
+</ros:Module>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ros:Module xmlns:ros="urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1" targetStandard="ISO 22166-202:2025" profileVersion="0.1" conformanceStatus="not-assessed">
+  <ros:GenInfo>
+    <ros:ModuleName>amcl</ros:ModuleName>
+    <ros:Description>Estimates a robot pose on a known map using adaptive Monte Carlo localization.</ros:Description>
+  </ros:GenInfo>
+  <ros:IDnType>
+    <ros:ID>urn:uuid:5d78477d-8da4-5471-9edc-311d5a4316aa</ros:ID>
+    <ros:InformationModelVersion>local-mapping-0.1</ros:InformationModelVersion>
+  </ros:IDnType>
+  <ros:ModuleProp>
+    <ros:Property name="rosPackage">nav2_amcl</ros:Property>
+    <ros:Property name="category">Nav2</ros:Property>
+  </ros:ModuleProp>
+  <ros:IOVariables>
+    <ros:Description>Subscribes to laser scans and an occupancy map. Publishes the estimated pose and can publish TF.</ros:Description>
+    <ros:Variable direction="input" transport="ROS 2 topic" name="/scan" dataType="sensor_msgs/msg/LaserScan" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="/map" dataType="nav_msgs/msg/OccupancyGrid" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="/amcl_pose" dataType="geometry_msgs/msg/PoseWithCovarianceStamped" />
+  </ros:IOVariables>
+  <ros:Services />
+  <ros:Infra>
+    <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
+  </ros:Infra>
+  <ros:ExecutableForm>
+    <ros:Command>ros2</ros:Command>
+    <ros:Argument>run</ros:Argument>
+    <ros:Argument>nav2_amcl</ros:Argument>
+    <ros:Argument>amcl</ros:Argument>
+  </ros:ExecutableForm>
+  <ros:Evidence>
+    <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="11">deep-research-report.md</ros:Report>
+    <ros:Source>https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_amcl</ros:Source>
+    <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_amcl/CMakeLists.txt</ros:UpstreamSource>
+    <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
+  </ros:Evidence>
+</ros:Module>

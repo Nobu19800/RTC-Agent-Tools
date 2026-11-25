@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ros:Module xmlns:ros="urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1" targetStandard="ISO 22166-202:2025" profileVersion="0.1" conformanceStatus="not-assessed">
+  <ros:GenInfo>
+    <ros:ModuleName>cameracalibrator</ros:ModuleName>
+    <ros:Description>Calibrates a camera using images of a calibration target.</ros:Description>
+  </ros:GenInfo>
+  <ros:IDnType>
+    <ros:ID>urn:uuid:0f8eafe2-5507-54f0-b2b2-9dc2d29f8c92</ros:ID>
+    <ros:InformationModelVersion>local-mapping-0.1</ros:InformationModelVersion>
+  </ros:IDnType>
+  <ros:ModuleProp>
+    <ros:Property name="rosPackage">camera_calibration</ros:Property>
+    <ros:Property name="category">Camera calibration</ros:Property>
+  </ros:ModuleProp>
+  <ros:IOVariables>
+    <ros:Description>Uses camera images and calibration information and can call set_camera_info to store the result.</ros:Description>
+    <ros:Variable direction="input" transport="ROS 2 topic" name="image" />
+  </ros:IOVariables>
+  <ros:Services>
+    <ros:Service kind="service" name="camera/set_camera_info" dataType="sensor_msgs/srv/SetCameraInfo" />
+  </ros:Services>
+  <ros:Infra>
+    <ros:Requirement kind="report-distribution-note">The report lists Jazzy image_pipeline releases. Check GUI, OpenCV, and NumPy compatibility.</ros:Requirement>
+  </ros:Infra>
+  <ros:ExecutableForm>
+    <ros:Command>ros2</ros:Command>
+    <ros:Argument>run</ros:Argument>
+    <ros:Argument>camera_calibration</ros:Argument>
+    <ros:Argument>cameracalibrator</ros:Argument>
+  </ros:ExecutableForm>
+  <ros:Evidence>
+    <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="96">deep-research-report.md</ros:Report>
+    <ros:Source>https://github.com/ros-perception/image_pipeline/tree/rolling/camera_calibration</ros:Source>
+    <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-perception/image_pipeline/blob/jazzy/camera_calibration/setup.py</ros:UpstreamSource>
+    <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
+  </ros:Evidence>
+</ros:Module>
