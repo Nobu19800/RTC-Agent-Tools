@@ -367,42 +367,82 @@ def search_rtc_xml(query="filename:RTC.xml"):
     return all_items
 
 
-def search_rtc_xml_by_owner(items, previous_entries):
-    """Search each distinct GitHub owner found in the results or saved catalog."""
+def catalog_owners(entries):
     owners = {}
-    for entry in previous_entries:
+    for entry in entries:
         url = urllib.parse.urlsplit(entry.get("repositoryUrl") or "")
         parts = url.path.strip("/").split("/")
         if url.scheme == "https" and url.hostname == "github.com" and len(parts) == 2:
             login = parts[0]
             if re.fullmatch(r"[A-Za-z0-9-]+", login):
-                owners.setdefault(login.casefold(), (login, None))
+                owners.setdefault(login.casefold(), login)
+    return list(owners.values())
 
-    for item in items:
-        repository = item["repository"]
-        owner = repository.get("owner") or {}
-        login = owner.get("login") or repository.get("full_name", "").partition("/")[0]
-        if re.fullmatch(r"[A-Za-z0-9-]+", login):
-            key = login.casefold()
-            owner_type = owner.get("type") or owners.get(key, (login, None))[1]
-            owners[key] = (login, owner_type)
 
-    additional_items = []
-    for login, owner_type in owners.values():
+def owner_repositories(login):
+    # This public listing works for both individual accounts and organizations.
+    page = 1
+    while True:
+        repositories = github_api(
+            f"{GITHUB_API}/users/{login}/repos?type=owner&per_page=100&page={page}"
+        )
+        yield from repositories
+        if len(repositories) < 100:
+            break
+        page += 1
+
+
+def repository_rtc_files(repository):
+    branch = repository["default_branch"]
+    tree_url = f'{GITHUB_API}/repos/{repository["full_name"]}/git/trees'
+    root_url = f"{tree_url}/{urllib.parse.quote(branch, safe='')}"
+
+    def matching_files(nodes, prefix=""):
+        for node in nodes:
+            name = prefix + node["path"]
+            if node["type"] == "blob" and Path(name).name == "RTC.xml":
+                yield {
+                    "repository": repository,
+                    "path": name,
+                    "url": node["url"],
+                    "html_url": f'{repository["html_url"]}/blob/{urllib.parse.quote(branch)}/{urllib.parse.quote(name)}',
+                }
+
+    tree = github_api(f"{root_url}?recursive=1")
+    if not tree.get("truncated"):
+        yield from matching_files(tree["tree"])
+        return
+
+    pending = [(root_url, "")]
+    while pending:
+        url, prefix = pending.pop()
+        subtree = github_api(url)
+        if subtree.get("truncated"):
+            raise ValueError(f"Truncated Git tree for {repository['full_name']}: {prefix}")
+        yield from matching_files(subtree["tree"], prefix)
+        pending.extend((node["url"], prefix + node["path"] + "/")
+                       for node in subtree["tree"] if node["type"] == "tree")
+
+
+def search_rtc_xml_by_owner(entries):
+    owners = catalog_owners(entries)
+    print(f"Searching default branches for {len(owners)} catalog owners.", flush=True)
+    for login in owners:
+        print(f"Searching repositories owned by {login}", flush=True)
         try:
-            if owner_type not in ("User", "Organization"):
-                owner_type = github_api(f"{GITHUB_API}/users/{login}").get("type")
-            if owner_type not in ("User", "Organization"):
-                print(f"Warning: could not determine GitHub owner type for {login}", file=sys.stderr)
-                continue
-            qualifier = "org" if owner_type == "Organization" else "user"
-            time.sleep(7)
-            additional_items.extend(search_rtc_xml(f"filename:RTC.xml {qualifier}:{login}"))
+            for repository in owner_repositories(login):
+                if repository.get("private"):
+                    continue
+                try:
+                    yield from repository_rtc_files(repository)
+                except GitHubRateLimit:
+                    raise
+                except (OSError, ValueError) as error:
+                    print(f"Warning: could not scan {repository['full_name']}: {error}", file=sys.stderr)
         except GitHubRateLimit:
             raise
         except OSError as error:
-            print(f"Warning: GitHub owner search failed for {login}: {error}", file=sys.stderr)
-    return additional_items
+            print(f"Warning: could not list repositories for {login}: {error}", file=sys.stderr)
 
 
 # ============================================================
@@ -1587,89 +1627,10 @@ def print_rtc(
 # Main
 # ============================================================
 
-def main():
-
-    parser = (
-        argparse.ArgumentParser(
-            description=(
-                "Search GitHub for "
-                "RTC.xml and build "
-                "an RT-Component catalog."
-            )
-        )
-    )
-
-    parser.add_argument(
-        "--limit",
-        type=int,
-        default=None,
-        help=(
-            "Stop after finding "
-            "this number of valid "
-            "RT-Components. "
-            "If omitted, process all "
-            "accessible search results."
-        ),
-    )
-    parser.add_argument(
-        "--openrtm-samples-only", action="store_true",
-        help="Build the separate OpenRTM samples catalog without querying GitHub.",
-    )
-
-    args = (
-        parser.parse_args()
-    )
-    if args.openrtm_samples_only:
-        save_catalog(openrtm_samples(), SAMPLES_OUTPUT_FILE)
-        return 0
-
-    if (
-        args.limit
-        is not None
-        and args.limit <= 0
-    ):
-
-        parser.error(
-            "--limit must be "
-            "greater than 0"
-        )
-
-    if not TOKEN:
-
-        print(
-            "Warning: GITHUB_TOKEN "
-            "is not set.",
-            file=sys.stderr,
-        )
-
-        print(
-            "Unauthenticated "
-            "GitHub API requests "
-            "have stricter limits.",
-            file=sys.stderr,
-        )
-
-    try:
-        previous = existing_catalog(OUTPUT_FILE)
-    except (OSError, ValueError) as error:
-        print(f"Error: existing catalog could not be read: {error}", file=sys.stderr)
-        return 1
-
-    try:
-        items = search_rtc_xml()
-        items.extend(search_rtc_xml_by_owner(items, previous.values()))
-    except GitHubRateLimit as error:
-        print(f"Warning: catalog search deferred; existing catalog retained: {error}", file=sys.stderr)
-        return 0 if OUTPUT_FILE.is_file() else 1
-
+def collect_catalog_entries(items, seen, seen_rtc_implementations, limit):
     catalog = []
-
     processed = 0
     skipped = 0
-
-    seen = set()
-    seen_rtc_implementations = set()
-
     for item in items:
 
         repository_url = (
@@ -1774,25 +1735,25 @@ def main():
             )
 
             if (
-                args.limit
+                limit
                 is not None
                 and len(
                     catalog
                 )
-                >= args.limit
+                >= limit
             ):
 
                 print()
                 print(
                     "Limit reached: "
-                    f"{args.limit} RTCs"
+                    f"{limit} RTCs"
                 )
 
                 break
 
         except GitHubRateLimit as error:
             print(f"Warning: stopping profile retrieval; retaining saved catalog entries: {error}", file=sys.stderr)
-            break
+            return catalog, processed, skipped
         except ET.ParseError as e:
 
             skipped += 1
@@ -1812,12 +1773,117 @@ def main():
                 f"{e}"
             )
 
+    return catalog, processed, skipped
+
+
+def main():
+
+    parser = (
+        argparse.ArgumentParser(
+            description=(
+                "Search GitHub for "
+                "RTC.xml and build "
+                "an RT-Component catalog."
+            )
+        )
+    )
+
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help=(
+            "Stop after finding "
+            "this number of valid "
+            "RT-Components. "
+            "If omitted, process all "
+            "accessible search results."
+        ),
+    )
+    parser.add_argument(
+        "--openrtm-samples-only", action="store_true",
+        help="Build the separate OpenRTM samples catalog without querying GitHub.",
+    )
+
+    args = (
+        parser.parse_args()
+    )
+    if args.openrtm_samples_only:
+        save_catalog(openrtm_samples(), SAMPLES_OUTPUT_FILE)
+        return 0
+
+    if (
+        args.limit
+        is not None
+        and args.limit <= 0
+    ):
+
+        parser.error(
+            "--limit must be "
+            "greater than 0"
+        )
+
+    if not TOKEN:
+
+        print(
+            "Warning: GITHUB_TOKEN "
+            "is not set.",
+            file=sys.stderr,
+        )
+
+        print(
+            "Unauthenticated "
+            "GitHub API requests "
+            "have stricter limits.",
+            file=sys.stderr,
+        )
+
+    try:
+        previous = existing_catalog(OUTPUT_FILE)
+    except (OSError, ValueError) as error:
+        print(f"Error: existing catalog could not be read: {error}", file=sys.stderr)
+        return 1
+
+    seen = set()
+    seen_rtc_implementations = set()
+    try:
+        items = search_rtc_xml()
+    except GitHubRateLimit as error:
+        print(f"Warning: global code search deferred: {error}", file=sys.stderr)
+        items = []
+
+    catalog, processed, skipped = collect_catalog_entries(
+        items, seen, seen_rtc_implementations, args.limit
+    )
+    existing_keys = previous.keys() - seen_rtc_implementations
+    previous.update((rtc_identity(entry), entry) for entry in catalog)
+    if catalog:
+        save_catalog(list(previous.values()), OUTPUT_FILE)
+    print(f"Global search collected {len(catalog)} RTCs.", flush=True)
+
+    limit = None if args.limit is None else args.limit - len(catalog)
+    if limit != 0:
+        def owner_candidates():
+            try:
+                yield from search_rtc_xml_by_owner(previous.values())
+            except GitHubRateLimit as error:
+                print(f"Warning: stopping owner scan: {error}", file=sys.stderr)
+
+        added, owner_processed, owner_skipped = collect_catalog_entries(
+            owner_candidates(), seen, seen_rtc_implementations, limit
+        )
+        previous.update((rtc_identity(entry), entry) for entry in added)
+        if added:
+            save_catalog(list(previous.values()), OUTPUT_FILE)
+        catalog.extend(added)
+        processed += owner_processed
+        skipped += owner_skipped
+        print(f"Owner scan collected {len(added)} RTCs.", flush=True)
+
     if not catalog and not OUTPUT_FILE.is_file():
         print("Error: no RTCs collected and no existing catalog available.", file=sys.stderr)
         return 1
-    retained = len(previous.keys() - seen_rtc_implementations)
-    previous.update((rtc_identity(entry), entry) for entry in catalog)
-    save_catalog(list(previous.values()), OUTPUT_FILE)
+    retained = len(existing_keys - seen_rtc_implementations)
     print(f"Retained RTCs not found in this run: {retained}")
     print(f"Total RTCs in catalog: {len(previous)}")
 
@@ -1830,7 +1896,7 @@ def main():
     )
 
     print(
-        f"Search candidates : "
+        f"Global candidates : "
         f"{len(items)}"
     )
 
