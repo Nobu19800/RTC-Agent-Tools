@@ -1,0 +1,95 @@
+cmake_minimum_required(VERSION 3.16)
+project(LocalOpenRTMTransport LANGUAGES C CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(OPENRTM_SOURCE "" CACHE PATH "OpenRTM-aist source checkout")
+set(transport "${OPENRTM_SOURCE}/src/ext/transport")
+set(OPENRTM_DDS_BACKEND "FastRTPS" CACHE STRING "OpenRTM-aist DDS transport")
+set_property(CACHE OPENRTM_DDS_BACKEND PROPERTY STRINGS FastRTPS FastDDS)
+if(NOT OPENRTM_DDS_BACKEND MATCHES "^(FastRTPS|FastDDS)$")
+  message(FATAL_ERROR "OPENRTM_DDS_BACKEND must be FastRTPS or FastDDS")
+endif()
+set(backend "${OPENRTM_DDS_BACKEND}")
+set(dds_target "${backend}Transport")
+if(NOT EXISTS "${transport}/${backend}/${dds_target}.cpp"
+   OR NOT EXISTS "${transport}/ROS2Transport/ROS2Transport.cpp")
+  message(FATAL_ERROR "Set OPENRTM_SOURCE to the OpenRTM-aist checkout")
+endif()
+
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(RTM REQUIRED openrtm2)
+find_package(ament_cmake REQUIRED)
+find_package(fastcdr REQUIRED)
+if(backend STREQUAL "FastDDS")
+  find_package(fastdds 3 REQUIRED)
+  set(dds_library fastdds)
+else()
+  find_package(fastrtps REQUIRED)
+  set(dds_library fastrtps)
+endif()
+find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+
+set(endpoint_source "${transport}/${backend}")
+if(NOT EXISTS "${endpoint_source}/DDSEndpoints.cpp")
+  message(FATAL_ERROR "Use the OpenRTM-aist checkout with the DDS endpoint API changes")
+endif()
+file(GLOB dds_sources CONFIGURE_DEPENDS "${transport}/${backend}/*.cpp")
+set(ros_source "${transport}/ROS2Transport")
+if(EXISTS "${ros_source}/ROS2Serializer.h.ubuntu2404")
+  # Apply the upstream Ubuntu 24.04 header selection without editing the checkout.
+  set(jazzy_source "${CMAKE_CURRENT_BINARY_DIR}/jazzy-serializer")
+  foreach(file ROS2Serializer.cpp ROS2Transport.cpp ROS2Transport.h ROS2MessageInfo.cpp ROS2MessageInfo.h)
+    configure_file("${ros_source}/${file}" "${jazzy_source}/${file}" COPYONLY)
+  endforeach()
+  configure_file("${ros_source}/ROS2Serializer.h.ubuntu2404" "${jazzy_source}/ROS2Serializer.h" COPYONLY)
+  foreach(file ROS2Serializer.h ROS2Serializer.cpp ROS2MessageInfo.h)
+    file(READ "${jazzy_source}/${file}" contents)
+    if(backend STREQUAL "FastDDS")
+      set(payload_header "<fastdds/rtps/common/SerializedPayload.hpp>")
+      string(REPLACE "eprosima::fastrtps::rtps::SerializedPayload_t" "eprosima::fastdds::rtps::SerializedPayload_t" contents "${contents}")
+    else()
+      set(payload_header "<fastrtps/rtps/common/SerializedPayload.h>")
+    endif()
+    string(REPLACE "#include <rmw_fastrtps_cpp/TypeSupport.hpp>" "#include ${payload_header}" contents "${contents}")
+    if(backend STREQUAL "FastDDS")
+      string(REPLACE "FastRTPS" "FastDDS" contents "${contents}")
+    endif()
+    file(WRITE "${jazzy_source}/${file}" "${contents}")
+  endforeach()
+  set(ros_source "${jazzy_source}")
+endif()
+file(GLOB ros_sources "${ros_source}/*.cpp")
+add_library(${dds_target} SHARED ${dds_sources})
+add_library(ROS2Transport SHARED ${ros_sources})
+
+foreach(target ${dds_target} ROS2Transport)
+  set_target_properties(${target} PROPERTIES PREFIX "")
+  target_compile_options(${target} PRIVATE ${RTM_CFLAGS_OTHER})
+  target_include_directories(${target} PRIVATE ${RTM_INCLUDE_DIRS} "${transport}")
+  target_link_libraries(${target} RTC2 omniDynamic4 omniORB4 omnithread fastcdr ${dds_library})
+endforeach()
+
+ament_target_dependencies(ROS2Transport std_msgs geometry_msgs sensor_msgs)
+target_link_libraries(ROS2Transport ${dds_target}
+  ${std_msgs_LIBRARIES__rosidl_typesupport_fastrtps_cpp}
+  ${geometry_msgs_LIBRARIES__rosidl_typesupport_fastrtps_cpp}
+  ${sensor_msgs_LIBRARIES__rosidl_typesupport_fastrtps_cpp})
+target_compile_definitions(ROS2Transport PRIVATE
+  STD_MSGS_VERSION_MAJOR=${std_msgs_VERSION_MAJOR}
+  STD_MSGS_VERSION_MINOR=${std_msgs_VERSION_MINOR}
+  GEOMETORY_MSGS_VERSION_MAJOR=${geometry_msgs_VERSION_MAJOR}
+  GEOMETORY_MSGS_VERSION_MINOR=${geometry_msgs_VERSION_MINOR}
+  SENSOR_MSGS_VERSION_MAJOR=${sensor_msgs_VERSION_MAJOR}
+  SENSOR_MSGS_VERSION_MINOR=${sensor_msgs_VERSION_MINOR})
+
+add_library(ROS2TransportNamed SHARED ROS2TransportNamed.cpp ROS2Discovery.cpp)
+set_target_properties(ROS2TransportNamed PROPERTIES PREFIX "")
+target_compile_options(ROS2TransportNamed PRIVATE ${RTM_CFLAGS_OTHER})
+target_include_directories(ROS2TransportNamed PRIVATE ${RTM_INCLUDE_DIRS} "${transport}")
+target_link_libraries(ROS2TransportNamed ROS2Transport ${dds_target} fastcdr ${dds_library})
+if(backend STREQUAL "FastDDS")
+  target_compile_definitions(ROS2TransportNamed PRIVATE OPENRTM_USE_FASTDDS)
+endif()
+

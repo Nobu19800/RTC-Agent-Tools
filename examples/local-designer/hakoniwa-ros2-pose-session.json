@@ -1,0 +1,298 @@
+{
+  "version": 2,
+  "id": "hakoniwa-ros2-pose-test",
+  "name": "Hakoniwa Drone → ROS 2 Pose Test",
+  "description": "Proposed WSL2 read-only test. Bridge: hakoniwa-pdu-ros, PDU-to-ROS only. Read Drone/pos (channel 1, 72 bytes) from the simulator via a compatible Hakoniwa Endpoint and publish geometry_msgs/msg/Twist on /pdu/Drone/pos. Verify mmap-to-Endpoint compatibility before execution. No flight commands.",
+  "components": [
+    {
+      "id": "drone",
+      "type": "rtc",
+      "position": {
+        "x": 60,
+        "y": 140
+      },
+      "data": {
+        "catalogId": "hakoniwa.drone-three-point.drone-service",
+        "moduleId": "urn:uuid:e44b31c4-d7bc-5e79-8e5c-f7460fed3692",
+        "moduleKind": "hakoniwa",
+        "ports": [
+          {
+            "dataType": "hako_msgs/HakoDroneCmdMove",
+            "robot": "Drone",
+            "capacityBytes": 104,
+            "transport": "Hakoniwa mmap PDU",
+            "pduName": "drone_cmd_move",
+            "description": "Request and response share one channel. Current Python converter emits 80 bytes; writes are zero-padded to channel capacity.",
+            "fields": [
+              {
+                "name": "header.request",
+                "dataType": "boolean",
+                "unit": "",
+                "description": "Request flag"
+              },
+              {
+                "name": "header.result",
+                "dataType": "boolean",
+                "unit": "",
+                "description": "Completion response flag"
+              },
+              {
+                "name": "header.result_code",
+                "dataType": "int32",
+                "unit": "",
+                "description": "Completion code; 0 is accepted by this controller"
+              },
+              {
+                "name": "x",
+                "dataType": "float64",
+                "unit": "m",
+                "description": "Absolute simulation ROS-frame X"
+              },
+              {
+                "name": "y",
+                "dataType": "float64",
+                "unit": "m",
+                "description": "Absolute simulation ROS-frame Y"
+              },
+              {
+                "name": "z",
+                "dataType": "float64",
+                "unit": "m",
+                "description": "Absolute simulation ROS-frame Z"
+              },
+              {
+                "name": "speed",
+                "dataType": "float64",
+                "unit": "m/s",
+                "description": "Requested speed"
+              },
+              {
+                "name": "yaw_deg",
+                "dataType": "float64",
+                "unit": "deg",
+                "description": "Target yaw"
+              }
+            ],
+            "channelId": 7,
+            "id": "drone-move-input",
+            "name": "drone-move-input",
+            "portType": "data",
+            "direction": "in",
+            "sourceVariableId": "drone-move-input",
+            "sourceDirection": "input"
+          },
+          {
+            "dataType": "hako_msgs/HakoDroneCmdMove",
+            "robot": "Drone",
+            "capacityBytes": 104,
+            "transport": "Hakoniwa mmap PDU",
+            "pduName": "drone_cmd_move",
+            "description": "Request and response share one channel. Current Python converter emits 80 bytes; writes are zero-padded to channel capacity.",
+            "fields": [
+              {
+                "name": "header.request",
+                "dataType": "boolean",
+                "unit": "",
+                "description": "Request flag"
+              },
+              {
+                "name": "header.result",
+                "dataType": "boolean",
+                "unit": "",
+                "description": "Completion response flag"
+              },
+              {
+                "name": "header.result_code",
+                "dataType": "int32",
+                "unit": "",
+                "description": "Completion code; 0 is accepted by this controller"
+              },
+              {
+                "name": "x",
+                "dataType": "float64",
+                "unit": "m",
+                "description": "Absolute simulation ROS-frame X"
+              },
+              {
+                "name": "y",
+                "dataType": "float64",
+                "unit": "m",
+                "description": "Absolute simulation ROS-frame Y"
+              },
+              {
+                "name": "z",
+                "dataType": "float64",
+                "unit": "m",
+                "description": "Absolute simulation ROS-frame Z"
+              },
+              {
+                "name": "speed",
+                "dataType": "float64",
+                "unit": "m/s",
+                "description": "Requested speed"
+              },
+              {
+                "name": "yaw_deg",
+                "dataType": "float64",
+                "unit": "deg",
+                "description": "Target yaw"
+              }
+            ],
+            "channelId": 7,
+            "id": "drone-move-output",
+            "name": "drone-move-output",
+            "portType": "data",
+            "direction": "out",
+            "sourceVariableId": "drone-move-output",
+            "sourceDirection": "output"
+          },
+          {
+            "dataType": "geometry_msgs/Twist",
+            "robot": "Drone",
+            "capacityBytes": 72,
+            "transport": "Hakoniwa mmap PDU",
+            "pduName": "pos",
+            "description": "",
+            "fields": [
+              {
+                "name": "linear.x/y/z",
+                "dataType": "float64[3]",
+                "unit": "m",
+                "description": "Position; this Twist carries pose, not a velocity command"
+              },
+              {
+                "name": "angular.x/y/z",
+                "dataType": "float64[3]",
+                "unit": "rad",
+                "description": "Euler attitude as forwarded by the publisher"
+              }
+            ],
+            "channelId": 1,
+            "id": "drone-pose-output",
+            "name": "drone-pose-output",
+            "portType": "data",
+            "direction": "out",
+            "sourceVariableId": "drone-pose-output",
+            "sourceDirection": "output"
+          },
+          {
+            "dataType": "hako_msgs/HakoDroneCmdTakeoff",
+            "robot": "Drone",
+            "capacityBytes": 88,
+            "transport": "Hakoniwa mmap PDU",
+            "pduName": "drone_cmd_takeoff",
+            "description": "Preparation client requests takeoff; completion response uses the same channel.",
+            "fields": [],
+            "channelId": 6,
+            "id": "takeoff-request-response-in",
+            "name": "takeoff-request-response-in",
+            "portType": "data",
+            "direction": "in",
+            "sourceVariableId": "takeoff-request-response",
+            "sourceDirection": "inout"
+          },
+          {
+            "dataType": "hako_msgs/HakoDroneCmdTakeoff",
+            "robot": "Drone",
+            "capacityBytes": 88,
+            "transport": "Hakoniwa mmap PDU",
+            "pduName": "drone_cmd_takeoff",
+            "description": "Preparation client requests takeoff; completion response uses the same channel.",
+            "fields": [],
+            "channelId": 6,
+            "id": "takeoff-request-response-out",
+            "name": "takeoff-request-response-out",
+            "portType": "data",
+            "direction": "out",
+            "sourceVariableId": "takeoff-request-response",
+            "sourceDirection": "inout"
+          },
+          {
+            "dataType": "hako_msgs/HakoDroneCmdLand",
+            "robot": "Drone",
+            "capacityBytes": 88,
+            "transport": "Hakoniwa mmap PDU",
+            "pduName": "drone_cmd_land",
+            "description": "Supported landing PDU; the live route does not automatically land.",
+            "fields": [],
+            "channelId": 8,
+            "id": "land-request-response-in",
+            "name": "land-request-response-in",
+            "portType": "data",
+            "direction": "in",
+            "sourceVariableId": "land-request-response",
+            "sourceDirection": "inout"
+          },
+          {
+            "dataType": "hako_msgs/HakoDroneCmdLand",
+            "robot": "Drone",
+            "capacityBytes": 88,
+            "transport": "Hakoniwa mmap PDU",
+            "pduName": "drone_cmd_land",
+            "description": "Supported landing PDU; the live route does not automatically land.",
+            "fields": [],
+            "channelId": 8,
+            "id": "land-request-response-out",
+            "name": "land-request-response-out",
+            "portType": "data",
+            "direction": "out",
+            "sourceVariableId": "land-request-response",
+            "sourceDirection": "inout"
+          }
+        ],
+        "source": {
+          "repository": "RTC-Agent-Tools",
+          "path": "profiles/iso22166-202/drone-three-point/drone-service.xml",
+          "sha256": "844f873040df97114d7ae9821179ebe484716b7b723b7e295276ad66ddb4f5ca"
+        },
+        "name": "Hakoniwa Drone legacy API simulator",
+        "instanceName": "drone_sim",
+        "state": "INACTIVE",
+        "implementation": {
+          "summary": "Publish Drone/pos from the simulated Drone over its existing mmap PDU.",
+          "notes": "Read-only test. Verify the native PDU and the Endpoint path before activating the bridge."
+        }
+      }
+    },
+    {
+      "id": "pose-probe",
+      "type": "rtc",
+      "position": {
+        "x": 560,
+        "y": 140
+      },
+      "data": {
+        "moduleKind": "ros2",
+        "instanceName": "pose_probe",
+        "name": "ROS 2 Pose Probe",
+        "state": "INACTIVE",
+        "ports": [
+          {
+            "id": "pose",
+            "name": "/pdu/Drone/pos",
+            "portType": "data",
+            "direction": "in",
+            "dataType": "geometry_msgs/msg/Twist"
+          }
+        ],
+        "implementation": {
+          "summary": "Subscribe to the simulated Drone pose and verify receipt.",
+          "notes": "Planned test probe. Subscribe to /pdu/Drone/pos as geometry_msgs/msg/Twist and compare with Drone/pos. The Twist encodes pose and Euler attitude."
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "drone-pose-to-ros",
+      "source": "drone",
+      "sourceHandle": "drone-pose-output",
+      "target": "pose-probe",
+      "targetHandle": "pose",
+      "label": "PDU → hakoniwa-pdu-ros → ROS 2",
+      "data": {
+        "connectionType": "data"
+      }
+    }
+  ]
+}

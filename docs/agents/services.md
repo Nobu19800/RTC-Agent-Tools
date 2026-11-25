@@ -25,7 +25,7 @@ Do not replace catalog searches with guesses when a potentially reusable RTC may
 
 ### Hakoniwa asset catalog
 
-For every new system design, search this XML-derived local catalog alongside the RTC catalog, then select the suitable module kinds for the requirement:
+For every new system design, search this XML-derived local catalog alongside the RTC and [ROS 2 catalogs](ros2.md), then select the suitable modules for the requirement:
 
 ```bash
 python hakoniwa_search.py catalog/hakoniwa_catalog.json --all
@@ -105,5 +105,9 @@ https://nobu19800.github.io/RTSystemDesigner/?session=<SESSION_ID>
 ```
 
 The session server may also return `designerUrl`. If it does, show that exact URL to the user instead of rebuilding it manually.
+
+### Local integration testing
+
+When the user asks to use the local test environment, use the loopback session API for both the proposal upload and final session retrieval. Follow the [local test setup](../local-designer.md) and use the `designerUrl` returned by the local server. Keep that server running throughout the review.
 
 ---

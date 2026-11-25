@@ -4,6 +4,8 @@ Part of the mandatory repository instructions linked from [AGENTS.md](../../AGEN
 Read with [services.md](services.md) and [session-format.md](session-format.md) before starting a new system design. Phase 4 is defined in session-format.md; follow phases in numeric order.
 All command examples and workspace paths are relative to the repository root unless explicitly stated otherwise.
 
+For ROS 2 catalog selection and v2 placement, use [the ROS 2 workflow](ros2.md). Apply the same design approval gate before runtime.
+
 ## Required workflow
 
 ### Phase 1: Understand the user's requested system
@@ -11,7 +13,7 @@ All command examples and workspace paths are relative to the repository root unl
 When the user gives a natural-language description of a system:
 
 1. Identify the system's major functions.
-2. Break the system into candidate module responsibilities, considering both RTCs and Hakoniwa assets.
+2. Break the system into candidate module responsibilities, considering RTCs, Hakoniwa assets, and ROS 2 nodes.
 3. Identify required input/output data and control flows.
 4. Identify external hardware, sensors, actuators, and software dependencies.
 5. Reuse suitable module boundaries; a function may belong to an existing RTC or Hakoniwa asset. Do not require one new RTC per function or replace a suitable simulation asset with a generated RTC by default.
@@ -31,13 +33,13 @@ Use this list only as a search and design aid.
 
 ---
 
-## Phase 2: Refresh/check and search both catalogs
+## Phase 2: Refresh/check and search all three catalogs
 
 Always refresh `catalog/rtc_catalog.json` from the canonical URL before catalog-based design.
 
 Also check `catalog/hakoniwa_catalog.json` against its source XML using `python scripts/build_hakoniwa_catalog.py --check`. If the source is available and changed, regenerate it and repeat the check. If the source is unavailable, retain the recorded source/hash, report freshness as unverified and continue provisional design from the saved catalog; do not claim a fresh source verification or invent a remote catalog URL.
 
-For each required capability, search both catalogs with focused terms using `rtc_search.py` and `hakoniwa_search.py`. If a focused asset search returns nothing, inspect `--all` before concluding that the small asset catalog has no suitable candidate. Search results inform one shared composition; do not create separate RTC and Hakoniwa systems by default.
+For each required capability, search all three catalogs with focused terms using `rtc_search.py`, `hakoniwa_search.py`, and `python scripts/ros2_system.py search`. If a focused asset search returns nothing, inspect `--all` before concluding that the small asset catalog has no suitable candidate. Search results inform one shared composition; do not create separate RTC and Hakoniwa systems by default.
 
 Use multiple focused searches when useful. For example:
 
@@ -73,7 +75,7 @@ For RTC-to-RTC DataPorts, require matching types unless an explicit adapter/conv
 
 For ServicePorts, check service interface name, interface type, and Consumer/Provider direction.
 
-Only after searching both catalogs, define missing RTCs where suitable. Record missing asset capabilities or serializers explicitly as planned/unresolved work. A missing serializer is not a reason to replace the asset with a fictitious existing RTC.
+Only after searching all three catalogs, define missing RTCs where suitable. Record missing asset capabilities or serializers explicitly as planned/unresolved work. A missing serializer is not a reason to replace the asset with a fictitious existing RTC.
 
 Never invent an existing repository or claim that a generated RTC already exists.
 
@@ -151,12 +153,12 @@ Before uploading:
 3. Confirm `name` is a string.
 4. Confirm `description` is a string.
 5. Confirm `version` is numeric `2`, `id` is a nonempty string, and `components` and `edges` are arrays. Do not require legacy `rtcTemplates` or `nodes`.
-6. Confirm component and edge IDs are unique; each component has `type: "rtc"`, numeric position coordinates, and `data.moduleKind` equal to `rtc` or `hakoniwa`. Check the common metadata fields in the session-format guide.
+6. Confirm component and edge IDs are unique; each component has `type: "rtc"`, numeric position coordinates, and `data.moduleKind` equal to `rtc`, `hakoniwa`, or `ros2`. Check the common metadata fields in the session-format guide.
 7. Confirm every edge references existing component IDs.
 8. Confirm port IDs are unique within each component and every edge handle refers to a port on the corresponding component.
 9. Confirm each DataPort connection is output-to-input with `connectionType: "data"`. For RTC-only edges require matching types or an explicit converter; for mixed edges require the custom interface/serializer contract, including an explicit conversion if endpoint type names differ. Preserve integer PDU `channelId` values and asset robot/capacity metadata without inventing them for WebSocket ports. Flag unresolved mappings separately from structural validity and block their runtime execution.
 10. Confirm every component has all four `implementation` string fields.
-11. Confirm both RTC and Hakoniwa provenance is preserved when available, including asset catalog IDs and XML hashes. Missing source classification is unresolved, not evidence that a module is generated. Confirm every mixed edge has a connection contract with `dataport.interface_type:hakoniwa` and an implemented or explicitly planned serializer. Keep format validation separate from implementation and runtime readiness.
+11. Confirm both RTC and Hakoniwa provenance is preserved when available, including asset catalog IDs and XML hashes. Missing source classification is unresolved, not evidence that a module is generated. Confirm every RTC/Hakoniwa DataPort edge has a connection contract with `dataport.interface_type:hakoniwa` and an implemented or explicitly planned serializer. Keep format validation separate from implementation and runtime readiness.
 
 12. Apply the portable-path checks in [session-format.md](session-format.md): use named references or explicitly based relative paths instead of machine-specific local absolute paths, including paths embedded in arguments, environment and implementation notes. Document reference meanings and hosts; keep actual bindings in separate deployment settings. Record the reason for any permitted concrete-path exception. Unresolved deployment bindings do not by themselves invalidate a reviewable design, but must block affected execution.
 
@@ -165,6 +167,8 @@ If validation fails, fix the JSON before uploading.
 ---
 
 ## Phase 6: Upload the proposal to the temporary session server
+
+For a local test, use [the local session client](../local-designer.md) to upload the proposal and use its returned `designerUrl` in phase 7.
 
 Upload the generated session JSON to:
 
@@ -254,7 +258,7 @@ User:
 Agent:
 
 1. Download the current RTC catalog.
-2. Check the XML-derived Hakoniwa catalog and search both catalogs with `rtc_search.py` / `hakoniwa_search.py`.
+2. Check the XML-derived Hakoniwa catalog and search all three catalogs with `rtc_search.py`, `hakoniwa_search.py`, and `python scripts/ros2_system.py search`.
 3. Select suitable reusable RTCs and/or Hakoniwa assets.
 4. Define missing RTCs and planned custom-interface/serializer mappings for mixed connections.
 5. Generate `work/session-proposal.json`.
@@ -289,7 +293,7 @@ Agent:
 The design phase is complete only when all of the following are true:
 
 - the current RTC catalog was downloaded and the XML-derived asset catalog was checked (or its unverified freshness was reported),
-- both catalogs were searched and suitable RTC/asset selections were made,
+- all three catalogs were searched and suitable module selections were made,
 - missing RTCs were explicitly marked as generated,
 - proposed ports and connections were represented in JSON,
 - every mixed edge specifies the custom Hakoniwa interface and serializer contract, with unresolved implementation clearly identified,

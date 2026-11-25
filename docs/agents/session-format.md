@@ -6,6 +6,10 @@ All command examples and workspace paths are relative to the repository root unl
 
 ## Phase 4: Generate the RTSystemDesigner session JSON
 
+For RTCs that generate DataPorts from selected peers, follow [Dynamic RTC ports](dynamic-rtc-ports.md) to populate the planned ports and connection handles before registering the session.
+
+For RTC DataPort to ROS 2 topic edges, use `data.connectionType: data` and `data.transport: ros2` with the [ROS2Transport mapping](ros2-transport.md).
+
 Generate one proposed system JSON, such as `work/session-proposal.json`. Create `work/` if needed.
 
 Use the version 2 structure supplied in `mixed_rtc_hakoniwa_system.json`. It replaces the legacy root `nodes` / `rtcTemplates` arrays with `components`. The sample establishes the fields below, not a complete schema for every port kind or runtime deployment.
@@ -44,7 +48,7 @@ Use the version 2 structure supplied in `mixed_rtc_hakoniwa_system.json`. It rep
 
 - `version` is numeric `2`. Preserve the supplied root `id` during edits; do not assume it equals the server's returned `sessionId`.
 - `components` contains actual instances. Each has a stable unique `id`, diagram `type: "rtc"`, numeric `position.x` / `position.y`, and `data`. Prefer a readable left-to-right layout.
-- Dispatch by `data.moduleKind`: `rtc` for RT-Components, `hakoniwa` for Hakoniwa assets. Both use diagram `type: "rtc"`. Do not infer execution technology from diagram type, names, or executable fields.
+- Dispatch by `data.moduleKind`: `rtc` for RT-Components, `hakoniwa` for Hakoniwa assets, and `ros2` for ROS 2 nodes. All use diagram `type: "rtc"`. Do not infer execution technology from diagram type, names, or executable fields.
 - Keep `data.name`, `instanceName`, `state`, `ports`, `deployment`, `rtcConf`, `configuration`, and all four `implementation` strings. Use `INACTIVE` at design time. A Hakoniwa asset's displayed state or `rtcConf` does not establish an OpenRTM lifecycle or CORBA registration.
 - Empty deployment fields are placeholders, not runnable launch instructions. Do not process Hakoniwa assets through RTC.xml, RTC Builder, or ordinary RTC lifecycle batches.
 
@@ -52,7 +56,7 @@ Use the version 2 structure supplied in `mixed_rtc_hakoniwa_system.json`. It rep
 
 `moduleKind` describes execution technology, not existing/generated origin. The supplied version 2 sample has no `origin` or catalog URLs; missing provenance must not be interpreted as `generated`.
 
-Build the module selections from both catalogs: RTC results populate RTC instances; `hakoniwa_catalog.json` entries populate Hakoniwa instances. Copy the selected asset's `componentName` into `data.name` and its `ports` into `data.ports`, assign a unique instance ID/name and diagram position, and preserve its descriptions, requirements and constraints in the implementation fields. `catalogId` identifies the selected asset profile; preserve its distinct `moduleId` and XML source path/hash as provenance. Do not copy an entire catalog entry as a session component or replace the asset ID with its referenced Business Pack component ID.
+Build module selections from the catalogs. For ROS 2, use the [ROS 2 workflow](ros2.md). RTC results populate RTC instances; `hakoniwa_catalog.json` entries populate Hakoniwa instances. Copy the selected asset's `componentName` into `data.name` and its `ports` into `data.ports`, assign a unique instance ID/name and diagram position, and preserve its descriptions, requirements and constraints in the implementation fields. `catalogId` identifies the selected asset profile; preserve its distinct `moduleId` and XML source path/hash as provenance. Do not copy an entire catalog entry as a session component or replace the asset ID with its referenced Business Pack component ID.
 
 Preserve asset port `robot`, `pduName`, `channelId`, `capacityBytes`, `transport`, field semantics and `sourceVariableId/sourceDirection` where supported. Keep original `inout` split ports on the same PDU channel. WebSocket ports have no inferred PDU channel. Asset properties and deployment metadata describe the selected profile: retain values and unresolved path references, but do not convert its static status list into a live RTC state or its `services` into CORBA ServicePorts. Keep arguments/environment structured in a companion record if the Designer accepts only deployment strings.
 

@@ -6,9 +6,11 @@ All command examples and workspace paths are relative to the repository root unl
 
 ## Phase 13: Generate RTC lifecycle batch files
 
+Prepare RTC DataPort to ROS 2 topic edges with [ROS2Transport preconnections](ros2-transport.md) in the RTC manager configuration. Keep these single-ended connections out of the RTC-to-RTC `rtcon` batches.
+
 After retrieving the final design and preparing the build workspace, generate Windows batch files for operating the RTCs actually instantiated in `build/system/final-session.json`. Include both existing and generated RTCs. Do not include unused templates.
 
-For version 2, select RTCs from `components` using `data.moduleKind == "rtc"` and read settings from `component.data`. Do not launch or activate Hakoniwa assets as RTCs based on diagram `type: "rtc"`. Classify edges by both endpoint module kinds: mixed and asset-only edges require verified Hakoniwa PDU/transport handling, not automatic ordinary CORBA connections. Report unresolved asset startup or bridge requirements separately. The legacy `scripts/generate_runtime_batches.py` is not yet a version 2/mixed-system generator; adapt and verify it before use.
+For version 2, select RTCs from `components` using `data.moduleKind == "rtc"` and read settings from `component.data`. Do not launch or activate Hakoniwa assets or ROS 2 nodes as RTCs based on diagram `type: "rtc"`. Run ROS 2 nodes using the [ROS 2 workflow](ros2.md). Classify RTC/Hakoniwa edges by both endpoint module kinds: mixed and asset-only edges require verified Hakoniwa PDU/transport handling, not automatic ordinary CORBA connections. Report unresolved asset startup or bridge requirements separately. The legacy `scripts/generate_runtime_batches.py` is not yet a version 2/mixed-system generator; adapt and verify it before use.
 
 Place the batch files under:
 

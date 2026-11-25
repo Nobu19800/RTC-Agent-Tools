@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "id": "local-designer-smoke",
+  "name": "Local Designer Smoke Test",
+  "description": "",
+  "components": [
+    {
+      "id": "local-smoke-rtc",
+      "type": "rtc",
+      "position": { "x": 120, "y": 100 },
+      "data": {
+        "moduleKind": "rtc",
+        "name": "SmokeRTC",
+        "instanceName": "SmokeRTC0",
+        "state": "INACTIVE",
+        "ports": [],
+        "deployment": {
+          "host": "", "executable": "", "workingDirectory": "",
+          "arguments": "", "environment": ""
+        },
+        "rtcConf": { "corbaNameServers": "", "managerShutdownAuto": "NO" },
+        "configuration": [],
+        "implementation": { "summary": "", "requirements": "", "constraints": "", "notes": "" }
+      }
+    }
+  ],
+  "edges": []
+}

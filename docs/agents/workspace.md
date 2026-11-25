@@ -4,13 +4,15 @@ Part of the mandatory repository instructions linked from [AGENTS.md](../../AGEN
 Read when the user confirms design completion or an approved design must be retrieved/revised. Continue with [generation.md](generation.md) and [implementation.md](implementation.md) as applicable. Batch preparation is specified in [runtime.md](runtime.md).
 All command examples and workspace paths are relative to the repository root unless explicitly stated otherwise.
 
-## Phase 8: On "design complete", retrieve the final session
+## Phase 8: On "design complete", load the final design
+
+For a local test, retrieve the session with [the local session client](../local-designer.md) from the same running server that created it.
 
 When the user explicitly confirms that the design is complete:
 
-1. Read the session ID from the current conversation context or `work/current_session_id.txt`.
-2. If no session ID can be determined, ask the user for the RTSystemDesigner URL or session ID.
-3. Download the final JSON from:
+1. In Designer-first mode, use the user-confirmed **JSON出力** file if provided. Copy it to `work/final-session.json` and continue with validation below. For a saved session, use the URL or ID supplied by the user. For an agent-created design, use the active session ID from the conversation or `work/current_session_id.txt`.
+2. If the authoritative input is unavailable, ask for the confirmed JSON export, Designer URL, or session ID as appropriate.
+3. For a saved session, retrieve the final JSON from its session server. The configured public service uses:
 
 ```text
 https://rt-session-server.rtsystem-designer-web.workers.dev/api/sessions/<SESSION_ID>
@@ -25,7 +27,7 @@ curl -L \
 ```
 
 4. Parse and validate `work/final-session.json`.
-5. Treat the downloaded final session as authoritative. Do not continue using stale assumptions from the initial proposal if the user modified the design.
+5. Treat the final saved session or confirmed export as authoritative. Preserve its component and edge identities, and base implementation on the validated design.
 6. Summarize material differences when they affect implementation.
 
 For mixed designs, reconcile `work/connection-contracts.json` and any companion provenance record with the downloaded final session as required by [session-format.md](session-format.md). Preserve a matching copy with the final session under `build/system/`. Verify selected asset catalog IDs/XML hashes and update every mixed-edge custom-interface/serializer mapping to the final endpoints. A removed or changed edge cannot retain an active stale binding; unresolved mappings remain blocked for execution. Implement the required OpenRTM-aist custom interface and serializers only from the approved final design.
@@ -64,7 +66,7 @@ build/
 
 Create these directories if needed.
 
-Copy the downloaded final session to:
+Copy the validated final design to:
 
 ```text
 build/system/final-session.json

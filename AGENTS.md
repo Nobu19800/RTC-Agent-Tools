@@ -4,7 +4,7 @@
 
 This repository provides tools for an AI coding agent such as Codex to design and implement systems composed of RT-Components and Hakoniwa assets from a natural-language system description.
 
-When the user describes a system to build, first search both `catalog/rtc_catalog.json` with `rtc_search.py` and `catalog/hakoniwa_catalog.json` with `hakoniwa_search.py`. Select reusable RTCs and/or Hakoniwa assets according to the requirement, identify missing modules and connections, generate one version 2 RTSystemDesigner session JSON from those selections, upload it to the temporary session server, and give the user the RTSystemDesigner link. Searching both catalogs does not require including both module kinds when only one is suitable. Do not start implementation before the design-completion gate.
+When the user describes a system to build, search the RTC, Hakoniwa, and ROS 2 catalogs with `rtc_search.py`, `hakoniwa_search.py`, and `python scripts/ros2_system.py search`. Select reusable modules according to the requirement, identify missing modules and connections, generate one version 2 RTSystemDesigner session JSON, upload it to the configured session server, and provide the design link. Do not start implementation before the design-completion gate.
 
 After the user explicitly says that the design is complete, for example:
 
@@ -13,7 +13,16 @@ After the user explicitly says that the design is complete, for example:
 - `設計完了`
 - `この構成で進めてください`
 
-download the final session JSON from the session server and use that final design as the authoritative implementation input.
+load the final design as described in [Approved design/workspace](docs/agents/workspace.md#phase-8-on-design-complete-load-the-final-design) and use it as the authoritative implementation input.
+
+## Designer-first mode
+
+When the user wants to design the system from scratch in RTSystemDesigner, let the user author the design on the Designer canvas. Use this mode when the user explicitly chooses it or asks to load a design they authored in Designer. Skip the agent-generated proposal and its upload.
+
+- For a fresh canvas, the user builds the design with the Designer's module and connection tools, then exports the version 2 JSON using **JSON出力** and provides the file or its path.
+- For a design already backed by a session, the user saves it in Designer and provides its URL or session ID. Retrieve it from the matching session server. Use [the local session client](docs/local-designer.md) for local integration and [the services guide](docs/agents/services.md) for the configured public service.
+- A request to load a design authorizes read-only review. Check the version 2 structure, module kinds, ports, connections, and applicable transport mappings. Summarize the loaded composition and identify missing settings. Preserve the supplied design and report material changes for user review before applying them.
+- Once the user confirms design completion, use the confirmed export or retrieve the latest saved session. Continue from phase 8 in [Approved design/workspace](docs/agents/workspace.md#phase-8-on-design-complete-load-the-final-design).
 
 ---
 
@@ -24,6 +33,8 @@ The linked guides below are mandatory parts of this repository's instructions, n
 | Work | Required guides |
 | --- | --- |
 | New system design, catalog search, proposal/session creation | [Services](docs/agents/services.md), [Design workflow](docs/agents/design.md), [Session format](docs/agents/session-format.md), [Catalog formats](catalog/README.md); also [Hakoniwa transport/serializer](docs/agents/hakoniwa-serializer.md) for mixed connections |
+| Design or deploy RTCs that create DataPorts from peer ports, such as ExcelControlpy or OOo Calc | [Dynamic RTC ports](docs/agents/dynamic-rtc-ports.md), [Session format](docs/agents/session-format.md), [Runtime batches](docs/agents/runtime.md) when deploying |
+| Load a user-authored Designer export or saved session | [Session format](docs/agents/session-format.md), [Approved design/workspace](docs/agents/workspace.md); [Services](docs/agents/services.md) when accessing a session server |
 | User confirms design completion; retrieve/revise approved inputs | [Approved design/workspace](docs/agents/workspace.md); also [Session format](docs/agents/session-format.md) when revising the design |
 | Profile JSON, RTC.xml, skeleton generation/update | [Generation](docs/agents/generation.md), [Implementation/build](docs/agents/implementation.md), [Verification](docs/agents/verification.md) |
 | Implement/refactor/build RTCs or change interfaces/settings | [Implementation/build](docs/agents/implementation.md), [Verification](docs/agents/verification.md); also the workspace, session-format, generation and runtime guides for affected artifacts |
@@ -31,14 +42,21 @@ The linked guides below are mandatory parts of this repository's instructions, n
 | Start/connect/activate/deactivate/stop RTCs, recover failures, inspect logs | [Runtime batches](docs/agents/runtime.md), [Verification/logs](docs/agents/verification.md) |
 | Create Hakoniwa DataPort transport or serializers | [Hakoniwa transport/serializer](docs/agents/hakoniwa-serializer.md), [Implementation/build](docs/agents/implementation.md), [Verification](docs/agents/verification.md) |
 | Generate/search the XML-derived Hakoniwa asset catalog | [Catalog formats and regeneration](catalog/README.md), [Services](docs/agents/services.md) |
+| Search, place, or launch ROS 2 nodes | [ROS 2 workflow](docs/agents/ros2.md), [Catalog formats](catalog/README.md) |
+| Connect RTC DataPorts to ROS 2 topics | [ROS2Transport settings](docs/agents/ros2-transport.md) |
+| Connect Hakoniwa PDU channels to ROS 2 topics or add a viewer to that system | [Hakoniwa–ROS 2 integration](docs/agents/hakoniwa-ros2.md), [ROS 2 workflow](docs/agents/ros2.md) |
 | Prepare/check toolchains, Foundation or viewer dependencies | [Environment checks](docs/agents/environment.md), [Workspace](docs/agents/workspace.md), [Generation](docs/agents/generation.md) |
 | Verify GUI/viewer behavior, repeat startup or recover a simulation | [Verification](docs/agents/verification.md), [Runtime](docs/agents/runtime.md), [Implementation](docs/agents/implementation.md) |
 
 ## System composition JSON
 
+When an existing RTC creates DataPorts from a selected peer, derive the planned ports during design generation and place them in `components[].data.ports`. Connect them with ordinary v2 `edges` so they are visible in RTSystemDesigner. Follow [Dynamic RTC ports](docs/agents/dynamic-rtc-ports.md) for direction, supported types, naming and runtime reconciliation.
+
+For ExcelControlpy and LibreOffice Calc RTCs based on CalcControl, record each spreadsheet port's sheet, starting cell or range, and whether the cell advances after each sample in RTSystemDesigner's **Implementation → Requirements** (`components[].data.implementation.requirements`). For advancing ports, state the direction and what triggers advancement. Read these settings from the confirmed design when configuring the RTC. Follow the startup and verification procedure in [Dynamic RTC ports](docs/agents/dynamic-rtc-ports.md).
+
 Use version 2: root `version: 2`, `name`, `description`, `id`, `components`, and `edges`. Instantiated modules are in `components`, with semantic metadata under each component's `data`; do not generate the legacy `nodes` / `rtcTemplates` structure. Read [Session format](docs/agents/session-format.md) and [Design workflow](docs/agents/design.md) before creating, revising or validating this JSON, including during instruction maintenance.
 
-Determine module identity from `components[].data.moduleKind`: `rtc` is an RT-Component and `hakoniwa` is a Hakoniwa asset. Both use diagram `type: "rtc"`; that type does not imply OpenRTM execution. Keep module kind separate from catalog/generated provenance. Apply RTC profile, skeleton, build and lifecycle procedures only to RTC modules. Preserve Hakoniwa port `channelId` values and verify actual PDU/transport mappings before execution. A diagram edge alone does not establish a working RTC/Hakoniwa bridge.
+Determine module identity from `components[].data.moduleKind`: `rtc` is an RT-Component, `hakoniwa` is a Hakoniwa asset, and `ros2` is a ROS 2 node. They share diagram `type: "rtc"`. Apply RTC generation, build and lifecycle procedures to RTC modules. Preserve Hakoniwa port `channelId` values and verify PDU/transport mappings. For ROS 2 deployment settings, topic/service/action handling and runtime commands, follow [the ROS 2 workflow](docs/agents/ros2.md).
 
 For every RTC/Hakoniwa DataPort connection, use an OpenRTM-aist custom interface (`dataport.interface_type: hakoniwa`) and a type-specific Hakoniwa serializer (`dataport.marshaling_type`). Keep the RTC endpoint typed and map it explicitly to the asset's PDU type, robot, channel, capacity and binary layout. Follow the mixed-connection contract in [hakoniwa-serializer.md](docs/agents/hakoniwa-serializer.md). Missing serializers or runtime bindings are planned implementation work, never evidence of a working connection. Ordinary CORBA DataPort connections do not connect directly to native Hakoniwa assets.
 
@@ -56,14 +74,32 @@ Preserve public source URLs, component IDs and revisions as identities rather th
 
 ## Workflow gates
 
-1. For a new system, complete design phases 1-7, provide the Designer link, and wait for explicit design completion. Do not download sources, implement, or build before that gate.
-2. After confirmation, retrieve and validate the final server design, then prepare the workspace and selected sources in phases 8-10. Use that final design as the implementation input.
+1. For an agent-designed system, complete design phases 1-7 and provide the Designer link. For Designer-first mode, load and review the user-authored design. Wait for explicit design completion before downloading component sources, implementing, or building.
+2. After confirmation, load and validate the final session or confirmed JSON export, then prepare the workspace and selected sources in phases 8-10. Use that final design as the implementation input.
 3. Design generated RTCs with typed DataPorts and non-JSON runtime settings; session/profile JSON remains required tool metadata. Export semantic profiles, convert RTC.xml, and generate initial skeletons in phase 11 before implementing the behavior. Keep algorithms in plain-data cores and OpenRTM integration directly in skeletons. Build existing RTCs unchanged as specified in phase 12.
 4. Generate the five direct-command lifecycle batches in phase 13. Generation/build success does not authorize activation or hardware operation. Perform only runtime operations within the user's requested scope, then apply the verification/log rules before reporting completion.
 5. For user-authorized changes after approval, update the affected design, IDL, profiles, sources, builds, settings and batches consistently. Preserve unrelated edits and do not regenerate over implemented skeletons.
 6. Before reporting an authorized system ready for use, verify its user-visible outcome, including actual viewer rendering when visualization is required. HTTP, process registration and transport success alone do not establish that outcome. Record repeat-start/stop behavior and evidence freshness as required by the verification guide; do not infer unexecuted results.
 
 The detailed guides retain their phase numbers and completion criteria. Follow numeric phase order; read the session-format guide for phase 4 and the verification guide for implementation/runtime completion. When maintaining these instructions, update the relevant guide and keep this routing table accurate rather than duplicating detailed rules here.
+
+## ROS 2 integration
+
+Use [the ROS 2 workflow](docs/agents/ros2.md) for catalog selection, node deployment, and ROS interfaces. Register the v2 session in RTSystemDesigner, then retrieve the approved version before preparing runtime settings.
+
+- For RTC DataPort ↔ ROS 2 topic connections, use [ROS2Transport](docs/agents/ros2-transport.md). Match the RTC serializer, ROS message type, topic, direction, DDS domain, and QoS. Use the named C++ module when the RTC must appear in the ROS 2 graph.
+- For Hakoniwa asset ↔ ROS 2 topic connections, use a [PDU-to-ROS bridge](docs/agents/hakoniwa-ros2.md). Show the bridge as an independent module and identify the PDU and ROS 2 legs on the diagram. Preserve the asset's PDU identity and layout. Include the viewer path when visualization is part of the design.
+- Verify actual data transfer in addition to node and topic discovery. Use the selected design's configuration and retain evidence for each implemented connection.
+
+## Hakoniwa runtime in WSL2
+
+When an approved design uses Hakoniwa assets (`moduleKind: hakoniwa`), set up the Hakoniwa execution environment in WSL2. Start with the [Hakoniwa Business Pack AGENTS.md](https://github.com/hakoniwalab/hakoniwa-business-pack/blob/main/AGENTS.md) and follow its user workflow and runtime references for the selected assets or Recipe.
+
+In WSL2, use the selected Recipe's Workspace and Foundation workflow to check prerequisites and prepare the required runtime components and artifacts. Follow the Recipe and component documentation for dependency versions, setup commands, and any viewer host requirements. Run the documented environment checks and record any unmet requirements before launching the system.
+
+## C++ OpenRTM-aist in WSL2
+
+Check the APT candidate for `openrtm2` with `apt-cache policy openrtm2` when preparing a C++ OpenRTM-aist environment in WSL2. If the candidate is `2.1.0-0`, build and use C++ OpenRTM-aist from the OpenRTM-aist source repository. Once APT offers a version newer than `2.1.0-0`, install and use the APT packages.
 
 ## WSL2 RTC and NameService endpoint defaults
 
@@ -77,7 +113,7 @@ For this deployment, restart the NameService only on the first application of th
 
 Use this precedence when deciding what information to trust:
 
-1. Final RTSystemDesigner session downloaded after user confirmation.
+1. Final saved RTSystemDesigner session retrieved after user confirmation, or the RTSystemDesigner JSON export confirmed by the user.
 2. Module metadata, provenance and connection contracts preserved with that final session.
 3. For RTCs, current `rtc_catalog.json` downloaded from the canonical URL; for Hakoniwa assets, XML-derived `hakoniwa_catalog.json` with its source identity/hash and freshness check.
 4. The selected module's source documentation and RTC.xml or Hakoniwa XML profile.

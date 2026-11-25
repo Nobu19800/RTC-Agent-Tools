@@ -1,0 +1,172 @@
+{
+  "version": 2,
+  "id": "ros2-transport-smoke",
+  "name": "ROS2Transport Round Trip",
+  "description": "Local test: ROS 2 talker -> RTC TimedString echo -> ROS 2 listener.",
+  "components": [
+    {
+      "id": "talker",
+      "type": "rtc",
+      "position": {
+        "x": 60,
+        "y": 120
+      },
+      "data": {
+        "moduleKind": "ros2",
+        "instanceName": "bridge_source",
+        "name": "talker",
+        "state": "INACTIVE",
+        "ports": [
+          {
+            "id": "chatter",
+            "name": "chatter",
+            "portType": "data",
+            "direction": "out",
+            "dataType": "std_msgs/msg/String"
+          }
+        ],
+        "deployment": {
+          "host": "localhost",
+          "executable": "",
+          "workingDirectory": "",
+          "arguments": "",
+          "environment": ""
+        },
+        "rtcConf": {
+          "corbaNameServers": "",
+          "managerShutdownAuto": ""
+        },
+        "configuration": [],
+        "implementation": {
+          "summary": "",
+          "requirements": "",
+          "constraints": "",
+          "notes": ""
+        },
+        "ros2": {
+          "package": "demo_nodes_cpp",
+          "executable": "talker",
+          "namespace": "/rtsd_bridge_in"
+        }
+      }
+    },
+    {
+      "id": "echo",
+      "type": "rtc",
+      "position": {
+        "x": 390,
+        "y": 120
+      },
+      "data": {
+        "moduleKind": "rtc",
+        "instanceName": "RtsdEcho0",
+        "name": "RtsdEcho",
+        "state": "INACTIVE",
+        "ports": [
+          {
+            "id": "input",
+            "name": "input",
+            "portType": "data",
+            "direction": "in",
+            "dataType": "RTC::TimedString"
+          },
+          {
+            "id": "output",
+            "name": "output",
+            "portType": "data",
+            "direction": "out",
+            "dataType": "RTC::TimedString"
+          }
+        ],
+        "deployment": {
+          "host": "localhost",
+          "executable": "",
+          "workingDirectory": "",
+          "arguments": "",
+          "environment": ""
+        },
+        "rtcConf": {
+          "corbaNameServers": "",
+          "managerShutdownAuto": ""
+        },
+        "configuration": [],
+        "implementation": {
+          "summary": "",
+          "requirements": "",
+          "constraints": "",
+          "notes": ""
+        }
+      }
+    },
+    {
+      "id": "listener",
+      "type": "rtc",
+      "position": {
+        "x": 720,
+        "y": 120
+      },
+      "data": {
+        "moduleKind": "ros2",
+        "instanceName": "bridge_sink",
+        "name": "listener",
+        "state": "INACTIVE",
+        "ports": [
+          {
+            "id": "chatter",
+            "name": "chatter",
+            "portType": "data",
+            "direction": "in",
+            "dataType": "std_msgs/msg/String"
+          }
+        ],
+        "deployment": {
+          "host": "localhost",
+          "executable": "",
+          "workingDirectory": "",
+          "arguments": "",
+          "environment": ""
+        },
+        "rtcConf": {
+          "corbaNameServers": "",
+          "managerShutdownAuto": ""
+        },
+        "configuration": [],
+        "implementation": {
+          "summary": "",
+          "requirements": "",
+          "constraints": "",
+          "notes": ""
+        },
+        "ros2": {
+          "package": "demo_nodes_cpp",
+          "executable": "listener",
+          "namespace": "/rtsd_bridge_out"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "into-rtc",
+      "source": "talker",
+      "sourceHandle": "chatter",
+      "target": "echo",
+      "targetHandle": "input",
+      "data": {
+        "connectionType": "data",
+        "transport": "ros2"
+      }
+    },
+    {
+      "id": "out-of-rtc",
+      "source": "echo",
+      "sourceHandle": "output",
+      "target": "listener",
+      "targetHandle": "chatter",
+      "data": {
+        "connectionType": "data",
+        "transport": "ros2"
+      }
+    }
+  ]
+}
