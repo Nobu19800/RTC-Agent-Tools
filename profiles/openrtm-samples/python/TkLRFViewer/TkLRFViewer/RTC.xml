@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:Noriaki Ando, AIST:example:LRFViewer:1.0">
+  <rtc:BasicInfo rtc:name="LRFViewer" rtc:description="Laser Range Finder Viewer component" rtc:category="example" rtc:vendor="Noriaki Ando, AIST" rtc:version="1.0" rtc:maxInstances="1" rtc:componentKind="DataFlowComponent" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnShutdown rtc:implemented="true" />
+    <rtc:OnDeactivated rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:DataPorts rtc:name="range_data" rtc:portType="DataInPort" rtc:type="RTC::RangeData" />
+  <rtc:Language rtc:kind="Python" />
+</rtc:RtcProfile>

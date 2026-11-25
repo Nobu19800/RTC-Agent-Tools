@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:Noriaki Ando, AIST:example:TkMobileRobotSimulator:1.0">
+  <rtc:BasicInfo rtc:name="TkMobileRobotSimulator" rtc:description="sample component for Python and Tkinter" rtc:category="example" rtc:vendor="Noriaki Ando, AIST" rtc:version="1.0" rtc:maxInstances="10" rtc:componentKind="DataFlowComponent" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnShutdown rtc:implemented="true" />
+    <rtc:OnDeactivated rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:DataPorts rtc:name="vel" rtc:portType="DataInPort" rtc:type="RTC::TimedFloatSeq" />
+  <rtc:DataPorts rtc:name="pos" rtc:portType="DataOutPort" rtc:type="RTC::TimedFloatSeq" />
+  <rtc:Language rtc:kind="Python" />
+</rtc:RtcProfile>

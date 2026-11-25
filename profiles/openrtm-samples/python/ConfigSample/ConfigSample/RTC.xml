@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:Shinji Kurihara:example:ConfigSample:1.0">
+  <rtc:BasicInfo rtc:name="ConfigSample" rtc:description="Configuration example component" rtc:category="example" rtc:vendor="Shinji Kurihara" rtc:version="1.0" rtc:maxInstances="10" rtc:componentKind="DataFlowComponent" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:ConfigurationSet>
+    <rtc:Configuration rtc:name="int_param0" rtc:defaultValue="0" />
+    <rtc:Configuration rtc:name="int_param1" rtc:defaultValue="1" />
+    <rtc:Configuration rtc:name="double_param0" rtc:defaultValue="0.11" />
+    <rtc:Configuration rtc:name="double_param1" rtc:defaultValue="9.9" />
+    <rtc:Configuration rtc:name="str_param0" rtc:defaultValue="hoge" />
+    <rtc:Configuration rtc:name="str_param1" rtc:defaultValue="dara" />
+    <rtc:Configuration rtc:name="vector_param0" rtc:defaultValue="0.0,1.0,2.0,3.0,4.0" />
+  </rtc:ConfigurationSet>
+  <rtc:Language rtc:kind="Python" />
+</rtc:RtcProfile>

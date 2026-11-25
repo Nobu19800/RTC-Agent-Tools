@@ -1,0 +1,2505 @@
+[
+  {
+    "componentName": "Analyzer",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/Analyzer",
+    "path": "examples/Analyzer/Analyzer.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/Analyzer/Analyzer/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/Analyzer/Analyzer.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/Analyzer/Analyzer/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/AnalyzerComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/AnalyzerComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    }
+  },
+  {
+    "componentName": "Analyzer_test",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/Analyzer",
+    "path": "examples/Analyzer/Analyzer_test.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/Analyzer/Analyzer_test/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/Analyzer/Analyzer_test.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/Analyzer/Analyzer_test/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/Analyzer_testComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/Analyzer_testComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    }
+  },
+  {
+    "componentName": "AutoTestIn",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/AutoTest",
+    "path": "examples/AutoTest/AutoTestIn.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/AutoTest/AutoTestIn/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/AutoTest/AutoTestIn.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/AutoTest/AutoTestIn/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": null
+  },
+  {
+    "componentName": "AutoTestOut",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/AutoTest",
+    "path": "examples/AutoTest/AutoTestOut.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/AutoTest/AutoTestOut/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/AutoTest/AutoTestOut.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/AutoTest/AutoTestOut/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": null
+  },
+  {
+    "componentName": "ConfigSample",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/ConfigSample",
+    "path": "examples/ConfigSample/ConfigSample.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/ConfigSample/ConfigSample/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/ConfigSample/ConfigSample.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/ConfigSample/ConfigSample/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/ConfigSampleComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/ConfigSampleComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    }
+  },
+  {
+    "componentName": "ConsoleIn",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/ConsoleIn/src",
+    "path": "examples/ConsoleIn/src/ConsoleIn.cpp",
+    "rtcXmlUrl": "https://github.com/OpenRTM/OpenRTM-aist/blob/712e3417286d4b08a52b9180c7d271fedf266829/examples/ConsoleIn/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/ConsoleIn/src/ConsoleIn.cpp",
+      "profilePath": null,
+      "upstreamProfilePath": "examples/ConsoleIn/RTC.xml"
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/ConsoleInComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/ConsoleInComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    },
+    "description": "Console input component",
+    "category": "example",
+    "vendor": "AIST",
+    "version": "2.0.0",
+    "dataPorts": [
+      {
+        "name": "out",
+        "portType": "DataOutPort",
+        "dataType": "RTC::TimedLong"
+      }
+    ],
+    "servicePorts": []
+  },
+  {
+    "componentName": "ConsoleInShort",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/Serializer",
+    "path": "examples/Serializer/ConsoleInShort.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/Serializer/ConsoleInShort/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/Serializer/ConsoleInShort.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/Serializer/ConsoleInShort/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/ConsoleInShortComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/ConsoleInShortComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    }
+  },
+  {
+    "componentName": "ConsoleOut",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/ConsoleOut/src",
+    "path": "examples/ConsoleOut/src/ConsoleOut.cpp",
+    "rtcXmlUrl": "https://github.com/OpenRTM/OpenRTM-aist/blob/712e3417286d4b08a52b9180c7d271fedf266829/examples/ConsoleOut/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/ConsoleOut/src/ConsoleOut.cpp",
+      "profilePath": null,
+      "upstreamProfilePath": "examples/ConsoleOut/RTC.xml"
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/ConsoleOutComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/ConsoleOutComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    },
+    "description": "Console output component",
+    "category": "example",
+    "vendor": "AIST",
+    "version": "2.0.0",
+    "dataPorts": [
+      {
+        "name": "in",
+        "portType": "DataInPort",
+        "dataType": "RTC::TimedLong"
+      }
+    ],
+    "servicePorts": []
+  },
+  {
+    "componentName": "ConsoleOutDouble",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/Serializer",
+    "path": "examples/Serializer/ConsoleOutDouble.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/Serializer/ConsoleOutDouble/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/Serializer/ConsoleOutDouble.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/Serializer/ConsoleOutDouble/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/ConsoleOutDoubleComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/ConsoleOutDoubleComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    }
+  },
+  {
+    "componentName": "Controller",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/Controller/src",
+    "path": "examples/Controller/src/Controller.cpp",
+    "rtcXmlUrl": "https://github.com/OpenRTM/OpenRTM-aist/blob/712e3417286d4b08a52b9180c7d271fedf266829/examples/Controller/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/Controller/src/Controller.cpp",
+      "profilePath": null,
+      "upstreamProfilePath": "examples/Controller/RTC.xml"
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/ControllerComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/ControllerComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    },
+    "description": "Controller component",
+    "category": "example",
+    "vendor": "AIST",
+    "version": "2.0.0",
+    "dataPorts": [
+      {
+        "name": "in",
+        "portType": "DataInPort",
+        "dataType": "RTC::TimedFloat"
+      },
+      {
+        "name": "out",
+        "portType": "DataOutPort",
+        "dataType": "RTC::TimedFloat"
+      }
+    ],
+    "servicePorts": []
+  },
+  {
+    "componentName": "DataIn",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/CSPSelectSample",
+    "path": "examples/CSPSelectSample/DataIn.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/CSPSelectSample/DataIn/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/CSPSelectSample/DataIn.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/CSPSelectSample/DataIn/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample/DataInComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample/DataInComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    }
+  },
+  {
+    "componentName": "DataIn2",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/CSPSample",
+    "path": "examples/CSPSample/DataIn2.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/CSPSample/DataIn2/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/CSPSample/DataIn2.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/CSPSample/DataIn2/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSample/DataIn2Comp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSample",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSample/DataIn2Comp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSample",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    }
+  },
+  {
+    "componentName": "DataIn_port3",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/CSPSelectSample",
+    "path": "examples/CSPSelectSample/DataIn_port3.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/CSPSelectSample/DataIn_port3/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/CSPSelectSample/DataIn_port3.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/CSPSelectSample/DataIn_port3/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample/DataIn_port3Comp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample/DataIn_port3Comp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    }
+  },
+  {
+    "componentName": "DataInOut",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/CSPSelectSample",
+    "path": "examples/CSPSelectSample/DataInOut.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/CSPSelectSample/DataInOut/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/CSPSelectSample/DataInOut.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/CSPSelectSample/DataInOut/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample/DataInOutComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample/DataInOutComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    }
+  },
+  {
+    "componentName": "DataOut",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/CSPSelectSample",
+    "path": "examples/CSPSelectSample/DataOut.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/CSPSelectSample/DataOut/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/CSPSelectSample/DataOut.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/CSPSelectSample/DataOut/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample/DataOutComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample/DataOutComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    }
+  },
+  {
+    "componentName": "DataOut2",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/CSPSample",
+    "path": "examples/CSPSample/DataOut2.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/CSPSample/DataOut2/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/CSPSample/DataOut2.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/CSPSample/DataOut2/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSample/DataOut2Comp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSample",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSample/DataOut2Comp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSample",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    }
+  },
+  {
+    "componentName": "DataOut_port3",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/CSPSelectSample",
+    "path": "examples/CSPSelectSample/DataOut_port3.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/CSPSelectSample/DataOut_port3/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/CSPSelectSample/DataOut_port3.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/CSPSelectSample/DataOut_port3/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample/DataOut_port3Comp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample/DataOut_port3Comp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}/CSP/CSPSelectSample",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    }
+  },
+  {
+    "componentName": "Display",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/StaticFsm",
+    "path": "examples/StaticFsm/Display.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/StaticFsm/Display/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/StaticFsm/Display.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/StaticFsm/Display/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/DisplayComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/DisplayComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    }
+  },
+  {
+    "componentName": "Fsm",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/Fsm",
+    "path": "examples/Fsm/Fsm.cc",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/Fsm/Fsm/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/Fsm/Fsm.cc",
+      "profilePath": "profiles/openrtm-samples/cpp/Fsm/Fsm/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": null
+  },
+  {
+    "componentName": "HelloRTWorld",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/HelloWorld",
+    "path": "examples/HelloWorld/HelloRTWorld.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/HelloWorld/HelloRTWorld/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/HelloWorld/HelloRTWorld.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/HelloWorld/HelloRTWorld/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": null
+  },
+  {
+    "componentName": "Inputbutton",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/StaticFsm",
+    "path": "examples/StaticFsm/Inputbutton.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/StaticFsm/Inputbutton/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/StaticFsm/Inputbutton.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/StaticFsm/Inputbutton/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/InputbuttonComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/InputbuttonComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    }
+  },
+  {
+    "componentName": "Microwave",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/StaticFsm",
+    "path": "examples/StaticFsm/Microwave.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/StaticFsm/Microwave/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/StaticFsm/Microwave.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/StaticFsm/Microwave/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/MicrowaveComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/MicrowaveComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    }
+  },
+  {
+    "componentName": "Motor",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/Motor/src",
+    "path": "examples/Motor/src/Motor.cpp",
+    "rtcXmlUrl": "https://github.com/OpenRTM/OpenRTM-aist/blob/712e3417286d4b08a52b9180c7d271fedf266829/examples/Motor/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/Motor/src/Motor.cpp",
+      "profilePath": null,
+      "upstreamProfilePath": "examples/Motor/RTC.xml"
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/MotorComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/MotorComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    },
+    "description": "Motor component",
+    "category": "example",
+    "vendor": "AIST",
+    "version": "2.0.0",
+    "dataPorts": [
+      {
+        "name": "in",
+        "portType": "DataInPort",
+        "dataType": "RTC::TimedFloat"
+      },
+      {
+        "name": "out",
+        "portType": "DataOutPort",
+        "dataType": "RTC::TimedLong"
+      }
+    ],
+    "servicePorts": []
+  },
+  {
+    "componentName": "MyServiceConsumer",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/MyServiceConsumer/src",
+    "path": "examples/MyServiceConsumer/src/MyServiceConsumer.cpp",
+    "rtcXmlUrl": "https://github.com/OpenRTM/OpenRTM-aist/blob/712e3417286d4b08a52b9180c7d271fedf266829/examples/MyServiceConsumer/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/MyServiceConsumer/src/MyServiceConsumer.cpp",
+      "profilePath": null,
+      "upstreamProfilePath": "examples/MyServiceConsumer/RTC.xml"
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/MyServiceConsumerComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/MyServiceConsumerComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    },
+    "description": "MyService Consumer Sample component",
+    "category": "example",
+    "vendor": "AIST",
+    "version": "2.0.0",
+    "dataPorts": [],
+    "servicePorts": [
+      {
+        "name": "MyService",
+        "interfaces": [
+          {
+            "name": "myservice",
+            "type": "SimpleService::MyService",
+            "direction": "Consumer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "componentName": "MyServiceProvider",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/MyServiceProvider/src",
+    "path": "examples/MyServiceProvider/src/MyServiceProvider.cpp",
+    "rtcXmlUrl": "https://github.com/OpenRTM/OpenRTM-aist/blob/712e3417286d4b08a52b9180c7d271fedf266829/examples/MyServiceProvider/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/MyServiceProvider/src/MyServiceProvider.cpp",
+      "profilePath": null,
+      "upstreamProfilePath": "examples/MyServiceProvider/RTC.xml"
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/MyServiceProviderComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/MyServiceProviderComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    },
+    "description": "MyService Provider Sample component",
+    "category": "example",
+    "vendor": "AIST",
+    "version": "2.0.0",
+    "dataPorts": [],
+    "servicePorts": [
+      {
+        "name": "MyService",
+        "interfaces": [
+          {
+            "name": "myservice",
+            "type": "SimpleService::MyService",
+            "direction": "Provider"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "componentName": "Sensor",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/Sensor/src",
+    "path": "examples/Sensor/src/Sensor.cpp",
+    "rtcXmlUrl": "https://github.com/OpenRTM/OpenRTM-aist/blob/712e3417286d4b08a52b9180c7d271fedf266829/examples/Sensor/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/Sensor/src/Sensor.cpp",
+      "profilePath": null,
+      "upstreamProfilePath": "examples/Sensor/RTC.xml"
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/SensorComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/SensorComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    },
+    "description": "Sensor component",
+    "category": "example",
+    "vendor": "AIST",
+    "version": "2.0.0",
+    "dataPorts": [
+      {
+        "name": "in",
+        "portType": "DataInPort",
+        "dataType": "RTC::TimedLong"
+      },
+      {
+        "name": "out",
+        "portType": "DataOutPort",
+        "dataType": "RTC::TimedFloat"
+      }
+    ],
+    "servicePorts": []
+  },
+  {
+    "componentName": "SeqIn",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/SeqIn/src",
+    "path": "examples/SeqIn/src/SeqIn.cpp",
+    "rtcXmlUrl": "https://github.com/OpenRTM/OpenRTM-aist/blob/712e3417286d4b08a52b9180c7d271fedf266829/examples/SeqIn/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/SeqIn/src/SeqIn.cpp",
+      "profilePath": null,
+      "upstreamProfilePath": "examples/SeqIn/RTC.xml"
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/SeqInComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/SeqInComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    },
+    "description": "Sequence InPort component",
+    "category": "example",
+    "vendor": "AIST",
+    "version": "2.0.0",
+    "dataPorts": [
+      {
+        "name": "Octet",
+        "portType": "DataInPort",
+        "dataType": "RTC::TimedOctet"
+      },
+      {
+        "name": "Short",
+        "portType": "DataInPort",
+        "dataType": "RTC::TimedShort"
+      },
+      {
+        "name": "Long",
+        "portType": "DataInPort",
+        "dataType": "RTC::TimedLong"
+      },
+      {
+        "name": "Float",
+        "portType": "DataInPort",
+        "dataType": "RTC::TimedFloat"
+      },
+      {
+        "name": "Double",
+        "portType": "DataInPort",
+        "dataType": "RTC::TimedDouble"
+      },
+      {
+        "name": "OctetSeq",
+        "portType": "DataInPort",
+        "dataType": "RTC::TimedOctetSeq"
+      },
+      {
+        "name": "ShortSeq",
+        "portType": "DataInPort",
+        "dataType": "RTC::TimedShortSeq"
+      },
+      {
+        "name": "LongSeq",
+        "portType": "DataInPort",
+        "dataType": "RTC::TimedLongSeq"
+      },
+      {
+        "name": "FloatSeq",
+        "portType": "DataInPort",
+        "dataType": "RTC::TimedFloatSeq"
+      },
+      {
+        "name": "DoubleSeq",
+        "portType": "DataInPort",
+        "dataType": "RTC::TimedDoubleSeq"
+      }
+    ],
+    "servicePorts": []
+  },
+  {
+    "componentName": "SeqOut",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/SeqOut/src",
+    "path": "examples/SeqOut/src/SeqOut.cpp",
+    "rtcXmlUrl": "https://github.com/OpenRTM/OpenRTM-aist/blob/712e3417286d4b08a52b9180c7d271fedf266829/examples/SeqOut/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/SeqOut/src/SeqOut.cpp",
+      "profilePath": null,
+      "upstreamProfilePath": "examples/SeqOut/RTC.xml"
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/SeqOutComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/SeqOutComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    },
+    "description": "Sequence OutPort component",
+    "category": "example",
+    "vendor": "AIST",
+    "version": "2.0.0",
+    "dataPorts": [
+      {
+        "name": "Octet",
+        "portType": "DataOutPort",
+        "dataType": "RTC::TimedOctet"
+      },
+      {
+        "name": "Short",
+        "portType": "DataOutPort",
+        "dataType": "RTC::TimedShort"
+      },
+      {
+        "name": "Long",
+        "portType": "DataOutPort",
+        "dataType": "RTC::TimedLong"
+      },
+      {
+        "name": "Float",
+        "portType": "DataOutPort",
+        "dataType": "RTC::TimedFloat"
+      },
+      {
+        "name": "Double",
+        "portType": "DataOutPort",
+        "dataType": "RTC::TimedDouble"
+      },
+      {
+        "name": "OctetSeq",
+        "portType": "DataOutPort",
+        "dataType": "RTC::TimedOctetSeq"
+      },
+      {
+        "name": "ShortSeq",
+        "portType": "DataOutPort",
+        "dataType": "RTC::TimedShortSeq"
+      },
+      {
+        "name": "LongSeq",
+        "portType": "DataOutPort",
+        "dataType": "RTC::TimedLongSeq"
+      },
+      {
+        "name": "FloatSeq",
+        "portType": "DataOutPort",
+        "dataType": "RTC::TimedFloatSeq"
+      },
+      {
+        "name": "DoubleSeq",
+        "portType": "DataOutPort",
+        "dataType": "RTC::TimedDoubleSeq"
+      }
+    ],
+    "servicePorts": []
+  },
+  {
+    "componentName": "StringIn",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/StringIO",
+    "path": "examples/StringIO/StringIn.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/StringIO/StringIn/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/StringIO/StringIn.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/StringIO/StringIn/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": null
+  },
+  {
+    "componentName": "StringOut",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/StringIO",
+    "path": "examples/StringIO/StringOut.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/StringIO/StringOut/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/StringIO/StringOut.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/StringIO/StringOut/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": null
+  },
+  {
+    "componentName": "Throughput",
+    "language": "C++",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist/tree/712e3417286d4b08a52b9180c7d271fedf266829/examples/Throughput",
+    "path": "examples/Throughput/Throughput.cpp",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/cpp/Throughput/Throughput/RTC.xml",
+    "source": {
+      "revision": "712e3417286d4b08a52b9180c7d271fedf266829",
+      "path": "examples/Throughput/Throughput.cpp",
+      "profilePath": "profiles/openrtm-samples/cpp/Throughput/Throughput/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "platforms": {
+        "windows": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/ThroughputComp.exe",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        },
+        "linux": {
+          "host": "localhost",
+          "executable": "${OPENRTM_CPP_EXAMPLES_DIR}/ThroughputComp",
+          "workingDirectory": "${OPENRTM_CPP_EXAMPLES_DIR}",
+          "arguments": "",
+          "environment": ""
+        }
+      }
+    }
+  },
+  {
+    "componentName": "AutoTestIn",
+    "language": "Java",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java/tree/6617008b7f4ab844adb145702ff6fda130960df5/jp.go.aist.rtm.RTC/src/RTMExamples/AutoTest",
+    "path": "jp.go.aist.rtm.RTC/src/RTMExamples/AutoTest/AutoTestInImpl.java",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/java/AutoTest/AutoTestInImpl/RTC.xml",
+    "source": {
+      "revision": "6617008b7f4ab844adb145702ff6fda130960df5",
+      "path": "jp.go.aist.rtm.RTC/src/RTMExamples/AutoTest/AutoTestInImpl.java",
+      "profilePath": "profiles/openrtm-samples/java/AutoTest/AutoTestInImpl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${JAVA_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_JAVA_EXAMPLES_DIR}",
+        "arguments": "-cp \"${OPENRTM_JAVA_CLASSPATH}\" RTMExamples.AutoTest.AutoTestInComp",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "AutoTestOut",
+    "language": "Java",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java/tree/6617008b7f4ab844adb145702ff6fda130960df5/jp.go.aist.rtm.RTC/src/RTMExamples/AutoTest",
+    "path": "jp.go.aist.rtm.RTC/src/RTMExamples/AutoTest/AutoTestOutImpl.java",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/java/AutoTest/AutoTestOutImpl/RTC.xml",
+    "source": {
+      "revision": "6617008b7f4ab844adb145702ff6fda130960df5",
+      "path": "jp.go.aist.rtm.RTC/src/RTMExamples/AutoTest/AutoTestOutImpl.java",
+      "profilePath": "profiles/openrtm-samples/java/AutoTest/AutoTestOutImpl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${JAVA_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_JAVA_EXAMPLES_DIR}",
+        "arguments": "-cp \"${OPENRTM_JAVA_CLASSPATH}\" RTMExamples.AutoTest.AutoTestOutComp",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "ConfigSample",
+    "language": "Java",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java/tree/6617008b7f4ab844adb145702ff6fda130960df5/jp.go.aist.rtm.RTC/src/RTMExamples/ConfigSample",
+    "path": "jp.go.aist.rtm.RTC/src/RTMExamples/ConfigSample/ConfigSampleImpl.java",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/java/ConfigSample/ConfigSampleImpl/RTC.xml",
+    "source": {
+      "revision": "6617008b7f4ab844adb145702ff6fda130960df5",
+      "path": "jp.go.aist.rtm.RTC/src/RTMExamples/ConfigSample/ConfigSampleImpl.java",
+      "profilePath": "profiles/openrtm-samples/java/ConfigSample/ConfigSampleImpl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${JAVA_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_JAVA_EXAMPLES_DIR}",
+        "arguments": "-cp \"${OPENRTM_JAVA_CLASSPATH}\" RTMExamples.ConfigSample.ConfigSampleComp",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "ConsoleIn",
+    "language": "Java",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java/tree/6617008b7f4ab844adb145702ff6fda130960df5/jp.go.aist.rtm.RTC/src/RTMExamples/SimpleIO",
+    "path": "jp.go.aist.rtm.RTC/src/RTMExamples/SimpleIO/ConsoleInImpl.java",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/java/SimpleIO/ConsoleInImpl/RTC.xml",
+    "source": {
+      "revision": "6617008b7f4ab844adb145702ff6fda130960df5",
+      "path": "jp.go.aist.rtm.RTC/src/RTMExamples/SimpleIO/ConsoleInImpl.java",
+      "profilePath": "profiles/openrtm-samples/java/SimpleIO/ConsoleInImpl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${JAVA_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_JAVA_EXAMPLES_DIR}",
+        "arguments": "-cp \"${OPENRTM_JAVA_CLASSPATH}\" RTMExamples.SimpleIO.ConsoleInComp",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "ConsoleOut",
+    "language": "Java",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java/tree/6617008b7f4ab844adb145702ff6fda130960df5/jp.go.aist.rtm.RTC/src/RTMExamples/SimpleIO",
+    "path": "jp.go.aist.rtm.RTC/src/RTMExamples/SimpleIO/ConsoleOutImpl.java",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/java/SimpleIO/ConsoleOutImpl/RTC.xml",
+    "source": {
+      "revision": "6617008b7f4ab844adb145702ff6fda130960df5",
+      "path": "jp.go.aist.rtm.RTC/src/RTMExamples/SimpleIO/ConsoleOutImpl.java",
+      "profilePath": "profiles/openrtm-samples/java/SimpleIO/ConsoleOutImpl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${JAVA_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_JAVA_EXAMPLES_DIR}",
+        "arguments": "-cp \"${OPENRTM_JAVA_CLASSPATH}\" RTMExamples.SimpleIO.ConsoleOutComp",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "Controller",
+    "language": "Java",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java/tree/6617008b7f4ab844adb145702ff6fda130960df5/jp.go.aist.rtm.RTC/src/RTMExamples/Composite",
+    "path": "jp.go.aist.rtm.RTC/src/RTMExamples/Composite/ControllerImpl.java",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/java/Composite/ControllerImpl/RTC.xml",
+    "source": {
+      "revision": "6617008b7f4ab844adb145702ff6fda130960df5",
+      "path": "jp.go.aist.rtm.RTC/src/RTMExamples/Composite/ControllerImpl.java",
+      "profilePath": "profiles/openrtm-samples/java/Composite/ControllerImpl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${JAVA_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_JAVA_EXAMPLES_DIR}",
+        "arguments": "-cp \"${OPENRTM_JAVA_CLASSPATH}\" RTMExamples.Composite.ControllerComp",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "Fsm",
+    "language": "Java",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java/tree/6617008b7f4ab844adb145702ff6fda130960df5/jp.go.aist.rtm.RTC/src/RTMExamples/Fsm",
+    "path": "jp.go.aist.rtm.RTC/src/RTMExamples/Fsm/FsmImpl.java",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/java/Fsm/FsmImpl/RTC.xml",
+    "source": {
+      "revision": "6617008b7f4ab844adb145702ff6fda130960df5",
+      "path": "jp.go.aist.rtm.RTC/src/RTMExamples/Fsm/FsmImpl.java",
+      "profilePath": "profiles/openrtm-samples/java/Fsm/FsmImpl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${JAVA_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_JAVA_EXAMPLES_DIR}",
+        "arguments": "-cp \"${OPENRTM_JAVA_CLASSPATH}\" RTMExamples.Fsm.FsmComp",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "GUIIn",
+    "language": "Java",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java/tree/6617008b7f4ab844adb145702ff6fda130960df5/jp.go.aist.rtm.RTC/src/RTMExamples/GUIIn",
+    "path": "jp.go.aist.rtm.RTC/src/RTMExamples/GUIIn/GUIInImpl.java",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/java/GUIIn/GUIInImpl/RTC.xml",
+    "source": {
+      "revision": "6617008b7f4ab844adb145702ff6fda130960df5",
+      "path": "jp.go.aist.rtm.RTC/src/RTMExamples/GUIIn/GUIInImpl.java",
+      "profilePath": "profiles/openrtm-samples/java/GUIIn/GUIInImpl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${JAVA_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_JAVA_EXAMPLES_DIR}",
+        "arguments": "-cp \"${OPENRTM_JAVA_CLASSPATH}\" RTMExamples.GUIIn.GUIInComp",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "Inputbutton",
+    "language": "Java",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java/tree/6617008b7f4ab844adb145702ff6fda130960df5/jp.go.aist.rtm.RTC/src/RTMExamples/StaticFsm",
+    "path": "jp.go.aist.rtm.RTC/src/RTMExamples/StaticFsm/InputbuttonImpl.java",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/java/StaticFsm/InputbuttonImpl/RTC.xml",
+    "source": {
+      "revision": "6617008b7f4ab844adb145702ff6fda130960df5",
+      "path": "jp.go.aist.rtm.RTC/src/RTMExamples/StaticFsm/InputbuttonImpl.java",
+      "profilePath": "profiles/openrtm-samples/java/StaticFsm/InputbuttonImpl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${JAVA_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_JAVA_EXAMPLES_DIR}",
+        "arguments": "-cp \"${OPENRTM_JAVA_CLASSPATH}\" RTMExamples.StaticFsm.InputbuttonComp",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "Microwave",
+    "language": "Java",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java/tree/6617008b7f4ab844adb145702ff6fda130960df5/jp.go.aist.rtm.RTC/src/RTMExamples/StaticFsm",
+    "path": "jp.go.aist.rtm.RTC/src/RTMExamples/StaticFsm/MicrowaveImpl.java",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/java/StaticFsm/MicrowaveImpl/RTC.xml",
+    "source": {
+      "revision": "6617008b7f4ab844adb145702ff6fda130960df5",
+      "path": "jp.go.aist.rtm.RTC/src/RTMExamples/StaticFsm/MicrowaveImpl.java",
+      "profilePath": "profiles/openrtm-samples/java/StaticFsm/MicrowaveImpl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${JAVA_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_JAVA_EXAMPLES_DIR}",
+        "arguments": "-cp \"${OPENRTM_JAVA_CLASSPATH}\" RTMExamples.StaticFsm.MicrowaveComp",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "Motor",
+    "language": "Java",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java/tree/6617008b7f4ab844adb145702ff6fda130960df5/jp.go.aist.rtm.RTC/src/RTMExamples/Composite",
+    "path": "jp.go.aist.rtm.RTC/src/RTMExamples/Composite/MotorImpl.java",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/java/Composite/MotorImpl/RTC.xml",
+    "source": {
+      "revision": "6617008b7f4ab844adb145702ff6fda130960df5",
+      "path": "jp.go.aist.rtm.RTC/src/RTMExamples/Composite/MotorImpl.java",
+      "profilePath": "profiles/openrtm-samples/java/Composite/MotorImpl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${JAVA_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_JAVA_EXAMPLES_DIR}",
+        "arguments": "-cp \"${OPENRTM_JAVA_CLASSPATH}\" RTMExamples.Composite.MotorComp",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "MyServiceConsumer",
+    "language": "Java",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java/tree/6617008b7f4ab844adb145702ff6fda130960df5/jp.go.aist.rtm.RTC/src/RTMExamples/SimpleService",
+    "path": "jp.go.aist.rtm.RTC/src/RTMExamples/SimpleService/MyServiceConsumerImpl.java",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/java/SimpleService/MyServiceConsumerImpl/RTC.xml",
+    "source": {
+      "revision": "6617008b7f4ab844adb145702ff6fda130960df5",
+      "path": "jp.go.aist.rtm.RTC/src/RTMExamples/SimpleService/MyServiceConsumerImpl.java",
+      "profilePath": "profiles/openrtm-samples/java/SimpleService/MyServiceConsumerImpl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${JAVA_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_JAVA_EXAMPLES_DIR}",
+        "arguments": "-cp \"${OPENRTM_JAVA_CLASSPATH}\" RTMExamples.SimpleService.MyServiceConsumerComp",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "MyServiceProvider",
+    "language": "Java",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java/tree/6617008b7f4ab844adb145702ff6fda130960df5/jp.go.aist.rtm.RTC/src/RTMExamples/SimpleService",
+    "path": "jp.go.aist.rtm.RTC/src/RTMExamples/SimpleService/MyServiceProviderImpl.java",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/java/SimpleService/MyServiceProviderImpl/RTC.xml",
+    "source": {
+      "revision": "6617008b7f4ab844adb145702ff6fda130960df5",
+      "path": "jp.go.aist.rtm.RTC/src/RTMExamples/SimpleService/MyServiceProviderImpl.java",
+      "profilePath": "profiles/openrtm-samples/java/SimpleService/MyServiceProviderImpl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${JAVA_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_JAVA_EXAMPLES_DIR}",
+        "arguments": "-cp \"${OPENRTM_JAVA_CLASSPATH}\" RTMExamples.SimpleService.MyServiceProviderComp",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "Sensor",
+    "language": "Java",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java/tree/6617008b7f4ab844adb145702ff6fda130960df5/jp.go.aist.rtm.RTC/src/RTMExamples/Composite",
+    "path": "jp.go.aist.rtm.RTC/src/RTMExamples/Composite/SensorImpl.java",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/java/Composite/SensorImpl/RTC.xml",
+    "source": {
+      "revision": "6617008b7f4ab844adb145702ff6fda130960df5",
+      "path": "jp.go.aist.rtm.RTC/src/RTMExamples/Composite/SensorImpl.java",
+      "profilePath": "profiles/openrtm-samples/java/Composite/SensorImpl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${JAVA_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_JAVA_EXAMPLES_DIR}",
+        "arguments": "-cp \"${OPENRTM_JAVA_CLASSPATH}\" RTMExamples.Composite.SensorComp",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "SeqIn",
+    "language": "Java",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java/tree/6617008b7f4ab844adb145702ff6fda130960df5/jp.go.aist.rtm.RTC/src/RTMExamples/SeqIO",
+    "path": "jp.go.aist.rtm.RTC/src/RTMExamples/SeqIO/SeqInImpl.java",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/java/SeqIO/SeqInImpl/RTC.xml",
+    "source": {
+      "revision": "6617008b7f4ab844adb145702ff6fda130960df5",
+      "path": "jp.go.aist.rtm.RTC/src/RTMExamples/SeqIO/SeqInImpl.java",
+      "profilePath": "profiles/openrtm-samples/java/SeqIO/SeqInImpl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${JAVA_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_JAVA_EXAMPLES_DIR}",
+        "arguments": "-cp \"${OPENRTM_JAVA_CLASSPATH}\" RTMExamples.SeqIO.SeqInComp",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "SeqOut",
+    "language": "Java",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java/tree/6617008b7f4ab844adb145702ff6fda130960df5/jp.go.aist.rtm.RTC/src/RTMExamples/SeqIO",
+    "path": "jp.go.aist.rtm.RTC/src/RTMExamples/SeqIO/SeqOutImpl.java",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/java/SeqIO/SeqOutImpl/RTC.xml",
+    "source": {
+      "revision": "6617008b7f4ab844adb145702ff6fda130960df5",
+      "path": "jp.go.aist.rtm.RTC/src/RTMExamples/SeqIO/SeqOutImpl.java",
+      "profilePath": "profiles/openrtm-samples/java/SeqIO/SeqOutImpl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${JAVA_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_JAVA_EXAMPLES_DIR}",
+        "arguments": "-cp \"${OPENRTM_JAVA_CLASSPATH}\" RTMExamples.SeqIO.SeqOutComp",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "SinCosOut",
+    "language": "Java",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java/tree/6617008b7f4ab844adb145702ff6fda130960df5/jp.go.aist.rtm.RTC/src/RTMExamples/SinCosOut",
+    "path": "jp.go.aist.rtm.RTC/src/RTMExamples/SinCosOut/SinCosOutImpl.java",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/java/SinCosOut/SinCosOutImpl/RTC.xml",
+    "source": {
+      "revision": "6617008b7f4ab844adb145702ff6fda130960df5",
+      "path": "jp.go.aist.rtm.RTC/src/RTMExamples/SinCosOut/SinCosOutImpl.java",
+      "profilePath": "profiles/openrtm-samples/java/SinCosOut/SinCosOutImpl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${JAVA_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_JAVA_EXAMPLES_DIR}",
+        "arguments": "-cp \"${OPENRTM_JAVA_CLASSPATH}\" RTMExamples.SinCosOut.SinCosOutComp",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "Throughput",
+    "language": "Java",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Java/tree/6617008b7f4ab844adb145702ff6fda130960df5/jp.go.aist.rtm.RTC/src/RTMExamples/Throughput",
+    "path": "jp.go.aist.rtm.RTC/src/RTMExamples/Throughput/ThroughputImpl.java",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/java/Throughput/ThroughputImpl/RTC.xml",
+    "source": {
+      "revision": "6617008b7f4ab844adb145702ff6fda130960df5",
+      "path": "jp.go.aist.rtm.RTC/src/RTMExamples/Throughput/ThroughputImpl.java",
+      "profilePath": "profiles/openrtm-samples/java/Throughput/ThroughputImpl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${JAVA_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_JAVA_EXAMPLES_DIR}",
+        "arguments": "-cp \"${OPENRTM_JAVA_CLASSPATH}\" RTMExamples.Throughput.ThroughputComp",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "ConfigSample",
+    "language": "Lua",
+    "repositoryUrl": "https://github.com/Nobu19800/RTM-Lua",
+    "directoryUrl": "https://github.com/Nobu19800/RTM-Lua/tree/1189126774c3eb3ebcbd9c7aa839b4cfc7b70528/examples",
+    "path": "examples/ConfigSample.lua",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/lua/ConfigSample/RTC.xml",
+    "source": {
+      "revision": "1189126774c3eb3ebcbd9c7aa839b4cfc7b70528",
+      "path": "examples/ConfigSample.lua",
+      "profilePath": "profiles/openrtm-samples/lua/ConfigSample/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": null
+  },
+  {
+    "componentName": "ConsoleIn",
+    "language": "Lua",
+    "repositoryUrl": "https://github.com/Nobu19800/RTM-Lua",
+    "directoryUrl": "https://github.com/Nobu19800/RTM-Lua/tree/1189126774c3eb3ebcbd9c7aa839b4cfc7b70528/examples",
+    "path": "examples/ConsoleIn.lua",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/lua/ConsoleIn/RTC.xml",
+    "source": {
+      "revision": "1189126774c3eb3ebcbd9c7aa839b4cfc7b70528",
+      "path": "examples/ConsoleIn.lua",
+      "profilePath": "profiles/openrtm-samples/lua/ConsoleIn/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": null
+  },
+  {
+    "componentName": "ConsoleOut",
+    "language": "Lua",
+    "repositoryUrl": "https://github.com/Nobu19800/RTM-Lua",
+    "directoryUrl": "https://github.com/Nobu19800/RTM-Lua/tree/1189126774c3eb3ebcbd9c7aa839b4cfc7b70528/examples",
+    "path": "examples/ConsoleOut.lua",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/lua/ConsoleOut/RTC.xml",
+    "source": {
+      "revision": "1189126774c3eb3ebcbd9c7aa839b4cfc7b70528",
+      "path": "examples/ConsoleOut.lua",
+      "profilePath": "profiles/openrtm-samples/lua/ConsoleOut/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": null
+  },
+  {
+    "componentName": "Controller",
+    "language": "Lua",
+    "repositoryUrl": "https://github.com/Nobu19800/RTM-Lua",
+    "directoryUrl": "https://github.com/Nobu19800/RTM-Lua/tree/1189126774c3eb3ebcbd9c7aa839b4cfc7b70528/examples",
+    "path": "examples/Controller.lua",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/lua/Controller/RTC.xml",
+    "source": {
+      "revision": "1189126774c3eb3ebcbd9c7aa839b4cfc7b70528",
+      "path": "examples/Controller.lua",
+      "profilePath": "profiles/openrtm-samples/lua/Controller/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": null
+  },
+  {
+    "componentName": "Motor",
+    "language": "Lua",
+    "repositoryUrl": "https://github.com/Nobu19800/RTM-Lua",
+    "directoryUrl": "https://github.com/Nobu19800/RTM-Lua/tree/1189126774c3eb3ebcbd9c7aa839b4cfc7b70528/examples",
+    "path": "examples/Motor.lua",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/lua/Motor/RTC.xml",
+    "source": {
+      "revision": "1189126774c3eb3ebcbd9c7aa839b4cfc7b70528",
+      "path": "examples/Motor.lua",
+      "profilePath": "profiles/openrtm-samples/lua/Motor/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": null
+  },
+  {
+    "componentName": "MyServiceConsumer",
+    "language": "Lua",
+    "repositoryUrl": "https://github.com/Nobu19800/RTM-Lua",
+    "directoryUrl": "https://github.com/Nobu19800/RTM-Lua/tree/1189126774c3eb3ebcbd9c7aa839b4cfc7b70528/examples",
+    "path": "examples/MyServiceConsumer.lua",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/lua/MyServiceConsumer/RTC.xml",
+    "source": {
+      "revision": "1189126774c3eb3ebcbd9c7aa839b4cfc7b70528",
+      "path": "examples/MyServiceConsumer.lua",
+      "profilePath": "profiles/openrtm-samples/lua/MyServiceConsumer/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": null
+  },
+  {
+    "componentName": "MyServiceProvider",
+    "language": "Lua",
+    "repositoryUrl": "https://github.com/Nobu19800/RTM-Lua",
+    "directoryUrl": "https://github.com/Nobu19800/RTM-Lua/tree/1189126774c3eb3ebcbd9c7aa839b4cfc7b70528/examples",
+    "path": "examples/MyServiceProvider.lua",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/lua/MyServiceProvider/RTC.xml",
+    "source": {
+      "revision": "1189126774c3eb3ebcbd9c7aa839b4cfc7b70528",
+      "path": "examples/MyServiceProvider.lua",
+      "profilePath": "profiles/openrtm-samples/lua/MyServiceProvider/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": null
+  },
+  {
+    "componentName": "Sensor",
+    "language": "Lua",
+    "repositoryUrl": "https://github.com/Nobu19800/RTM-Lua",
+    "directoryUrl": "https://github.com/Nobu19800/RTM-Lua/tree/1189126774c3eb3ebcbd9c7aa839b4cfc7b70528/examples",
+    "path": "examples/Sensor.lua",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/lua/Sensor/RTC.xml",
+    "source": {
+      "revision": "1189126774c3eb3ebcbd9c7aa839b4cfc7b70528",
+      "path": "examples/Sensor.lua",
+      "profilePath": "profiles/openrtm-samples/lua/Sensor/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": null
+  },
+  {
+    "componentName": "SeqIn",
+    "language": "Lua",
+    "repositoryUrl": "https://github.com/Nobu19800/RTM-Lua",
+    "directoryUrl": "https://github.com/Nobu19800/RTM-Lua/tree/1189126774c3eb3ebcbd9c7aa839b4cfc7b70528/examples",
+    "path": "examples/SeqIn.lua",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/lua/SeqIn/RTC.xml",
+    "source": {
+      "revision": "1189126774c3eb3ebcbd9c7aa839b4cfc7b70528",
+      "path": "examples/SeqIn.lua",
+      "profilePath": "profiles/openrtm-samples/lua/SeqIn/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": null
+  },
+  {
+    "componentName": "SeqOut",
+    "language": "Lua",
+    "repositoryUrl": "https://github.com/Nobu19800/RTM-Lua",
+    "directoryUrl": "https://github.com/Nobu19800/RTM-Lua/tree/1189126774c3eb3ebcbd9c7aa839b4cfc7b70528/examples",
+    "path": "examples/SeqOut.lua",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/lua/SeqOut/RTC.xml",
+    "source": {
+      "revision": "1189126774c3eb3ebcbd9c7aa839b4cfc7b70528",
+      "path": "examples/SeqOut.lua",
+      "profilePath": "profiles/openrtm-samples/lua/SeqOut/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": null
+  },
+  {
+    "componentName": "AutoControl",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/AutoControl",
+    "path": "OpenRTM_aist/examples/AutoControl/AutoControl.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/AutoControl/AutoControl/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/AutoControl/AutoControl.py",
+      "profilePath": "profiles/openrtm-samples/python/AutoControl/AutoControl/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/AutoControl",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/AutoControl/AutoControl.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "AutoTestIn",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/AutoTest",
+    "path": "OpenRTM_aist/examples/AutoTest/AutoTestIn.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/AutoTest/AutoTestIn/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/AutoTest/AutoTestIn.py",
+      "profilePath": "profiles/openrtm-samples/python/AutoTest/AutoTestIn/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/AutoTest",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/AutoTest/AutoTestIn.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "AutoTestOut",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/AutoTest",
+    "path": "OpenRTM_aist/examples/AutoTest/AutoTestOut.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/AutoTest/AutoTestOut/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/AutoTest/AutoTestOut.py",
+      "profilePath": "profiles/openrtm-samples/python/AutoTest/AutoTestOut/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/AutoTest",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/AutoTest/AutoTestOut.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "ConfigSample",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/ConfigSample",
+    "path": "OpenRTM_aist/examples/ConfigSample/ConfigSample.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/ConfigSample/ConfigSample/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/ConfigSample/ConfigSample.py",
+      "profilePath": "profiles/openrtm-samples/python/ConfigSample/ConfigSample/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/ConfigSample",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/ConfigSample/ConfigSample.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "ConsoleIn",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/SimpleIO",
+    "path": "OpenRTM_aist/examples/SimpleIO/ConsoleIn.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/SimpleIO/ConsoleIn/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/SimpleIO/ConsoleIn.py",
+      "profilePath": "profiles/openrtm-samples/python/SimpleIO/ConsoleIn/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/SimpleIO",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/SimpleIO/ConsoleIn.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "ConsoleInShort",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/Serializer",
+    "path": "OpenRTM_aist/examples/Serializer/ConsoleInShort.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/Serializer/ConsoleInShort/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/Serializer/ConsoleInShort.py",
+      "profilePath": "profiles/openrtm-samples/python/Serializer/ConsoleInShort/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/Serializer",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/Serializer/ConsoleInShort.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "ConsoleOut",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/SimpleIO",
+    "path": "OpenRTM_aist/examples/SimpleIO/ConsoleOut.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/SimpleIO/ConsoleOut/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/SimpleIO/ConsoleOut.py",
+      "profilePath": "profiles/openrtm-samples/python/SimpleIO/ConsoleOut/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/SimpleIO",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/SimpleIO/ConsoleOut.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "ConsoleOutDouble",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/Serializer",
+    "path": "OpenRTM_aist/examples/Serializer/ConsoleOutDouble.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/Serializer/ConsoleOutDouble/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/Serializer/ConsoleOutDouble.py",
+      "profilePath": "profiles/openrtm-samples/python/Serializer/ConsoleOutDouble/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/Serializer",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/Serializer/ConsoleOutDouble.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "Controller",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/Composite",
+    "path": "OpenRTM_aist/examples/Composite/Controller.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/Composite/Controller/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/Composite/Controller.py",
+      "profilePath": "profiles/openrtm-samples/python/Composite/Controller/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/Composite",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/Composite/Controller.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "DataIn",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/CSPSelectSample",
+    "path": "OpenRTM_aist/examples/CSPSelectSample/DataIn.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/CSPSelectSample/DataIn/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/CSPSelectSample/DataIn.py",
+      "profilePath": "profiles/openrtm-samples/python/CSPSelectSample/DataIn/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/CSPSelectSample",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/CSPSelectSample/DataIn.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "DataIn2",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/CSPSample",
+    "path": "OpenRTM_aist/examples/CSPSample/DataIn2.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/CSPSample/DataIn2/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/CSPSample/DataIn2.py",
+      "profilePath": "profiles/openrtm-samples/python/CSPSample/DataIn2/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/CSPSample",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/CSPSample/DataIn2.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "DataIn_port3",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/CSPSelectSample",
+    "path": "OpenRTM_aist/examples/CSPSelectSample/DataIn_port3.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/CSPSelectSample/DataIn_port3/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/CSPSelectSample/DataIn_port3.py",
+      "profilePath": "profiles/openrtm-samples/python/CSPSelectSample/DataIn_port3/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/CSPSelectSample",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/CSPSelectSample/DataIn_port3.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "DataInOut",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/CSPSelectSample",
+    "path": "OpenRTM_aist/examples/CSPSelectSample/DataInOut.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/CSPSelectSample/DataInOut/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/CSPSelectSample/DataInOut.py",
+      "profilePath": "profiles/openrtm-samples/python/CSPSelectSample/DataInOut/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/CSPSelectSample",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/CSPSelectSample/DataInOut.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "DataOut",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/CSPSelectSample",
+    "path": "OpenRTM_aist/examples/CSPSelectSample/DataOut.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/CSPSelectSample/DataOut/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/CSPSelectSample/DataOut.py",
+      "profilePath": "profiles/openrtm-samples/python/CSPSelectSample/DataOut/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/CSPSelectSample",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/CSPSelectSample/DataOut.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "DataOut2",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/CSPSample",
+    "path": "OpenRTM_aist/examples/CSPSample/DataOut2.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/CSPSample/DataOut2/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/CSPSample/DataOut2.py",
+      "profilePath": "profiles/openrtm-samples/python/CSPSample/DataOut2/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/CSPSample",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/CSPSample/DataOut2.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "DataOut_port3",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/CSPSelectSample",
+    "path": "OpenRTM_aist/examples/CSPSelectSample/DataOut_port3.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/CSPSelectSample/DataOut_port3/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/CSPSelectSample/DataOut_port3.py",
+      "profilePath": "profiles/openrtm-samples/python/CSPSelectSample/DataOut_port3/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/CSPSelectSample",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/CSPSelectSample/DataOut_port3.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "Display",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/StaticFsm",
+    "path": "OpenRTM_aist/examples/StaticFsm/Display.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/StaticFsm/Display/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/StaticFsm/Display.py",
+      "profilePath": "profiles/openrtm-samples/python/StaticFsm/Display/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/StaticFsm",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/StaticFsm/Display.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "Inputbutton",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/StaticFsm",
+    "path": "OpenRTM_aist/examples/StaticFsm/Inputbutton.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/StaticFsm/Inputbutton/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/StaticFsm/Inputbutton.py",
+      "profilePath": "profiles/openrtm-samples/python/StaticFsm/Inputbutton/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/StaticFsm",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/StaticFsm/Inputbutton.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "LRFViewer",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/TkLRFViewer",
+    "path": "OpenRTM_aist/examples/TkLRFViewer/TkLRFViewer.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/TkLRFViewer/TkLRFViewer/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/TkLRFViewer/TkLRFViewer.py",
+      "profilePath": "profiles/openrtm-samples/python/TkLRFViewer/TkLRFViewer/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/TkLRFViewer",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/TkLRFViewer/TkLRFViewer.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "Microwave",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/StaticFsm",
+    "path": "OpenRTM_aist/examples/StaticFsm/Microwave.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/StaticFsm/Microwave/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/StaticFsm/Microwave.py",
+      "profilePath": "profiles/openrtm-samples/python/StaticFsm/Microwave/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/StaticFsm",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/StaticFsm/Microwave.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "Motor",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/Composite",
+    "path": "OpenRTM_aist/examples/Composite/Motor.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/Composite/Motor/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/Composite/Motor.py",
+      "profilePath": "profiles/openrtm-samples/python/Composite/Motor/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/Composite",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/Composite/Motor.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "MyServiceConsumer",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/SimpleService",
+    "path": "OpenRTM_aist/examples/SimpleService/MyServiceConsumer.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/SimpleService/MyServiceConsumer/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/SimpleService/MyServiceConsumer.py",
+      "profilePath": "profiles/openrtm-samples/python/SimpleService/MyServiceConsumer/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/SimpleService",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/SimpleService/MyServiceConsumer.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "MyServiceProvider",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/SimpleService",
+    "path": "OpenRTM_aist/examples/SimpleService/MyServiceProvider.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/SimpleService/MyServiceProvider/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/SimpleService/MyServiceProvider.py",
+      "profilePath": "profiles/openrtm-samples/python/SimpleService/MyServiceProvider/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/SimpleService",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/SimpleService/MyServiceProvider.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "NXTRTC",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/NXTRTC",
+    "path": "OpenRTM_aist/examples/NXTRTC/NXTRTC20.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/NXTRTC/NXTRTC20/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/NXTRTC/NXTRTC20.py",
+      "profilePath": "profiles/openrtm-samples/python/NXTRTC/NXTRTC20/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": null
+  },
+  {
+    "componentName": "Sensor",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/Composite",
+    "path": "OpenRTM_aist/examples/Composite/Sensor.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/Composite/Sensor/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/Composite/Sensor.py",
+      "profilePath": "profiles/openrtm-samples/python/Composite/Sensor/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/Composite",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/Composite/Sensor.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "SeqIn",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/SeqIO",
+    "path": "OpenRTM_aist/examples/SeqIO/SeqIn.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/SeqIO/SeqIn/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/SeqIO/SeqIn.py",
+      "profilePath": "profiles/openrtm-samples/python/SeqIO/SeqIn/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/SeqIO",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/SeqIO/SeqIn.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "SeqOut",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/SeqIO",
+    "path": "OpenRTM_aist/examples/SeqIO/SeqOut.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/SeqIO/SeqOut/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/SeqIO/SeqOut.py",
+      "profilePath": "profiles/openrtm-samples/python/SeqIO/SeqOut/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/SeqIO",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/SeqIO/SeqOut.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "SliderComp",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/Slider_and_Motor",
+    "path": "OpenRTM_aist/examples/Slider_and_Motor/SliderComp.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/Slider_and_Motor/SliderComp/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/Slider_and_Motor/SliderComp.py",
+      "profilePath": "profiles/openrtm-samples/python/Slider_and_Motor/SliderComp/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/Slider_and_Motor",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/Slider_and_Motor/SliderComp.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "Throughput_py",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/Throughput",
+    "path": "OpenRTM_aist/examples/Throughput/Throughput_py.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/Throughput/Throughput_py/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/Throughput/Throughput_py.py",
+      "profilePath": "profiles/openrtm-samples/python/Throughput/Throughput_py/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/Throughput",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/Throughput/Throughput_py.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "TkJoyStick",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/TkJoyStick",
+    "path": "OpenRTM_aist/examples/TkJoyStick/TkJoyStickComp.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/TkJoyStick/TkJoyStickComp/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/TkJoyStick/TkJoyStickComp.py",
+      "profilePath": "profiles/openrtm-samples/python/TkJoyStick/TkJoyStickComp/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/TkJoyStick",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/TkJoyStick/TkJoyStickComp.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "TkMobileRobotSimulator",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/MobileRobotCanvas",
+    "path": "OpenRTM_aist/examples/MobileRobotCanvas/TkMobileRobotSimulator.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/MobileRobotCanvas/TkMobileRobotSimulator/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/MobileRobotCanvas/TkMobileRobotSimulator.py",
+      "profilePath": "profiles/openrtm-samples/python/MobileRobotCanvas/TkMobileRobotSimulator/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/MobileRobotCanvas",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/MobileRobotCanvas/TkMobileRobotSimulator.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "TkMotorComp",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/Slider_and_Motor",
+    "path": "OpenRTM_aist/examples/Slider_and_Motor/TkMotorComp.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/Slider_and_Motor/TkMotorComp/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/Slider_and_Motor/TkMotorComp.py",
+      "profilePath": "profiles/openrtm-samples/python/Slider_and_Motor/TkMotorComp/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/Slider_and_Motor",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/Slider_and_Motor/TkMotorComp.py\"",
+        "environment": ""
+      }
+    }
+  },
+  {
+    "componentName": "TkMotorPosComp",
+    "language": "Python",
+    "repositoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python",
+    "directoryUrl": "https://github.com/OpenRTM/OpenRTM-aist-Python/tree/6dc2e8c37e8955cb1decd68b94210176d3914ae8/OpenRTM_aist/examples/Slider_and_Motor",
+    "path": "OpenRTM_aist/examples/Slider_and_Motor/TkMotorPosComp.py",
+    "rtcXmlUrl": "https://github.com/Nobu19800/RTC-Agent-Tools/blob/main/profiles/openrtm-samples/python/Slider_and_Motor/TkMotorPosComp/RTC.xml",
+    "source": {
+      "revision": "6dc2e8c37e8955cb1decd68b94210176d3914ae8",
+      "path": "OpenRTM_aist/examples/Slider_and_Motor/TkMotorPosComp.py",
+      "profilePath": "profiles/openrtm-samples/python/Slider_and_Motor/TkMotorPosComp/RTC.xml",
+      "upstreamProfilePath": null
+    },
+    "launch": {
+      "kind": "installed",
+      "deployment": {
+        "host": "localhost",
+        "executable": "${PYTHON_EXECUTABLE}",
+        "workingDirectory": "${OPENRTM_PYTHON_EXAMPLES_DIR}/Slider_and_Motor",
+        "arguments": "\"${OPENRTM_PYTHON_EXAMPLES_DIR}/Slider_and_Motor/TkMotorPosComp.py\"",
+        "environment": ""
+      }
+    }
+  }
+]

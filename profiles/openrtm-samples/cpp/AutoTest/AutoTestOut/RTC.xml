@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:AIST:example:AutoTestOut:1.0.0">
+  <rtc:BasicInfo rtc:name="AutoTestOut" rtc:description="Sample component for auto-test" rtc:category="example" rtc:vendor="AIST" rtc:version="1.0.0" rtc:maxInstances="1" rtc:activityType="PERIODIC" rtc:componentKind="DataFlowComponent" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnActivated rtc:implemented="true" />
+    <rtc:OnDeactivated rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:DataPorts rtc:name="out" rtc:portType="DataOutPort" rtc:type="RTC::TimedFloat" />
+  <rtc:DataPorts rtc:name="seqout" rtc:portType="DataOutPort" rtc:type="RTC::TimedFloatSeq" />
+  <rtc:ServicePorts rtc:name="MyService">
+    <rtc:ServiceInterface rtc:name="myservice0" rtc:type="MyService" rtc:direction="Required" />
+  </rtc:ServicePorts>
+  <rtc:Language rtc:kind="C++" />
+</rtc:RtcProfile>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:Nobuhiko Miyamoto:example:SeqOut:1.0">
+  <rtc:BasicInfo rtc:name="SeqOut" rtc:description="Sequence OutPort component" rtc:category="example" rtc:vendor="Nobuhiko Miyamoto" rtc:version="1.0" rtc:maxInstances="10" rtc:componentKind="DataFlowComponent" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:DataPorts rtc:name="Octet" rtc:portType="DataOutPort" rtc:type="RTC::TimedOctet" />
+  <rtc:DataPorts rtc:name="Short" rtc:portType="DataOutPort" rtc:type="RTC::TimedShort" />
+  <rtc:DataPorts rtc:name="Long" rtc:portType="DataOutPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="Float" rtc:portType="DataOutPort" rtc:type="RTC::TimedFloat" />
+  <rtc:DataPorts rtc:name="Double" rtc:portType="DataOutPort" rtc:type="RTC::TimedDouble" />
+  <rtc:DataPorts rtc:name="OctetSeq" rtc:portType="DataOutPort" rtc:type="RTC::TimedOctetSeq" />
+  <rtc:DataPorts rtc:name="ShortSeq" rtc:portType="DataOutPort" rtc:type="RTC::TimedShortSeq" />
+  <rtc:DataPorts rtc:name="LongSeq" rtc:portType="DataOutPort" rtc:type="RTC::TimedLongSeq" />
+  <rtc:DataPorts rtc:name="FloatSeq" rtc:portType="DataOutPort" rtc:type="RTC::TimedFloatSeq" />
+  <rtc:DataPorts rtc:name="DoubleSeq" rtc:portType="DataOutPort" rtc:type="RTC::TimedDoubleSeq" />
+  <rtc:Language rtc:kind="Lua" />
+</rtc:RtcProfile>

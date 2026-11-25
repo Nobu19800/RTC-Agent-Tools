@@ -15,6 +15,7 @@ from pathlib import Path
 
 GITHUB_API = "https://api.github.com"
 OUTPUT_FILE = Path("catalog/rtc_catalog.json")
+SAMPLES_OUTPUT_FILE = Path("catalog/openrtm_samples_catalog.json")
 
 RTC_NS = "http://www.openrtp.org/namespaces/rtc"
 
@@ -1467,11 +1468,32 @@ def create_catalog_entry(
 # Save
 # ============================================================
 
+def openrtm_samples():
+    """Read pinned OpenRTM sample entries for the separate sample catalog."""
+    root = Path(__file__).resolve().parents[1]
+    manifest = root / "profiles/openrtm-samples/catalog-entries.json"
+    samples = json.loads(manifest.read_text(encoding="utf-8"))
+    def key(rtc):
+        return rtc["componentName"].strip(), rtc.get("language", "").strip().casefold()
+
+    entries = {}
+    for sample in samples:
+        profile_path = sample["source"]["profilePath"]
+        if profile_path:
+            profile = parse_rtc_xml((root / profile_path).read_text(encoding="utf-8"))
+            if key(profile) != key(sample):
+                raise ValueError(f"RTC profile identity does not match manifest: {profile_path}")
+            sample = {**profile, **sample}
+        entries[key(sample)] = sample
+    return list(entries.values())
+
+
 def save_catalog(
     catalog,
+    output_file=OUTPUT_FILE,
 ):
 
-    OUTPUT_FILE.parent.mkdir(
+    output_file.parent.mkdir(
         parents=True,
         exist_ok=True,
     )
@@ -1484,19 +1506,18 @@ def save_catalog(
             catalog,
     }
 
-    OUTPUT_FILE.write_text(
-        json.dumps(
+    output_file.write_bytes(
+        (json.dumps(
             data,
             ensure_ascii=False,
             indent=2,
-        ),
-        encoding="utf-8",
+        ) + "\n").encode("utf-8"),
     )
 
     print()
     print(
         f"Catalog written to: "
-        f"{OUTPUT_FILE}"
+        f"{output_file}"
     )
 
 
@@ -1664,10 +1685,17 @@ def main():
             "accessible search results."
         ),
     )
+    parser.add_argument(
+        "--openrtm-samples-only", action="store_true",
+        help="Build the separate OpenRTM samples catalog without querying GitHub.",
+    )
 
     args = (
         parser.parse_args()
     )
+    if args.openrtm_samples_only:
+        save_catalog(openrtm_samples(), SAMPLES_OUTPUT_FILE)
+        return 0
 
     if (
         args.limit
@@ -1705,7 +1733,7 @@ def main():
     skipped = 0
 
     seen = set()
-    seen_rtc_names = set()
+    seen_rtc_implementations = set()
 
     for item in items:
 
@@ -1722,6 +1750,12 @@ def main():
                 "path"
             ]
         )
+
+        if (
+            repository_url.rstrip("/").casefold() == "https://github.com/nobu19800/rtc-agent-tools"
+            and path.startswith("profiles/openrtm-samples/")
+        ):
+            continue
 
         unique_key = (
             repository_url,
@@ -1779,9 +1813,11 @@ def main():
                 continue
 
             rtc_name = rtc["componentName"].strip()
-            if rtc_name in seen_rtc_names:
+            language = rtc["language"].strip()
+            implementation_key = (rtc_name, language.casefold())
+            if implementation_key in seen_rtc_implementations:
                 skipped += 1
-                print(f"  Skip: duplicate RTC name: {rtc_name}")
+                print(f"  Skip: duplicate RTC name and language: {rtc_name} ({language or 'unknown'})")
                 continue
 
             entry = (
@@ -1795,7 +1831,7 @@ def main():
                 entry
             )
 
-            seen_rtc_names.add(rtc_name)
+            seen_rtc_implementations.add(implementation_key)
 
             print_rtc(
                 entry,

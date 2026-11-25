@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:Noriaki Ando and Shinji Kurihara:Generic:TkMotorPosComp:1.0">
+  <rtc:BasicInfo rtc:name="TkMotorPosComp" rtc:description="Tk Motor component (position control)" rtc:category="Generic" rtc:vendor="Noriaki Ando and Shinji Kurihara" rtc:version="1.0" rtc:maxInstances="10" rtc:componentKind="DataFlowComponent" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnShutdown rtc:implemented="true" />
+    <rtc:OnActivated rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:DataPorts rtc:name="pos" rtc:portType="DataInPort" rtc:type="RTC::TimedFloatSeq" />
+  <rtc:Language rtc:kind="Python" />
+</rtc:RtcProfile>

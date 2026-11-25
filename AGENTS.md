@@ -34,6 +34,7 @@ The linked guides below are mandatory parts of this repository's instructions, n
 | --- | --- |
 | New system design, catalog search, proposal/session creation | [Services](docs/agents/services.md), [Design workflow](docs/agents/design.md), [Session format](docs/agents/session-format.md), [Catalog formats](catalog/README.md); also [Hakoniwa transport/serializer](docs/agents/hakoniwa-serializer.md) for mixed connections |
 | Design or deploy RTCs that create DataPorts from peer ports, such as ExcelControlpy or OOo Calc | [Dynamic RTC ports](docs/agents/dynamic-rtc-ports.md), [Session format](docs/agents/session-format.md), [Runtime batches](docs/agents/runtime.md) when deploying |
+| Select or launch an OpenRTM sample RTC | [OpenRTM sample workflow](docs/agents/openrtm-samples.md), [Runtime batches](docs/agents/runtime.md) when deploying |
 | Load a user-authored Designer export or saved session | [Session format](docs/agents/session-format.md), [Approved design/workspace](docs/agents/workspace.md); [Services](docs/agents/services.md) when accessing a session server |
 | User confirms design completion; retrieve/revise approved inputs | [Approved design/workspace](docs/agents/workspace.md); also [Session format](docs/agents/session-format.md) when revising the design |
 | Profile JSON, RTC.xml, skeleton generation/update | [Generation](docs/agents/generation.md), [Implementation/build](docs/agents/implementation.md), [Verification](docs/agents/verification.md) |
@@ -115,11 +116,13 @@ Use this precedence when deciding what information to trust:
 
 1. Final saved RTSystemDesigner session retrieved after user confirmation, or the RTSystemDesigner JSON export confirmed by the user.
 2. Module metadata, provenance and connection contracts preserved with that final session.
-3. For RTCs, current `rtc_catalog.json` downloaded from the canonical URL; for Hakoniwa assets, XML-derived `hakoniwa_catalog.json` with its source identity/hash and freshness check.
+3. For RTCs, current `rtc_catalog.json` downloaded from the canonical URL and the separately maintained `catalog/openrtm_samples_catalog.json` for installed examples. For Hakoniwa assets, use XML-derived `hakoniwa_catalog.json` with its source identity/hash and freshness check.
 4. The selected module's source documentation and RTC.xml or Hakoniwa XML profile.
 5. Reasoned inference.
 
 Clearly label inference. Never present inference as catalog or repository fact.
+
+Search [the OpenRTM sample catalog](catalog/openrtm_samples_catalog.json) alongside the general RTC catalog. Identify the sample by component name and implementation language. When the approved sample has `launch.kind: installed`, use the installed deployment for the target host and verify its files before starting. Follow [OpenRTM sample workflow](docs/agents/openrtm-samples.md).
 
 ---
 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:::StringIn:">
+  <rtc:BasicInfo rtc:name="StringIn" />
+  <rtc:Actions />
+  <rtc:DataPorts rtc:name="string_in" rtc:portType="DataInPort" rtc:type="RTC::TimedString" />
+  <rtc:Language rtc:kind="C++" />
+</rtc:RtcProfile>

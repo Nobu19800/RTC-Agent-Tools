@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:Toyotaka Torii:example:Fsm:1.0">
+  <rtc:BasicInfo rtc:name="Fsm" rtc:description="Fsm component" rtc:category="example" rtc:vendor="Toyotaka Torii" rtc:version="1.0" rtc:maxInstances="10" rtc:componentKind="DataFlowComponent" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:DataPorts rtc:name="EvConfig" rtc:portType="DataInPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="EvInFocus" rtc:portType="DataInPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="EvOff" rtc:portType="DataInPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="EvOn" rtc:portType="DataInPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="EvShutterFull" rtc:portType="DataInPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="EvShutterHalf" rtc:portType="DataInPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="EvShutterReleased" rtc:portType="DataInPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="out" rtc:portType="DataOutPort" rtc:type="RTC::TimedLong" />
+  <rtc:Language rtc:kind="C++" />
+</rtc:RtcProfile>

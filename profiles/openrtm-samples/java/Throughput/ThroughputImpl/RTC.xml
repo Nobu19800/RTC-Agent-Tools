@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:AIST:example:Throughput:1.0.0">
+  <rtc:BasicInfo rtc:name="Throughput" rtc:description="Throughput sample" rtc:category="example" rtc:vendor="AIST" rtc:version="1.0.0" rtc:maxInstances="1" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnActivated rtc:implemented="true" />
+    <rtc:OnDeactivated rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:DataPorts rtc:name="in" rtc:portType="DataInPort" rtc:type="RTC::TimedDoubleSeq" />
+  <rtc:DataPorts rtc:name="out" rtc:portType="DataOutPort" rtc:type="RTC::TimedDoubleSeq" />
+  <rtc:ConfigurationSet>
+    <rtc:Configuration rtc:name="datatype" rtc:defaultValue="double" />
+    <rtc:Configuration rtc:name="outputfile" rtc:defaultValue="test.dat" />
+    <rtc:Configuration rtc:name="increment" rtc:defaultValue="100" />
+    <rtc:Configuration rtc:name="sleep_time" rtc:defaultValue="0.1" />
+    <rtc:Configuration rtc:name="mode" rtc:defaultValue="logincr" />
+    <rtc:Configuration rtc:name="maxsize" rtc:defaultValue="1000000" />
+    <rtc:Configuration rtc:name="maxsend" rtc:defaultValue="1000" />
+    <rtc:Configuration rtc:name="maxsample" rtc:defaultValue="100" />
+    <rtc:Configuration rtc:name="filesuffix" rtc:defaultValue="-test" />
+  </rtc:ConfigurationSet>
+  <rtc:Language rtc:kind="Java" />
+</rtc:RtcProfile>

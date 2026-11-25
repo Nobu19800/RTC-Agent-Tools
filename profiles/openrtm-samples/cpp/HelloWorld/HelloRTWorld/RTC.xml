@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:::HelloRTWorld:">
+  <rtc:BasicInfo rtc:name="HelloRTWorld" />
+  <rtc:Actions />
+  <rtc:Language rtc:kind="C++" />
+</rtc:RtcProfile>

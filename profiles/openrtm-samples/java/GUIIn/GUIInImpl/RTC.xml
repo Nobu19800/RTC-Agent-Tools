@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:TA:example:GUIIn:1.0">
+  <rtc:BasicInfo rtc:name="GUIIn" rtc:description="GUI input component" rtc:category="example" rtc:vendor="TA" rtc:version="1.0" rtc:maxInstances="10" rtc:componentKind="DataFlowComponent" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:DataPorts rtc:name="out1" rtc:portType="DataOutPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="out2" rtc:portType="DataOutPort" rtc:type="RTC::TimedString" />
+  <rtc:DataPorts rtc:name="out3" rtc:portType="DataOutPort" rtc:type="RTC::TimedDouble" />
+  <rtc:Language rtc:kind="Java" />
+</rtc:RtcProfile>

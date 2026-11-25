@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:Shinji Kurihara:example:DataIn:1.0">
+  <rtc:BasicInfo rtc:name="DataIn" rtc:description="Console output component" rtc:category="example" rtc:vendor="Shinji Kurihara" rtc:version="1.0" rtc:maxInstances="10" rtc:componentKind="DataFlowComponent" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:DataPorts rtc:name="in" rtc:portType="DataInPort" rtc:type="RTC::TimedLong" />
+  <rtc:Language rtc:kind="Python" />
+</rtc:RtcProfile>

@@ -17,6 +17,7 @@ python rtc_search.py catalog/rtc_catalog.json camera --json
 python rtc_search.py catalog/rtc_catalog.json "object detection" --json
 python rtc_search.py catalog/rtc_catalog.json robot --json
 python rtc_search.py catalog/rtc_catalog.json --all --json
+python rtc_search.py catalog/openrtm_samples_catalog.json "ConsoleIn Python" --json
 ```
 
 `rtc_search.py` supports searching component metadata, descriptions, DataPorts, ServicePorts, RTC.xml URLs, repository URLs, and related fields.

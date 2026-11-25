@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:Noriaki Ando, AIST:example:Inputbutton:1.0">
+  <rtc:BasicInfo rtc:name="Inputbutton" rtc:description="Console input component" rtc:category="example" rtc:vendor="Noriaki Ando, AIST" rtc:version="1.0" rtc:maxInstances="10" rtc:componentKind="DataFlowComponent" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:DataPorts rtc:name="open" rtc:portType="DataOutPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="close" rtc:portType="DataOutPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="minute" rtc:portType="DataOutPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="start" rtc:portType="DataOutPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="stop" rtc:portType="DataOutPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="tick" rtc:portType="DataOutPort" rtc:type="RTC::TimedLong" />
+  <rtc:Language rtc:kind="Java" />
+</rtc:RtcProfile>

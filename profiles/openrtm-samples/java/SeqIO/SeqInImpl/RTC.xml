@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:Noriaki Ando, AIST:example:SeqIn:1.0">
+  <rtc:BasicInfo rtc:name="SeqIn" rtc:description="Sequence InPort component" rtc:category="example" rtc:vendor="Noriaki Ando, AIST" rtc:version="1.0" rtc:maxInstances="10" rtc:componentKind="DataFlowComponent" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:DataPorts rtc:name="Octet" rtc:portType="DataInPort" rtc:type="RTC::TimedOctet" />
+  <rtc:DataPorts rtc:name="Short" rtc:portType="DataInPort" rtc:type="RTC::TimedShort" />
+  <rtc:DataPorts rtc:name="Long" rtc:portType="DataInPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="Float" rtc:portType="DataInPort" rtc:type="RTC::TimedFloat" />
+  <rtc:DataPorts rtc:name="Double" rtc:portType="DataInPort" rtc:type="RTC::TimedDouble" />
+  <rtc:DataPorts rtc:name="OctetSeq" rtc:portType="DataInPort" rtc:type="RTC::TimedOctetSeq" />
+  <rtc:DataPorts rtc:name="ShortSeq" rtc:portType="DataInPort" rtc:type="RTC::TimedShortSeq" />
+  <rtc:DataPorts rtc:name="LongSeq" rtc:portType="DataInPort" rtc:type="RTC::TimedLongSeq" />
+  <rtc:DataPorts rtc:name="FloatSeq" rtc:portType="DataInPort" rtc:type="RTC::TimedFloatSeq" />
+  <rtc:DataPorts rtc:name="DoubleSeq" rtc:portType="DataInPort" rtc:type="RTC::TimedDoubleSeq" />
+  <rtc:Language rtc:kind="Java" />
+</rtc:RtcProfile>

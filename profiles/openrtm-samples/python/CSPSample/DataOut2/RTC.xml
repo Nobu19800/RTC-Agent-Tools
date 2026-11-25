@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:Nobuhiko Miyamoto:example:DataOut2:1.0">
+  <rtc:BasicInfo rtc:name="DataOut2" rtc:description="Data output component" rtc:category="example" rtc:vendor="Nobuhiko Miyamoto" rtc:version="1.0" rtc:maxInstances="10" rtc:componentKind="DataFlowComponent" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:DataPorts rtc:name="out" rtc:portType="DataOutPort" rtc:type="RTC::TimedLong" />
+  <rtc:Language rtc:kind="Python" />
+</rtc:RtcProfile>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:AIST:Test:Analyzer:1.0.0">
+  <rtc:BasicInfo rtc:name="Analyzer" rtc:description="Clock Analyzer Component" rtc:category="Test" rtc:vendor="AIST" rtc:version="1.0.0" rtc:maxInstances="1" rtc:activityType="PERIODIC" rtc:componentKind="DataFlowComponent" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnActivated rtc:implemented="true" />
+    <rtc:OnDeactivated rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:DataPorts rtc:name="in" rtc:portType="DataInPort" rtc:type="RTC::TimedOctetSeq" />
+  <rtc:DataPorts rtc:name="out" rtc:portType="DataOutPort" rtc:type="RTC::TimedOctetSeq" />
+  <rtc:ConfigurationSet>
+    <rtc:Configuration rtc:name="outputfile" rtc:defaultValue="test_callback.dat" />
+    <rtc:Configuration rtc:name="outputwritefile" rtc:defaultValue="test_writefunc.dat" />
+    <rtc:Configuration rtc:name="datalength" rtc:defaultValue="10" />
+    <rtc:Configuration rtc:name="sleep_time" rtc:defaultValue="0.1" />
+    <rtc:Configuration rtc:name="mode" rtc:defaultValue="const" />
+    <rtc:Configuration rtc:name="maxsize" rtc:defaultValue="10000000" />
+  </rtc:ConfigurationSet>
+  <rtc:Language rtc:kind="C++" />
+</rtc:RtcProfile>

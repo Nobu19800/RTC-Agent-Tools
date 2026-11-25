@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:::DataOut2:">
+  <rtc:BasicInfo rtc:name="DataOut2" rtc:description="CSP output sample" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:DataPorts rtc:name="out" rtc:portType="DataOutPort" rtc:type="RTC::TimedLong" />
+  <rtc:Language rtc:kind="C++" />
+</rtc:RtcProfile>

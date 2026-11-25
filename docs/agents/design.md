@@ -36,6 +36,7 @@ Use this list only as a search and design aid.
 ## Phase 2: Refresh/check and search all three catalogs
 
 Always refresh `catalog/rtc_catalog.json` from the canonical URL before catalog-based design.
+Also search `catalog/openrtm_samples_catalog.json` with `rtc_search.py`. Prefer its entry when an installed OpenRTM sample matches the selected name and implementation language.
 
 Also check `catalog/hakoniwa_catalog.json` against its source XML using `python scripts/build_hakoniwa_catalog.py --check`. If the source is available and changed, regenerate it and repeat the check. If the source is unavailable, retain the recorded source/hash, report freshness as unverified and continue provisional design from the saved catalog; do not claim a fresh source verification or invent a remote catalog URL.
 

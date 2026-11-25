@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:Nobuhiko Miyamoto:example:MyServiceConsumer:1.0">
+  <rtc:BasicInfo rtc:name="MyServiceConsumer" rtc:description="MyService Consumer Sample component" rtc:category="example" rtc:vendor="Nobuhiko Miyamoto" rtc:version="1.0" rtc:maxInstances="10" rtc:componentKind="DataFlowComponent" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:ServicePorts rtc:name="MyService">
+    <rtc:ServiceInterface rtc:name="myservice0" rtc:type="MyService" rtc:direction="Required" />
+  </rtc:ServicePorts>
+  <rtc:Language rtc:kind="Lua" />
+</rtc:RtcProfile>

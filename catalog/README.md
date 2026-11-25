@@ -3,8 +3,24 @@
 | ファイル | 対象 | 検索 |
 | --- | --- | --- |
 | `rtc_catalog.json` | OpenRTMのRT-Component | `rtc_search.py` |
+| `openrtm_samples_catalog.json` | OpenRTM の付属サンプル RTC | `rtc_search.py` |
 | `hakoniwa_catalog.json` | 箱庭アセットのXML由来プロファイル | `hakoniwa_search.py` |
 | `ros2_catalog.json` | ROS 2 ノードの XML 由来プロファイル | `python scripts/ros2_system.py search "<keyword>"` |
+
+## RTC
+
+`scripts/build_rtc_catalog.py` は、コンポーネント名と実装言語の組み合わせごとに最初の1件を登録する。同名でも、たとえば C++ 版と Python 版は別々に収録する。言語名の前後の空白と大文字・小文字の違いは重複判定で区別しない。言語の記載がない同名 RTC は1件にまとめる。
+
+### OpenRTM-aist 付属サンプル
+
+上流のサンプルを対象とした追加プロファイルと入力一覧は [OpenRTM サンプルプロファイル](../profiles/openrtm-samples/README.md) にある。サンプルカタログを再生成・検索するには次を実行する。
+
+```powershell
+python scripts/build_rtc_catalog.py --openrtm-samples-only
+python rtc_search.py catalog/openrtm_samples_catalog.json "ConsoleIn Python" --json
+```
+
+定期更新は `rtc_catalog.json` のみを生成する。Designer は両方のファイルを取得し、同名・同言語の候補にはサンプル側のエントリを表示する。
 
 ## ROS 2 ノード
 

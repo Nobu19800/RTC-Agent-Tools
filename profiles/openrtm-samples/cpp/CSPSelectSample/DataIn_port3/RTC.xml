@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:::DataIn_port3:">
+  <rtc:BasicInfo rtc:name="DataIn_port3" rtc:description="CSP input sample" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:DataPorts rtc:name="in1" rtc:portType="DataInPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="in2" rtc:portType="DataInPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="in3" rtc:portType="DataInPort" rtc:type="RTC::TimedLong" />
+  <rtc:Language rtc:kind="C++" />
+</rtc:RtcProfile>

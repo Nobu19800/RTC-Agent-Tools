@@ -19,6 +19,7 @@ RTC-Agent-Tools は、カタログ検索、設計データの受け渡し、プ�
 セッション v2 のルートは `version: 2`、`id`、`name`、`description`、`components`、`edges` を持つ。モジュール種別は `components[].data.moduleKind` の `rtc`、`hakoniwa`、`ros2` で判定する。図上のノード型は共通して `rtc` である。エッジの両端はノード ID とポート ID を参照し、ポート名、方向、データ型、通信種別の整合を確認する。
 
 - `rtc_catalog.json` は RTC の基本情報、ポートとプロファイルへの参照を収録する。対応版の Designer では、RTC 選択時に参照先の `RTC.xml` を取得して Activity、ポート、構成、文書の詳細を取り込む。取得エラーが表示された場合は、基本情報のみで追加するか選択できる。Activity の未指定値は `onInitialize` が ON、その他が OFF で、明示値が優先される。
+- `openrtm_samples_catalog.json` は付属サンプルのプロファイル参照とインストール済みの起動設定を保持する。Designer は同名・同言語の候補にサンプル側の定義を使う。
 - `hakoniwa_catalog.json` は箱庭 XML プロファイルに由来する。アセットのカタログ ID、参照コンポーネント ID、PDU チャンネル ID、プロファイルの出所とハッシュを保持する。
 - `ros2_catalog.json` は ROS 2 ノード、トピック、サービス、アクションの定義を収録する。ノード配置にはカタログ ID を、起動にはパッケージ名、実行ファイル名、名前空間、インスタンス名を使う。
 

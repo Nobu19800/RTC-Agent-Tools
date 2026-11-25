@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:Shinji Kurihara:example:DataInOut:1.0">
+  <rtc:BasicInfo rtc:name="DataInOut" rtc:description="Console output component" rtc:category="example" rtc:vendor="Shinji Kurihara" rtc:version="1.0" rtc:maxInstances="10" rtc:componentKind="DataFlowComponent" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:DataPorts rtc:name="in1" rtc:portType="DataInPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="in2" rtc:portType="DataInPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="in3" rtc:portType="DataInPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="out1" rtc:portType="DataOutPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="out2" rtc:portType="DataOutPort" rtc:type="RTC::TimedLong" />
+  <rtc:DataPorts rtc:name="out3" rtc:portType="DataOutPort" rtc:type="RTC::TimedLong" />
+  <rtc:Language rtc:kind="Python" />
+</rtc:RtcProfile>

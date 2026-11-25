@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rtc:RtcProfile xmlns:rtc="http://www.openrtp.org/namespaces/rtc" rtc:version="0.2" rtc:id="RTC:TA:example:SinCosOut:1.0">
+  <rtc:BasicInfo rtc:name="SinCosOut" rtc:description="SinCos output component" rtc:category="example" rtc:vendor="TA" rtc:version="1.0" rtc:maxInstances="10" rtc:componentKind="DataFlowComponent" />
+  <rtc:Actions>
+    <rtc:OnInitialize rtc:implemented="true" />
+    <rtc:OnExecute rtc:implemented="true" />
+  </rtc:Actions>
+  <rtc:DataPorts rtc:name="out_sin" rtc:portType="DataOutPort" rtc:type="RTC::TimedDouble" />
+  <rtc:DataPorts rtc:name="out_cos" rtc:portType="DataOutPort" rtc:type="RTC::TimedDouble" />
+  <rtc:Language rtc:kind="Java" />
+</rtc:RtcProfile>

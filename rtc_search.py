@@ -278,7 +278,10 @@ def parse_service_ports(root: ET.Element) -> List[Dict[str, Any]]:
 
 
 def parse_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
-    xml_text = get_xml_text(entry)
+    source = entry.get("source")
+    # Pinned sample profiles are already indexed by the catalog generator.
+    indexed_sample = isinstance(source, dict) and "profilePath" in source and "upstreamProfilePath" in source
+    xml_text = None if indexed_sample else get_xml_text(entry)
     root = None
     parse_error = None
 
@@ -307,6 +310,9 @@ def parse_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
     return {
         "componentName": name,
         "description": description,
+        "language": entry.get("language", ""),
+        "launch": entry.get("launch"),
+        "source": source,
         "dataPorts": data_ports,
         "servicePorts": service_ports,
         "rtcXmlUrl": entry.get("rtcXmlUrl") or entry.get("rawRtcXmlUrl") or "",
@@ -321,6 +327,7 @@ def searchable_text(item: Dict[str, Any]) -> str:
     parts = [
         str(item.get("componentName", "")),
         str(item.get("description", "")),
+        str(item.get("language", "")),
         str(item.get("rtcXmlUrl", "")),
         str(item.get("repositoryUrl", "")),
         str(item.get("path", "")),
@@ -358,6 +365,10 @@ def matches(item: Dict[str, Any], query: str) -> bool:
 def print_human(item: Dict[str, Any], index: int) -> None:
     print(f"[{index}] {item['componentName']}")
     print(f"Description : {item['description'] or '-'}")
+    if item["language"]:
+        print(f"Language    : {item['language']}")
+    if isinstance(item["launch"], dict) and item["launch"].get("kind"):
+        print(f"Launch      : {item['launch']['kind']}")
 
     print("Data Ports  :")
     if item["dataPorts"]:
