@@ -12,6 +12,8 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+from datetime import datetime
+from functools import lru_cache
 from pathlib import Path
 
 
@@ -1227,71 +1229,62 @@ def is_valid_rtc(
 # Repository metadata
 # ============================================================
 
-def get_repository_info(
-    item,
-):
+@lru_cache(maxsize=None)
+def repository_metadata(api_url):
+    try:
+        return github_api(api_url)
+    except GitHubRateLimit:
+        raise
+    except OSError as error:
+        print(f"Warning: could not fetch repository metadata: {error}", file=sys.stderr)
+        return {} if isinstance(error, urllib.error.HTTPError) and error.code == 404 else None
 
-    repository = (
-        item[
-            "repository"
-        ]
-    )
 
-    repository_url = (
-        repository[
-            "html_url"
-        ]
-    )
+def get_repository_info(item):
+    repository = item["repository"]
+    branch = repository.get("default_branch")
+    pushed_at = repository.get("pushed_at")
+    if (not branch or not pushed_at) and repository.get("url"):
+        metadata = repository_metadata(repository["url"]) or {}
+        branch = branch or metadata.get("default_branch")
+        pushed_at = pushed_at or metadata.get("pushed_at")
+    return repository["html_url"], branch or "main", pushed_at
 
-    repository_api_url = (
-        repository.get(
-            "url"
-        )
-    )
 
-    default_branch = (
-        repository.get(
-            "default_branch"
-        )
-    )
-
-    if (
-        not default_branch
-        and repository_api_url
-    ):
-
+def repository_timestamp(entry):
+    value = entry.get("repositoryPushedAt")
+    if not value:
+        url = urllib.parse.urlsplit(entry.get("repositoryUrl") or "")
+        path = url.path.strip("/")
+        if url.scheme == "https" and url.hostname == "github.com" and re.fullmatch(r"[\w.-]+/[\w.-]+", path):
+            metadata = repository_metadata(f"{GITHUB_API}/repos/{path}")
+            if metadata is None:
+                return None, False
+            value = metadata.get("pushed_at")
+    if isinstance(value, str):
         try:
+            stamp = datetime.fromisoformat(value)
+            if stamp.tzinfo is not None:
+                return stamp, True
+        except ValueError:
+            pass
+    return None, True
 
-            repo_data = (
-                github_api(
-                    repository_api_url
-                )
-            )
 
-            default_branch = (
-                repo_data.get(
-                    "default_branch"
-                )
-            )
-
-        except GitHubRateLimit:
-            raise
-        except Exception as e:
-
-            print(
-                "  Warning: "
-                "could not get "
-                f"default branch: "
-                f"{e}"
-            )
-
-    if not default_branch:
-        default_branch = "main"
-
-    return (
-        repository_url,
-        default_branch,
-    )
+def prefer_rtc(candidate, current):
+    if current is None:
+        return True
+    source = lambda entry: (entry.get("repositoryUrl", "").rstrip("/").casefold(), entry.get("path"))
+    if source(candidate) == source(current):
+        # Allow a refresh of the same file while preserving a known newer snapshot.
+        new, _ = repository_timestamp(candidate)
+        old, _ = repository_timestamp(current)
+        return old is None or (new is not None and new >= old)
+    new, _ = repository_timestamp(candidate)
+    if new is None:
+        return False
+    old, comparable = repository_timestamp(current)
+    return comparable and (old is None or new > old)
 
 
 def build_directory_url(
@@ -1325,6 +1318,7 @@ def create_catalog_entry(
     (
         repository_url,
         default_branch,
+        pushed_at,
     ) = (
         get_repository_info(
             item
@@ -1399,6 +1393,8 @@ def create_catalog_entry(
 
         "directoryUrl":
             directory_url,
+
+        **({"repositoryPushedAt": pushed_at} if pushed_at else {}),
 
         "path":
             path,
@@ -1627,8 +1623,8 @@ def print_rtc(
 # Main
 # ============================================================
 
-def collect_catalog_entries(items, seen, seen_rtc_implementations, limit):
-    catalog = []
+def collect_catalog_entries(items, seen, previous, limit):
+    catalog = {}
     processed = 0
     skipped = 0
     for item in items:
@@ -1708,26 +1704,13 @@ def collect_catalog_entries(items, seen, seen_rtc_implementations, limit):
 
                 continue
 
-            rtc_name = rtc["componentName"].strip()
-            language = rtc["language"].strip()
-            implementation_key = rtc_identity(rtc)
-            if implementation_key in seen_rtc_implementations:
+            key = rtc_identity(rtc)
+            entry = create_catalog_entry(item, rtc)
+            if not prefer_rtc(entry, catalog.get(key, previous.get(key))):
                 skipped += 1
-                print(f"  Skip: duplicate RTC name and language: {rtc_name} ({language or 'unknown'})")
+                print(f"  Skip: keeping current RTC for {key[0]} ({key[1] or 'unknown'})")
                 continue
-
-            entry = (
-                create_catalog_entry(
-                    item,
-                    rtc,
-                )
-            )
-
-            catalog.append(
-                entry
-            )
-
-            seen_rtc_implementations.add(implementation_key)
+            catalog[key] = entry
 
             print_rtc(
                 entry,
@@ -1845,7 +1828,6 @@ def main():
         return 1
 
     seen = set()
-    seen_rtc_implementations = set()
     try:
         items = search_rtc_xml()
     except GitHubRateLimit as error:
@@ -1853,10 +1835,10 @@ def main():
         items = []
 
     catalog, processed, skipped = collect_catalog_entries(
-        items, seen, seen_rtc_implementations, args.limit
+        items, seen, previous, args.limit
     )
-    existing_keys = previous.keys() - seen_rtc_implementations
-    previous.update((rtc_identity(entry), entry) for entry in catalog)
+    existing_keys = set(previous)
+    previous.update(catalog)
     if catalog:
         save_catalog(list(previous.values()), OUTPUT_FILE)
     print(f"Global search collected {len(catalog)} RTCs.", flush=True)
@@ -1870,12 +1852,12 @@ def main():
                 print(f"Warning: stopping owner scan: {error}", file=sys.stderr)
 
         added, owner_processed, owner_skipped = collect_catalog_entries(
-            owner_candidates(), seen, seen_rtc_implementations, limit
+            owner_candidates(), seen, previous, limit
         )
-        previous.update((rtc_identity(entry), entry) for entry in added)
+        previous.update(added)
         if added:
             save_catalog(list(previous.values()), OUTPUT_FILE)
-        catalog.extend(added)
+        catalog.update(added)
         processed += owner_processed
         skipped += owner_skipped
         print(f"Owner scan collected {len(added)} RTCs.", flush=True)
@@ -1883,7 +1865,7 @@ def main():
     if not catalog and not OUTPUT_FILE.is_file():
         print("Error: no RTCs collected and no existing catalog available.", file=sys.stderr)
         return 1
-    retained = len(existing_keys - seen_rtc_implementations)
+    retained = len(existing_keys - catalog.keys())
     print(f"Retained RTCs not found in this run: {retained}")
     print(f"Total RTCs in catalog: {len(previous)}")
 
