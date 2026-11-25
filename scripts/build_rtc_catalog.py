@@ -37,183 +37,50 @@ if TOKEN:
 # GitHub API
 # ============================================================
 
+class GitHubRateLimit(OSError):
+    """A GitHub cooldown exceeded the retry budget."""
+
+
 def github_api(url):
-    """
-    Call GitHub REST API.
-
-    If GitHub returns 403/429 because of a rate limit,
-    wait according to Retry-After or X-RateLimit-Reset
-    and retry automatically.
-    """
-
-    while True:
-
-        request = urllib.request.Request(
-            url,
-            headers=HEADERS,
-        )
-
+    """Wait for rate limits within a bounded retry budget."""
+    remaining_wait = 60
+    for attempt in range(3):
+        request = urllib.request.Request(url, headers=HEADERS)
         try:
-
-            with urllib.request.urlopen(
-                request,
-                timeout=30,
-            ) as response:
-
-                return json.load(
-                    response
-                )
-
-        except urllib.error.HTTPError as e:
-
-            print(
-                f"GitHub API error: "
-                f"{e.code} {e.reason}",
-                file=sys.stderr,
-            )
-
-            remaining = e.headers.get(
-                "X-RateLimit-Remaining"
-            )
-
-            reset = e.headers.get(
-                "X-RateLimit-Reset"
-            )
-
-            retry_after = e.headers.get(
-                "Retry-After"
-            )
-
-            print(
-                f"X-RateLimit-Remaining: "
-                f"{remaining}",
-                file=sys.stderr,
-            )
-
-            print(
-                f"X-RateLimit-Reset: "
-                f"{reset}",
-                file=sys.stderr,
-            )
-
-            print(
-                f"Retry-After: "
-                f"{retry_after}",
-                file=sys.stderr,
-            )
-
-            #
-            # Rate limit / secondary rate limit
-            #
-            if e.code in (
-                403,
-                429,
+            with urllib.request.urlopen(request, timeout=30) as response:
+                return json.load(response)
+        except urllib.error.HTTPError as error:
+            headers = error.headers
+            retry_after = headers.get("Retry-After")
+            primary_limit = headers.get("X-RateLimit-Remaining") == "0"
+            body = error.read().decode("utf-8", errors="replace")
+            secondary_limit = "secondary rate limit" in body.casefold()
+            if error.code != 429 and not (
+                error.code == 403 and (retry_after or primary_limit or secondary_limit)
             ):
+                raise
 
-                #
-                # Retry-After has priority.
-                #
-                if retry_after:
-
-                    try:
-                        wait = (
-                            int(retry_after)
-                            + 1
-                        )
-                    except ValueError:
-                        wait = 60
-
-                    print(
-                        f"Waiting {wait} seconds "
-                        f"before retrying...",
-                        file=sys.stderr,
-                    )
-
-                    time.sleep(
-                        wait
-                    )
-
-                    continue
-
-                #
-                # Primary rate limit.
-                #
-                if (
-                    remaining == "0"
-                    and reset
-                ):
-
-                    try:
-
-                        reset_time = int(
-                            reset
-                        )
-
-                        now = int(
-                            time.time()
-                        )
-
-                        wait = max(
-                            reset_time
-                            - now
-                            + 2,
-                            1,
-                        )
-
-                    except ValueError:
-
-                        wait = 60
-
-                    print(
-                        f"Waiting {wait} seconds "
-                        f"for rate limit reset...",
-                        file=sys.stderr,
-                    )
-
-                    time.sleep(
-                        wait
-                    )
-
-                    continue
-
-                #
-                # 403 can also be a secondary rate limit.
-                # GitHub does not always return Retry-After.
-                #
-                print(
-                    "Possible secondary rate limit. "
-                    "Waiting 60 seconds...",
-                    file=sys.stderr,
-                )
-
-                time.sleep(
-                    60
-                )
-
-                continue
-
-            #
-            # Non-rate-limit error
-            #
-            try:
-
-                body = (
-                    e.read()
-                    .decode(
-                        "utf-8",
-                        errors="replace",
-                    )
-                )
-
-                print(
-                    body,
-                    file=sys.stderr,
-                )
-
-            except Exception:
-                pass
-
-            raise
+            waits = [1]
+            if retry_after is not None:
+                try:
+                    waits.append(int(retry_after) + 1)
+                except ValueError:
+                    waits.append(60)
+            if primary_limit:
+                try:
+                    waits.append(int(headers["X-RateLimit-Reset"]) - int(time.time()) + 2)
+                except (KeyError, TypeError, ValueError):
+                    waits.append(60)
+            if not primary_limit and retry_after is None:
+                waits.append(60)
+            wait = max(waits)
+            if attempt == 2 or wait > remaining_wait:
+                raise GitHubRateLimit(
+                    f"HTTP {error.code}: GitHub cooldown requires {wait}s; retry budget exhausted"
+                ) from error
+            print(f"GitHub HTTP {error.code}; retrying in {wait}s", file=sys.stderr)
+            time.sleep(wait)
+            remaining_wait -= wait
 
 
 # ============================================================
@@ -531,6 +398,8 @@ def search_rtc_xml_by_owner(items, previous_entries):
             qualifier = "org" if owner_type == "Organization" else "user"
             time.sleep(7)
             additional_items.extend(search_rtc_xml(f"filename:RTC.xml {qualifier}:{login}"))
+        except GitHubRateLimit:
+            raise
         except OSError as error:
             print(f"Warning: GitHub owner search failed for {login}: {error}", file=sys.stderr)
     return additional_items
@@ -1365,6 +1234,8 @@ def get_repository_info(
                 )
             )
 
+        except GitHubRateLimit:
+            raise
         except Exception as e:
 
             print(
@@ -1784,8 +1655,12 @@ def main():
         print(f"Error: existing catalog could not be read: {error}", file=sys.stderr)
         return 1
 
-    items = search_rtc_xml()
-    items.extend(search_rtc_xml_by_owner(items, previous.values()))
+    try:
+        items = search_rtc_xml()
+        items.extend(search_rtc_xml_by_owner(items, previous.values()))
+    except GitHubRateLimit as error:
+        print(f"Warning: catalog search deferred; existing catalog retained: {error}", file=sys.stderr)
+        return 0 if OUTPUT_FILE.is_file() else 1
 
     catalog = []
 
@@ -1915,6 +1790,9 @@ def main():
 
                 break
 
+        except GitHubRateLimit as error:
+            print(f"Warning: stopping profile retrieval; retaining saved catalog entries: {error}", file=sys.stderr)
+            break
         except ET.ParseError as e:
 
             skipped += 1
@@ -1934,6 +1812,9 @@ def main():
                 f"{e}"
             )
 
+    if not catalog and not OUTPUT_FILE.is_file():
+        print("Error: no RTCs collected and no existing catalog available.", file=sys.stderr)
+        return 1
     retained = len(previous.keys() - seen_rtc_implementations)
     previous.update((rtc_identity(entry), entry) for entry in catalog)
     save_catalog(list(previous.values()), OUTPUT_FILE)
