@@ -4,6 +4,7 @@ import argparse
 import base64
 import json
 import os
+import re
 import sys
 import tempfile
 import time
@@ -282,7 +283,7 @@ def rtc_attr(
 # GitHub Code Search
 # ============================================================
 
-def search_rtc_xml():
+def search_rtc_xml(query="filename:RTC.xml"):
     """
     Search GitHub for RTC.xml.
 
@@ -296,8 +297,6 @@ def search_rtc_xml():
     A delay is inserted between search requests because
     Code Search has a stricter rate limit than normal REST API.
     """
-
-    query = "filename:RTC.xml"
 
     encoded_query = (
         urllib.parse.quote(
@@ -354,7 +353,7 @@ def search_rtc_xml():
             # when the accessible search window
             # has been exceeded.
             #
-            if e.code == 422:
+            if e.code == 422 and page > 1:
 
                 print(
                     "Search result window "
@@ -499,6 +498,42 @@ def search_rtc_xml():
     )
 
     return all_items
+
+
+def search_rtc_xml_by_owner(items, previous_entries):
+    """Search each distinct GitHub owner found in the results or saved catalog."""
+    owners = {}
+    for entry in previous_entries:
+        url = urllib.parse.urlsplit(entry.get("repositoryUrl") or "")
+        parts = url.path.strip("/").split("/")
+        if url.scheme == "https" and url.hostname == "github.com" and len(parts) == 2:
+            login = parts[0]
+            if re.fullmatch(r"[A-Za-z0-9-]+", login):
+                owners.setdefault(login.casefold(), (login, None))
+
+    for item in items:
+        repository = item["repository"]
+        owner = repository.get("owner") or {}
+        login = owner.get("login") or repository.get("full_name", "").partition("/")[0]
+        if re.fullmatch(r"[A-Za-z0-9-]+", login):
+            key = login.casefold()
+            owner_type = owner.get("type") or owners.get(key, (login, None))[1]
+            owners[key] = (login, owner_type)
+
+    additional_items = []
+    for login, owner_type in owners.values():
+        try:
+            if owner_type not in ("User", "Organization"):
+                owner_type = github_api(f"{GITHUB_API}/users/{login}").get("type")
+            if owner_type not in ("User", "Organization"):
+                print(f"Warning: could not determine GitHub owner type for {login}", file=sys.stderr)
+                continue
+            qualifier = "org" if owner_type == "Organization" else "user"
+            time.sleep(7)
+            additional_items.extend(search_rtc_xml(f"filename:RTC.xml {qualifier}:{login}"))
+        except OSError as error:
+            print(f"Warning: GitHub owner search failed for {login}: {error}", file=sys.stderr)
+    return additional_items
 
 
 # ============================================================
@@ -1743,9 +1778,14 @@ def main():
             file=sys.stderr,
         )
 
-    items = (
-        search_rtc_xml()
-    )
+    try:
+        previous = existing_catalog(OUTPUT_FILE)
+    except (OSError, ValueError) as error:
+        print(f"Error: existing catalog could not be read: {error}", file=sys.stderr)
+        return 1
+
+    items = search_rtc_xml()
+    items.extend(search_rtc_xml_by_owner(items, previous.values()))
 
     catalog = []
 
@@ -1894,11 +1934,6 @@ def main():
                 f"{e}"
             )
 
-    try:
-        previous = existing_catalog(OUTPUT_FILE)
-    except (OSError, ValueError) as error:
-        print(f"Error: existing catalog could not be read: {error}", file=sys.stderr)
-        return 1
     retained = len(previous.keys() - seen_rtc_implementations)
     previous.update((rtc_identity(entry), entry) for entry in catalog)
     save_catalog(list(previous.values()), OUTPUT_FILE)
