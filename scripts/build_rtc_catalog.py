@@ -5,6 +5,7 @@ import base64
 import json
 import os
 import sys
+import tempfile
 import time
 import urllib.error
 import urllib.parse
@@ -1468,23 +1469,40 @@ def create_catalog_entry(
 # Save
 # ============================================================
 
+def rtc_identity(rtc):
+    return rtc["componentName"].strip(), rtc.get("language", "").strip().casefold()
+
+
+def existing_catalog(path):
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return {}
+
+    if not isinstance(data, dict) or not isinstance(data.get("rtcs"), list):
+        raise ValueError(f"Invalid RTC catalog: {path}")
+    entries = {}
+    for entry in data["rtcs"]:
+        if not isinstance(entry, dict) or not isinstance(entry.get("componentName"), str) or not isinstance(entry.get("language", ""), str):
+            raise ValueError(f"Invalid RTC entry in {path}")
+        entries.setdefault(rtc_identity(entry), entry)
+    return entries
+
+
 def openrtm_samples():
     """Read pinned OpenRTM sample entries for the separate sample catalog."""
     root = Path(__file__).resolve().parents[1]
     manifest = root / "profiles/openrtm-samples/catalog-entries.json"
     samples = json.loads(manifest.read_text(encoding="utf-8"))
-    def key(rtc):
-        return rtc["componentName"].strip(), rtc.get("language", "").strip().casefold()
-
     entries = {}
     for sample in samples:
         profile_path = sample["source"]["profilePath"]
         if profile_path:
             profile = parse_rtc_xml((root / profile_path).read_text(encoding="utf-8"))
-            if key(profile) != key(sample):
+            if rtc_identity(profile) != rtc_identity(sample):
                 raise ValueError(f"RTC profile identity does not match manifest: {profile_path}")
             sample = {**profile, **sample}
-        entries[key(sample)] = sample
+        entries[rtc_identity(sample)] = sample
     return list(entries.values())
 
 
@@ -1506,13 +1524,15 @@ def save_catalog(
             catalog,
     }
 
-    output_file.write_bytes(
-        (json.dumps(
-            data,
-            ensure_ascii=False,
-            indent=2,
-        ) + "\n").encode("utf-8"),
-    )
+    payload = (json.dumps(data, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
+    temporary = tempfile.NamedTemporaryFile(dir=output_file.parent, delete=False)
+    temporary_path = Path(temporary.name)
+    try:
+        with temporary:
+            temporary.write(payload)
+        temporary_path.replace(output_file)
+    finally:
+        temporary_path.unlink(missing_ok=True)
 
     print()
     print(
@@ -1814,7 +1834,7 @@ def main():
 
             rtc_name = rtc["componentName"].strip()
             language = rtc["language"].strip()
-            implementation_key = (rtc_name, language.casefold())
+            implementation_key = rtc_identity(rtc)
             if implementation_key in seen_rtc_implementations:
                 skipped += 1
                 print(f"  Skip: duplicate RTC name and language: {rtc_name} ({language or 'unknown'})")
@@ -1874,9 +1894,16 @@ def main():
                 f"{e}"
             )
 
-    save_catalog(
-        catalog
-    )
+    try:
+        previous = existing_catalog(OUTPUT_FILE)
+    except (OSError, ValueError) as error:
+        print(f"Error: existing catalog could not be read: {error}", file=sys.stderr)
+        return 1
+    retained = len(previous.keys() - seen_rtc_implementations)
+    previous.update((rtc_identity(entry), entry) for entry in catalog)
+    save_catalog(list(previous.values()), OUTPUT_FILE)
+    print(f"Retained RTCs not found in this run: {retained}")
+    print(f"Total RTCs in catalog: {len(previous)}")
 
     print()
     print(
