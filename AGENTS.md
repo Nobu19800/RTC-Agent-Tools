@@ -1,5 +1,13 @@
 # AGENTS.md
 
+## Agent guide language
+
+1. Use the agent-guide language explicitly requested by the user when it is Japanese or English. This choice is independent of the language requested for the response.
+2. Otherwise, use the language of the current task request. If it is unclear or neither Japanese nor English, use English.
+3. Open the matching index, [日本語](docs/agents/ja/README.md) or [English](docs/agents/en/README.md). For any applicable link below of the form `docs/agents/<guide>.md`, read `docs/agents/ja/<guide>.md` or `docs/agents/en/<guide>.md` according to that choice. The unqualified links are compatibility entry points.
+
+The shared rules in this file apply in both languages. Use the selected guide as the working entry point. When it links to a detailed original for a command, data format, or exceptional case, consult the relevant section as needed and keep user-facing output in the requested response language. Update both localized guides when changing a procedure.
+
 ## Purpose
 
 This repository provides tools for an AI coding agent such as Codex to design and implement systems composed of RT-Components and Hakoniwa assets from a natural-language system description.
@@ -39,6 +47,7 @@ The linked guides below are mandatory parts of this repository's instructions, n
 | User confirms design completion; retrieve/revise approved inputs | [Approved design/workspace](docs/agents/workspace.md); also [Session format](docs/agents/session-format.md) when revising the design |
 | Profile JSON, RTC.xml, skeleton generation/update | [Generation](docs/agents/generation.md), [Implementation/build](docs/agents/implementation.md), [Verification](docs/agents/verification.md) |
 | Implement/refactor/build RTCs or change interfaces/settings | [Implementation/build](docs/agents/implementation.md), [Verification](docs/agents/verification.md); also the workspace, session-format, generation and runtime guides for affected artifacts |
+| User requests static analysis or unit tests for newly implemented C++, Python, or Lua modules | [On-request module checks](docs/agents/module-checks.md) |
 | Generate/edit lifecycle batches or launch/process settings | [Runtime batches](docs/agents/runtime.md), [Implementation/settings rules](docs/agents/implementation.md), [Verification](docs/agents/verification.md) |
 | Start/connect/activate/deactivate/stop RTCs, recover failures, inspect logs | [Runtime batches](docs/agents/runtime.md), [Verification/logs](docs/agents/verification.md) |
 | Create Hakoniwa DataPort transport or serializers | [Hakoniwa transport/serializer](docs/agents/hakoniwa-serializer.md), [Implementation/build](docs/agents/implementation.md), [Verification](docs/agents/verification.md) |
@@ -46,6 +55,7 @@ The linked guides below are mandatory parts of this repository's instructions, n
 | Search, place, or launch ROS 2 nodes | [ROS 2 workflow](docs/agents/ros2.md), [Catalog formats](catalog/README.md) |
 | Connect RTC DataPorts to ROS 2 topics | [ROS2Transport settings](docs/agents/ros2-transport.md) |
 | Connect Hakoniwa PDU channels to ROS 2 topics or add a viewer to that system | [Hakoniwa–ROS 2 integration](docs/agents/hakoniwa-ros2.md), [ROS 2 workflow](docs/agents/ros2.md) |
+| Install OpenRTM-aist on Windows, Ubuntu or WSL2, or install ROS 2 or Hakoniwa on Ubuntu or WSL2 | [Runtime installation](docs/agents/install-runtime.md), [Environment checks](docs/agents/environment.md) |
 | Prepare/check toolchains, Foundation or viewer dependencies | [Environment checks](docs/agents/environment.md), [Workspace](docs/agents/workspace.md), [Generation](docs/agents/generation.md) |
 | Verify GUI/viewer behavior, repeat startup or recover a simulation | [Verification](docs/agents/verification.md), [Runtime](docs/agents/runtime.md), [Implementation](docs/agents/implementation.md) |
 
@@ -75,6 +85,10 @@ Preserve public source URLs, component IDs and revisions as identities rather th
 
 ## Workflow gates
 
+Run static analysis and unit tests for newly implemented modules only when the user explicitly requests the respective check. A request to build, deploy, or run the system does not trigger these checks. Keep them out of automatic workflows and default build targets. For C++ use Clang and GoogleTest, for Python use Bandit, flake8, and pytest, and for Lua use Luacheck and LuaUnit. Display a coverage report whenever running the requested unit tests, following [On-request module checks](docs/agents/module-checks.md).
+
+Whenever presenting system design information to the user, including a proposal, a revised design, or a design loaded from RTSystemDesigner, show a component table alongside the design link or file. List every instantiated component in the presented design with its instance name, module name, module kind, and implementation status (`既存` for reuse or `新規` for an implementation to create). If the design and its provenance do not establish the status, show `未確認`. A new instance of an existing implementation is `既存`. Follow [the design presentation format](docs/agents/design.md#phase-7-show-the-design-link-and-stop-implementation).
+
 1. For an agent-designed system, complete design phases 1-7 and provide the Designer link. For Designer-first mode, load and review the user-authored design. Wait for explicit design completion before downloading component sources, implementing, or building.
 2. After confirmation, load and validate the final session or confirmed JSON export, then prepare the workspace and selected sources in phases 8-10. Use that final design as the implementation input.
 3. Design generated RTCs with typed DataPorts and non-JSON runtime settings; session/profile JSON remains required tool metadata. Export semantic profiles, convert RTC.xml, and generate initial skeletons in phase 11 before implementing the behavior. Keep algorithms in plain-data cores and OpenRTM integration directly in skeletons. Build existing RTCs unchanged as specified in phase 12.
@@ -92,15 +106,13 @@ Use [the ROS 2 workflow](docs/agents/ros2.md) for catalog selection, node deploy
 - For Hakoniwa asset ↔ ROS 2 topic connections, use a [PDU-to-ROS bridge](docs/agents/hakoniwa-ros2.md). Show the bridge as an independent module and identify the PDU and ROS 2 legs on the diagram. Preserve the asset's PDU identity and layout. Include the viewer path when visualization is part of the design.
 - Verify actual data transfer in addition to node and topic discovery. Use the selected design's configuration and retain evidence for each implemented connection.
 
-## Hakoniwa runtime in WSL2
+## Runtime installation
 
-When an approved design uses Hakoniwa assets (`moduleKind: hakoniwa`), set up the Hakoniwa execution environment in WSL2. Start with the [Hakoniwa Business Pack AGENTS.md](https://github.com/hakoniwalab/hakoniwa-business-pack/blob/main/AGENTS.md) and follow its user workflow and runtime references for the selected assets or Recipe.
-
-In WSL2, use the selected Recipe's Workspace and Foundation workflow to check prerequisites and prepare the required runtime components and artifacts. Follow the Recipe and component documentation for dependency versions, setup commands, and any viewer host requirements. Run the documented environment checks and record any unmet requirements before launching the system.
+Follow [Runtime installation](docs/agents/install-runtime.md) for OpenRTM-aist, ROS 2, and Hakoniwa. On Windows, use the newest compatible OpenRTM-aist MSI and reuse installed Visual Studio, Python, and CMake when compatible. On Ubuntu and WSL2, use the official OpenRTM-aist installation procedure and select ROS 2 for the actual Ubuntu release. For Hakoniwa on either Ubuntu host, start with the [Hakoniwa Business Pack AGENTS.md](https://github.com/hakoniwalab/hakoniwa-business-pack/blob/main/AGENTS.md) and follow the selected Recipe's Workspace and Foundation procedures.
 
 ## C++ OpenRTM-aist in WSL2
 
-Check the APT candidate for `openrtm2` with `apt-cache policy openrtm2` when preparing a C++ OpenRTM-aist environment in WSL2. If the candidate is `2.1.0-0`, build and use C++ OpenRTM-aist from the OpenRTM-aist source repository. Once APT offers a version newer than `2.1.0-0`, install and use the APT packages.
+After setting up the official APT source, check the candidate for `openrtm2` with `apt-cache policy openrtm2`. If the candidate is `2.1.0-0`, build and use the C++ runtime from the OpenRTM-aist source repository. If APT offers a newer version, use the APT package. See [Runtime installation](docs/agents/install-runtime.md).
 
 ## WSL2 RTC and NameService endpoint defaults
 

@@ -1,94 +1,10 @@
 # RTC lifecycle batch generation and operation
 
-Part of the mandatory repository instructions linked from [AGENTS.md](../../AGENTS.md).
-Read before generating, editing, or running lifecycle batches. Also read the runtime-setting format rules in [implementation.md](implementation.md) and log/completion rules in [verification.md](verification.md).
-All command examples and workspace paths are relative to the repository root unless explicitly stated otherwise.
+[日本語](ja/runtime.md) · [English](en/runtime.md)
 
-## Phase 13: Generate RTC lifecycle batch files
-
-Prepare RTC DataPort to ROS 2 topic edges with [ROS2Transport preconnections](ros2-transport.md) in the RTC manager configuration. Keep these single-ended connections out of the RTC-to-RTC `rtcon` batches.
-
-After retrieving the final design and preparing the build workspace, generate Windows batch files for operating the RTCs actually instantiated in `build/system/final-session.json`. Include both existing and generated RTCs. Do not include unused templates.
-
-For version 2, select RTCs from `components` using `data.moduleKind == "rtc"` and read settings from `component.data`. Do not launch or activate Hakoniwa assets or ROS 2 nodes as RTCs based on diagram `type: "rtc"`. Run ROS 2 nodes using the [ROS 2 workflow](ros2.md). Classify RTC/Hakoniwa edges by both endpoint module kinds: mixed and asset-only edges require verified Hakoniwa PDU/transport handling, not automatic ordinary CORBA connections. Report unresolved asset startup or bridge requirements separately. The legacy `scripts/generate_runtime_batches.py` is not yet a version 2/mixed-system generator; adapt and verify it before use.
-
-Place the batch files under:
-
-```text
-build/system/scripts/
-  start_rtcs.bat
-  connect_ports.bat
-  activate_rtcs.bat
-  deactivate_rtcs.bat
-  stop_rtcs.bat
-```
-
-Shared settings and native batch subroutines may be added in the same directory when needed. Keep the five operations independently callable. Write the actual runtime commands directly in the `.bat` files; do not make them wrappers around a Python lifecycle controller such as `runtime_control.py`. Python may be used to generate the files, and to run a Python RTC itself.
-
-### Resolve runtime commands and settings
-
-- **Initial NameService restart only:** this deployment applies the selected endpoint configuration once, restarts the verified NameService service on that initial application, and saves the configuration digest/address in `/var/lib/omniorb/rtc-agent-endpoint.ini`. Later RTC starts verify health and reuse it without restarting. Do not delete the marker on RTC shutdown. A changed endpoint configuration is a separate configuration application; a later health failure or unexpected external configuration change must be reported rather than automatically restarting in a loop. This specific rule takes precedence over the general recovery guidance below for routine startup.
-
-- **WSL2 RTC endpoints:** unless the user or approved deployment explicitly specifies the endpoint address, select an IP address reachable from Windows and configure the RTC's advertised CORBA endpoint accordingly. An unspecified address or a generic automatic/all-interface setting is not an explicitly selected deployment address. Inspect the current WSL2 interfaces and Windows-to-WSL routing, select the appropriate address, and verify it from Windows. Do not hard-code an address from a previous WSL session or select the first address returned by an interface enumeration without checking it.
-- Keep the RTC's listen/bind address, advertised IOR address, and NameService address distinct. A wildcard listen address alone does not identify the address Windows clients must use. Use the installed middleware's verified endpoint/publishing configuration syntax; ensure the advertised address/port actually reaches that RTC. NameService connectivity or successful queries from inside WSL2 alone do not prove Windows-to-RTC connectivity.
-- For authorized runtime verification, use a Windows-side client to retrieve the RTC through the intended NameService and call the RTC through its advertised IOR; record the selected IP, port, effective configuration and outcome. A TCP probe is a preliminary check, not proof of CORBA reachability. If Windows-side verification is unavailable, report it as unverified rather than claiming Windows access works. Preserve an explicit endpoint and report conflicts or failures. Re-resolve unspecified endpoint addresses when preparing startup after a WSL/network change, and keep generated settings, deployment metadata and the approved session consistent. The same Windows-reachable address default applies to NameService publication, while its shared-service ownership and port policy remain separate.
-
-- Use NameService port **2809** by default. For a WSL2 NameService without an explicit address, configure its published IOR to use the same Windows-reachable WSL2 IP selected for the RTCs. Configure its listen endpoint consistently and verify the installed middleware's publication options; do not assume that binding a wildcard socket or accepting a TCP connection makes the published IOR usable from Windows. Verify root naming-context calls from Windows and record the actual advertised address/port. Do not substitute Windows localhost forwarding for the selected IP without explicit deployment requirements and verification.
-- Reuse an existing NameService without restarting it when it satisfies the required endpoint/publication policy and Windows reachability checks. Probe the naming service itself without dereferencing unrelated RTC registrations: an unreachable registered RTC does not mean the NameService is broken. If it is unhealthy or an unspecified/default publication address is incompatible with Windows access, reconfigure/restart its verified owning service or dedicated owned process, then verify recovery. Preserve registration data and unrelated bindings, including backups before persistence-related repair. Never kill an unidentified listener or silently override an explicit address. Keep a reused/shared NameService running when stopping this system's RTCs. The local root naming-context probe in `scripts/teleop_nameserver.sh` checks local service health only; it must be supplemented by the Windows/publication check for this policy. RTC lifecycle and connection operations still use rtshell directly.
-- Some rtshell versions expand the entire naming tree for `rtcat -ll`, even for a specific target, and can time out on unrelated stale RTCs. Keep detailed observation scoped to the intended RTCs. This deployment's read-only `scripts/rtcat_scoped.py` supplies an explicit filtered tree to the installed rtshell formatter. It does not connect, activate, deactivate or exit components; those commands remain directly in the batches.
-
-- Derive executables or interpreters, working directories, arguments, environment variables, hosts, instance names, nameservers, configuration values, and connections from the final design and verified build outputs.
-- Generate runtime `rtc.conf` and component configuration files under `build/system/` as needed. Preserve the final design's values and refer to these files from the startup commands rather than modifying existing RTC sources.
-- Use the non-JSON runtime-setting formats required by the common implementation rules, including for process-launch/ownership metadata. Generation tools may read the final session JSON, but runtime batches and their process-only helpers must not depend on parsing that JSON or a separate JSON process manifest. Retain a design hash for drift detection.
-- Resolve nameserver settings for each tool independently. Do not assume an rtshell path such as `/localhost:2809/...` can be copied unchanged into every OpenRTM runtime setting; verify the installed C++/Python runtime's accepted nameserver syntax.
-- Inspect the installed OpenRTM runtime and rtshell utilities, including their help and documented options, before choosing commands. Do not invent command names, flags, CORBA naming paths, or service connector properties. Use native batch commands and rtshell for runtime control, state checks, waiting, and logging. A small PowerShell utility may handle only hidden process launch, PID ownership records, and cleanup of owned processes where native batch commands are insufficient. Do not move lifecycle or connection orchestration into Python, PowerShell, or direct OpenRTM/CORBA API calls.
-- Record required tools and dependencies. If an executable, interpreter, naming path, or deployment setting cannot be resolved, identify the missing setting and make the affected operation fail clearly rather than silently skipping the RTC or claiming the batch file is ready.
-- For remote hosts, use an established remote execution mechanism or document the per-host launch procedure. Do not treat a remote deployment as a local process.
-
-### Required use of rtshell
-
-Use rtshell for the RTC operations in all four of these batch files:
-
-| Batch file | Operation that must use rtshell |
-| --- | --- |
-| `connect_ports.bat` | Execute `rtcon` directly to connect RTC DataPorts and ServicePorts. |
-| `activate_rtcs.bat` | Execute `rtact` directly to activate RTCs. |
-| `deactivate_rtcs.bat` | Execute `rtdeact` directly to deactivate RTCs. |
-| `stop_rtcs.bat` | Execute `rtdeact` as needed and `rtexit` directly to request graceful RTC exit. |
-
-Check that rtshell and the required commands are installed and callable in the batch execution environment. Verify their syntax against the installed version's help. If rtshell is unavailable, report it as an unresolved prerequisite and fail the affected operation clearly; do not silently substitute a custom lifecycle/connection implementation. Document rtshell setup and command requirements in `README-runtime.txt`.
-
-Explicit native-endpoint exception: if the installed `rtcon` rejects a single-ended DataPort (as this deployment's rtctree does), use a configuration-driven connection script or verified `manager.components.preconnect` setting for only those native endpoints. The user authorized this exception. Load plugins through rtc.conf, keep endpoint properties in a non-JSON settings file, and keep connection creation outside RTC sources/lifecycle callbacks. The teleop deployment uses `scripts/single_port_connections.py` with `native-connections.ini`, checking existing connectors/properties and rolling back newly created connectors on partial failure. All ordinary RTC-to-RTC connections and lifecycle operations remain direct rtshell commands. Native connection setup occurs in `connect_ports`, before activation; deactivation preserves the connections and exit tears them down.
-
-The command lines for `rtcon`, `rtact`, `rtdeact`, and `rtexit` must appear in their corresponding batch files. Shared `.bat` subroutines may perform repeated readiness/profile checks and polling, but must not conceal these four operations behind another-language controller. rtshell's own Python implementation is compatible with this rule; the restriction is on adding a separate orchestration layer.
-
-### Required behavior of each batch file
-
-1. `start_rtcs.bat`: launch the selected RTCs with their deployment and configuration settings. Reuse a reachable nameserver when available; if a local nameserver must be started, verify its startup command and record ownership. Launch processes without opening extra console windows unless requested. Wait with a bounded timeout until the intended RTC instances are registered and reachable. Record the launched process IDs or equivalent ownership information. Do not connect ports or activate RTCs as part of this operation.
-2. `connect_ports.bat`: resolve the actual registered RTCs and connect every edge in the final design. Check DataPort names, directions, and matching data types. For ServicePorts, verify interface names, interface types, and Consumer/Provider polarity, and use the actual IDLs and supported connector properties. Detect equivalent existing connections and avoid duplicates. Verify each requested connection after creation and report failures.
-3. `activate_rtcs.bat`: verify the required RTCs and connections are ready, then activate the RTCs in their intended execution contexts. Determine and document an activation order appropriate to the system's data/control dependencies, including feedback loops. Treat an already active RTC as an explicit no-op. Wait for and verify the resulting states; report ERROR states and timeouts.
-4. `deactivate_rtcs.bat`: deactivate the selected RTCs in an order appropriate for stopping producers, controllers, and actuators. Treat an already inactive RTC as an explicit no-op. Verify that deactivation completed and report failures.
-5. `stop_rtcs.bat`: deactivate active target RTCs as needed, then request graceful RTC exit and wait for completion with a bounded timeout. Verify registration removal and the disposition of the owned process separately. An RTC may unregister while its manager remains alive because automatic shutdown is disabled. Clean up only a verified, dedicated owned manager after graceful exit/RTC removal has been established; compare PID, executable path and start time before fallback termination. Do not terminate unrelated RTCs, shared managers, or nameservers, and do not kill by a broad executable-name match. Leave shared infrastructure running and stop owned infrastructure only when no longer needed. If naming service or process information is unavailable, report the unknown verification result rather than claiming complete shutdown.
-
-### Bounded waits, partial failure, and recovery
-
-- For native simulation cold starts, verify the exact dedicated shared-memory path, ownership and absence of live participants/mappings before retiring stopped-domain files. Archive them with the failed-run evidence; never rotate shared or unidentified domains. Do not apply a destructive reset to a shared NameService or native runtime as a generic retry. Wait for native initialization, running state, PDU allocation and advancing clock/valid telemetry as separate postconditions before enabling control. Record bounded readiness attempts rather than hiding transient failures behind a fixed sleep.
-
-- Configure CORBA call timeouts, registration/transition/exit wait limits, polling intervals, and retry limits in shared settings. Use bounded waits and document effective values. A three-second client timeout proved insufficient during this example's shutdown; ten seconds is a tested recovery value, not a guarantee for every deployment. Distinguish a per-call timeout from the overall operation deadline.
-- Treat confirmed naming-service `NotFound`, a live RTC, a stale/zombie reference, `CORBA.TIMEOUT`, and a nameserver/network failure as different results. A failed query is not proof that an RTC has exited. Confirm the naming service is reachable and the intended registration is absent; independently check the recorded process. Do not interpret every nonzero rtshell exit as "already stopped" or "not connected".
-- After a timed-out operation, query the actual state before repeating it: the original request may already have completed. Retry only appropriate transient failures, with bounded attempts/backoff. Never blindly repeat activation, connection creation, or exit requests, and do not retry identity/ownership mismatches as though they were communication errors.
-- In `stop_rtcs.bat`, a failure for one RTC must not abandon all remaining targets. Continue safe shutdown attempts for independent verified targets in the documented dependency order, respecting actuator/control safety dependencies. Skip unsafe or unverified targets, continue what can safely be completed, and report every unresolved target. Use native batch subroutines/status aggregation rather than a global immediate `goto failed` for each per-RTC error.
-- Produce a per-RTC shutdown summary: initial state, deactivation result, exit-request result, registration result, process/manager cleanup result, retries, and remaining/unknown resources. Return nonzero if any required shutdown or verification remains incomplete. If recovery completes all required work, report success together with the recovered failures; do not erase their diagnostic history.
-
-### Batch file quality and verification
-
-- When execution is authorized, verify `start -> start again -> connect -> connect again -> activate -> activate again -> deactivate -> deactivate again -> stop -> stop again -> cold restart`. Compare process identities and connector counts, not just exit codes. Run only the transitions within the authorized scope; preserve unexecuted cases as unverified. A duplicate-prevention option such as `rtcon -d` may return an error for an existing connection; inspect actual behavior. Reuse only a connection whose endpoint objects, ports, types and required properties match on both ends. Reject conflicting or partial connections without silently deleting them. Keep actual `rtcon` calls visible in the batch.
-
-- Use paths based on `%~dp0` and quoted absolute paths so the batch files work when invoked from another working directory or a path containing spaces. Keep shared settings in one place rather than duplicating machine-specific paths across the five files.
-- Provide `--plan` for each batch to print its intended commands without launching processes or changing registrations, connections or states. Inspect the plan against the final design. Offline generation/plan tests do not establish runtime success.
-- Propagate helper failures and return nonzero exit codes for failed operations. Save useful per-operation logs under `build/system/logs/` without exposing secrets.
-- Capture each native command's exit code immediately before another command can overwrite it. Check both that exit code and the requested postcondition. For Windows PowerShell process-only helpers, handle redirected native stderr without treating every warning as a fatal exception; decide native-command failure by the exit code and verification result, while retaining stderr diagnostics.
-- Make repeated execution predictable: detect already running instances, existing connections, and completed state transitions. Verify instance identity before reusing a registration; do not start a duplicate or operate on an unrelated RTC with a similar name.
-- Provide usage instructions, prerequisites, timeout settings, log locations, and the sequence `start_rtcs.bat` -> `connect_ports.bat` -> `activate_rtcs.bat` -> `deactivate_rtcs.bat` -> `stop_rtcs.bat` in `build/system/scripts/README-runtime.txt`.
-- Inspect the generated batch files and helpers against the final design. Generating these files does not itself authorize executing the system or operating hardware. Run lifecycle checks when system execution is within the user's requested scope, and distinguish file generation, build verification, RTC lifecycle verification, and application/hardware behavior verification in the report.
-- If an RTC is still a skeleton, state that lifecycle success does not demonstrate its intended processing behavior. Report unexecuted checks and unresolved runtime prerequisites explicitly.
+<a id="phase-13-generate-rtc-lifecycle-batch-files"></a>
+<a id="resolve-runtime-commands-and-settings"></a>
+<a id="required-use-of-rtshell"></a>
+<a id="required-behavior-of-each-batch-file"></a>
+<a id="bounded-waits-partial-failure-and-recovery"></a>
+<a id="batch-file-quality-and-verification"></a>
