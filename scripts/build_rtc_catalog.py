@@ -14,7 +14,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime
 from functools import lru_cache
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 
 GITHUB_API = "https://api.github.com"
@@ -1243,48 +1243,62 @@ def repository_metadata(api_url):
 def get_repository_info(item):
     repository = item["repository"]
     branch = repository.get("default_branch")
-    pushed_at = repository.get("pushed_at")
-    if (not branch or not pushed_at) and repository.get("url"):
+    if not branch and repository.get("url"):
         metadata = repository_metadata(repository["url"]) or {}
-        branch = branch or metadata.get("default_branch")
-        pushed_at = pushed_at or metadata.get("pushed_at")
-    return repository["html_url"], branch or "main", pushed_at
+        branch = metadata.get("default_branch")
+    return repository["html_url"], branch
 
 
-def repository_timestamp(entry):
-    value = entry.get("repositoryPushedAt")
-    if not value:
-        url = urllib.parse.urlsplit(entry.get("repositoryUrl") or "")
-        path = url.path.strip("/")
-        if url.scheme == "https" and url.hostname == "github.com" and re.fullmatch(r"[\w.-]+/[\w.-]+", path):
-            metadata = repository_metadata(f"{GITHUB_API}/repos/{path}")
-            if metadata is None:
-                return None, False
-            value = metadata.get("pushed_at")
-    if isinstance(value, str):
-        try:
-            stamp = datetime.fromisoformat(value)
+@lru_cache(maxsize=None)
+def folder_commit_timestamp(repository_api_url, branch, directory):
+    params = {"sha": branch, "per_page": 1}
+    if directory != ".":
+        params["path"] = directory
+    query = urllib.parse.urlencode(params)
+    try:
+        commits = github_api(f"{repository_api_url}/commits?{query}")
+        if commits:
+            stamp = datetime.fromisoformat(commits[0]["commit"]["committer"]["date"])
             if stamp.tzinfo is not None:
-                return stamp, True
-        except ValueError:
-            pass
-    return None, True
+                return stamp
+    except GitHubRateLimit:
+        raise
+    except (OSError, ValueError, TypeError, KeyError) as error:
+        print(f"Warning: could not fetch RTC folder history for {repository_api_url} ({directory}): {error}", file=sys.stderr)
+    return None
+
+
+def rtc_folder_timestamp(entry):
+    url = urllib.parse.urlsplit(entry.get("repositoryUrl") or "")
+    repo_path = url.path.strip("/").removesuffix(".git")
+    if url.scheme != "https" or url.hostname != "github.com" or not re.fullmatch(r"[\w.-]+/[\w.-]+", repo_path):
+        return None
+    profile = entry.get("path")
+    if not profile:
+        return None
+    api_url = f"{GITHUB_API}/repos/{repo_path}"
+    branch = entry.get("repositoryDefaultBranch")
+    if not branch:
+        metadata = repository_metadata(api_url) or {}
+        branch = metadata.get("default_branch")
+    if not branch:
+        return None
+    return folder_commit_timestamp(api_url, branch, PurePosixPath(profile).parent.as_posix())
 
 
 def prefer_rtc(candidate, current):
     if current is None:
         return True
-    source = lambda entry: (entry.get("repositoryUrl", "").rstrip("/").casefold(), entry.get("path"))
+    def source(entry):
+        return entry.get("repositoryUrl", "").rstrip("/").casefold(), entry.get("path")
+
     if source(candidate) == source(current):
-        # Allow a refresh of the same file while preserving a known newer snapshot.
-        new, _ = repository_timestamp(candidate)
-        old, _ = repository_timestamp(current)
-        return old is None or (new is not None and new >= old)
-    new, _ = repository_timestamp(candidate)
-    if new is None:
-        return False
-    old, comparable = repository_timestamp(current)
-    return comparable and (old is None or new > old)
+        # Refresh the same file without querying its history.
+        return True
+
+    new = rtc_folder_timestamp(candidate)
+    old = rtc_folder_timestamp(current) if new is not None else None
+    return new is not None and old is not None and new > old
 
 
 def build_directory_url(
@@ -1318,7 +1332,6 @@ def create_catalog_entry(
     (
         repository_url,
         default_branch,
-        pushed_at,
     ) = (
         get_repository_info(
             item
@@ -1335,7 +1348,7 @@ def create_catalog_entry(
         build_directory_url(
             repository_url,
             path,
-            default_branch,
+            default_branch or "main",
         )
     )
 
@@ -1394,7 +1407,7 @@ def create_catalog_entry(
         "directoryUrl":
             directory_url,
 
-        **({"repositoryPushedAt": pushed_at} if pushed_at else {}),
+        **({"repositoryDefaultBranch": default_branch} if default_branch else {}),
 
         "path":
             path,
