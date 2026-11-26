@@ -1,5 +1,7 @@
 # RTSystemDesigner ローカル連携テスト
 
+[English](en/local-designer.md)
+
 `RTSystemDesigner` と `RTC-Agent-Tools` のローカル連携対応済みチェックアウトを同じフォルダーに置きます。Windows の PowerShell で Node.js 24、npm、Python 3 を使用します。
 
 親フォルダーで次を実行し、このターミナルを開いたままにします。

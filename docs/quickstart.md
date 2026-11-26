@@ -1,60 +1,85 @@
 # RTC-Agent-Tools クイックスタート
 
-RTC-Agent-Tools を使うと、システムの概要をエージェントに伝え、設計案を公開版 RTSystemDesigner でレビューできる。設計を確定すると、エージェントがその設計を取得し、システムの構築と、実行可能な範囲での動作確認を進める。
+[English](en/quickstart.md)
 
-## 1. Codex または Claude Code をインストールする
+Codex または Claude Code に5つのメッセージを順に送り、GUI ジョイスティックで物理シミュレータ上の移動ロボットを操作する。画面例は Windows 上で Raspberry Pi Mouse を操作したときのもので、選ばれるコンポーネントや構成は実行環境と確定した設計によって変わる。
 
-使用するエージェントを一つ選び、公式手順に従ってインストールとサインインを済ませる。この手順では Codex の画面を例にする。Claude Code でも、以降の入力例を使える。
+## エージェントと作業フォルダを準備する
 
-- [Codex を使うための ChatGPT デスクトップアプリの案内](https://learn.chatgpt.com/docs/app)
-- [Claude Code のインストール手順](https://code.claude.com/docs/en/setup#install-claude-code)
+作業用に空のフォルダを作成する。この例では `rtc-demo` とする。Codex を使う場合は、Codex をインストールしてサインインする。[Codex を使うための ChatGPT デスクトップアプリの案内](https://learn.chatgpt.com/docs/app)
 
-## 2. 作業フォルダを作成する
+Claude Code でも同じ5つのメッセージを使える。利用する OS 向けの手順でインストールし、作業フォルダを開いた端末で `claude` を起動してサインインする。そのセッションで手順1から進める。[Claude Code の公式インストール手順](https://code.claude.com/docs/en/setup#install-claude-code)
 
-システムごとに作業フォルダを作成する。この例では `rtc-demo` とする。Codex ではこのフォルダを開く。Claude Code を CLI で使う場合は、端末でこのフォルダに移動してから `claude` を起動する。
+Codex を使う場合は、サイドバーにある「プロジェクト」横の「＋」を押す。
 
-<!-- 画面キャプチャ追加位置 1。Codex で作業フォルダを開き、チャットを開始できる状態。 -->
+<a href="images/quickstart/codex-add-project.png"><img src="images/quickstart/codex-add-project.png" alt="Codex のサイドバーにあるプロジェクト追加ボタン" width="600"></a>
 
-## 3. RTC-Agent-Tools を配置する
+プロジェクト名を入力し、ソースフォルダーに作成した作業フォルダを追加する。「プロジェクトを作成」を押し、そのプロジェクトで新しいチャットを開く。以降のメッセージは同じチャットで送る。
 
-作業フォルダの下に RTC-Agent-Tools リポジトリを配置する。自分で取得する場合は、作業フォルダで次を実行する。
+<a href="images/quickstart/codex-project-folder.png"><img src="images/quickstart/codex-project-folder.png" alt="Codex のプロジェクト作成画面" width="600"></a>
 
-```bash
-git clone https://github.com/Nobu19800/RTC-Agent-Tools.git
-```
+## 1. RTC-Agent-Tools をクローンする
 
-エージェントに取得を任せる場合は、次のように入力する。
+> この作業フォルダに https://github.com/Nobu19800/RTC-Agent-Tools.git をクローンして。
 
-> この作業フォルダに https://github.com/Nobu19800/RTC-Agent-Tools.git をクローンし、以降の作業は RTC-Agent-Tools フォルダで行って。ルートの AGENTS.md と、今回の作業に該当する参照先を読んで。
+作業フォルダの直下に `RTC-Agent-Tools` が作成されたことを、エージェントの返信で確認する。Git の導入が必要な場合は、利用環境に合った手順で導入してからクローンする。
 
-自分で配置した場合も、エージェントに `RTC-Agent-Tools` を作業対象として指定する。Claude Code では、後続の依頼でも `AGENTS.md` を読むよう明示する。
+<a href="images/quickstart/codex-message-1.png"><img src="images/quickstart/codex-message-1.png" alt="Codex にクローンを依頼したときの返信例" width="600"></a>
 
-## 4. システムの概要を入力し、設計案を確認する
+## 2. システムの構築を依頼し、設計案を確認する
 
-作りたい機能、入出力、実行環境、成功条件を伝える。初回は実機を使わず、端末から入出力を確認できる小さな構成にすると、設計から動作確認までを一巡しやすい。
+> AGENTS.md に沿って、GUI ジョイスティックで移動ロボットを操作するシミュレーションを作って。
 
-> RTC-Agent-Tools の AGENTS.md と該当する参照先に沿って、Windows で動くシステムを設計して。ConsoleIn に入力した整数を新規の RTC で2倍にし、ConsoleOut に表示する。既存の RTC はカタログから探して。入力が 21 のとき、42 が表示されれば確認完了とする。設計案を登録して、公開版 RTSystemDesigner のセッションリンクを表示して。設計を確認するまでは実装に着手しないで。
+エージェントの返信で、コンポーネント一覧と設計セッションのリンクを確認する。
 
-エージェントが選定したモジュールと接続を確認する。提示されたセッションリンクを開き、モジュール、ポートの方向と型、接続、実装要件を確認する。修正が必要ならエージェントに伝えるか、画面上で修正して保存する。設計セッションは公開サービスに登録されるため、入力例には機密情報を含めない。[公開版 RTSystemDesigner](https://nobu19800.github.io/RTSystemDesigner/)
+<a href="images/quickstart/codex-message-2.png"><img src="images/quickstart/codex-message-2.png" alt="Codex が設計リンクとコンポーネント一覧を提示した例" width="600"></a>
 
-<!-- 画面キャプチャ追加位置 2。Codex に概要を入力し、返されたセッションリンクが見えている状態。 -->
-<!-- 画面キャプチャ追加位置 3。公開版 RTSystemDesigner でモジュールと接続を確認している状態。 -->
+返信のセッションリンクから公開版 RTSystemDesigner を開き、コンポーネント、ポートの型と方向、接続を確認する。修正する場合は、Codex に伝えるか、画面で編集して「保存」を押す。設計は公開サービスに登録されるため、機密情報を入力しない。[公開版 RTSystemDesigner](https://nobu19800.github.io/RTSystemDesigner/)
 
-## 5. エージェントに設計完了を通知する
+<a href="images/quickstart/rtsystemdesigner.png"><img src="images/quickstart/rtsystemdesigner.png" alt="公開版 RTSystemDesigner に表示されたジョイスティックとシミュレータの設計例" width="600"></a>
 
-表示した構成で進められると判断したら、編集内容が保存されていることを確認し、同じチャットで設計完了を伝える。複数の設計案を扱った場合は、確定したセッションの URL も添える。
+## 3. 設計完了を伝える
 
-> 設計完了。公開版 RTSystemDesigner の最新の保存内容を取得して、この構成でシステムを構築して。必要な実行環境が揃っていれば起動し、入力 21 に対して出力 42 になるところまで確認して。
+設計に問題がなく、変更が保存されていることを確認してから送る。
 
-<!-- 画面キャプチャ追加位置 4。Codex に「設計完了」と構築・実行の依頼を送った状態。 -->
+> 設計完了
 
-## 6. 構築と動作確認の結果を確認する
+エージェントが確定設計を読み込み、必要なコンポーネントの取得、実装、ビルド、実行設定を進める。返信で構築結果と起動に必要な条件を確認する。
 
-エージェントが確定設計を読み戻し、必要に応じて既存 RTC の取得、新規 RTC の生成・実装、ビルド、実行設定の準備を進める。実行条件が揃い、手順5で実行まで依頼した場合は、起動、接続、実データの確認まで進める。依存関係や権限が不足している場合は、エージェントの報告で完了した範囲と残作業を確認する。
+<a href="images/quickstart/codex-message-3.png"><img src="images/quickstart/codex-message-3.png" alt="設計完了を伝えた後に Codex が構築結果を報告した例" width="600"></a>
 
-この例の成功条件は、ConsoleIn の入力 `21` に対して ConsoleOut に `42` が表示されることである。エージェントの報告でビルド結果と実行時の観測値を確認する。追加の環境準備や再実行が必要な場合は、以下の手順を参照する。
+## 4. 起動して画面で確認する
 
-<!-- 画面キャプチャ追加位置 5。Codex の結果報告に入力値、出力値、確認結果が表示された状態。 -->
+> システムを起動して
+
+エージェントの返信で起動結果と接続状態を確認する。画面操作の確認は、ユーザーが実際のシミュレータ画面を見ながら行う。
+
+<a href="images/quickstart/codex-message-4.png"><img src="images/quickstart/codex-message-4.png" alt="Codex がシステムの起動と接続状態を報告した例" width="600"></a>
+
+以下は画面例の操作手順である。実際の構成に応じて エージェントが案内した操作に従う。
+
+1. `TkJoystick` とシミュレータのウィンドウを開く。
+2. ジョイスティック中央の円を上下にドラッグし、ロボットが前後に移動することを確認する。
+3. 円を左右にドラッグし、ロボットが旋回することを確認する。
+4. マウスボタンを離し、ロボットが停止することを確認する。
+
+<a href="images/quickstart/joystick.png"><img src="images/quickstart/joystick.png" alt="TkJoystick の中央にあるドラッグ用の円" width="400"></a>
+
+<a href="images/quickstart/raspberry-pi-mouse-simulator.png"><img src="images/quickstart/raspberry-pi-mouse-simulator.png" alt="物理シミュレータに表示された Raspberry Pi Mouse" width="600"></a>
+
+RTSystemEditor を使う場合は、起動中の RTC と接続も確認できる。
+
+<a href="images/quickstart/rtsystemeditor.png"><img src="images/quickstart/rtsystemeditor.png" alt="RTSystemEditor に表示された起動中の RTC とポート接続の例" width="600"></a>
+
+## 5. システムを終了する
+
+> システムを終了して
+
+エージェントの返信で、対象の RTC プロセスの終了と名前サービスからの登録解除を確認する。
+
+<a href="images/quickstart/codex-message-5.png"><img src="images/quickstart/codex-message-5.png" alt="Codex が RTC の終了と登録解除を報告した例" width="600"></a>
+
+## 関連ドキュメント
 
 - [環境構築手順書](setup.md)
 - [詳細な動作仕様書](operation-specification.md)

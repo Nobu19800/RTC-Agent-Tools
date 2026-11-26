@@ -1,5 +1,43 @@
 # RTC-Agent-Tools 詳細な動作仕様書
 
+[English](en/operation-specification.md)
+
+## システム構成
+
+```mermaid
+flowchart TB
+    user["ユーザー"]
+    subgraph pc["開発 PC"]
+        agent["Codex"]
+        tools["RTC-Agent-Tools<br/>AGENTS.md・rtc_search.py・RTC カタログ"]
+        builder["cuirtcbuilder"]
+        runtime["構築したシステム<br/>RTC・起動スクリプト"]
+        browser["Web ブラウザ"]
+    end
+    subgraph github["GitHub"]
+        profiles["公開 RTC リポジトリ<br/>RTC.xml"]
+        repo["RTC-Agent-Tools リポジトリ<br/>RTC カタログ"]
+        designer["RTSystemDesigner<br/>GitHub Pages"]
+    end
+    sessions["rt-session-server<br/>公開セッション API"]
+
+    profiles -->|"定期収集"| repo
+    repo -->|"クローン"| tools
+    user -->|"要件・設計完了・起動の指示"| agent
+    agent -->|"作業指示の参照・RTC の検索"| tools
+    agent -->|"設計案の JSON を登録"| sessions
+    agent -->|"設計リンクを提示"| user
+    user -->|"設計を確認・編集"| browser
+    browser -->|"セッションを開く"| designer
+    designer <-->|"設計 JSON の取得・保存"| sessions
+    sessions -->|"設計確定後に保存済み JSON を取得"| agent
+    agent -->|"新規 RTC が必要な場合に RTC.xml を渡す"| builder
+    builder -->|"スケルトンを生成"| agent
+    agent -->|"実装・ビルド・起動"| runtime
+```
+
+RTSystemDesigner は設計の編集画面を提供し、設計 JSON は別のセッション API に保存する。Codex は設計確定後に保存済み JSON を取得し、その内容に従って構築する。
+
 ## 責務と設計の確定
 
 RTC-Agent-Tools は、カタログ検索、設計データの受け渡し、プロファイル変換、構成に応じた実行準備を支援する。エージェントが作る成果物と、既存スクリプトが直接処理する成果物を区別する。

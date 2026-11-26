@@ -80,3 +80,5 @@ python scripts/build_hakoniwa_catalog.py --check
 - `profile.conformanceStatus:not-assessed` を維持します。元XMLはプロジェクト独自の対応づけドラフトで、ISO Annex B準拠・認証済みとは扱いません。
 
 `ports` は接続候補の情報であり、カタログ全体はそのままインポートするDesignerセッションではありません。構成作成時はインスタンスと配置を決め、session-formatガイドに従って `components[].data.moduleKind:hakoniwa` として使用します。実行前にPDUレイアウト・方向・チャネル・共有領域・writer所有者と、混在接続ならシリアライザを検証します。今回のカタログ作成では接続・起動・実機動作は行っていません。
+
+[カタログと XML プロファイル](../docs/catalog-profiles.md) · [English guide](../docs/en/catalog-profiles.md)

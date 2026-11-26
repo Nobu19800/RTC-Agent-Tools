@@ -1,5 +1,7 @@
 # RTC-Agent-Tools 動作マニュアル
 
+[English](en/operation-manual.md)
+
 ## 1. 設計を用意する
 
 コマンドは `RTC-Agent-Tools` のルートを基準とする。エージェントに設計を依頼する場合は、機能と入出力、実行先、期待する検証結果を指定する。検索は次のように行う。

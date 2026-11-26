@@ -1,5 +1,12 @@
 # RTC-Agent-Tools 環境構築手順書
 
+[English](en/setup.md)
+
+## 作業の分担
+
+- **ユーザーが行う作業** — Codex または Claude Code を起動し、作業フォルダを指定する。設計リンクが提示されたらブラウザで設計を確認し、採用する構成を承認する。インストーラーや OS がユーザー本人の操作を求めたときは、エージェントの案内に従う。
+- **エージェントが行う作業** — クローン、バージョンと依存関係の確認、必要なツールの導入、API の接続確認、ビルド環境の準備を行う。以降のコマンドはエージェントが実行するための参照例であり、通常の進め方ではユーザーが端末に入力する必要はない。
+
 ## 構成を選ぶ
 
 | 作業 | 必要な環境 |
@@ -11,15 +18,15 @@
 
 ## 1. チェックアウトと公開サービスへの接続
 
-[RTC-Agent-Tools](https://github.com/Nobu19800/RTC-Agent-Tools) を取得し、使用するコミットを記録する。PowerShell で `git --version`、`python --version`、`curl.exe --version` を確認する。
+[RTC-Agent-Tools](https://github.com/Nobu19800/RTC-Agent-Tools) を取得し、使用するコミットを記録するのはエージェントの作業である。Windows では PowerShell で `git --version`、`python --version`、`curl.exe --version` を確認する。
 
-ブラウザで [公開版 RTSystemDesigner](https://nobu19800.github.io/RTSystemDesigner/) を開く。設計の登録と読み戻しには公開セッション API を使う。Designer の利用に必要な準備は、ブラウザと API の HTTPS 接続確認である。[サービス設定](agents/services.md)
+ユーザーはエージェントが案内した設計リンクから [公開版 RTSystemDesigner](https://nobu19800.github.io/RTSystemDesigner/) を開く。設計の登録と読み戻しには公開セッション API を使う。Designer の利用に必要な準備は、ブラウザと API の HTTPS 接続確認である。[サービス設定](agents/services.md)
 
 [クイックスタート](quickstart.md) のサンプルを使い、登録、ブラウザでの保存、再取得を確認する。
 
 ## 2. RTC の生成と実行に必要な環境
 
-Windows の MSI 選択、Ubuntu・WSL2 での OpenRTM-aist、ROS 2、箱庭の導入コマンドは [実行環境のインストール](agents/install-runtime.md) に従う。
+エージェントは設計に必要な実行環境を準備する。Windows の MSI 選択、Ubuntu・WSL2 での OpenRTM-aist、ROS 2、箱庭の導入コマンドは [実行環境のインストール](agents/install-runtime.md) に従う。
 
 1. 対象言語の OpenRTM-aist SDK と依存ライブラリを用意する。C++ の場合は対応するコンパイラ、CMake、CORBA のライブラリを確認する。Python の場合は実行に使うインタープリターで `OpenRTM_aist` と `omniORB` をインポートする。
 2. Java と Builder の JAR を確認する。Builder の実際のライブラリディレクトリを指定して、生成前に環境を検査する。
@@ -34,7 +41,7 @@ python scripts/preflight_environment.py --java "$env:JAVA_HOME\bin\java.exe" --b
 
 ## 3. Ubuntu・WSL2 の追加環境
 
-WSL2 を使う場合は Windows 側の `wsl --list --verbose` で対象ディストリビューションを確認する。Ubuntu と WSL2 のどちらでも、導入やビルドは配備先の Ubuntu 内で行う。
+WSL2 を使う場合、エージェントは Windows 側の `wsl --list --verbose` で対象ディストリビューションを確認する。Ubuntu と WSL2 のどちらでも、導入やビルドは配備先の Ubuntu 内で行う。
 
 - **C++ OpenRTM-aist** — APT リポジトリを設定した後、`apt-cache policy openrtm2` で候補版を確認する。リポジトリの方針では候補が `2.1.0-0` の場合は OpenRTM-aist のソースからビルドし、候補がそれより新しければ APT 版を使う。ビルド時は使用したソースリビジョンを記録する。候補なしの場合は APT の設定と対象 OS を確認する。
 - **名前サービス** — 確定設計に明示されたエンドポイントを使う。指定がない WSL2 構成では、Windows から到達できる WSL2 IP を RTC と名前サービスの IOR に公開する。名前サービスの既定ポートは `2809` である。既存サービスが条件を満たす場合は再利用する。[エンドポイント設定](agents/runtime.md)
