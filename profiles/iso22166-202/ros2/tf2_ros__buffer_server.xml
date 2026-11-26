@@ -14,12 +14,17 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Subscribes to /tf and /tf_static and serves the lookup_transform action.</ros:Description>
-    <ros:Variable direction="input" transport="ROS 2 topic" name="/tf" />
-    <ros:Variable direction="input" transport="ROS 2 topic" name="/tf_static" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="/tf" dataType="tf2_msgs/msg/TFMessage" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="/tf_static" dataType="tf2_msgs/msg/TFMessage" />
   </ros:IOVariables>
   <ros:Services>
-    <ros:Service kind="action" name="lookup_transform" dataType="tf2_msgs/action/LookupTransform" />
+    <ros:Service kind="action" name="tf2_buffer_server" dataType="tf2_msgs/action/LookupTransform" />
   </ros:Services>
+  <ros:Parameters>
+    <ros:Parameter name="buffer_size" dataType="double">
+      <ros:Default>120.0</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -33,6 +38,8 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="5">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros2/geometry2/blob/rolling/tf2_ros/CMakeLists.txt</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros2/geometry2/blob/jazzy/tf2_ros/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros2/geometry2/blob/f702874b1c8535d6a038230ab2cda0ba5d521ebd/tf2_ros/src/buffer_server.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/ros2/geometry2/blob/f702874b1c8535d6a038230ab2cda0ba5d521ebd/tf2_ros/src/buffer_server_main.cpp</ros:AdditionalImplementationSource>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

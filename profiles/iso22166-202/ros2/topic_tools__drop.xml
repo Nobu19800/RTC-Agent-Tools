@@ -16,6 +16,15 @@
     <ros:Description>Reads a configured topic and publishes a reduced stream.</ros:Description>
   </ros:IOVariables>
   <ros:Services />
+  <ros:Parameters>
+    <ros:Parameter name="input_topic" dataType="string" />
+    <ros:Parameter name="output_topic" dataType="string" />
+    <ros:Parameter name="lazy" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="X" dataType="integer" />
+    <ros:Parameter name="Y" dataType="integer" />
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -29,6 +38,10 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="77">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-tooling/topic_tools</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/drop.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/tool_base_node.cpp</ros:AdditionalImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/drop_node.cpp</ros:AdditionalImplementationSource>
+    <ros:SourceReviewNote>Input/output topic names and message types are derived from arguments and discovery.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

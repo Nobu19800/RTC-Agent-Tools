@@ -34,10 +34,20 @@ The design uses existing implementations from the bundled round-trip test. Both 
 
 ## 2. Build and start
 
-Send “Design approved.” The agent prepares compatible ROS 2 and OpenRTM-aist runtimes and generates `rtc.conf` from the approved design. Match DDS domain, discovery scope, QoS, and type mappings. If the C++ RTC must appear by name in the ROS graph, select a transport configuration that supports named discovery. When the environment is ready, send “Start the system.” [ROS2Transport configuration](../agents/en/ros2-transport.md) · [Jazzy round-trip test for Python and C++](../../examples/ros2-transport/README.md)
+> Design approved.
+
+The agent prepares compatible ROS 2 and OpenRTM-aist runtimes and generates `rtc.conf` from the approved design. Match DDS domain, discovery scope, QoS, and type mappings. If the C++ RTC must appear by name in the ROS graph, select a transport configuration that supports named discovery.
+
+> Start the system.
+
+[ROS2Transport configuration](../agents/en/ros2-transport.md) · [Jazzy round-trip test for Python and C++](../../examples/ros2-transport/README.md)
 
 ## 3. Verify the round trip and stop
 
-From the same ROS 2 environment, the agent checks both topics with `ros2 topic info` and confirms the modified string with `ros2 topic echo /rtsd_bridge_out/chatter` or the listener log. For named discovery, also use `ros2 node list` and `ros2 node info` to check the RTC node and its endpoints. Send “Stop the system” when finished. The bundled round-trip test stops its test processes after reporting the result.
+From the same ROS 2 environment, the agent checks both topics with `ros2 topic info` and confirms the modified string with `ros2 topic echo /rtsd_bridge_out/chatter` or the listener log. For named discovery, also use `ros2 node list` and `ros2 node info` to check the RTC node and its endpoints.
+
+> Stop the system.
+
+The bundled round-trip test stops its test processes after reporting the result.
 
 [OpenRTM-aist serialization and transport plugins](rtc-transport-plugins.md)

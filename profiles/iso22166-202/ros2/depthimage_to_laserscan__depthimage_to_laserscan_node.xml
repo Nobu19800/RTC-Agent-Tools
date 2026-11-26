@@ -14,9 +14,28 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Uses a depth Image and CameraInfo and publishes scan as LaserScan.</ros:Description>
-    <ros:Variable direction="output" transport="ROS 2 topic" name="scan" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="depth_camera_info" dataType="sensor_msgs/msg/CameraInfo" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="depth" dataType="sensor_msgs/msg/Image" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="scan" dataType="sensor_msgs/msg/LaserScan" />
   </ros:IOVariables>
   <ros:Services />
+  <ros:Parameters>
+    <ros:Parameter name="scan_time" dataType="double">
+      <ros:Default>0.033</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="range_min" dataType="double">
+      <ros:Default>0.45</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="range_max" dataType="double">
+      <ros:Default>10.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="scan_height" dataType="integer">
+      <ros:Default>1</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="output_frame" dataType="string">
+      <ros:Default>"camera_depth_frame"</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The executable was verified on the upstream ros2 branch. Jazzy binary availability was not checked.</ros:Requirement>
   </ros:Infra>
@@ -30,6 +49,7 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="61">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-perception/depthimage_to_laserscan</ros:Source>
     <ros:UpstreamSource status="other-ref-registration">https://github.com/ros-perception/depthimage_to_laserscan/blob/ros2/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-perception/depthimage_to_laserscan/blob/79b60bf187c85d65b6002a070651d9aec4fc46ed/src/DepthImageToLaserScanROS.cpp</ros:ImplementationSource>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

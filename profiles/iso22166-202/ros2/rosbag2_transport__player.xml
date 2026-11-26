@@ -14,8 +14,77 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Reads a recording, publishes its selected topics, and provides playback-control services.</ros:Description>
+    <ros:Variable direction="output" transport="ROS 2 topic" name="/clock" dataType="rosgraph_msgs/msg/Clock" />
   </ros:IOVariables>
-  <ros:Services />
+  <ros:Services>
+    <ros:Service kind="service" name="~/pause" dataType="rosbag2_interfaces/srv/Pause" />
+    <ros:Service kind="service" name="~/resume" dataType="rosbag2_interfaces/srv/Resume" />
+    <ros:Service kind="service" name="~/toggle_paused" dataType="rosbag2_interfaces/srv/TogglePaused" />
+    <ros:Service kind="service" name="~/is_paused" dataType="rosbag2_interfaces/srv/IsPaused" />
+    <ros:Service kind="service" name="~/get_rate" dataType="rosbag2_interfaces/srv/GetRate" />
+    <ros:Service kind="service" name="~/set_rate" dataType="rosbag2_interfaces/srv/SetRate" />
+    <ros:Service kind="service" name="~/play" dataType="rosbag2_interfaces/srv/Play" />
+    <ros:Service kind="service" name="~/play_next" dataType="rosbag2_interfaces/srv/PlayNext" />
+    <ros:Service kind="service" name="~/burst" dataType="rosbag2_interfaces/srv/Burst" />
+    <ros:Service kind="service" name="~/seek" dataType="rosbag2_interfaces/srv/Seek" />
+    <ros:Service kind="service" name="~/stop" dataType="rosbag2_interfaces/srv/Stop" />
+  </ros:Services>
+  <ros:Parameters>
+    <ros:Parameter name="play.node_prefix" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="play.rate" dataType="double">
+      <ros:Default>1.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="play.regex_to_filter" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="play.exclude_regex_to_filter" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="play.qos_profile_overrides_path" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="play.loop" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="play.clock_publish_frequency" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="play.clock_publish_on_topic_publish" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="play.start_paused" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="play.disable_keyboard_controls" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="play.disable_loan_message" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="play.service_requests_source" dataType="string">
+      <ros:Default>"SERVICE_INTROSPECTION"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="play.publish_service_request" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="storage.uri" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="storage.storage_id" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="storage.storage_config_uri" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="storage.storage_preset_profile" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="storage.snapshot_mode" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -29,6 +98,9 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="87">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros2/rosbag2</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros2/rosbag2/blob/jazzy/rosbag2_transport/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros2/rosbag2/blob/12b5e8ba4eb5665501a16f0d9e050552a1149f56/rosbag2_transport/src/rosbag2_transport/player.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/ros2/rosbag2/blob/12b5e8ba4eb5665501a16f0d9e050552a1149f56/rosbag2_transport/src/rosbag2_transport/config_options_from_node_params.cpp</ros:AdditionalImplementationSource>
+    <ros:SourceReviewNote>Playback topics come from the bag. The clock publisher is conditional on clock options.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

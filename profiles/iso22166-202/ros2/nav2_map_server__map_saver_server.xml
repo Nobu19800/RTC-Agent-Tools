@@ -18,7 +18,22 @@
   </ros:IOVariables>
   <ros:Services>
     <ros:Service kind="service" name="save_map" dataType="nav2_msgs/srv/SaveMap" />
+    <ros:Service kind="service" name="~/save_map" dataType="nav2_msgs/srv/SaveMap" />
   </ros:Services>
+  <ros:Parameters>
+    <ros:Parameter name="save_map_timeout" dataType="double">
+      <ros:Default>2.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="free_thresh_default" dataType="double">
+      <ros:Default>0.25</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="occupied_thresh_default" dataType="double">
+      <ros:Default>0.65</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="map_subscribe_transient_local" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -32,6 +47,8 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="13">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_map_server</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_map_server/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_map_server/src/map_saver/map_saver.cpp</ros:ImplementationSource>
+    <ros:SourceReviewNote>The map subscription uses the topic supplied by the save_map request; it has no fixed input port.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

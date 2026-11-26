@@ -16,11 +16,79 @@
     <ros:Description>Discovers or subscribes to configured topics and provides recording-control services.</ros:Description>
   </ros:IOVariables>
   <ros:Services>
-    <ros:Service kind="service" name="pause" />
-    <ros:Service kind="service" name="resume" />
-    <ros:Service kind="service" name="snapshot" />
-    <ros:Service kind="service" name="stop" />
+    <ros:Service kind="service" name="~/snapshot" dataType="rosbag2_interfaces/srv/Snapshot" />
+    <ros:Service kind="service" name="~/split_bagfile" dataType="rosbag2_interfaces/srv/SplitBagfile" />
+    <ros:Service kind="service" name="~/start_discovery" dataType="rosbag2_interfaces/srv/StartDiscovery" />
+    <ros:Service kind="service" name="~/stop_discovery" dataType="rosbag2_interfaces/srv/StopDiscovery" />
+    <ros:Service kind="service" name="~/is_discovery_running" dataType="rosbag2_interfaces/srv/IsDiscoveryRunning" />
+    <ros:Service kind="service" name="~/record" dataType="rosbag2_interfaces/srv/Record" />
+    <ros:Service kind="service" name="~/stop" dataType="rosbag2_interfaces/srv/Stop" />
+    <ros:Service kind="service" name="~/pause" dataType="rosbag2_interfaces/srv/Pause" />
+    <ros:Service kind="service" name="~/resume" dataType="rosbag2_interfaces/srv/Resume" />
+    <ros:Service kind="service" name="~/is_paused" dataType="rosbag2_interfaces/srv/IsPaused" />
   </ros:Services>
+  <ros:Parameters>
+    <ros:Parameter name="record.all_topics" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="record.all_services" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="record.is_discovery_disabled" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="record.rmw_serialization_format" dataType="string">
+      <ros:Default>"cdr"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="record.regex" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="record.exclude_regex" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="record.node_prefix" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="record.compression_mode" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="record.compression_format" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="record.qos_profile_overrides_path" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="record.include_hidden_topics" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="record.include_unpublished_topics" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="record.ignore_leaf_topics" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="record.start_paused" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="record.disable_keyboard_controls" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="storage.uri" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="storage.storage_id" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="storage.storage_config_uri" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="storage.storage_preset_profile" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="storage.snapshot_mode" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report cites rosbag2 0.26 series releases for Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -34,6 +102,9 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="86">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros2/rosbag2</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros2/rosbag2/blob/jazzy/rosbag2_transport/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros2/rosbag2/blob/12b5e8ba4eb5665501a16f0d9e050552a1149f56/rosbag2_transport/src/rosbag2_transport/recorder.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/ros2/rosbag2/blob/12b5e8ba4eb5665501a16f0d9e050552a1149f56/rosbag2_transport/src/rosbag2_transport/config_options_from_node_params.cpp</ros:AdditionalImplementationSource>
+    <ros:SourceReviewNote>Recorded topics depend on configuration and discovery; service names are private to the recorder.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

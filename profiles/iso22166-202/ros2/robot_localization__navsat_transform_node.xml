@@ -18,8 +18,39 @@
     <ros:Variable direction="input" transport="ROS 2 topic" name="imu" dataType="sensor_msgs/msg/Imu" />
     <ros:Variable direction="input" transport="ROS 2 topic" name="odometry/filtered" dataType="nav_msgs/msg/Odometry" />
     <ros:Variable direction="output" transport="ROS 2 topic" name="odometry/gps" dataType="nav_msgs/msg/Odometry" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="gps/filtered" dataType="sensor_msgs/msg/NavSatFix" />
   </ros:IOVariables>
-  <ros:Services />
+  <ros:Services>
+    <ros:Service kind="service" name="datum" dataType="robot_localization/srv/SetDatum" />
+    <ros:Service kind="service" name="toLL" dataType="robot_localization/srv/ToLL" />
+    <ros:Service kind="service" name="toLLArray" dataType="robot_localization/srv/ToLLArray" />
+    <ros:Service kind="service" name="fromLL" dataType="robot_localization/srv/FromLL" />
+    <ros:Service kind="service" name="fromLLArray" dataType="robot_localization/srv/FromLLArray" />
+    <ros:Service kind="service" name="setUTMZone" dataType="robot_localization/srv/SetUTMZone" />
+  </ros:Services>
+  <ros:Parameters>
+    <ros:Parameter name="magnetic_declination_radians" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="yaw_offset" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="zero_altitude" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="publish_filtered_gps" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="use_odometry_yaw" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="wait_for_datum" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="use_local_cartesian" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -32,7 +63,10 @@
   <ros:Evidence>
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="8">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/cra-ros-pkg/robot_localization/blob/rolling-devel/doc/navsat_transform_node.rst</ros:Source>
-    <ros:UpstreamSource status="other-ref-registration">https://github.com/cra-ros-pkg/robot_localization/blob/ros2/CMakeLists.txt</ros:UpstreamSource>
+    <ros:UpstreamSource status="jazzy-registration">https://github.com/cra-ros-pkg/robot_localization/blob/fea7fc3dcad81c533121e4aa2fb1087a0565d8cc/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/cra-ros-pkg/robot_localization/blob/fea7fc3dcad81c533121e4aa2fb1087a0565d8cc/src/navsat_transform.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/cra-ros-pkg/robot_localization/blob/fea7fc3dcad81c533121e4aa2fb1087a0565d8cc/src/navsat_transform_node.cpp</ros:AdditionalImplementationSource>
+    <ros:SourceReviewNote>GPS and IMU subscriptions or publications depend on configuration. This includes publish_filtered_gps and use_odometry_yaw.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

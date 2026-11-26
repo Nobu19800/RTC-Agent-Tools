@@ -14,8 +14,56 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Uses image, camera calibration, and optionally TF and publishes the rotated image.</ros:Description>
+    <ros:Variable direction="input" transport="ROS 2 topic" name="image" dataType="sensor_msgs/msg/Image" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="camera_info" dataType="sensor_msgs/msg/CameraInfo" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="rotated/image" dataType="sensor_msgs/msg/Image" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="rotated/camera_info" dataType="sensor_msgs/msg/CameraInfo" />
   </ros:IOVariables>
   <ros:Services />
+  <ros:Parameters>
+    <ros:Parameter name="target_frame_id" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="target_x" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="target_y" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="target_z" dataType="double">
+      <ros:Default>1.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="source_frame_id" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="source_x" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="source_y" dataType="double">
+      <ros:Default>-1.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="source_z" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="output_frame_id" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="input_frame_id" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="use_camera_info" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="max_angular_rate" dataType="double">
+      <ros:Default>10.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="output_image_size" dataType="double">
+      <ros:Default>2.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="image_transport" dataType="string">
+      <ros:Default>"raw"</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists Jazzy support. Check compiler requirements if using main or Rolling.</ros:Requirement>
   </ros:Infra>
@@ -29,6 +77,9 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="100">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-perception/image_pipeline/tree/rolling/image_rotate</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-perception/image_pipeline/blob/jazzy/image_rotate/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_rotate/src/image_rotate.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_rotate/src/image_rotate_node.cpp</ros:AdditionalImplementationSource>
+    <ros:SourceReviewNote>The input is lazy. The use_camera_info parameter enables paired CameraInfo input and output.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

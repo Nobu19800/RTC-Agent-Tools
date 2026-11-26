@@ -14,8 +14,27 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Uses depth, camera calibration, and TF and publishes registered depth.</ros:Description>
+    <ros:Variable direction="input" transport="ROS 2 topic" name="depth/image_rect" dataType="sensor_msgs/msg/Image" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="depth/camera_info" dataType="sensor_msgs/msg/CameraInfo" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="rgb/camera_info" dataType="sensor_msgs/msg/CameraInfo" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="depth_registered/image_rect" dataType="sensor_msgs/msg/Image" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="depth_registered/camera_info" dataType="sensor_msgs/msg/CameraInfo" />
   </ros:IOVariables>
   <ros:Services />
+  <ros:Parameters>
+    <ros:Parameter name="depth_image_transport" dataType="string">
+      <ros:Default>"raw"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="queue_size" dataType="integer">
+      <ros:Default>5</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="fill_upsampling_holes" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="use_rgb_timestamp" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -29,6 +48,8 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="50">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-perception/image_pipeline/blob/rolling/depth_image_proc/CMakeLists.txt</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/depth_image_proc/src/register.cpp</ros:ImplementationSource>
+    <ros:SourceReviewNote>Base topic names assume raw image transport; subscriptions may be created lazily.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

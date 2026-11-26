@@ -30,6 +30,10 @@ The agent follows the runtime installation guide for Windows MSI selection and i
 2. Locate Java and the Builder JAR directory. Run the environment preflight with the actual paths before generating code.
 3. Locate the rtshell commands `rtcon`, `rtact`, `rtdeact`, and `rtexit` and check their help. Verify that the operator's shell can reach the naming service and the addresses advertised by the registered IORs.
 
+> Check the environment for generating RTCs.
+
+Example commands the agent runs.
+
 ~~~powershell
 python -c "import OpenRTM_aist, omniORB; print(OpenRTM_aist.__file__)"
 python scripts/preflight_environment.py --java "$env:JAVA_HOME\bin\java.exe" --builder-lib "$env:BUILDER_LIB"

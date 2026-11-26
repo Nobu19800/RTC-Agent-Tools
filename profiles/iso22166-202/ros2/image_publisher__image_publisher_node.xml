@@ -18,6 +18,26 @@
     <ros:Variable direction="output" transport="ROS 2 topic" name="camera_info" dataType="sensor_msgs/msg/CameraInfo" />
   </ros:IOVariables>
   <ros:Services />
+  <ros:Parameters>
+    <ros:Parameter name="flip_horizontal" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="flip_vertical" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="frame_id" dataType="string">
+      <ros:Default>"camera"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="camera_info_url" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="retry" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="timeout" dataType="integer">
+      <ros:Default>2000</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists Jazzy support and notes configurable QoS.</ros:Requirement>
   </ros:Infra>
@@ -31,6 +51,7 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="99">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-perception/image_pipeline/tree/rolling/image_publisher</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-perception/image_pipeline/blob/jazzy/image_publisher/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_publisher/src/image_publisher.cpp</ros:ImplementationSource>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

@@ -2,7 +2,7 @@
   "1": {
     "url": "https://github.com/ros/robot_state_publisher/blob/jazzy/CMakeLists.txt",
     "status": "jazzy-registration",
-    "implementationUrl": "https://github.com/ros/robot_state_publisher/blob/jazzy/src/robot_state_publisher.cpp",
+    "implementationUrl": "https://github.com/ros/robot_state_publisher/blob/d1b994d2d2eb19e4d2886be57211114134f25b50/src/robot_state_publisher.cpp",
     "interfaces": [
       [
         "subscribe",
@@ -24,261 +24,4189 @@
         "/tf_static",
         "tf2_msgs/msg/TFMessage"
       ]
+    ],
+    "parameters": [
+      {
+        "name": "robot_description",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "publish_frequency",
+        "type": "double",
+        "default": 20.0
+      },
+      {
+        "name": "frame_prefix",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "ignore_timestamp",
+        "type": "bool",
+        "default": false
+      }
     ]
   },
   "2": {
     "url": "https://github.com/ros/joint_state_publisher/blob/ros2/joint_state_publisher/setup.py",
-    "status": "other-ref-registration"
+    "status": "other-ref-registration",
+    "implementationUrl": "https://github.com/ros/joint_state_publisher/blob/730f48a53c993b5c727f61e14b17bee97ff6cce7/joint_state_publisher/joint_state_publisher/joint_state_publisher.py",
+    "interfaces": [
+      [
+        "subscribe",
+        "robot_description",
+        "std_msgs/msg/String"
+      ],
+      [
+        "publish",
+        "joint_states",
+        "sensor_msgs/msg/JointState"
+      ]
+    ],
+    "note": "source_list names additional JointState subscriptions; robot_description is subscribed when no URDF argument is supplied.",
+    "parameters": [
+      {
+        "name": "publish_default_efforts",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "publish_default_positions",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "publish_default_velocities",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "rate",
+        "type": "integer",
+        "default": 10
+      },
+      {
+        "name": "source_list",
+        "type": "string[]",
+        "default": []
+      },
+      {
+        "name": "use_mimic_tags",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "use_smallest_joint_limits",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "delta",
+        "type": "double",
+        "default": 0.0
+      }
+    ]
   },
   "3": {
     "url": "https://github.com/ros/joint_state_publisher/blob/ros2/joint_state_publisher_gui/setup.py",
-    "status": "other-ref-registration"
+    "status": "other-ref-registration",
+    "implementationUrl": "https://github.com/ros/joint_state_publisher/blob/730f48a53c993b5c727f61e14b17bee97ff6cce7/joint_state_publisher/joint_state_publisher/joint_state_publisher.py",
+    "additionalImplementationUrls": [
+      "https://github.com/ros/joint_state_publisher/blob/730f48a53c993b5c727f61e14b17bee97ff6cce7/joint_state_publisher_gui/joint_state_publisher_gui/joint_state_publisher_gui.py"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "robot_description",
+        "std_msgs/msg/String"
+      ],
+      [
+        "publish",
+        "joint_states",
+        "sensor_msgs/msg/JointState"
+      ]
+    ],
+    "note": "The GUI instantiates the same joint_state_publisher backend; source_list determines additional subscriptions.",
+    "parameters": [
+      {
+        "name": "publish_default_efforts",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "publish_default_positions",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "publish_default_velocities",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "rate",
+        "type": "integer",
+        "default": 10
+      },
+      {
+        "name": "source_list",
+        "type": "string[]",
+        "default": []
+      },
+      {
+        "name": "use_mimic_tags",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "use_smallest_joint_limits",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "delta",
+        "type": "double",
+        "default": 0.0
+      }
+    ]
   },
   "4": {
     "url": "https://github.com/ros2/geometry2/blob/jazzy/tf2_ros/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros2/geometry2/blob/f702874b1c8535d6a038230ab2cda0ba5d521ebd/tf2_ros/src/static_transform_broadcaster.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros2/geometry2/blob/f702874b1c8535d6a038230ab2cda0ba5d521ebd/tf2_ros/src/static_transform_broadcaster_node.cpp"
+    ],
+    "interfaces": [
+      [
+        "publish",
+        "/tf_static",
+        "tf2_msgs/msg/TFMessage"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "translation.x",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "translation.y",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "translation.z",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "rotation.x",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "rotation.y",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "rotation.z",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "rotation.w",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "frame_id",
+        "type": "string",
+        "default": "/frame"
+      },
+      {
+        "name": "child_frame_id",
+        "type": "string",
+        "default": "/child"
+      }
+    ]
   },
   "5": {
     "url": "https://github.com/ros2/geometry2/blob/jazzy/tf2_ros/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros2/geometry2/blob/f702874b1c8535d6a038230ab2cda0ba5d521ebd/tf2_ros/src/buffer_server.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "/tf",
+        "tf2_msgs/msg/TFMessage"
+      ],
+      [
+        "subscribe",
+        "/tf_static",
+        "tf2_msgs/msg/TFMessage"
+      ],
+      [
+        "action",
+        "tf2_buffer_server",
+        "tf2_msgs/action/LookupTransform"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "buffer_size",
+        "type": "double",
+        "default": 120.0
+      }
+    ],
+    "additionalImplementationUrls": [
+      "https://github.com/ros2/geometry2/blob/f702874b1c8535d6a038230ab2cda0ba5d521ebd/tf2_ros/src/buffer_server_main.cpp"
+    ]
   },
   "6": {
-    "url": "https://github.com/cra-ros-pkg/robot_localization/blob/ros2/CMakeLists.txt",
-    "status": "other-ref-registration"
+    "url": "https://github.com/cra-ros-pkg/robot_localization/blob/fea7fc3dcad81c533121e4aa2fb1087a0565d8cc/CMakeLists.txt",
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/cra-ros-pkg/robot_localization/blob/fea7fc3dcad81c533121e4aa2fb1087a0565d8cc/src/ekf_node.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/cra-ros-pkg/robot_localization/blob/fea7fc3dcad81c533121e4aa2fb1087a0565d8cc/src/ros_filter.cpp"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "odomN",
+        "nav_msgs/msg/Odometry"
+      ],
+      [
+        "subscribe",
+        "imuN",
+        "sensor_msgs/msg/Imu"
+      ],
+      [
+        "publish",
+        "/odometry/filtered",
+        "nav_msgs/msg/Odometry"
+      ],
+      [
+        "subscribe",
+        "set_pose",
+        "geometry_msgs/msg/PoseWithCovarianceStamped"
+      ],
+      [
+        "service",
+        "set_pose",
+        "robot_localization/srv/SetPose"
+      ],
+      [
+        "service",
+        "enable",
+        "std_srvs/srv/Empty"
+      ],
+      [
+        "service",
+        "reset",
+        "std_srvs/srv/Empty"
+      ],
+      [
+        "service",
+        "toggle",
+        "robot_localization/srv/ToggleFilterProcessing"
+      ],
+      [
+        "publish",
+        "odometry/filtered",
+        "nav_msgs/msg/Odometry"
+      ],
+      [
+        "publish",
+        "accel/filtered",
+        "geometry_msgs/msg/AccelWithCovarianceStamped"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "print_diagnostics",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "debug",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "map_frame",
+        "type": "string",
+        "default": "map"
+      },
+      {
+        "name": "odom_frame",
+        "type": "string",
+        "default": "odom"
+      },
+      {
+        "name": "base_link_frame",
+        "type": "string",
+        "default": "base_link"
+      },
+      {
+        "name": "publish_tf",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "publish_acceleration",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "permit_corrected_publication",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "transform_time_offset",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "transform_timeout",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "transform_timeout_odom_bl",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "frequency",
+        "type": "double",
+        "default": 30.0
+      },
+      {
+        "name": "predict_to_current_time",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "two_d_mode",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "smooth_lagged_data",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "history_length",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "reset_on_time_jump",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "use_control",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "stamped_control",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "control_timeout",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "dynamic_process_noise_covariance",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "disabled_at_startup",
+        "type": "bool",
+        "default": false
+      }
+    ],
+    "note": "Sensor subscriptions use the configured odomN, imuN, poseN and twistN parameters. cmd_vel is conditional on use_control, and stamped_control controls its type. accel/filtered and TF are conditional."
   },
   "7": {
-    "url": "https://github.com/cra-ros-pkg/robot_localization/blob/ros2/CMakeLists.txt",
-    "status": "other-ref-registration"
+    "url": "https://github.com/cra-ros-pkg/robot_localization/blob/fea7fc3dcad81c533121e4aa2fb1087a0565d8cc/CMakeLists.txt",
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/cra-ros-pkg/robot_localization/blob/fea7fc3dcad81c533121e4aa2fb1087a0565d8cc/src/ros_filter.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/cra-ros-pkg/robot_localization/blob/fea7fc3dcad81c533121e4aa2fb1087a0565d8cc/src/ukf_node.cpp"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "set_pose",
+        "geometry_msgs/msg/PoseWithCovarianceStamped"
+      ],
+      [
+        "service",
+        "set_pose",
+        "robot_localization/srv/SetPose"
+      ],
+      [
+        "service",
+        "enable",
+        "std_srvs/srv/Empty"
+      ],
+      [
+        "service",
+        "reset",
+        "std_srvs/srv/Empty"
+      ],
+      [
+        "service",
+        "toggle",
+        "robot_localization/srv/ToggleFilterProcessing"
+      ],
+      [
+        "publish",
+        "odometry/filtered",
+        "nav_msgs/msg/Odometry"
+      ],
+      [
+        "publish",
+        "accel/filtered",
+        "geometry_msgs/msg/AccelWithCovarianceStamped"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "print_diagnostics",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "debug",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "map_frame",
+        "type": "string",
+        "default": "map"
+      },
+      {
+        "name": "odom_frame",
+        "type": "string",
+        "default": "odom"
+      },
+      {
+        "name": "base_link_frame",
+        "type": "string",
+        "default": "base_link"
+      },
+      {
+        "name": "publish_tf",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "publish_acceleration",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "permit_corrected_publication",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "transform_time_offset",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "transform_timeout",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "transform_timeout_odom_bl",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "frequency",
+        "type": "double",
+        "default": 30.0
+      },
+      {
+        "name": "predict_to_current_time",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "two_d_mode",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "smooth_lagged_data",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "history_length",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "reset_on_time_jump",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "use_control",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "stamped_control",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "control_timeout",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "dynamic_process_noise_covariance",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "disabled_at_startup",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "alpha",
+        "type": "double",
+        "default": 0.001
+      },
+      {
+        "name": "kappa",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "beta",
+        "type": "double",
+        "default": 2.0
+      }
+    ],
+    "note": "Sensor subscriptions use the configured odomN, imuN, poseN and twistN parameters. cmd_vel is conditional on use_control, and stamped_control controls its type. accel/filtered and TF are conditional."
   },
   "8": {
-    "url": "https://github.com/cra-ros-pkg/robot_localization/blob/ros2/CMakeLists.txt",
-    "status": "other-ref-registration"
+    "url": "https://github.com/cra-ros-pkg/robot_localization/blob/fea7fc3dcad81c533121e4aa2fb1087a0565d8cc/CMakeLists.txt",
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/cra-ros-pkg/robot_localization/blob/fea7fc3dcad81c533121e4aa2fb1087a0565d8cc/src/navsat_transform.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/cra-ros-pkg/robot_localization/blob/fea7fc3dcad81c533121e4aa2fb1087a0565d8cc/src/navsat_transform_node.cpp"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "gps/fix",
+        "sensor_msgs/msg/NavSatFix"
+      ],
+      [
+        "subscribe",
+        "imu",
+        "sensor_msgs/msg/Imu"
+      ],
+      [
+        "subscribe",
+        "odometry/filtered",
+        "nav_msgs/msg/Odometry"
+      ],
+      [
+        "publish",
+        "odometry/gps",
+        "nav_msgs/msg/Odometry"
+      ],
+      [
+        "service",
+        "datum",
+        "robot_localization/srv/SetDatum"
+      ],
+      [
+        "service",
+        "toLL",
+        "robot_localization/srv/ToLL"
+      ],
+      [
+        "service",
+        "toLLArray",
+        "robot_localization/srv/ToLLArray"
+      ],
+      [
+        "service",
+        "fromLL",
+        "robot_localization/srv/FromLL"
+      ],
+      [
+        "service",
+        "fromLLArray",
+        "robot_localization/srv/FromLLArray"
+      ],
+      [
+        "service",
+        "setUTMZone",
+        "robot_localization/srv/SetUTMZone"
+      ],
+      [
+        "publish",
+        "gps/filtered",
+        "sensor_msgs/msg/NavSatFix"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "magnetic_declination_radians",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "yaw_offset",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "zero_altitude",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "publish_filtered_gps",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "use_odometry_yaw",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "wait_for_datum",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "use_local_cartesian",
+        "type": "bool",
+        "default": false
+      }
+    ],
+    "note": "GPS and IMU subscriptions or publications depend on configuration. This includes publish_filtered_gps and use_odometry_yaw."
   },
   "9": {
-    "url": "https://github.com/cra-ros-pkg/robot_localization/blob/ros2/CMakeLists.txt",
-    "status": "other-ref-registration"
+    "url": "https://github.com/cra-ros-pkg/robot_localization/blob/fea7fc3dcad81c533121e4aa2fb1087a0565d8cc/CMakeLists.txt",
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/cra-ros-pkg/robot_localization/blob/fea7fc3dcad81c533121e4aa2fb1087a0565d8cc/src/robot_localization_listener_node.cpp",
+    "interfaces": [
+      [
+        "service",
+        "get_state",
+        "robot_localization/srv/GetState"
+      ]
+    ],
+    "note": "The get_state service is available from the listener implementation. Configured sensor frame names are not ROS topic names. No static parameter declaration with a confirmed type or literal default was captured by this review."
   },
   "10": {
     "url": "https://github.com/ros-controls/ros2_control/blob/jazzy/controller_manager/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-controls/ros2_control/blob/6f85954fc0e00b1412636439c2b1b8f56e54f093/controller_manager/src/controller_manager.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-controls/ros2_control/blob/6f85954fc0e00b1412636439c2b1b8f56e54f093/controller_manager/src/ros2_control_node.cpp",
+      "https://github.com/ros-controls/ros2_control/blob/6f85954fc0e00b1412636439c2b1b8f56e54f093/controller_manager/src/controller_manager_parameters.yaml"
+    ],
+    "interfaces": [
+      [
+        "publish",
+        "~/activity",
+        "controller_manager_msgs/msg/ControllerManagerActivity"
+      ],
+      [
+        "subscribe",
+        "robot_description",
+        "std_msgs/msg/String"
+      ],
+      [
+        "service",
+        "~/list_controllers",
+        "controller_manager_msgs/srv/ListControllers"
+      ],
+      [
+        "service",
+        "~/list_controller_types",
+        "controller_manager_msgs/srv/ListControllerTypes"
+      ],
+      [
+        "service",
+        "~/load_controller",
+        "controller_manager_msgs/srv/LoadController"
+      ],
+      [
+        "service",
+        "~/configure_controller",
+        "controller_manager_msgs/srv/ConfigureController"
+      ],
+      [
+        "service",
+        "~/reload_controller_libraries",
+        "controller_manager_msgs/srv/ReloadControllerLibraries"
+      ],
+      [
+        "service",
+        "~/switch_controller",
+        "controller_manager_msgs/srv/SwitchController"
+      ],
+      [
+        "service",
+        "~/unload_controller",
+        "controller_manager_msgs/srv/UnloadController"
+      ],
+      [
+        "service",
+        "~/cleanup_controller",
+        "controller_manager_msgs/srv/CleanupController"
+      ],
+      [
+        "service",
+        "~/list_hardware_components",
+        "controller_manager_msgs/srv/ListHardwareComponents"
+      ],
+      [
+        "service",
+        "~/list_hardware_interfaces",
+        "controller_manager_msgs/srv/ListHardwareInterfaces"
+      ],
+      [
+        "service",
+        "~/set_hardware_component_state",
+        "controller_manager_msgs/srv/SetHardwareComponentState"
+      ]
+    ],
+    "note": "The registered controllers and hardware plugins can create additional interfaces and parameters.",
+    "parameters": [
+      {
+        "name": "update_rate",
+        "type": "integer",
+        "default": 100
+      },
+      {
+        "name": "enforce_command_limits",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "handle_exceptions",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "hardware_components_initial_state.unconfigured",
+        "type": "string[]",
+        "default": []
+      },
+      {
+        "name": "hardware_components_initial_state.inactive",
+        "type": "string[]",
+        "default": []
+      },
+      {
+        "name": "hardware_components_initial_state.shutdown_on_initial_state_failure",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "defaults.switch_controller.strictness",
+        "type": "string",
+        "default": "best_effort"
+      },
+      {
+        "name": "defaults.allow_controller_activation_with_inactive_hardware",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "defaults.deactivate_controllers_on_hardware_self_deactivate",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "diagnostics.threshold.controller_manager.periodicity.mean_error.warn",
+        "type": "double",
+        "default": 5.0
+      },
+      {
+        "name": "diagnostics.threshold.controller_manager.periodicity.mean_error.error",
+        "type": "double",
+        "default": 10.0
+      },
+      {
+        "name": "diagnostics.threshold.controller_manager.periodicity.standard_deviation.warn",
+        "type": "double",
+        "default": 5.0
+      },
+      {
+        "name": "diagnostics.threshold.controller_manager.periodicity.standard_deviation.error",
+        "type": "double",
+        "default": 10.0
+      },
+      {
+        "name": "diagnostics.threshold.controllers.periodicity.mean_error.warn",
+        "type": "double",
+        "default": 5.0
+      },
+      {
+        "name": "diagnostics.threshold.controllers.periodicity.mean_error.error",
+        "type": "double",
+        "default": 10.0
+      },
+      {
+        "name": "diagnostics.threshold.controllers.periodicity.standard_deviation.warn",
+        "type": "double",
+        "default": 5.0
+      },
+      {
+        "name": "diagnostics.threshold.controllers.periodicity.standard_deviation.error",
+        "type": "double",
+        "default": 10.0
+      },
+      {
+        "name": "diagnostics.threshold.controllers.execution_time.mean_error.warn",
+        "type": "double",
+        "default": 1000.0
+      },
+      {
+        "name": "diagnostics.threshold.controllers.execution_time.mean_error.error",
+        "type": "double",
+        "default": 2000.0
+      },
+      {
+        "name": "diagnostics.threshold.controllers.execution_time.standard_deviation.warn",
+        "type": "double",
+        "default": 100.0
+      },
+      {
+        "name": "diagnostics.threshold.controllers.execution_time.standard_deviation.error",
+        "type": "double",
+        "default": 200.0
+      },
+      {
+        "name": "diagnostics.threshold.hardware_components.periodicity.mean_error.warn",
+        "type": "double",
+        "default": 5.0
+      },
+      {
+        "name": "diagnostics.threshold.hardware_components.periodicity.mean_error.error",
+        "type": "double",
+        "default": 10.0
+      },
+      {
+        "name": "diagnostics.threshold.hardware_components.periodicity.standard_deviation.warn",
+        "type": "double",
+        "default": 5.0
+      },
+      {
+        "name": "diagnostics.threshold.hardware_components.periodicity.standard_deviation.error",
+        "type": "double",
+        "default": 10.0
+      },
+      {
+        "name": "diagnostics.threshold.hardware_components.execution_time.mean_error.warn",
+        "type": "double",
+        "default": 1000.0
+      },
+      {
+        "name": "diagnostics.threshold.hardware_components.execution_time.mean_error.error",
+        "type": "double",
+        "default": 2000.0
+      },
+      {
+        "name": "diagnostics.threshold.hardware_components.execution_time.standard_deviation.warn",
+        "type": "double",
+        "default": 100.0
+      },
+      {
+        "name": "diagnostics.threshold.hardware_components.execution_time.standard_deviation.error",
+        "type": "double",
+        "default": 200.0
+      },
+      {
+        "name": "overruns.print_warnings",
+        "type": "bool"
+      }
+    ]
   },
   "11": {
     "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_amcl/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_amcl/src/amcl_node.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "/scan",
+        "sensor_msgs/msg/LaserScan"
+      ],
+      [
+        "subscribe",
+        "/map",
+        "nav_msgs/msg/OccupancyGrid"
+      ],
+      [
+        "publish",
+        "/amcl_pose",
+        "geometry_msgs/msg/PoseWithCovarianceStamped"
+      ],
+      [
+        "publish",
+        "particle_cloud",
+        "nav2_msgs/msg/ParticleCloud"
+      ],
+      [
+        "publish",
+        "amcl_pose",
+        "geometry_msgs/msg/PoseWithCovarianceStamped"
+      ],
+      [
+        "subscribe",
+        "initialpose",
+        "geometry_msgs/msg/PoseWithCovarianceStamped"
+      ],
+      [
+        "service",
+        "reinitialize_global_localization",
+        "std_srvs/srv/Empty"
+      ],
+      [
+        "service",
+        "set_initial_pose",
+        "nav2_msgs/srv/SetInitialPose"
+      ],
+      [
+        "service",
+        "request_nomotion_update",
+        "std_srvs/srv/Empty"
+      ],
+      [
+        "subscribe",
+        "scan",
+        "sensor_msgs/msg/LaserScan"
+      ],
+      [
+        "subscribe",
+        "map",
+        "nav_msgs/msg/OccupancyGrid"
+      ]
+    ],
+    "note": "Laser scan topic and map topic are configurable. Lifecycle configuration must complete before the interfaces appear.",
+    "parameters": [
+      {
+        "name": "alpha1",
+        "type": "double",
+        "default": 0.2
+      },
+      {
+        "name": "alpha2",
+        "type": "double",
+        "default": 0.2
+      },
+      {
+        "name": "alpha3",
+        "type": "double",
+        "default": 0.2
+      },
+      {
+        "name": "alpha4",
+        "type": "double",
+        "default": 0.2
+      },
+      {
+        "name": "alpha5",
+        "type": "double",
+        "default": 0.2
+      },
+      {
+        "name": "beam_skip_distance",
+        "type": "double",
+        "default": 0.5
+      },
+      {
+        "name": "beam_skip_error_threshold",
+        "type": "double",
+        "default": 0.9
+      },
+      {
+        "name": "beam_skip_threshold",
+        "type": "double",
+        "default": 0.3
+      },
+      {
+        "name": "do_beamskip",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "lambda_short",
+        "type": "double",
+        "default": 0.1
+      },
+      {
+        "name": "laser_likelihood_max_dist",
+        "type": "double",
+        "default": 2.0
+      },
+      {
+        "name": "laser_max_range",
+        "type": "double",
+        "default": 100.0
+      },
+      {
+        "name": "laser_min_range",
+        "type": "double",
+        "default": -1.0
+      },
+      {
+        "name": "set_initial_pose",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "initial_pose.x",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "initial_pose.y",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "initial_pose.z",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "initial_pose.yaw",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "max_beams",
+        "type": "integer",
+        "default": 60
+      },
+      {
+        "name": "max_particles",
+        "type": "integer",
+        "default": 2000
+      },
+      {
+        "name": "min_particles",
+        "type": "integer",
+        "default": 500
+      },
+      {
+        "name": "pf_err",
+        "type": "double",
+        "default": 0.05
+      },
+      {
+        "name": "pf_z",
+        "type": "double",
+        "default": 0.99
+      },
+      {
+        "name": "recovery_alpha_fast",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "recovery_alpha_slow",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "resample_interval",
+        "type": "integer",
+        "default": 1
+      },
+      {
+        "name": "robot_model_type",
+        "type": "string",
+        "default": "nav2_amcl::DifferentialMotionModel"
+      },
+      {
+        "name": "save_pose_rate",
+        "type": "double",
+        "default": 0.5
+      },
+      {
+        "name": "sigma_hit",
+        "type": "double",
+        "default": 0.2
+      },
+      {
+        "name": "tf_broadcast",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "transform_tolerance",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "update_min_a",
+        "type": "double",
+        "default": 0.2
+      },
+      {
+        "name": "update_min_d",
+        "type": "double",
+        "default": 0.25
+      },
+      {
+        "name": "z_hit",
+        "type": "double",
+        "default": 0.5
+      },
+      {
+        "name": "z_max",
+        "type": "double",
+        "default": 0.05
+      },
+      {
+        "name": "z_rand",
+        "type": "double",
+        "default": 0.5
+      },
+      {
+        "name": "z_short",
+        "type": "double",
+        "default": 0.05
+      },
+      {
+        "name": "always_reset_initial_pose",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "scan_topic",
+        "type": "string",
+        "default": "scan"
+      },
+      {
+        "name": "map_topic",
+        "type": "string",
+        "default": "map"
+      },
+      {
+        "name": "first_map_only",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "freespace_downsampling",
+        "type": "bool",
+        "default": false
+      }
+    ]
   },
   "12": {
     "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_map_server/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_map_server/src/map_server/map_server.cpp",
+    "interfaces": [
+      [
+        "publish",
+        "map",
+        "nav_msgs/msg/OccupancyGrid"
+      ],
+      [
+        "service",
+        "~/map",
+        "nav_msgs/srv/GetMap"
+      ],
+      [
+        "service",
+        "~/load_map",
+        "nav2_msgs/srv/LoadMap"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "topic_name",
+        "type": "string",
+        "default": "map"
+      },
+      {
+        "name": "frame_id",
+        "type": "string",
+        "default": "map"
+      },
+      {
+        "name": "yaml_filename",
+        "type": "string"
+      }
+    ],
+    "note": "The map publication uses the topic_name default and can be renamed by that parameter."
   },
   "13": {
     "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_map_server/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_map_server/src/map_saver/map_saver.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "/map",
+        "nav_msgs/msg/OccupancyGrid"
+      ],
+      [
+        "service",
+        "save_map",
+        "nav2_msgs/srv/SaveMap"
+      ],
+      [
+        "service",
+        "~/save_map",
+        "nav2_msgs/srv/SaveMap"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "save_map_timeout",
+        "type": "double",
+        "default": 2.0
+      },
+      {
+        "name": "free_thresh_default",
+        "type": "double",
+        "default": 0.25
+      },
+      {
+        "name": "occupied_thresh_default",
+        "type": "double",
+        "default": 0.65
+      },
+      {
+        "name": "map_subscribe_transient_local",
+        "type": "bool",
+        "default": true
+      }
+    ],
+    "note": "The map subscription uses the topic supplied by the save_map request; it has no fixed input port."
   },
   "14": {
     "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_map_server/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_map_server/src/costmap_filter_info/costmap_filter_info_server.cpp",
+    "interfaces": [
+      [
+        "publish",
+        "costmap_filter_info",
+        "nav2_msgs/msg/CostmapFilterInfo"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "filter_info_topic",
+        "type": "string",
+        "default": "costmap_filter_info"
+      },
+      {
+        "name": "type",
+        "type": "integer",
+        "default": 0
+      },
+      {
+        "name": "mask_topic",
+        "type": "string",
+        "default": "filter_mask"
+      },
+      {
+        "name": "base",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "multiplier",
+        "type": "double",
+        "default": 1.0
+      }
+    ],
+    "note": "The topic name follows filter_info_topic. The mask topic is advertised in the data, not subscribed by this server."
   },
   "15": {
     "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_planner/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_planner/src/planner_server.cpp",
+    "interfaces": [
+      [
+        "publish",
+        "/plan",
+        "nav_msgs/msg/Path"
+      ],
+      [
+        "action",
+        "compute_path_to_pose",
+        "nav2_msgs/action/ComputePathToPose"
+      ],
+      [
+        "action",
+        "compute_path_through_poses",
+        "nav2_msgs/action/ComputePathThroughPoses"
+      ],
+      [
+        "publish",
+        "plan",
+        "nav_msgs/msg/Path"
+      ],
+      [
+        "service",
+        "is_path_valid",
+        "nav2_msgs/srv/IsPathValid"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "expected_planner_frequency",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "action_server_result_timeout",
+        "type": "double",
+        "default": 10.0
+      },
+      {
+        "name": "costmap_update_timeout",
+        "type": "double",
+        "default": 1.0
+      }
+    ]
   },
   "16": {
     "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_controller/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_controller/src/controller_server.cpp",
+    "interfaces": [
+      [
+        "action",
+        "follow_path",
+        "nav2_msgs/action/FollowPath"
+      ],
+      [
+        "publish",
+        "cmd_vel",
+        "geometry_msgs/msg/Twist"
+      ],
+      [
+        "subscribe",
+        "speed_limit",
+        "nav2_msgs/msg/SpeedLimit"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "controller_frequency",
+        "type": "double",
+        "default": 20.0
+      },
+      {
+        "name": "action_server_result_timeout",
+        "type": "double",
+        "default": 10.0
+      },
+      {
+        "name": "min_x_velocity_threshold",
+        "type": "double",
+        "default": 0.0001
+      },
+      {
+        "name": "min_y_velocity_threshold",
+        "type": "double",
+        "default": 0.0001
+      },
+      {
+        "name": "min_theta_velocity_threshold",
+        "type": "double",
+        "default": 0.0001
+      },
+      {
+        "name": "speed_limit_topic",
+        "type": "string",
+        "default": "speed_limit"
+      },
+      {
+        "name": "failure_tolerance",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "use_realtime_priority",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "publish_zero_velocity",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "costmap_update_timeout",
+        "type": "double",
+        "default": 0.3
+      },
+      {
+        "name": "enable_stamped_cmd_vel",
+        "type": "bool",
+        "default": false
+      }
+    ],
+    "note": "Controller, goal-checker and progress-checker plugins add parameters; the velocity topic type depends on stamped velocity configuration.",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_util/include/nav2_util/twist_publisher.hpp"
+    ]
   },
   "17": {
     "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_smoother/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_smoother/src/nav2_smoother.cpp",
+    "interfaces": [
+      [
+        "action",
+        "smooth_path",
+        "nav2_msgs/action/SmoothPath"
+      ],
+      [
+        "publish",
+        "plan_smoothed",
+        "nav_msgs/msg/Path"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "transform_tolerance",
+        "type": "double",
+        "default": 0.1
+      },
+      {
+        "name": "action_server_result_timeout",
+        "type": "double",
+        "default": 10.0
+      }
+    ]
   },
   "18": {
     "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_behaviors/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_behaviors/src/behavior_server.cpp",
+    "interfaces": [
+      [
+        "action",
+        "spin",
+        "nav2_msgs/action/Spin"
+      ],
+      [
+        "action",
+        "backup",
+        "nav2_msgs/action/BackUp"
+      ],
+      [
+        "action",
+        "drive_on_heading",
+        "nav2_msgs/action/DriveOnHeading"
+      ],
+      [
+        "action",
+        "wait",
+        "nav2_msgs/action/Wait"
+      ],
+      [
+        "publish",
+        "cmd_vel",
+        "geometry_msgs/msg/Twist"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "cycle_frequency",
+        "type": "double",
+        "default": 10.0
+      },
+      {
+        "name": "transform_tolerance",
+        "type": "double",
+        "default": 0.1
+      },
+      {
+        "name": "enable_stamped_cmd_vel",
+        "type": "bool",
+        "default": false
+      }
+    ],
+    "note": "Loaded behavior plugins determine action endpoints and some parameters.",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_behaviors/include/nav2_behaviors/timed_behavior.hpp",
+      "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_util/include/nav2_util/twist_publisher.hpp"
+    ]
   },
   "19": {
     "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_bt_navigator/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_bt_navigator/src/bt_navigator.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_bt_navigator/src/navigators/navigate_through_poses.cpp",
+      "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_bt_navigator/src/navigators/navigate_to_pose.cpp"
+    ],
+    "interfaces": [
+      [
+        "action",
+        "navigate_to_pose",
+        "nav2_msgs/action/NavigateToPose"
+      ],
+      [
+        "action",
+        "navigate_through_poses",
+        "nav2_msgs/action/NavigateThroughPoses"
+      ],
+      [
+        "subscribe",
+        "goal_pose",
+        "geometry_msgs/msg/PoseStamped"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "transform_tolerance",
+        "type": "double",
+        "default": 0.1
+      },
+      {
+        "name": "goals_blackboard_id",
+        "type": "string",
+        "default": "goals"
+      },
+      {
+        "name": "path_blackboard_id",
+        "type": "string",
+        "default": "path"
+      },
+      {
+        "name": "default_nav_through_poses_bt_xml",
+        "type": "string"
+      },
+      {
+        "name": "goal_blackboard_id",
+        "type": "string",
+        "default": "goal"
+      },
+      {
+        "name": "default_nav_to_pose_bt_xml",
+        "type": "string"
+      }
+    ],
+    "note": "Configured navigator plugins determine action endpoints and additional parameters."
   },
   "20": {
     "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_waypoint_follower/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_waypoint_follower/src/waypoint_follower.cpp",
+    "interfaces": [
+      [
+        "action",
+        "follow_waypoints",
+        "nav2_msgs/action/FollowWaypoints"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "stop_on_failure",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "loop_rate",
+        "type": "integer",
+        "default": 20
+      },
+      {
+        "name": "action_server_result_timeout",
+        "type": "double",
+        "default": 900.0
+      },
+      {
+        "name": "global_frame_id",
+        "type": "string",
+        "default": "map"
+      }
+    ]
   },
   "21": {
     "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_lifecycle_manager/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_lifecycle_manager/src/lifecycle_manager.cpp",
+    "interfaces": [
+      [
+        "service",
+        "manage_nodes",
+        "nav2_msgs/srv/ManageLifecycleNodes"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "autostart",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "bond_timeout",
+        "type": "double",
+        "default": 4.0
+      },
+      {
+        "name": "bond_respawn_max_duration",
+        "type": "double",
+        "default": 10.0
+      },
+      {
+        "name": "attempt_respawn_reconnection",
+        "type": "bool",
+        "default": true
+      }
+    ],
+    "note": "Managed node names determine the lifecycle service clients."
   },
   "22": {
     "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_velocity_smoother/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_velocity_smoother/src/velocity_smoother.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "cmd_vel",
+        "geometry_msgs/msg/Twist"
+      ],
+      [
+        "publish",
+        "cmd_vel_smoothed",
+        "geometry_msgs/msg/Twist"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "smoothing_frequency",
+        "type": "double",
+        "default": 20.0
+      },
+      {
+        "name": "scale_velocities",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "odom_topic",
+        "type": "string",
+        "default": "odom"
+      },
+      {
+        "name": "odom_duration",
+        "type": "double",
+        "default": 0.1
+      },
+      {
+        "name": "velocity_timeout",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "stamp_smoothed_velocity_with_smoothing_time",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "use_realtime_priority",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "enable_stamped_cmd_vel",
+        "type": "bool",
+        "default": false
+      }
+    ],
+    "additionalImplementationUrls": [
+      "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_util/include/nav2_util/twist_publisher.hpp",
+      "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_util/include/nav2_util/twist_subscriber.hpp"
+    ]
   },
   "23": {
     "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_collision_monitor/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_collision_monitor/src/collision_monitor_node.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_collision_monitor/src/pointcloud.cpp",
+      "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_collision_monitor/src/polygon.cpp",
+      "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_collision_monitor/src/range.cpp",
+      "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_collision_monitor/src/scan.cpp",
+      "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_util/include/nav2_util/twist_publisher.hpp",
+      "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_util/include/nav2_util/twist_subscriber.hpp"
+    ],
+    "interfaces": [
+      [
+        "publish",
+        "~/collision_points_marker",
+        "visualization_msgs/msg/MarkerArray"
+      ],
+      [
+        "service",
+        "~/toggle",
+        "nav2_msgs/srv/Toggle"
+      ],
+      [
+        "subscribe",
+        "cmd_vel_smoothed",
+        "geometry_msgs/msg/Twist"
+      ],
+      [
+        "publish",
+        "cmd_vel",
+        "geometry_msgs/msg/Twist"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "use_realtime_priority",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "cmd_vel_in_topic",
+        "type": "string",
+        "default": "cmd_vel_smoothed"
+      },
+      {
+        "name": "cmd_vel_out_topic",
+        "type": "string",
+        "default": "cmd_vel"
+      },
+      {
+        "name": "state_topic",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "base_frame_id",
+        "type": "string",
+        "default": "base_footprint"
+      },
+      {
+        "name": "odom_frame_id",
+        "type": "string",
+        "default": "odom"
+      },
+      {
+        "name": "transform_tolerance",
+        "type": "double",
+        "default": 0.1
+      },
+      {
+        "name": "source_timeout",
+        "type": "double",
+        "default": 2.0
+      },
+      {
+        "name": "base_shift_correction",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "stop_pub_timeout",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "enable_stamped_cmd_vel",
+        "type": "bool",
+        "default": false
+      }
+    ],
+    "note": "Velocity and state topic names are configurable, and input source plugins supply sensor topic names."
   },
   "24": {
     "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_collision_monitor/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_collision_monitor/src/collision_detector_node.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_collision_monitor/src/pointcloud.cpp",
+      "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_collision_monitor/src/polygon.cpp",
+      "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_collision_monitor/src/range.cpp",
+      "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_collision_monitor/src/scan.cpp"
+    ],
+    "interfaces": [
+      [
+        "publish",
+        "collision_detector_state",
+        "nav2_msgs/msg/CollisionDetectorState"
+      ],
+      [
+        "publish",
+        "~/collision_points_marker",
+        "visualization_msgs/msg/MarkerArray"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "frequency",
+        "type": "double",
+        "default": 10.0
+      },
+      {
+        "name": "base_frame_id",
+        "type": "string",
+        "default": "base_footprint"
+      },
+      {
+        "name": "odom_frame_id",
+        "type": "string",
+        "default": "odom"
+      },
+      {
+        "name": "transform_tolerance",
+        "type": "double",
+        "default": 0.1
+      },
+      {
+        "name": "source_timeout",
+        "type": "double",
+        "default": 2.0
+      },
+      {
+        "name": "base_shift_correction",
+        "type": "bool",
+        "default": true
+      }
+    ],
+    "note": "Configured observation sources determine the subscribed sensor topics."
   },
   "25": {
     "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_route/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_route/src/route_server.cpp",
+    "interfaces": [
+      [
+        "publish",
+        "route_graph",
+        "visualization_msgs/msg/MarkerArray"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "action_server_result_timeout",
+        "type": "double",
+        "default": 10.0
+      },
+      {
+        "name": "max_planning_time",
+        "type": "double",
+        "default": 2.0
+      }
+    ],
+    "note": "Route operation plugins add parameters and potentially interfaces."
   },
   "26": {
     "url": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_docking/opennav_docking/CMakeLists.txt",
     "status": "jazzy-registration",
     "package": "opennav_docking",
     "executable": "opennav_docking",
-    "note": "The Jazzy package and executable are both opennav_docking. The default ROS node name is docking_server.",
+    "note": "The Jazzy package and executable are both opennav_docking. The default ROS node name is docking_server. Docking plugins and docking configuration add parameters and may create additional endpoints.",
     "interfaces": [
       [
         "action",
         "dock_robot",
-        null
+        "nav2_msgs/action/DockRobot"
       ],
       [
         "action",
         "undock_robot",
-        null
+        "nav2_msgs/action/UndockRobot"
       ]
     ],
-    "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_docking/opennav_docking/src/docking_server.cpp"
+    "implementationUrl": "https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_docking/opennav_docking/src/docking_server.cpp",
+    "parameters": [
+      {
+        "name": "controller_frequency",
+        "type": "double",
+        "default": 50.0
+      },
+      {
+        "name": "initial_perception_timeout",
+        "type": "double",
+        "default": 5.0
+      },
+      {
+        "name": "wait_charge_timeout",
+        "type": "double",
+        "default": 5.0
+      },
+      {
+        "name": "dock_approach_timeout",
+        "type": "double",
+        "default": 30.0
+      },
+      {
+        "name": "undock_linear_tolerance",
+        "type": "double",
+        "default": 0.05
+      },
+      {
+        "name": "undock_angular_tolerance",
+        "type": "double",
+        "default": 0.05
+      },
+      {
+        "name": "max_retries",
+        "type": "integer",
+        "default": 3
+      },
+      {
+        "name": "base_frame",
+        "type": "string",
+        "default": "base_link"
+      },
+      {
+        "name": "fixed_frame",
+        "type": "string",
+        "default": "odom"
+      },
+      {
+        "name": "dock_backwards",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "dock_prestaging_tolerance",
+        "type": "double",
+        "default": 0.5
+      },
+      {
+        "name": "action_server_result_timeout",
+        "type": "double",
+        "default": 10.0
+      }
+    ]
   },
   "27": {
     "url": "https://github.com/moveit/moveit2/blob/jazzy/moveit_ros/move_group/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/move_group/src/move_group.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/move_group/src/move_group_context.cpp",
+      "https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/move_group/include/moveit/move_group/capability_names.hpp",
+      "https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/move_group/src/default_capabilities/plan_service_capability.cpp",
+      "https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/move_group/src/default_capabilities/kinematics_service_capability.cpp",
+      "https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/move_group/src/default_capabilities/cartesian_path_service_capability.cpp",
+      "https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/move_group/src/default_capabilities/query_planners_service_capability.cpp",
+      "https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/move_group/src/default_capabilities/state_validation_service_capability.cpp",
+      "https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/move_group/src/default_capabilities/apply_planning_scene_service_capability.cpp"
+    ],
+    "interfaces": [
+      [
+        "action",
+        "move_action",
+        "moveit_msgs/action/MoveGroup"
+      ],
+      [
+        "action",
+        "execute_trajectory",
+        "moveit_msgs/action/ExecuteTrajectory"
+      ],
+      [
+        "service",
+        "compute_ik",
+        "moveit_msgs/srv/GetPositionIK"
+      ],
+      [
+        "service",
+        "compute_fk",
+        "moveit_msgs/srv/GetPositionFK"
+      ],
+      [
+        "service",
+        "plan_kinematic_path",
+        "moveit_msgs/srv/GetMotionPlan"
+      ],
+      [
+        "subscribe",
+        "joint_states",
+        "sensor_msgs/msg/JointState"
+      ],
+      [
+        "service",
+        "get_planning_scene",
+        "moveit_msgs/srv/GetPlanningScene"
+      ],
+      [
+        "service",
+        "apply_planning_scene",
+        "moveit_msgs/srv/ApplyPlanningScene"
+      ],
+      [
+        "service",
+        "compute_cartesian_path",
+        "moveit_msgs/srv/GetCartesianPath"
+      ],
+      [
+        "service",
+        "check_state_validity",
+        "moveit_msgs/srv/GetStateValidity"
+      ],
+      [
+        "service",
+        "query_planner_interface",
+        "moveit_msgs/srv/QueryPlannerInterfaces"
+      ],
+      [
+        "service",
+        "get_planner_params",
+        "moveit_msgs/srv/GetPlannerParams"
+      ],
+      [
+        "service",
+        "set_planner_params",
+        "moveit_msgs/srv/SetPlannerParams"
+      ]
+    ],
+    "note": "MoveGroup capabilities and robot configuration add interfaces and parameters. No static parameter declaration with a confirmed type or literal default was captured by this review."
   },
   "28": {
     "url": "https://github.com/moveit/moveit2/blob/jazzy/moveit_ros/moveit_servo/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/moveit_servo/src/servo_node.cpp",
+    "interfaces": [
+      [
+        "service",
+        "~/switch_command_type",
+        "moveit_msgs/srv/ServoCommandType"
+      ],
+      [
+        "service",
+        "~/pause_servo",
+        "std_srvs/srv/SetBool"
+      ]
+    ],
+    "note": "Servo topics and generated parameters depend on the MoveIt Servo configuration.",
+    "additionalImplementationUrls": [
+      "https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/moveit_servo/config/servo_parameters.yaml"
+    ],
+    "parameters": [
+      {
+        "name": "moveit_servo.thread_priority",
+        "type": "integer",
+        "default": 40
+      },
+      {
+        "name": "moveit_servo.publish_period",
+        "type": "double",
+        "default": 0.01
+      },
+      {
+        "name": "moveit_servo.max_expected_latency",
+        "type": "double",
+        "default": 0.1
+      },
+      {
+        "name": "moveit_servo.move_group_name",
+        "type": "string"
+      },
+      {
+        "name": "moveit_servo.active_subgroup",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "moveit_servo.pose_command_in_topic",
+        "type": "string",
+        "default": "~/pose_target_cmds"
+      },
+      {
+        "name": "moveit_servo.cartesian_command_in_topic",
+        "type": "string",
+        "default": "~/delta_twist_cmds"
+      },
+      {
+        "name": "moveit_servo.joint_command_in_topic",
+        "type": "string",
+        "default": "~/delta_joint_cmds"
+      },
+      {
+        "name": "moveit_servo.command_in_type",
+        "type": "string",
+        "default": "unitless"
+      },
+      {
+        "name": "moveit_servo.scale.linear",
+        "type": "double",
+        "default": 0.4
+      },
+      {
+        "name": "moveit_servo.scale.rotational",
+        "type": "double",
+        "default": 0.8
+      },
+      {
+        "name": "moveit_servo.scale.joint",
+        "type": "double",
+        "default": 0.5
+      },
+      {
+        "name": "moveit_servo.incoming_command_timeout",
+        "type": "double",
+        "default": 0.1
+      },
+      {
+        "name": "moveit_servo.apply_twist_commands_about_ee_frame",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "moveit_servo.pose_tracking.linear_tolerance",
+        "type": "double",
+        "default": 0.001
+      },
+      {
+        "name": "moveit_servo.pose_tracking.angular_tolerance",
+        "type": "double",
+        "default": 0.01
+      },
+      {
+        "name": "moveit_servo.status_topic",
+        "type": "string",
+        "default": "~/status"
+      },
+      {
+        "name": "moveit_servo.command_out_topic",
+        "type": "string",
+        "default": "/panda_arm_controller/joint_trajectory"
+      },
+      {
+        "name": "moveit_servo.command_out_type",
+        "type": "string",
+        "default": "trajectory_msgs/JointTrajectory"
+      },
+      {
+        "name": "moveit_servo.publish_joint_positions",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "moveit_servo.publish_joint_velocities",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "moveit_servo.publish_joint_accelerations",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "moveit_servo.monitored_planning_scene_topic",
+        "type": "string",
+        "default": "/planning_scene"
+      },
+      {
+        "name": "moveit_servo.joint_topic",
+        "type": "string",
+        "default": "/joint_states"
+      },
+      {
+        "name": "moveit_servo.check_octomap_collisions",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "moveit_servo.is_primary_planning_scene_monitor",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "moveit_servo.use_smoothing",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "moveit_servo.smoothing_filter_plugin_name",
+        "type": "string",
+        "default": "online_signal_smoothing::ButterworthFilterPlugin"
+      },
+      {
+        "name": "moveit_servo.check_collisions",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "moveit_servo.self_collision_proximity_threshold",
+        "type": "double",
+        "default": 0.01
+      },
+      {
+        "name": "moveit_servo.scene_collision_proximity_threshold",
+        "type": "double",
+        "default": 0.02
+      },
+      {
+        "name": "moveit_servo.collision_check_rate",
+        "type": "double",
+        "default": 10.0
+      },
+      {
+        "name": "moveit_servo.lower_singularity_threshold",
+        "type": "double",
+        "default": 17.0
+      },
+      {
+        "name": "moveit_servo.hard_stop_singularity_threshold",
+        "type": "double",
+        "default": 30.0
+      },
+      {
+        "name": "moveit_servo.leaving_singularity_threshold_multiplier",
+        "type": "double",
+        "default": 2.0
+      },
+      {
+        "name": "moveit_servo.singularity_step_scale",
+        "type": "double",
+        "default": 0.01
+      },
+      {
+        "name": "moveit_servo.halt_all_joints_in_joint_mode",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "moveit_servo.halt_all_joints_in_cartesian_mode",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "moveit_servo.joint_limit_margins",
+        "type": "double[]",
+        "default": [
+          0.1
+        ]
+      },
+      {
+        "name": "moveit_servo.override_velocity_scaling_factor",
+        "type": "double",
+        "default": 0.0
+      }
+    ]
   },
   "29": {
     "url": "https://github.com/SteveMacenski/slam_toolbox/blob/jazzy/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/SteveMacenski/slam_toolbox/blob/f84dad92a6579aeff4fe0c2590bbc74d3348e5af/src/slam_toolbox_async.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/SteveMacenski/slam_toolbox/blob/f84dad92a6579aeff4fe0c2590bbc74d3348e5af/src/slam_toolbox_common.cpp"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "/scan",
+        "sensor_msgs/msg/LaserScan"
+      ],
+      [
+        "publish",
+        "pose",
+        "geometry_msgs/msg/PoseWithCovarianceStamped"
+      ],
+      [
+        "service",
+        "slam_toolbox/dynamic_map",
+        "nav_msgs/srv/GetMap"
+      ],
+      [
+        "service",
+        "slam_toolbox/pause_new_measurements",
+        "slam_toolbox/srv/Pause"
+      ],
+      [
+        "service",
+        "slam_toolbox/serialize_map",
+        "slam_toolbox/srv/SerializePoseGraph"
+      ],
+      [
+        "service",
+        "slam_toolbox/deserialize_map",
+        "slam_toolbox/srv/DeserializePoseGraph"
+      ],
+      [
+        "service",
+        "slam_toolbox/reset",
+        "slam_toolbox/srv/Reset"
+      ],
+      [
+        "publish",
+        "map",
+        "nav_msgs/msg/OccupancyGrid"
+      ],
+      [
+        "publish",
+        "map_metadata",
+        "nav_msgs/msg/MapMetaData"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "paused_new_measurements",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "map_start_at_dock",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "map_file_name",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "scan_topic",
+        "type": "string",
+        "default": "/scan"
+      },
+      {
+        "name": "map_frame",
+        "type": "string",
+        "default": "map"
+      },
+      {
+        "name": "odom_frame",
+        "type": "string",
+        "default": "odom"
+      },
+      {
+        "name": "base_frame",
+        "type": "string",
+        "default": "base_footprint"
+      },
+      {
+        "name": "resolution",
+        "type": "double",
+        "default": 0.05
+      }
+    ],
+    "note": "Scan topic and additional endpoints depend on scan_topic, lifecycle state, and SLAM mode."
   },
   "30": {
     "url": "https://github.com/SteveMacenski/slam_toolbox/blob/jazzy/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/SteveMacenski/slam_toolbox/blob/f84dad92a6579aeff4fe0c2590bbc74d3348e5af/src/slam_toolbox_common.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/SteveMacenski/slam_toolbox/blob/f84dad92a6579aeff4fe0c2590bbc74d3348e5af/src/slam_toolbox_sync.cpp"
+    ],
+    "interfaces": [
+      [
+        "publish",
+        "pose",
+        "geometry_msgs/msg/PoseWithCovarianceStamped"
+      ],
+      [
+        "service",
+        "slam_toolbox/dynamic_map",
+        "nav_msgs/srv/GetMap"
+      ],
+      [
+        "service",
+        "slam_toolbox/pause_new_measurements",
+        "slam_toolbox/srv/Pause"
+      ],
+      [
+        "service",
+        "slam_toolbox/serialize_map",
+        "slam_toolbox/srv/SerializePoseGraph"
+      ],
+      [
+        "service",
+        "slam_toolbox/deserialize_map",
+        "slam_toolbox/srv/DeserializePoseGraph"
+      ],
+      [
+        "service",
+        "slam_toolbox/reset",
+        "slam_toolbox/srv/Reset"
+      ],
+      [
+        "service",
+        "slam_toolbox/clear_queue",
+        "slam_toolbox/srv/ClearQueue"
+      ],
+      [
+        "subscribe",
+        "/scan",
+        "sensor_msgs/msg/LaserScan"
+      ],
+      [
+        "publish",
+        "map",
+        "nav_msgs/msg/OccupancyGrid"
+      ],
+      [
+        "publish",
+        "map_metadata",
+        "nav_msgs/msg/MapMetaData"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "paused_new_measurements",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "map_start_at_dock",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "map_file_name",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "scan_topic",
+        "type": "string",
+        "default": "/scan"
+      },
+      {
+        "name": "map_frame",
+        "type": "string",
+        "default": "map"
+      },
+      {
+        "name": "odom_frame",
+        "type": "string",
+        "default": "odom"
+      },
+      {
+        "name": "base_frame",
+        "type": "string",
+        "default": "base_footprint"
+      },
+      {
+        "name": "resolution",
+        "type": "double",
+        "default": 0.05
+      }
+    ],
+    "note": "Scan topic and additional endpoints depend on scan_topic, lifecycle state, and SLAM mode."
   },
   "31": {
     "url": "https://github.com/SteveMacenski/slam_toolbox/blob/jazzy/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/SteveMacenski/slam_toolbox/blob/f84dad92a6579aeff4fe0c2590bbc74d3348e5af/src/slam_toolbox_common.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/SteveMacenski/slam_toolbox/blob/f84dad92a6579aeff4fe0c2590bbc74d3348e5af/src/slam_toolbox_localization.cpp"
+    ],
+    "interfaces": [
+      [
+        "publish",
+        "pose",
+        "geometry_msgs/msg/PoseWithCovarianceStamped"
+      ],
+      [
+        "service",
+        "slam_toolbox/dynamic_map",
+        "nav_msgs/srv/GetMap"
+      ],
+      [
+        "service",
+        "slam_toolbox/pause_new_measurements",
+        "slam_toolbox/srv/Pause"
+      ],
+      [
+        "service",
+        "slam_toolbox/serialize_map",
+        "slam_toolbox/srv/SerializePoseGraph"
+      ],
+      [
+        "service",
+        "slam_toolbox/deserialize_map",
+        "slam_toolbox/srv/DeserializePoseGraph"
+      ],
+      [
+        "service",
+        "slam_toolbox/reset",
+        "slam_toolbox/srv/Reset"
+      ],
+      [
+        "subscribe",
+        "initialpose",
+        "geometry_msgs/msg/PoseWithCovarianceStamped"
+      ],
+      [
+        "service",
+        "slam_toolbox/clear_localization_buffer",
+        "std_srvs/srv/Empty"
+      ],
+      [
+        "subscribe",
+        "/scan",
+        "sensor_msgs/msg/LaserScan"
+      ],
+      [
+        "publish",
+        "map",
+        "nav_msgs/msg/OccupancyGrid"
+      ],
+      [
+        "publish",
+        "map_metadata",
+        "nav_msgs/msg/MapMetaData"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "paused_new_measurements",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "map_start_at_dock",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "map_file_name",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "scan_topic",
+        "type": "string",
+        "default": "/scan"
+      },
+      {
+        "name": "map_frame",
+        "type": "string",
+        "default": "map"
+      },
+      {
+        "name": "odom_frame",
+        "type": "string",
+        "default": "odom"
+      },
+      {
+        "name": "base_frame",
+        "type": "string",
+        "default": "base_footprint"
+      },
+      {
+        "name": "resolution",
+        "type": "double",
+        "default": 0.05
+      }
+    ],
+    "note": "Scan topic and additional endpoints depend on scan_topic, lifecycle state, and SLAM mode."
   },
   "32": {
     "url": "https://github.com/SteveMacenski/slam_toolbox/blob/jazzy/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/SteveMacenski/slam_toolbox/blob/f84dad92a6579aeff4fe0c2590bbc74d3348e5af/src/experimental/slam_toolbox_lifelong.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/SteveMacenski/slam_toolbox/blob/f84dad92a6579aeff4fe0c2590bbc74d3348e5af/src/slam_toolbox_common.cpp"
+    ],
+    "interfaces": [
+      [
+        "publish",
+        "pose",
+        "geometry_msgs/msg/PoseWithCovarianceStamped"
+      ],
+      [
+        "service",
+        "slam_toolbox/dynamic_map",
+        "nav_msgs/srv/GetMap"
+      ],
+      [
+        "service",
+        "slam_toolbox/pause_new_measurements",
+        "slam_toolbox/srv/Pause"
+      ],
+      [
+        "service",
+        "slam_toolbox/serialize_map",
+        "slam_toolbox/srv/SerializePoseGraph"
+      ],
+      [
+        "service",
+        "slam_toolbox/deserialize_map",
+        "slam_toolbox/srv/DeserializePoseGraph"
+      ],
+      [
+        "service",
+        "slam_toolbox/reset",
+        "slam_toolbox/srv/Reset"
+      ],
+      [
+        "subscribe",
+        "/scan",
+        "sensor_msgs/msg/LaserScan"
+      ],
+      [
+        "publish",
+        "map",
+        "nav_msgs/msg/OccupancyGrid"
+      ],
+      [
+        "publish",
+        "map_metadata",
+        "nav_msgs/msg/MapMetaData"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "paused_new_measurements",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "map_start_at_dock",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "map_file_name",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "scan_topic",
+        "type": "string",
+        "default": "/scan"
+      },
+      {
+        "name": "map_frame",
+        "type": "string",
+        "default": "map"
+      },
+      {
+        "name": "odom_frame",
+        "type": "string",
+        "default": "odom"
+      },
+      {
+        "name": "base_frame",
+        "type": "string",
+        "default": "base_footprint"
+      },
+      {
+        "name": "resolution",
+        "type": "double",
+        "default": 0.05
+      }
+    ],
+    "note": "Scan topic and additional endpoints depend on scan_topic, lifecycle state, and SLAM mode."
   },
   "33": {
     "url": "https://github.com/SteveMacenski/slam_toolbox/blob/jazzy/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/SteveMacenski/slam_toolbox/blob/f84dad92a6579aeff4fe0c2590bbc74d3348e5af/src/experimental/slam_toolbox_map_and_localization.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/SteveMacenski/slam_toolbox/blob/f84dad92a6579aeff4fe0c2590bbc74d3348e5af/src/slam_toolbox_common.cpp"
+    ],
+    "interfaces": [
+      [
+        "service",
+        "slam_toolbox/set_localization_mode",
+        "std_srvs/srv/SetBool"
+      ],
+      [
+        "subscribe",
+        "initialpose",
+        "geometry_msgs/msg/PoseWithCovarianceStamped"
+      ],
+      [
+        "service",
+        "slam_toolbox/clear_localization_buffer",
+        "std_srvs/srv/Empty"
+      ],
+      [
+        "publish",
+        "pose",
+        "geometry_msgs/msg/PoseWithCovarianceStamped"
+      ],
+      [
+        "service",
+        "slam_toolbox/dynamic_map",
+        "nav_msgs/srv/GetMap"
+      ],
+      [
+        "service",
+        "slam_toolbox/pause_new_measurements",
+        "slam_toolbox/srv/Pause"
+      ],
+      [
+        "service",
+        "slam_toolbox/serialize_map",
+        "slam_toolbox/srv/SerializePoseGraph"
+      ],
+      [
+        "service",
+        "slam_toolbox/deserialize_map",
+        "slam_toolbox/srv/DeserializePoseGraph"
+      ],
+      [
+        "service",
+        "slam_toolbox/reset",
+        "slam_toolbox/srv/Reset"
+      ],
+      [
+        "subscribe",
+        "/scan",
+        "sensor_msgs/msg/LaserScan"
+      ],
+      [
+        "publish",
+        "map",
+        "nav_msgs/msg/OccupancyGrid"
+      ],
+      [
+        "publish",
+        "map_metadata",
+        "nav_msgs/msg/MapMetaData"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "localization_on_configure",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "paused_new_measurements",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "map_start_at_dock",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "map_file_name",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "scan_topic",
+        "type": "string",
+        "default": "/scan"
+      },
+      {
+        "name": "map_frame",
+        "type": "string",
+        "default": "map"
+      },
+      {
+        "name": "odom_frame",
+        "type": "string",
+        "default": "odom"
+      },
+      {
+        "name": "base_frame",
+        "type": "string",
+        "default": "base_footprint"
+      },
+      {
+        "name": "resolution",
+        "type": "double",
+        "default": 0.05
+      }
+    ],
+    "note": "Scan topic and additional endpoints depend on scan_topic, lifecycle state, and SLAM mode."
   },
   "34": {
     "url": "https://github.com/SteveMacenski/slam_toolbox/blob/ros2/CMakeLists.txt",
     "status": "other-ref-registration",
-    "distributionNote": "The executable was found on the upstream ros2 branch. Its registration was not found in the reviewed Jazzy CMake file."
+    "distributionNote": "The executable was found on the upstream ros2 branch. Its registration was not found in the reviewed Jazzy CMake file.",
+    "implementationUrl": "https://github.com/SteveMacenski/slam_toolbox/blob/7376b23689d47d0be2a1dd0c58f5eb7085ac8a55/src/slam_toolbox_common.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/SteveMacenski/slam_toolbox/blob/7376b23689d47d0be2a1dd0c58f5eb7085ac8a55/src/slam_toolbox_decentralized_multirobot.cpp"
+    ],
+    "interfaces": [
+      [
+        "publish",
+        "pose",
+        "geometry_msgs/msg/PoseWithCovarianceStamped"
+      ],
+      [
+        "service",
+        "slam_toolbox/dynamic_map",
+        "nav_msgs/srv/GetMap"
+      ],
+      [
+        "service",
+        "slam_toolbox/pause_new_measurements",
+        "slam_toolbox/srv/Pause"
+      ],
+      [
+        "service",
+        "slam_toolbox/serialize_map",
+        "slam_toolbox/srv/SerializePoseGraph"
+      ],
+      [
+        "service",
+        "slam_toolbox/deserialize_map",
+        "slam_toolbox/srv/DeserializePoseGraph"
+      ],
+      [
+        "service",
+        "slam_toolbox/reset",
+        "slam_toolbox/srv/Reset"
+      ],
+      [
+        "publish",
+        "slam_toolbox/pose_graph",
+        "slam_toolbox/msg/PoseGraph"
+      ],
+      [
+        "publish",
+        "slam_toolbox/new_node_event",
+        "slam_toolbox/msg/NewNodeEvent"
+      ],
+      [
+        "publish",
+        "slam_toolbox/loop_closure_event",
+        "slam_toolbox/msg/LoopClosureEvent"
+      ],
+      [
+        "subscribe",
+        "/scan",
+        "sensor_msgs/msg/LaserScan"
+      ],
+      [
+        "publish",
+        "map",
+        "nav_msgs/msg/OccupancyGrid"
+      ],
+      [
+        "publish",
+        "map_metadata",
+        "nav_msgs/msg/MapMetaData"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "paused_new_measurements",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "map_start_at_dock",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "map_file_name",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "scan_share_topic",
+        "type": "string",
+        "default": "/localized_scan"
+      },
+      {
+        "name": "scan_topic",
+        "type": "string",
+        "default": "/scan"
+      },
+      {
+        "name": "map_frame",
+        "type": "string",
+        "default": "map"
+      },
+      {
+        "name": "odom_frame",
+        "type": "string",
+        "default": "odom"
+      },
+      {
+        "name": "base_frame",
+        "type": "string",
+        "default": "base_footprint"
+      },
+      {
+        "name": "resolution",
+        "type": "double",
+        "default": 0.05
+      }
+    ],
+    "note": "Scan topic and additional endpoints depend on scan_topic, lifecycle state, and SLAM mode."
   },
   "35": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_proc/src/rectify.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "image",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ],
+      [
+        "publish",
+        "image_rect",
+        "sensor_msgs/msg/Image"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "queue_size",
+        "type": "integer",
+        "default": 5
+      },
+      {
+        "name": "interpolation",
+        "type": "integer",
+        "default": 1
+      }
+    ],
+    "note": "Base topic names assume raw image transport; subscriptions may be created lazily."
   },
   "36": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_proc/src/debayer.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "image_raw",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "publish",
+        "image_mono",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "publish",
+        "image_color",
+        "sensor_msgs/msg/Image"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "debayer",
+        "type": "integer",
+        "default": 3
+      }
+    ],
+    "note": "Base topic names assume raw image transport; subscriptions may be created lazily."
   },
   "37": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_proc/src/resize.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "image/image_raw",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "image/camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ],
+      [
+        "publish",
+        "resize/image_raw",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "publish",
+        "resize/camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "interpolation",
+        "type": "integer",
+        "default": 1
+      },
+      {
+        "name": "use_scale",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "scale_height",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "scale_width",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "height",
+        "type": "integer",
+        "default": -1
+      },
+      {
+        "name": "width",
+        "type": "integer",
+        "default": -1
+      }
+    ],
+    "note": "Base topic names assume raw image transport; subscriptions may be created lazily."
   },
   "38": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_proc/src/crop_decimate.cpp",
+    "note": "The input subscription starts when an output subscriber matches. CameraInfo names are siblings of the raw image topics.",
+    "interfaces": [
+      [
+        "subscribe",
+        "in/image_raw",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "in/camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ],
+      [
+        "publish",
+        "out/image_raw",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "publish",
+        "out/camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "queue_size",
+        "type": "integer",
+        "default": 5
+      },
+      {
+        "name": "decimation_x",
+        "type": "integer",
+        "default": 1
+      },
+      {
+        "name": "decimation_y",
+        "type": "integer",
+        "default": 1
+      },
+      {
+        "name": "width",
+        "type": "integer",
+        "default": 0
+      },
+      {
+        "name": "height",
+        "type": "integer",
+        "default": 0
+      },
+      {
+        "name": "offset_x",
+        "type": "integer",
+        "default": 0
+      },
+      {
+        "name": "offset_y",
+        "type": "integer",
+        "default": 0
+      },
+      {
+        "name": "interpolation",
+        "type": "integer",
+        "default": 0
+      },
+      {
+        "name": "target_frame_id",
+        "type": "string",
+        "default": ""
+      }
+    ]
   },
   "39": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_proc/src/crop_non_zero.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "image_raw",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "publish",
+        "image",
+        "sensor_msgs/msg/Image"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      }
+    ],
+    "note": "Base topic names assume raw image transport; subscriptions may be created lazily."
   },
   "40": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_proc/src/track_marker.cpp",
+    "interfaces": [
+      [
+        "publish",
+        "tracked_pose",
+        "geometry_msgs/msg/PoseStamped"
+      ],
+      [
+        "subscribe",
+        "image",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "marker_id",
+        "type": "integer",
+        "default": 0
+      },
+      {
+        "name": "marker_size",
+        "type": "double",
+        "default": 0.05
+      },
+      {
+        "name": "dictionary",
+        "type": "integer",
+        "default": 10
+      }
+    ],
+    "note": "Base topic names assume raw image transport; subscriptions may be created lazily."
   },
   "41": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/depth_image_proc/src/convert_metric.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "image_raw",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "publish",
+        "image",
+        "sensor_msgs/msg/Image"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      }
+    ],
+    "note": "Base topic names assume raw image transport; subscriptions may be created lazily."
   },
   "42": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/depth_image_proc/src/crop_foremost.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "image_raw",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "publish",
+        "image",
+        "sensor_msgs/msg/Image"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "distance",
+        "type": "double",
+        "default": 0.0
+      }
+    ],
+    "note": "Base topic names assume raw image transport; subscriptions may be created lazily."
   },
   "43": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/depth_image_proc/src/disparity.cpp",
+    "interfaces": [
+      [
+        "publish",
+        "left/disparity",
+        "stereo_msgs/msg/DisparityImage"
+      ],
+      [
+        "subscribe",
+        "left/image_rect",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "right/camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "queue_size",
+        "type": "integer",
+        "default": 5
+      },
+      {
+        "name": "min_range",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "max_range",
+        "type": "double"
+      },
+      {
+        "name": "delta_d",
+        "type": "double",
+        "default": 0.125
+      }
+    ],
+    "note": "Base topic names assume raw image transport; subscriptions may be created lazily."
   },
   "44": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/depth_image_proc/src/point_cloud_xyz.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "image_rect",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ],
+      [
+        "publish",
+        "points",
+        "sensor_msgs/msg/PointCloud2"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "depth_image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "queue_size",
+        "type": "integer",
+        "default": 5
+      },
+      {
+        "name": "invalid_depth",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "max_pixels",
+        "type": "integer"
+      }
+    ],
+    "note": "Base topic names assume raw image transport; subscriptions may be created lazily."
   },
   "45": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/depth_image_proc/src/point_cloud_xyzrgb.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "depth_registered/image_rect",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "rgb/image_rect_color",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "rgb/camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ],
+      [
+        "publish",
+        "points",
+        "sensor_msgs/msg/PointCloud2"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "depth_image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "invalid_depth",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "max_pixels",
+        "type": "integer"
+      },
+      {
+        "name": "queue_size",
+        "type": "integer",
+        "default": 5
+      },
+      {
+        "name": "exact_sync",
+        "type": "bool",
+        "default": false
+      }
+    ],
+    "note": "Base topic names assume raw image transport; subscriptions may be created lazily."
   },
   "46": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/depth_image_proc/src/point_cloud_xyzi.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "depth/image_rect",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "intensity/image_rect",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "intensity/camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ],
+      [
+        "publish",
+        "points",
+        "sensor_msgs/msg/PointCloud2"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "depth_image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "invalid_depth",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "queue_size",
+        "type": "integer",
+        "default": 5
+      }
+    ],
+    "note": "Base topic names assume raw image transport; subscriptions may be created lazily."
   },
   "47": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/depth_image_proc/src/point_cloud_xyz_radial.cpp",
+    "interfaces": [
+      [
+        "publish",
+        "points",
+        "sensor_msgs/msg/PointCloud2"
+      ],
+      [
+        "subscribe",
+        "depth/image_raw",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "depth/camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "depth_image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "queue_size",
+        "type": "integer",
+        "default": 5
+      }
+    ],
+    "note": "Base topic names assume raw image transport; subscriptions may be created lazily."
   },
   "48": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/depth_image_proc/src/point_cloud_xyzi_radial.cpp",
+    "interfaces": [
+      [
+        "publish",
+        "points",
+        "sensor_msgs/msg/PointCloud2"
+      ],
+      [
+        "subscribe",
+        "depth/image_raw",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "intensity/image_raw",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "intensity/camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "depth_image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "queue_size",
+        "type": "integer",
+        "default": 5
+      }
+    ],
+    "note": "Base topic names assume raw image transport; subscriptions may be created lazily."
   },
   "49": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/depth_image_proc/src/point_cloud_xyzrgb_radial.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "depth/image_raw",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "rgb/image_raw",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "rgb/camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ],
+      [
+        "publish",
+        "points",
+        "sensor_msgs/msg/PointCloud2"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "depth_image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "queue_size",
+        "type": "integer",
+        "default": 5
+      },
+      {
+        "name": "exact_sync",
+        "type": "bool",
+        "default": false
+      }
+    ],
+    "note": "Base topic names assume raw image transport; subscriptions may be created lazily."
   },
   "50": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/depth_image_proc/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/depth_image_proc/src/register.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "depth/image_rect",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "depth/camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ],
+      [
+        "subscribe",
+        "rgb/camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ],
+      [
+        "publish",
+        "depth_registered/image_rect",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "publish",
+        "depth_registered/camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "depth_image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "queue_size",
+        "type": "integer",
+        "default": 5
+      },
+      {
+        "name": "fill_upsampling_holes",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "use_rgb_timestamp",
+        "type": "bool",
+        "default": false
+      }
+    ],
+    "note": "Base topic names assume raw image transport; subscriptions may be created lazily."
   },
   "51": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/stereo_image_proc/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/stereo_image_proc/src/stereo_image_proc/disparity_node.cpp",
+    "interfaces": [
+      [
+        "publish",
+        "disparity",
+        "stereo_msgs/msg/DisparityImage"
+      ],
+      [
+        "subscribe",
+        "left/image_rect",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "right/image_rect",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "left/camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ],
+      [
+        "subscribe",
+        "right/camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "queue_size",
+        "type": "integer",
+        "default": 5
+      },
+      {
+        "name": "approximate_sync",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "approximate_sync_tolerance_seconds",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "use_system_default_qos",
+        "type": "bool",
+        "default": false
+      }
+    ],
+    "note": "Base topic names assume raw image transport; subscriptions may be created lazily."
   },
   "52": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/stereo_image_proc/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/stereo_image_proc/src/stereo_image_proc/point_cloud_node.cpp",
+    "interfaces": [
+      [
+        "publish",
+        "points2",
+        "sensor_msgs/msg/PointCloud2"
+      ],
+      [
+        "subscribe",
+        "left/image_rect_color",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "left/camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ],
+      [
+        "subscribe",
+        "right/camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ],
+      [
+        "subscribe",
+        "disparity",
+        "stereo_msgs/msg/DisparityImage"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "queue_size",
+        "type": "integer",
+        "default": 5
+      },
+      {
+        "name": "approximate_sync",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "approximate_sync_tolerance_seconds",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "avoid_point_cloud_padding",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "use_color",
+        "type": "bool",
+        "default": true
+      }
+    ],
+    "note": "Base topic names assume raw image transport; subscriptions may be created lazily."
   },
   "53": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_view/src/disparity_view.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_view/src/disparity_view_node.cpp"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "image",
+        "stereo_msgs/msg/DisparityImage"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "autosize",
+        "type": "bool",
+        "default": false
+      }
+    ]
   },
   "54": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_view/src/image_view.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_view/src/image_view_node.cpp"
+    ],
+    "interfaces": [
+      [
+        "publish",
+        "output",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "image",
+        "sensor_msgs/msg/Image"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "gui",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "autosize",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "height",
+        "type": "integer",
+        "default": -1
+      },
+      {
+        "name": "width",
+        "type": "integer",
+        "default": -1
+      },
+      {
+        "name": "filename_format",
+        "type": "string",
+        "default": "frame%04i.jpg"
+      }
+    ]
   },
   "55": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_view/src/stereo_view.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_view/src/stereo_view_node.cpp"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "stereo/left/image",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "stereo/right/image",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "stereo/disparity",
+        "stereo_msgs/msg/DisparityImage"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "autosize",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "filename_format",
+        "type": "string",
+        "default": "frame%04i.jpg"
+      },
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "queue_size",
+        "type": "integer",
+        "default": 5
+      },
+      {
+        "name": "approximate_sync",
+        "type": "bool",
+        "default": false
+      }
+    ]
   },
   "56": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_view/src/extract_images.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_view/src/extract_images_node.cpp"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "image",
+        "sensor_msgs/msg/Image"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "filename_format",
+        "type": "string",
+        "default": "frame%04i.jpg"
+      },
+      {
+        "name": "sec_per_frame",
+        "type": "double",
+        "default": 0.1
+      }
+    ]
   },
   "57": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_view/src/image_saver.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_view/src/image_saver_node.cpp"
+    ],
+    "interfaces": [
+      [
+        "service",
+        "save",
+        "std_srvs/srv/Empty"
+      ],
+      [
+        "service",
+        "start",
+        "std_srvs/srv/Trigger"
+      ],
+      [
+        "service",
+        "end",
+        "std_srvs/srv/Trigger"
+      ],
+      [
+        "subscribe",
+        "image",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      },
+      {
+        "name": "filename_format",
+        "type": "string",
+        "default": "left%04i.%s"
+      },
+      {
+        "name": "encoding",
+        "type": "string",
+        "default": "bgr8"
+      },
+      {
+        "name": "save_all_image",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "stamped_filename",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "request_start_end",
+        "type": "bool",
+        "default": false
+      }
+    ],
+    "note": "The paired CameraInfo input is used by the camera subscription. Additional save services depend on the selected mode."
   },
   "58": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_view/src/video_recorder.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_view/src/video_recorder_node.cpp"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "image",
+        "sensor_msgs/msg/Image"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "filename",
+        "type": "string",
+        "default": "output.avi"
+      },
+      {
+        "name": "stamped_filename",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "fps",
+        "type": "double",
+        "default": 15.0
+      },
+      {
+        "name": "codec",
+        "type": "string",
+        "default": "MJPG"
+      },
+      {
+        "name": "encoding",
+        "type": "string",
+        "default": "bgr8"
+      },
+      {
+        "name": "min_depth_range",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "max_depth_range",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "use_dynamic_depth_range",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "colormap",
+        "type": "integer",
+        "default": -1
+      },
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      }
+    ]
   },
   "59": {
     "url": "https://github.com/ros-perception/pointcloud_to_laserscan/blob/humble/CMakeLists.txt",
     "status": "other-ref-registration",
     "interfaces": [
       [
+        "publish",
+        "scan",
+        "sensor_msgs/msg/LaserScan"
+      ],
+      [
         "subscribe",
         "cloud_in",
         "sensor_msgs/msg/PointCloud2"
+      ]
+    ],
+    "implementationUrl": "https://github.com/ros-perception/pointcloud_to_laserscan/blob/59bf996fb3ee7db0026a5cd3ce0d2a39d2e602ea/src/pointcloud_to_laserscan_node.cpp",
+    "distributionNote": "The executable was verified on the Humble branch. Jazzy binary availability was not checked.",
+    "parameters": [
+      {
+        "name": "target_frame",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "transform_tolerance",
+        "type": "double",
+        "default": 0.01
+      },
+      {
+        "name": "range_min",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "inf_epsilon",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "use_inf",
+        "type": "bool",
+        "default": true
+      }
+    ],
+    "note": "The input subscription starts when the output has a subscriber."
+  },
+  "60": {
+    "url": "https://github.com/ros-perception/pointcloud_to_laserscan/blob/humble/CMakeLists.txt",
+    "status": "other-ref-registration",
+    "interfaces": [
+      [
+        "publish",
+        "cloud",
+        "sensor_msgs/msg/PointCloud2"
+      ],
+      [
+        "subscribe",
+        "scan_in",
+        "sensor_msgs/msg/LaserScan"
+      ]
+    ],
+    "implementationUrl": "https://github.com/ros-perception/pointcloud_to_laserscan/blob/59bf996fb3ee7db0026a5cd3ce0d2a39d2e602ea/src/laserscan_to_pointcloud_node.cpp",
+    "distributionNote": "The executable was verified on the Humble branch. Jazzy binary availability was not checked.",
+    "parameters": [
+      {
+        "name": "target_frame",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "transform_tolerance",
+        "type": "double",
+        "default": 0.01
+      }
+    ],
+    "note": "The input subscription starts when the output has a subscriber."
+  },
+  "61": {
+    "url": "https://github.com/ros-perception/depthimage_to_laserscan/blob/ros2/CMakeLists.txt",
+    "status": "other-ref-registration",
+    "distributionNote": "The executable was verified on the upstream ros2 branch. Jazzy binary availability was not checked.",
+    "implementationUrl": "https://github.com/ros-perception/depthimage_to_laserscan/blob/79b60bf187c85d65b6002a070651d9aec4fc46ed/src/DepthImageToLaserScanROS.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "depth_camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ],
+      [
+        "subscribe",
+        "depth",
+        "sensor_msgs/msg/Image"
       ],
       [
         "publish",
@@ -286,192 +4214,2465 @@
         "sensor_msgs/msg/LaserScan"
       ]
     ],
-    "implementationUrl": "https://github.com/ros-perception/pointcloud_to_laserscan/blob/humble/src/pointcloud_to_laserscan_node.cpp",
-    "distributionNote": "The executable was verified on the Humble branch. Jazzy binary availability was not checked."
-  },
-  "60": {
-    "url": "https://github.com/ros-perception/pointcloud_to_laserscan/blob/humble/CMakeLists.txt",
-    "status": "other-ref-registration",
-    "interfaces": [
-      [
-        "subscribe",
-        "scan_in",
-        "sensor_msgs/msg/LaserScan"
-      ],
-      [
-        "publish",
-        "cloud",
-        "sensor_msgs/msg/PointCloud2"
-      ]
-    ],
-    "implementationUrl": "https://github.com/ros-perception/pointcloud_to_laserscan/blob/humble/src/laserscan_to_pointcloud_node.cpp",
-    "distributionNote": "The executable was verified on the Humble branch. Jazzy binary availability was not checked."
-  },
-  "61": {
-    "url": "https://github.com/ros-perception/depthimage_to_laserscan/blob/ros2/CMakeLists.txt",
-    "status": "other-ref-registration",
-    "distributionNote": "The executable was verified on the upstream ros2 branch. Jazzy binary availability was not checked."
+    "parameters": [
+      {
+        "name": "scan_time",
+        "type": "double",
+        "default": 0.033
+      },
+      {
+        "name": "range_min",
+        "type": "double",
+        "default": 0.45
+      },
+      {
+        "name": "range_max",
+        "type": "double",
+        "default": 10.0
+      },
+      {
+        "name": "scan_height",
+        "type": "integer",
+        "default": 1
+      },
+      {
+        "name": "output_frame",
+        "type": "string",
+        "default": "camera_depth_frame"
+      }
+    ]
   },
   "62": {
     "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/src/pcl_ros/filters/extract_indices.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/src/pcl_ros/filters/filter.cpp"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "input",
+        "sensor_msgs/msg/PointCloud2"
+      ],
+      [
+        "subscribe",
+        "indices",
+        "pcl_msgs/msg/PointIndices"
+      ],
+      [
+        "publish",
+        "output",
+        "sensor_msgs/msg/PointCloud2"
+      ]
+    ],
+    "note": "The indices input is enabled by the filter configuration.",
+    "parameters": [
+      {
+        "name": "negative",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "keep_organized",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "input_frame",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "output_frame",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "filter_field_name",
+        "type": "string",
+        "default": "z"
+      },
+      {
+        "name": "filter_limit_min",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "filter_limit_max",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "filter_limit_negative",
+        "type": "bool",
+        "default": false
+      }
+    ]
   },
   "63": {
     "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/src/pcl_ros/filters/filter.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/src/pcl_ros/filters/passthrough.cpp"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "input",
+        "sensor_msgs/msg/PointCloud2"
+      ],
+      [
+        "subscribe",
+        "indices",
+        "pcl_msgs/msg/PointIndices"
+      ],
+      [
+        "publish",
+        "output",
+        "sensor_msgs/msg/PointCloud2"
+      ]
+    ],
+    "note": "The indices input is enabled by the filter configuration.",
+    "parameters": [
+      {
+        "name": "input_frame",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "output_frame",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "filter_field_name",
+        "type": "string",
+        "default": "z"
+      },
+      {
+        "name": "filter_limit_min",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "filter_limit_max",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "filter_limit_negative",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "keep_organized",
+        "type": "bool",
+        "default": false
+      }
+    ]
   },
   "64": {
     "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/src/pcl_ros/filters/filter.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/src/pcl_ros/filters/project_inliers.cpp"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "input",
+        "sensor_msgs/msg/PointCloud2"
+      ],
+      [
+        "subscribe",
+        "indices",
+        "pcl_msgs/msg/PointIndices"
+      ],
+      [
+        "publish",
+        "output",
+        "sensor_msgs/msg/PointCloud2"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "copy_all_data",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "copy_all_fields",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "input_frame",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "output_frame",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "filter_field_name",
+        "type": "string",
+        "default": "z"
+      },
+      {
+        "name": "filter_limit_min",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "filter_limit_max",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "filter_limit_negative",
+        "type": "bool",
+        "default": false
+      }
+    ],
+    "note": "The indices input is enabled by the filter configuration."
   },
   "65": {
     "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/src/pcl_ros/filters/filter.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/src/pcl_ros/filters/radius_outlier_removal.cpp"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "input",
+        "sensor_msgs/msg/PointCloud2"
+      ],
+      [
+        "subscribe",
+        "indices",
+        "pcl_msgs/msg/PointIndices"
+      ],
+      [
+        "publish",
+        "output",
+        "sensor_msgs/msg/PointCloud2"
+      ]
+    ],
+    "note": "The indices input is enabled by the filter configuration.",
+    "parameters": [
+      {
+        "name": "input_frame",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "output_frame",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "filter_field_name",
+        "type": "string",
+        "default": "z"
+      },
+      {
+        "name": "filter_limit_min",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "filter_limit_max",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "filter_limit_negative",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "min_neighbors",
+        "type": "integer",
+        "default": 5
+      },
+      {
+        "name": "radius_search",
+        "type": "double",
+        "default": 0.1
+      },
+      {
+        "name": "keep_organized",
+        "type": "bool",
+        "default": false
+      }
+    ]
   },
   "66": {
     "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/src/pcl_ros/filters/filter.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/src/pcl_ros/filters/statistical_outlier_removal.cpp"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "input",
+        "sensor_msgs/msg/PointCloud2"
+      ],
+      [
+        "subscribe",
+        "indices",
+        "pcl_msgs/msg/PointIndices"
+      ],
+      [
+        "publish",
+        "output",
+        "sensor_msgs/msg/PointCloud2"
+      ]
+    ],
+    "note": "The indices input is enabled by the filter configuration.",
+    "parameters": [
+      {
+        "name": "input_frame",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "output_frame",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "filter_field_name",
+        "type": "string",
+        "default": "z"
+      },
+      {
+        "name": "filter_limit_min",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "filter_limit_max",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "filter_limit_negative",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "mean_k",
+        "type": "integer",
+        "default": 2
+      },
+      {
+        "name": "stddev",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "negative",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "keep_organized",
+        "type": "bool",
+        "default": false
+      }
+    ]
   },
   "67": {
     "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/src/pcl_ros/filters/crop_box.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/src/pcl_ros/filters/filter.cpp"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "input",
+        "sensor_msgs/msg/PointCloud2"
+      ],
+      [
+        "subscribe",
+        "indices",
+        "pcl_msgs/msg/PointIndices"
+      ],
+      [
+        "publish",
+        "output",
+        "sensor_msgs/msg/PointCloud2"
+      ]
+    ],
+    "note": "The indices input is enabled by the filter configuration.",
+    "parameters": [
+      {
+        "name": "min_x",
+        "type": "double",
+        "default": -1.0
+      },
+      {
+        "name": "max_x",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "min_y",
+        "type": "double",
+        "default": -1.0
+      },
+      {
+        "name": "max_y",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "min_z",
+        "type": "double",
+        "default": -1.0
+      },
+      {
+        "name": "max_z",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "keep_organized",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "negative",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "input_frame",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "output_frame",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "filter_field_name",
+        "type": "string",
+        "default": "z"
+      },
+      {
+        "name": "filter_limit_min",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "filter_limit_max",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "filter_limit_negative",
+        "type": "bool",
+        "default": false
+      }
+    ]
   },
   "68": {
     "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/src/pcl_ros/filters/filter.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/src/pcl_ros/filters/voxel_grid.cpp"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "input",
+        "sensor_msgs/msg/PointCloud2"
+      ],
+      [
+        "subscribe",
+        "indices",
+        "pcl_msgs/msg/PointIndices"
+      ],
+      [
+        "publish",
+        "output",
+        "sensor_msgs/msg/PointCloud2"
+      ]
+    ],
+    "note": "The indices input is enabled by the filter configuration.",
+    "parameters": [
+      {
+        "name": "input_frame",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "output_frame",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "filter_field_name",
+        "type": "string",
+        "default": "z"
+      },
+      {
+        "name": "filter_limit_min",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "filter_limit_max",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "filter_limit_negative",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "leaf_size",
+        "type": "double",
+        "default": 0.01
+      },
+      {
+        "name": "min_points_per_voxel",
+        "type": "integer",
+        "default": 2
+      }
+    ]
   },
   "69": {
     "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/tools/pcd_to_pointcloud.cpp",
+    "interfaces": [
+      [
+        "publish",
+        "cloud_pcd",
+        "sensor_msgs/msg/PointCloud2"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "publishing_period_ms",
+        "type": "integer",
+        "default": 3000
+      },
+      {
+        "name": "file_name",
+        "type": "string"
+      },
+      {
+        "name": "tf_frame",
+        "type": "string",
+        "default": "/base_link"
+      }
+    ]
   },
   "70": {
     "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/tools/pointcloud_to_pcd.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "input",
+        "sensor_msgs/msg/PointCloud2"
+      ]
+    ],
+    "note": "No static parameter declaration with a confirmed type or literal default was captured by this review."
   },
   "71": {
     "url": "https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/tools/combined_pointcloud_to_pcd.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "input",
+        "sensor_msgs/msg/PointCloud2"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "prefix",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "fixed_frame",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "binary",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "compressed",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "rgb",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "save_on_shutdown",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "save_timer_sec",
+        "type": "double",
+        "default": 0.0
+      }
+    ]
   },
   "72": {
     "url": "https://github.com/ros-perception/perception_pcl/blob/ros2/pcl_ros/CMakeLists.txt",
     "status": "other-ref-registration",
     "distributionNote": "Registered on the upstream ros2 branch. The Jazzy CMake file does not enable this executable.",
-    "note": "The Jazzy build file leaves this executable disabled: https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt"
+    "note": "The Jazzy build file leaves this executable disabled: https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt Reads a bag and writes files; topic_name selects a topic inside the bag, not a live ROS subscription.",
+    "implementationUrl": "https://github.com/ros-perception/perception_pcl/blob/562ada6b200ae7e44c41aea1fd4cf0da879ed376/pcl_ros/tools/bag_to_pcd.cpp",
+    "interfaces": [],
+    "parameters": [
+      {
+        "name": "bag_path",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "topic_name",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "output_directory",
+        "type": "string",
+        "default": ""
+      }
+    ]
   },
   "73": {
     "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/relay.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/tool_base_node.cpp",
+      "https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/relay_node.cpp"
+    ],
+    "interfaces": [],
+    "note": "Relay topic names and message types are selected by arguments and runtime discovery.",
+    "parameters": [
+      {
+        "name": "input_topic",
+        "type": "string"
+      },
+      {
+        "name": "output_topic",
+        "type": "string"
+      },
+      {
+        "name": "lazy",
+        "type": "bool",
+        "default": false
+      }
+    ]
   },
   "74": {
     "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/topic_tools/setup.cfg",
     "status": "jazzy-registration",
-    "implementationUrl": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/topic_tools/relay_field.py"
+    "implementationUrl": "https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/topic_tools/relay_field.py",
+    "interfaces": [],
+    "note": "Source and destination topic/type are configuration-driven. No static parameter declaration with a confirmed type or literal default was captured by this review."
   },
   "75": {
     "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/topic_tools/setup.cfg",
     "status": "jazzy-registration",
-    "implementationUrl": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/topic_tools/transform.py"
+    "implementationUrl": "https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/topic_tools/transform.py",
+    "interfaces": [],
+    "note": "Source and destination topic/type are configuration-driven. No static parameter declaration with a confirmed type or literal default was captured by this review."
   },
   "76": {
     "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/throttle.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/tool_base_node.cpp",
+      "https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/throttle_node.cpp"
+    ],
+    "interfaces": [],
+    "note": "Input/output topic names and message types are derived from arguments and discovery.",
+    "parameters": [
+      {
+        "name": "input_topic",
+        "type": "string"
+      },
+      {
+        "name": "output_topic",
+        "type": "string"
+      },
+      {
+        "name": "lazy",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "throttle_type",
+        "type": "string"
+      },
+      {
+        "name": "msgs_per_sec",
+        "type": "double"
+      },
+      {
+        "name": "bytes_per_sec",
+        "type": "integer"
+      },
+      {
+        "name": "window",
+        "type": "double"
+      },
+      {
+        "name": "use_wall_clock",
+        "type": "bool",
+        "default": false
+      }
+    ]
   },
   "77": {
     "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/drop.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/tool_base_node.cpp",
+      "https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/drop_node.cpp"
+    ],
+    "interfaces": [],
+    "note": "Input/output topic names and message types are derived from arguments and discovery.",
+    "parameters": [
+      {
+        "name": "input_topic",
+        "type": "string"
+      },
+      {
+        "name": "output_topic",
+        "type": "string"
+      },
+      {
+        "name": "lazy",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "X",
+        "type": "integer"
+      },
+      {
+        "name": "Y",
+        "type": "integer"
+      }
+    ]
   },
   "78": {
     "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/mux.cpp",
+    "interfaces": [
+      [
+        "service",
+        "~/add",
+        "topic_tools_interfaces/srv/MuxAdd"
+      ],
+      [
+        "service",
+        "~/delete",
+        "topic_tools_interfaces/srv/MuxDelete"
+      ],
+      [
+        "service",
+        "~/list",
+        "topic_tools_interfaces/srv/MuxList"
+      ],
+      [
+        "service",
+        "~/select",
+        "topic_tools_interfaces/srv/MuxSelect"
+      ]
+    ],
+    "note": "This upstream ROS 2 implementation derives data topic names and types from launch arguments and discovery.",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/mux_node.cpp"
+    ],
+    "parameters": [
+      {
+        "name": "initial_topic",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "output_topic",
+        "type": "string",
+        "default": "~/selected"
+      },
+      {
+        "name": "lazy",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "input_topics",
+        "type": "string[]"
+      }
+    ]
   },
   "79": {
     "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/demux.cpp",
+    "interfaces": [
+      [
+        "service",
+        "~/add",
+        "topic_tools_interfaces/srv/DemuxAdd"
+      ],
+      [
+        "service",
+        "~/delete",
+        "topic_tools_interfaces/srv/DemuxDelete"
+      ],
+      [
+        "service",
+        "~/list",
+        "topic_tools_interfaces/srv/DemuxList"
+      ],
+      [
+        "service",
+        "~/select",
+        "topic_tools_interfaces/srv/DemuxSelect"
+      ]
+    ],
+    "note": "This upstream ROS 2 implementation derives data topic names and types from launch arguments and discovery.",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/demux_node.cpp"
+    ],
+    "parameters": [
+      {
+        "name": "initial_topic",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "input_topic",
+        "type": "string",
+        "default": "~/input"
+      },
+      {
+        "name": "output_topics",
+        "type": "string[]"
+      }
+    ]
   },
   "80": {
     "url": "https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/delay.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/tool_base_node.cpp",
+      "https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/delay_node.cpp"
+    ],
+    "interfaces": [],
+    "note": "Input/output topic names and message types are configuration-driven.",
+    "parameters": [
+      {
+        "name": "input_topic",
+        "type": "string"
+      },
+      {
+        "name": "output_topic",
+        "type": "string"
+      },
+      {
+        "name": "delay",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "use_wall_clock",
+        "type": "bool",
+        "default": false
+      }
+    ]
   },
   "81": {
     "url": "https://github.com/ros2/domain_bridge/blob/main/CMakeLists.txt",
-    "status": "other-ref-registration"
+    "status": "other-ref-registration",
+    "implementationUrl": "https://github.com/ros2/domain_bridge/blob/75cdfae6d920a6b62284c22413344b42d06f14f2/src/domain_bridge/domain_bridge.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros2/domain_bridge/blob/75cdfae6d920a6b62284c22413344b42d06f14f2/src/domain_bridge.cpp"
+    ],
+    "interfaces": [],
+    "note": "Bridge topics and types are defined by configuration for each pair of ROS domains. No static parameter declaration with a confirmed type or literal default was captured by this review."
   },
   "82": {
     "url": "https://github.com/RobotWebTools/rosbridge_suite/blob/jazzy/rosbridge_server/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/RobotWebTools/rosbridge_suite/blob/cb33a16b890e4b8d9def531326409f3ee6c12537/rosbridge_server/scripts/rosbridge_websocket.py",
+    "interfaces": [],
+    "note": "ROS topics and services are selected dynamically by WebSocket clients; the WebSocket itself is not a ROS topic.",
+    "parameters": [
+      {
+        "name": "port",
+        "type": "integer",
+        "default": 9090
+      },
+      {
+        "name": "address",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "url_path",
+        "type": "string",
+        "default": "/"
+      },
+      {
+        "name": "retry_startup_delay",
+        "type": "double",
+        "default": 2.0
+      },
+      {
+        "name": "certfile",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "keyfile",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "websocket_ping_interval",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "websocket_ping_timeout",
+        "type": "double",
+        "default": 30.0
+      },
+      {
+        "name": "incoming_queue_size",
+        "type": "integer",
+        "default": 1000
+      },
+      {
+        "name": "write_queue_size",
+        "type": "integer",
+        "default": 1000
+      },
+      {
+        "name": "use_compression",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "use_events_executor",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "fragment_timeout",
+        "type": "integer",
+        "default": 600
+      },
+      {
+        "name": "delay_between_messages",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "max_message_size",
+        "type": "integer",
+        "default": 1000000
+      },
+      {
+        "name": "unregister_timeout",
+        "type": "double",
+        "default": 10.0
+      },
+      {
+        "name": "binary_encoder_type",
+        "type": "string",
+        "default": "default"
+      },
+      {
+        "name": "bson_only_mode",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "topics_glob",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "topics_pub_glob",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "topics_sub_glob",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "services_glob",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "actions_glob",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "call_services_in_new_thread",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "default_call_service_timeout",
+        "type": "double",
+        "default": 5.0
+      },
+      {
+        "name": "send_action_goals_in_new_thread",
+        "type": "bool",
+        "default": true
+      }
+    ]
   },
   "83": {
     "url": "https://github.com/RobotWebTools/rosbridge_suite/blob/jazzy/rosapi/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/RobotWebTools/rosbridge_suite/blob/cb33a16b890e4b8d9def531326409f3ee6c12537/rosapi/scripts/rosapi_node",
+    "interfaces": [
+      [
+        "service",
+        "~/topics",
+        "rosapi_msgs/srv/Topics"
+      ],
+      [
+        "service",
+        "~/interfaces",
+        "rosapi_msgs/srv/Interfaces"
+      ],
+      [
+        "service",
+        "~/topics_for_type",
+        "rosapi_msgs/srv/TopicsForType"
+      ],
+      [
+        "service",
+        "~/topics_and_raw_types",
+        "rosapi_msgs/srv/TopicsAndRawTypes"
+      ],
+      [
+        "service",
+        "~/services",
+        "rosapi_msgs/srv/Services"
+      ],
+      [
+        "service",
+        "~/services_for_type",
+        "rosapi_msgs/srv/ServicesForType"
+      ],
+      [
+        "service",
+        "~/nodes",
+        "rosapi_msgs/srv/Nodes"
+      ],
+      [
+        "service",
+        "~/node_details",
+        "rosapi_msgs/srv/NodeDetails"
+      ],
+      [
+        "service",
+        "~/action_servers",
+        "rosapi_msgs/srv/GetActionServers"
+      ],
+      [
+        "service",
+        "~/action_type",
+        "rosapi_msgs/srv/ActionType"
+      ],
+      [
+        "service",
+        "~/topic_type",
+        "rosapi_msgs/srv/TopicType"
+      ],
+      [
+        "service",
+        "~/service_type",
+        "rosapi_msgs/srv/ServiceType"
+      ],
+      [
+        "service",
+        "~/publishers",
+        "rosapi_msgs/srv/Publishers"
+      ],
+      [
+        "service",
+        "~/subscribers",
+        "rosapi_msgs/srv/Subscribers"
+      ],
+      [
+        "service",
+        "~/service_providers",
+        "rosapi_msgs/srv/ServiceProviders"
+      ],
+      [
+        "service",
+        "~/service_node",
+        "rosapi_msgs/srv/ServiceNode"
+      ],
+      [
+        "service",
+        "~/message_details",
+        "rosapi_msgs/srv/MessageDetails"
+      ],
+      [
+        "service",
+        "~/service_request_details",
+        "rosapi_msgs/srv/ServiceRequestDetails"
+      ],
+      [
+        "service",
+        "~/service_response_details",
+        "rosapi_msgs/srv/ServiceResponseDetails"
+      ],
+      [
+        "service",
+        "~/action_goal_details",
+        "rosapi_msgs/srv/ActionGoalDetails"
+      ],
+      [
+        "service",
+        "~/action_result_details",
+        "rosapi_msgs/srv/ActionResultDetails"
+      ],
+      [
+        "service",
+        "~/action_feedback_details",
+        "rosapi_msgs/srv/ActionFeedbackDetails"
+      ],
+      [
+        "service",
+        "~/set_param",
+        "rosapi_msgs/srv/SetParam"
+      ],
+      [
+        "service",
+        "~/get_param",
+        "rosapi_msgs/srv/GetParam"
+      ],
+      [
+        "service",
+        "~/has_param",
+        "rosapi_msgs/srv/HasParam"
+      ],
+      [
+        "service",
+        "~/delete_param",
+        "rosapi_msgs/srv/DeleteParam"
+      ],
+      [
+        "service",
+        "~/get_param_names",
+        "rosapi_msgs/srv/GetParamNames"
+      ],
+      [
+        "service",
+        "~/get_time",
+        "rosapi_msgs/srv/GetTime"
+      ],
+      [
+        "service",
+        "~/get_ros_version",
+        "rosapi_msgs/srv/GetROSVersion"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "topics_glob",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "topics_pub_glob",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "topics_sub_glob",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "services_glob",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "params_glob",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "params_timeout",
+        "type": "double",
+        "default": 5.0
+      }
+    ]
   },
   "84": {
     "url": "https://github.com/RobotWebTools/rosbridge_suite/blob/jazzy/rosbridge_server/CMakeLists.txt",
     "status": "not-registered",
-    "note": "The Jazzy build installs the WebSocket entry point. The standalone TCP executable listed in the report is absent from the install rules.",
+    "note": "The Jazzy build installs the WebSocket entry point. The standalone TCP executable listed in the report is absent from the install rules. The standalone TCP executable is not installed by the reviewed Jazzy package.",
     "distributionNote": "No standalone rosbridge_tcp executable was found in the reviewed Jazzy package."
   },
   "85": {
     "url": "https://github.com/foxglove/foxglove-sdk/blob/main/ros/src/foxglove_bridge/CMakeLists.txt",
-    "status": "other-ref-registration"
+    "status": "other-ref-registration",
+    "implementationUrl": "https://github.com/foxglove/foxglove-sdk/blob/a1f0d773f224c760ea86d8db39f561030f0fe5d1/ros/src/foxglove_bridge/src/param_utils.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/foxglove/foxglove-sdk/blob/a1f0d773f224c760ea86d8db39f561030f0fe5d1/ros/src/foxglove_bridge/src/ros2_foxglove_bridge.cpp",
+      "https://github.com/foxglove/foxglove-sdk/blob/a1f0d773f224c760ea86d8db39f561030f0fe5d1/ros/src/foxglove_bridge/src/ros2_foxglove_bridge_node.cpp",
+      "https://github.com/foxglove/foxglove-sdk/blob/a1f0d773f224c760ea86d8db39f561030f0fe5d1/ros/src/foxglove_bridge/include/foxglove_bridge/param_utils.hpp"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "/clock",
+        "rosgraph_msgs/msg/Clock"
+      ]
+    ],
+    "note": "Most ROS interfaces are selected by client requests and topic discovery. The clock subscription is conditional.",
+    "parameters": [
+      {
+        "name": "port",
+        "type": "integer",
+        "default": 8765
+      },
+      {
+        "name": "debug",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "address",
+        "type": "string",
+        "default": "0.0.0.0"
+      },
+      {
+        "name": "send_buffer_limit",
+        "type": "integer",
+        "default": 10000000
+      },
+      {
+        "name": "tls",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "certfile",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "keyfile",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "min_qos_depth",
+        "type": "integer",
+        "default": 1
+      },
+      {
+        "name": "max_qos_depth",
+        "type": "integer",
+        "default": 25
+      },
+      {
+        "name": "use_compression",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "include_hidden",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "disable_load_message",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "ignore_unresponsive_param_nodes",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "publish_client_count",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "sysinfo",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "sysinfo_topic",
+        "type": "string",
+        "default": "/foxglove_bridge/sysinfo"
+      },
+      {
+        "name": "sysinfo_refresh_interval",
+        "type": "integer",
+        "default": 500
+      },
+      {
+        "name": "message_backlog_size",
+        "type": "integer",
+        "default": 1024
+      },
+      {
+        "name": "remote_access",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "device_token",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "foxglove_api_url",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "video_encoder",
+        "type": "string",
+        "default": "auto"
+      },
+      {
+        "name": "max_data_track_message_size",
+        "type": "integer",
+        "default": 102400
+      },
+      {
+        "name": "point_cloud_compression_quantization_bits",
+        "type": "integer",
+        "default": 12
+      },
+      {
+        "name": "point_cloud_compression_method",
+        "type": "string",
+        "default": "kd-tree"
+      }
+    ]
   },
   "86": {
     "url": "https://github.com/ros2/rosbag2/blob/jazzy/rosbag2_transport/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros2/rosbag2/blob/12b5e8ba4eb5665501a16f0d9e050552a1149f56/rosbag2_transport/src/rosbag2_transport/recorder.cpp",
+    "interfaces": [
+      [
+        "service",
+        "~/snapshot",
+        "rosbag2_interfaces/srv/Snapshot"
+      ],
+      [
+        "service",
+        "~/split_bagfile",
+        "rosbag2_interfaces/srv/SplitBagfile"
+      ],
+      [
+        "service",
+        "~/start_discovery",
+        "rosbag2_interfaces/srv/StartDiscovery"
+      ],
+      [
+        "service",
+        "~/stop_discovery",
+        "rosbag2_interfaces/srv/StopDiscovery"
+      ],
+      [
+        "service",
+        "~/is_discovery_running",
+        "rosbag2_interfaces/srv/IsDiscoveryRunning"
+      ],
+      [
+        "service",
+        "~/record",
+        "rosbag2_interfaces/srv/Record"
+      ],
+      [
+        "service",
+        "~/stop",
+        "rosbag2_interfaces/srv/Stop"
+      ],
+      [
+        "service",
+        "~/pause",
+        "rosbag2_interfaces/srv/Pause"
+      ],
+      [
+        "service",
+        "~/resume",
+        "rosbag2_interfaces/srv/Resume"
+      ],
+      [
+        "service",
+        "~/is_paused",
+        "rosbag2_interfaces/srv/IsPaused"
+      ]
+    ],
+    "note": "Recorded topics depend on configuration and discovery; service names are private to the recorder.",
+    "additionalImplementationUrls": [
+      "https://github.com/ros2/rosbag2/blob/12b5e8ba4eb5665501a16f0d9e050552a1149f56/rosbag2_transport/src/rosbag2_transport/config_options_from_node_params.cpp"
+    ],
+    "parameters": [
+      {
+        "name": "record.all_topics",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "record.all_services",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "record.is_discovery_disabled",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "record.rmw_serialization_format",
+        "type": "string",
+        "default": "cdr"
+      },
+      {
+        "name": "record.regex",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "record.exclude_regex",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "record.node_prefix",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "record.compression_mode",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "record.compression_format",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "record.qos_profile_overrides_path",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "record.include_hidden_topics",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "record.include_unpublished_topics",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "record.ignore_leaf_topics",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "record.start_paused",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "record.disable_keyboard_controls",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "storage.uri",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "storage.storage_id",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "storage.storage_config_uri",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "storage.storage_preset_profile",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "storage.snapshot_mode",
+        "type": "bool",
+        "default": false
+      }
+    ]
   },
   "87": {
     "url": "https://github.com/ros2/rosbag2/blob/jazzy/rosbag2_transport/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros2/rosbag2/blob/12b5e8ba4eb5665501a16f0d9e050552a1149f56/rosbag2_transport/src/rosbag2_transport/player.cpp",
+    "interfaces": [
+      [
+        "publish",
+        "/clock",
+        "rosgraph_msgs/msg/Clock"
+      ],
+      [
+        "service",
+        "~/pause",
+        "rosbag2_interfaces/srv/Pause"
+      ],
+      [
+        "service",
+        "~/resume",
+        "rosbag2_interfaces/srv/Resume"
+      ],
+      [
+        "service",
+        "~/toggle_paused",
+        "rosbag2_interfaces/srv/TogglePaused"
+      ],
+      [
+        "service",
+        "~/is_paused",
+        "rosbag2_interfaces/srv/IsPaused"
+      ],
+      [
+        "service",
+        "~/get_rate",
+        "rosbag2_interfaces/srv/GetRate"
+      ],
+      [
+        "service",
+        "~/set_rate",
+        "rosbag2_interfaces/srv/SetRate"
+      ],
+      [
+        "service",
+        "~/play",
+        "rosbag2_interfaces/srv/Play"
+      ],
+      [
+        "service",
+        "~/play_next",
+        "rosbag2_interfaces/srv/PlayNext"
+      ],
+      [
+        "service",
+        "~/burst",
+        "rosbag2_interfaces/srv/Burst"
+      ],
+      [
+        "service",
+        "~/seek",
+        "rosbag2_interfaces/srv/Seek"
+      ],
+      [
+        "service",
+        "~/stop",
+        "rosbag2_interfaces/srv/Stop"
+      ]
+    ],
+    "note": "Playback topics come from the bag. The clock publisher is conditional on clock options.",
+    "additionalImplementationUrls": [
+      "https://github.com/ros2/rosbag2/blob/12b5e8ba4eb5665501a16f0d9e050552a1149f56/rosbag2_transport/src/rosbag2_transport/config_options_from_node_params.cpp"
+    ],
+    "parameters": [
+      {
+        "name": "play.node_prefix",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "play.rate",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "play.regex_to_filter",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "play.exclude_regex_to_filter",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "play.qos_profile_overrides_path",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "play.loop",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "play.clock_publish_frequency",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "play.clock_publish_on_topic_publish",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "play.start_paused",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "play.disable_keyboard_controls",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "play.disable_loan_message",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "play.service_requests_source",
+        "type": "string",
+        "default": "SERVICE_INTROSPECTION"
+      },
+      {
+        "name": "play.publish_service_request",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "storage.uri",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "storage.storage_id",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "storage.storage_config_uri",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "storage.storage_preset_profile",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "storage.snapshot_mode",
+        "type": "bool",
+        "default": false
+      }
+    ]
   },
   "88": {
     "url": "https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_bridge/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/gazebosim/ros_gz/blob/98b83c5a075f350c143b3b403fc4482ebed180c0/ros_gz_bridge/ros_gz_bridge/actions/ros_gz_bridge.py",
+    "additionalImplementationUrls": [
+      "https://github.com/gazebosim/ros_gz/blob/98b83c5a075f350c143b3b403fc4482ebed180c0/ros_gz_bridge/src/parameter_bridge.cpp",
+      "https://github.com/gazebosim/ros_gz/blob/98b83c5a075f350c143b3b403fc4482ebed180c0/ros_gz_bridge/src/ros_gz_bridge.cpp"
+    ],
+    "interfaces": [],
+    "parameters": [
+      {
+        "name": "lazy",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "subscription_heartbeat",
+        "type": "integer",
+        "default": 1000
+      },
+      {
+        "name": "config_file",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "expand_gz_topic_names",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "override_timestamps_with_wall_time",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "override_frame_id",
+        "type": "string",
+        "default": ""
+      }
+    ],
+    "note": "ROS and Gazebo topic/service names and types come from bridge arguments or configuration."
   },
   "89": {
     "url": "https://github.com/gazebosim/ros_gz/blob/jazzy/ros_gz_image/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/gazebosim/ros_gz/blob/98b83c5a075f350c143b3b403fc4482ebed180c0/ros_gz_image/src/image_bridge.cpp",
+    "interfaces": [],
+    "parameters": [
+      {
+        "name": "qos",
+        "type": "string",
+        "default": "default"
+      }
+    ],
+    "note": "ROS image topics are selected by bridge arguments."
   },
   "90": {
-    "url": "https://github.com/ros/diagnostics/blob/rolling/diagnostic_aggregator/CMakeLists.txt",
-    "status": "other-ref-registration"
+    "url": "https://github.com/ros/diagnostics/blob/33029d0f04430dc0473a6890f1228e0000d2b9d1/diagnostic_aggregator/CMakeLists.txt",
+    "status": "other-ref-registration",
+    "implementationUrl": "https://github.com/ros/diagnostics/blob/33029d0f04430dc0473a6890f1228e0000d2b9d1/diagnostic_aggregator/src/aggregator.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros/diagnostics/blob/33029d0f04430dc0473a6890f1228e0000d2b9d1/diagnostic_aggregator/src/aggregator_node.cpp"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "/diagnostics",
+        "diagnostic_msgs/msg/DiagnosticArray"
+      ],
+      [
+        "publish",
+        "/diagnostics_agg",
+        "diagnostic_msgs/msg/DiagnosticArray"
+      ],
+      [
+        "publish",
+        "/diagnostics_toplevel_state",
+        "diagnostic_msgs/msg/DiagnosticStatus"
+      ]
+    ],
+    "note": "No static parameter declaration with a confirmed type or literal default was captured by this review."
   },
   "91": {
     "url": "https://github.com/ros/diagnostics/blob/ros2/diagnostic_remote_logging/CMakeLists.txt",
-    "status": "other-ref-registration"
+    "status": "other-ref-registration",
+    "implementationUrl": "https://github.com/ros/diagnostics/blob/33029d0f04430dc0473a6890f1228e0000d2b9d1/diagnostic_remote_logging/src/influxdb_connector.cpp",
+    "interfaces": [
+      [
+        "subscribe",
+        "/diagnostics_agg",
+        "diagnostic_msgs/msg/DiagnosticArray"
+      ],
+      [
+        "subscribe",
+        "/diagnostics",
+        "diagnostic_msgs/msg/DiagnosticArray"
+      ],
+      [
+        "subscribe",
+        "/diagnostics_toplevel_state",
+        "diagnostic_msgs/msg/DiagnosticStatus"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "connection.url",
+        "type": "string",
+        "default": "http://localhost:8086/api/v2/write"
+      },
+      {
+        "name": "connection.organization",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "connection.bucket",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "connection.token",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "send.period",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "send.diagnostics",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "send.agg",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "send.top_level_state",
+        "type": "bool",
+        "default": true
+      }
+    ]
   },
   "92": {
     "url": "https://github.com/ros-drivers/joystick_drivers/blob/ros2/joy/CMakeLists.txt",
-    "status": "other-ref-registration"
+    "status": "other-ref-registration",
+    "implementationUrl": "https://github.com/ros-drivers/joystick_drivers/blob/50bcf0f44d40368201aec8f451227af384429c50/joy/src/joy.cpp",
+    "interfaces": [
+      [
+        "publish",
+        "joy",
+        "sensor_msgs/msg/Joy"
+      ],
+      [
+        "subscribe",
+        "joy/set_feedback",
+        "sensor_msgs/msg/JoyFeedback"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "device_id",
+        "type": "integer",
+        "default": 0
+      },
+      {
+        "name": "device_name",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "deadzone",
+        "type": "double",
+        "default": 0.05
+      },
+      {
+        "name": "autorepeat_rate",
+        "type": "double",
+        "default": 20.0
+      },
+      {
+        "name": "sticky_buttons",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "coalesce_interval_ms",
+        "type": "integer",
+        "default": 1
+      }
+    ]
   },
   "93": {
     "url": "https://github.com/ros-drivers/joystick_drivers/blob/ros2/joy/CMakeLists.txt",
-    "status": "other-ref-registration"
+    "status": "other-ref-registration",
+    "implementationUrl": "https://github.com/ros-drivers/joystick_drivers/blob/50bcf0f44d40368201aec8f451227af384429c50/joy/src/game_controller.cpp",
+    "interfaces": [
+      [
+        "publish",
+        "joy",
+        "sensor_msgs/msg/Joy"
+      ],
+      [
+        "subscribe",
+        "joy/set_feedback",
+        "sensor_msgs/msg/JoyFeedback"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "device_id",
+        "type": "integer",
+        "default": 0
+      },
+      {
+        "name": "device_name",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "deadzone",
+        "type": "double",
+        "default": 0.05
+      },
+      {
+        "name": "autorepeat_rate",
+        "type": "double",
+        "default": 20.0
+      },
+      {
+        "name": "sticky_buttons",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "coalesce_interval_ms",
+        "type": "integer",
+        "default": 1
+      }
+    ]
   },
   "94": {
     "url": "https://github.com/ros2/teleop_twist_joy/blob/rolling/CMakeLists.txt",
-    "status": "other-ref-registration"
+    "status": "other-ref-registration",
+    "implementationUrl": "https://github.com/ros2/teleop_twist_joy/blob/556a07100ee745f68619de84a95d3c84a4892ab9/src/teleop_node.cpp",
+    "additionalImplementationUrls": [
+      "https://github.com/ros2/teleop_twist_joy/blob/556a07100ee745f68619de84a95d3c84a4892ab9/src/teleop_twist_joy.cpp"
+    ],
+    "interfaces": [
+      [
+        "publish",
+        "cmd_vel",
+        "geometry_msgs/msg/Twist"
+      ],
+      [
+        "subscribe",
+        "joy",
+        "sensor_msgs/msg/Joy"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "publish_stamped_twist",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "frame",
+        "type": "string",
+        "default": "teleop_twist_joy"
+      },
+      {
+        "name": "require_enable_button",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "enable_button",
+        "type": "integer",
+        "default": 5
+      },
+      {
+        "name": "enable_turbo_button",
+        "type": "integer",
+        "default": -1
+      },
+      {
+        "name": "inverted_reverse",
+        "type": "bool",
+        "default": false
+      }
+    ],
+    "note": "cmd_vel uses Twist by default; publish_stamped_twist selects TwistStamped."
   },
   "95": {
     "url": "https://github.com/ros-teleop/twist_mux/blob/rolling/CMakeLists.txt",
-    "status": "other-ref-registration"
+    "status": "other-ref-registration",
+    "implementationUrl": "https://github.com/ros-teleop/twist_mux/blob/a8225e2d9bf0171aac447c246376f0981defd17b/src/twist_mux.cpp",
+    "interfaces": [
+      [
+        "publish",
+        "cmd_vel_out",
+        "geometry_msgs/msg/TwistStamped"
+      ]
+    ],
+    "note": "Input topics are selected by configuration. The cmd_vel_out type depends on use_stamped.",
+    "parameters": [
+      {
+        "name": "use_stamped",
+        "type": "bool",
+        "default": true
+      }
+    ]
   },
   "96": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/camera_calibration/setup.py",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/camera_calibration/src/camera_calibration/nodes/cameracalibrator.py",
+    "interfaces": [
+      [
+        "subscribe",
+        "image",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "service",
+        "camera/set_camera_info",
+        "sensor_msgs/srv/SetCameraInfo"
+      ],
+      [
+        "subscribe",
+        "left",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "right",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "service-client",
+        "camera/set_camera_info",
+        "sensor_msgs/srv/SetCameraInfo"
+      ],
+      [
+        "service-client",
+        "left_camera/set_camera_info",
+        "sensor_msgs/srv/SetCameraInfo"
+      ],
+      [
+        "service-client",
+        "right_camera/set_camera_info",
+        "sensor_msgs/srv/SetCameraInfo"
+      ]
+    ],
+    "note": "The node subscribes to monocular and stereo images and is a client of the camera calibration services. Camera-specific names are normally remapped by the launch configuration.",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/camera_calibration/src/camera_calibration/camera_calibrator.py"
+    ]
   },
   "97": {
     "url": "https://github.com/CCNYRoboticsLab/imu_tools/blob/jazzy/imu_filter_madgwick/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/CCNYRoboticsLab/imu_tools/blob/4b01d088472fcbdb848eeceb02fb4517a90bd3a9/imu_filter_madgwick/src/imu_filter_ros.cpp",
+    "interfaces": [
+      [
+        "publish",
+        "imu/data",
+        "sensor_msgs/msg/Imu"
+      ],
+      [
+        "publish",
+        "imu/rpy/filtered",
+        "geometry_msgs/msg/Vector3Stamped"
+      ],
+      [
+        "publish",
+        "imu/rpy/raw",
+        "geometry_msgs/msg/Vector3Stamped"
+      ],
+      [
+        "subscribe",
+        "imu/data_raw",
+        "sensor_msgs/msg/Imu"
+      ],
+      [
+        "subscribe",
+        "imu/mag",
+        "sensor_msgs/msg/MagneticField"
+      ],
+      [
+        "publish",
+        "/tf",
+        "tf2_msgs/msg/TFMessage"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "stateless",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "use_mag",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "publish_tf",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "reverse_tf",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "fixed_frame",
+        "type": "string",
+        "default": "odom"
+      },
+      {
+        "name": "constant_dt",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "remove_gravity_vector",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "publish_debug_topics",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "yaw_offset",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "declination",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "world_frame",
+        "type": "string",
+        "default": "enu"
+      },
+      {
+        "name": "gain",
+        "type": "double",
+        "default": 0.1
+      },
+      {
+        "name": "zeta",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "mag_bias_x",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "mag_bias_y",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "mag_bias_z",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "orientation_stddev",
+        "type": "double",
+        "default": 0.0
+      }
+    ],
+    "note": "The imu/mag input is conditional on use_mag. Debug topics and /tf are conditional."
   },
   "98": {
     "url": "https://github.com/CCNYRoboticsLab/imu_tools/blob/jazzy/imu_complementary_filter/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/CCNYRoboticsLab/imu_tools/blob/4b01d088472fcbdb848eeceb02fb4517a90bd3a9/imu_complementary_filter/src/complementary_filter_ros.cpp",
+    "interfaces": [
+      [
+        "publish",
+        "imu/rpy/filtered",
+        "geometry_msgs/msg/Vector3Stamped"
+      ],
+      [
+        "publish",
+        "imu/steady_state",
+        "std_msgs/msg/Bool"
+      ],
+      [
+        "subscribe",
+        "imu/data_raw",
+        "sensor_msgs/msg/Imu"
+      ],
+      [
+        "subscribe",
+        "imu/mag",
+        "sensor_msgs/msg/MagneticField"
+      ],
+      [
+        "publish",
+        "imu/data",
+        "sensor_msgs/msg/Imu"
+      ],
+      [
+        "publish",
+        "/tf",
+        "tf2_msgs/msg/TFMessage"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "fixed_frame",
+        "type": "string",
+        "default": "odom"
+      },
+      {
+        "name": "use_mag",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "publish_tf",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "reverse_tf",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "constant_dt",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "publish_debug_topics",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "gain_acc",
+        "type": "double",
+        "default": 0.01
+      },
+      {
+        "name": "gain_mag",
+        "type": "double",
+        "default": 0.01
+      },
+      {
+        "name": "do_bias_estimation",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "bias_alpha",
+        "type": "double",
+        "default": 0.01
+      },
+      {
+        "name": "do_adaptive_gain",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "orientation_stddev",
+        "type": "double",
+        "default": 0.0
+      }
+    ],
+    "note": "The imu/mag input is conditional on use_mag. Debug topics and /tf are conditional."
   },
   "99": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_publisher/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_publisher/src/image_publisher.cpp",
+    "interfaces": [
+      [
+        "publish",
+        "image_raw",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "publish",
+        "camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "flip_horizontal",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "flip_vertical",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "frame_id",
+        "type": "string",
+        "default": "camera"
+      },
+      {
+        "name": "camera_info_url",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "retry",
+        "type": "bool",
+        "default": false
+      },
+      {
+        "name": "timeout",
+        "type": "integer",
+        "default": 2000
+      }
+    ]
   },
   "100": {
     "url": "https://github.com/ros-perception/image_pipeline/blob/jazzy/image_rotate/CMakeLists.txt",
-    "status": "jazzy-registration"
+    "status": "jazzy-registration",
+    "implementationUrl": "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_rotate/src/image_rotate.cpp",
+    "note": "The input is lazy. The use_camera_info parameter enables paired CameraInfo input and output.",
+    "additionalImplementationUrls": [
+      "https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_rotate/src/image_rotate_node.cpp"
+    ],
+    "interfaces": [
+      [
+        "subscribe",
+        "image",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "subscribe",
+        "camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ],
+      [
+        "publish",
+        "rotated/image",
+        "sensor_msgs/msg/Image"
+      ],
+      [
+        "publish",
+        "rotated/camera_info",
+        "sensor_msgs/msg/CameraInfo"
+      ]
+    ],
+    "parameters": [
+      {
+        "name": "target_frame_id",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "target_x",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "target_y",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "target_z",
+        "type": "double",
+        "default": 1.0
+      },
+      {
+        "name": "source_frame_id",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "source_x",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "source_y",
+        "type": "double",
+        "default": -1.0
+      },
+      {
+        "name": "source_z",
+        "type": "double",
+        "default": 0.0
+      },
+      {
+        "name": "output_frame_id",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "input_frame_id",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "use_camera_info",
+        "type": "bool",
+        "default": true
+      },
+      {
+        "name": "max_angular_rate",
+        "type": "double",
+        "default": 10.0
+      },
+      {
+        "name": "output_image_size",
+        "type": "double",
+        "default": 2.0
+      },
+      {
+        "name": "image_transport",
+        "type": "string",
+        "default": "raw"
+      }
+    ]
   }
 }

@@ -14,11 +14,47 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Serves follow_path and publishes velocity commands. Twist versus TwistStamped depends on the selected version and configuration.</ros:Description>
-    <ros:Variable direction="output" transport="ROS 2 topic" name="/cmd_vel" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="cmd_vel" dataType="geometry_msgs/msg/Twist" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="speed_limit" dataType="nav2_msgs/msg/SpeedLimit" />
   </ros:IOVariables>
   <ros:Services>
     <ros:Service kind="action" name="follow_path" dataType="nav2_msgs/action/FollowPath" />
   </ros:Services>
+  <ros:Parameters>
+    <ros:Parameter name="controller_frequency" dataType="double">
+      <ros:Default>20.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="action_server_result_timeout" dataType="double">
+      <ros:Default>10.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="min_x_velocity_threshold" dataType="double">
+      <ros:Default>0.0001</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="min_y_velocity_threshold" dataType="double">
+      <ros:Default>0.0001</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="min_theta_velocity_threshold" dataType="double">
+      <ros:Default>0.0001</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="speed_limit_topic" dataType="string">
+      <ros:Default>"speed_limit"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="failure_tolerance" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="use_realtime_priority" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="publish_zero_velocity" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="costmap_update_timeout" dataType="double">
+      <ros:Default>0.3</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="enable_stamped_cmd_vel" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists Jazzy support. The velocity command type varies across distributions.</ros:Requirement>
   </ros:Infra>
@@ -32,6 +68,9 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="16">deep-research-report.md</ros:Report>
     <ros:Source>https://docs.nav2.org/jazzy/configuration_and_development/configuration_guide/core_servers/controller_server/</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_controller/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_controller/src/controller_server.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_util/include/nav2_util/twist_publisher.hpp</ros:AdditionalImplementationSource>
+    <ros:SourceReviewNote>Controller, goal-checker and progress-checker plugins add parameters; the velocity topic type depends on stamped velocity configuration.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

@@ -14,11 +14,22 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Reads image and camera_info and publishes image_rect.</ros:Description>
-    <ros:Variable direction="input" transport="ROS 2 topic" name="image" />
-    <ros:Variable direction="input" transport="ROS 2 topic" name="camera_info" />
-    <ros:Variable direction="output" transport="ROS 2 topic" name="image_rect" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="image" dataType="sensor_msgs/msg/Image" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="camera_info" dataType="sensor_msgs/msg/CameraInfo" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="image_rect" dataType="sensor_msgs/msg/Image" />
   </ros:IOVariables>
   <ros:Services />
+  <ros:Parameters>
+    <ros:Parameter name="image_transport" dataType="string">
+      <ros:Default>"raw"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="queue_size" dataType="integer">
+      <ros:Default>5</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="interpolation" dataType="integer">
+      <ros:Default>1</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists Jazzy support with configurable image_transport and QoS.</ros:Requirement>
   </ros:Infra>
@@ -32,6 +43,8 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="35">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-perception/image_pipeline/tree/rolling/image_proc</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_proc/src/rectify.cpp</ros:ImplementationSource>
+    <ros:SourceReviewNote>Base topic names assume raw image transport; subscriptions may be created lazily.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

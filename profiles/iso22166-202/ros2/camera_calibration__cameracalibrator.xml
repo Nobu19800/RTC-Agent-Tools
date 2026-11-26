@@ -14,10 +14,15 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Uses camera images and calibration information and can call set_camera_info to store the result.</ros:Description>
-    <ros:Variable direction="input" transport="ROS 2 topic" name="image" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="image" dataType="sensor_msgs/msg/Image" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="left" dataType="sensor_msgs/msg/Image" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="right" dataType="sensor_msgs/msg/Image" />
   </ros:IOVariables>
   <ros:Services>
     <ros:Service kind="service" name="camera/set_camera_info" dataType="sensor_msgs/srv/SetCameraInfo" />
+    <ros:Service kind="service" role="client" name="camera/set_camera_info" dataType="sensor_msgs/srv/SetCameraInfo" />
+    <ros:Service kind="service" role="client" name="left_camera/set_camera_info" dataType="sensor_msgs/srv/SetCameraInfo" />
+    <ros:Service kind="service" role="client" name="right_camera/set_camera_info" dataType="sensor_msgs/srv/SetCameraInfo" />
   </ros:Services>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists Jazzy image_pipeline releases. Check GUI, OpenCV, and NumPy compatibility.</ros:Requirement>
@@ -32,6 +37,9 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="96">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-perception/image_pipeline/tree/rolling/camera_calibration</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-perception/image_pipeline/blob/jazzy/camera_calibration/setup.py</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/camera_calibration/src/camera_calibration/nodes/cameracalibrator.py</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/camera_calibration/src/camera_calibration/camera_calibrator.py</ros:AdditionalImplementationSource>
+    <ros:SourceReviewNote>The node subscribes to monocular and stereo images and is a client of the camera calibration services. Camera-specific names are normally remapped by the launch configuration.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

@@ -14,8 +14,52 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Reads IMU measurements and optionally magnetic field and publishes filtered IMU.</ros:Description>
+    <ros:Variable direction="output" transport="ROS 2 topic" name="imu/rpy/filtered" dataType="geometry_msgs/msg/Vector3Stamped" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="imu/steady_state" dataType="std_msgs/msg/Bool" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="imu/data_raw" dataType="sensor_msgs/msg/Imu" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="imu/mag" dataType="sensor_msgs/msg/MagneticField" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="imu/data" dataType="sensor_msgs/msg/Imu" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="/tf" dataType="tf2_msgs/msg/TFMessage" />
   </ros:IOVariables>
   <ros:Services />
+  <ros:Parameters>
+    <ros:Parameter name="fixed_frame" dataType="string">
+      <ros:Default>"odom"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="use_mag" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="publish_tf" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="reverse_tf" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="constant_dt" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="publish_debug_topics" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="gain_acc" dataType="double">
+      <ros:Default>0.01</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="gain_mag" dataType="double">
+      <ros:Default>0.01</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="do_bias_estimation" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="bias_alpha" dataType="double">
+      <ros:Default>0.01</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="do_adaptive_gain" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="orientation_stddev" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report cites Jazzy releases of imu_tools.</ros:Requirement>
   </ros:Infra>
@@ -29,6 +73,8 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="98">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/CCNYRoboticsLab/imu_tools/tree/rolling/imu_complementary_filter</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/CCNYRoboticsLab/imu_tools/blob/jazzy/imu_complementary_filter/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/CCNYRoboticsLab/imu_tools/blob/4b01d088472fcbdb848eeceb02fb4517a90bd3a9/imu_complementary_filter/src/complementary_filter_ros.cpp</ros:ImplementationSource>
+    <ros:SourceReviewNote>The imu/mag input is conditional on use_mag. Debug topics and /tf are conditional.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

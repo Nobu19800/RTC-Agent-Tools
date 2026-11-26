@@ -14,11 +14,21 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Publishes the map and exposes the load_map service.</ros:Description>
-    <ros:Variable direction="output" transport="ROS 2 topic" name="/map" dataType="nav_msgs/msg/OccupancyGrid" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="map" dataType="nav_msgs/msg/OccupancyGrid" />
   </ros:IOVariables>
   <ros:Services>
-    <ros:Service kind="service" name="load_map" dataType="nav2_msgs/srv/LoadMap" />
+    <ros:Service kind="service" name="~/map" dataType="nav_msgs/srv/GetMap" />
+    <ros:Service kind="service" name="~/load_map" dataType="nav2_msgs/srv/LoadMap" />
   </ros:Services>
+  <ros:Parameters>
+    <ros:Parameter name="topic_name" dataType="string">
+      <ros:Default>"map"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="frame_id" dataType="string">
+      <ros:Default>"map"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="yaml_filename" dataType="string" />
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -32,6 +42,8 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="12">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_map_server</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_map_server/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_map_server/src/map_server/map_server.cpp</ros:ImplementationSource>
+    <ros:SourceReviewNote>The map publication uses the topic_name default and can be renamed by that parameter.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

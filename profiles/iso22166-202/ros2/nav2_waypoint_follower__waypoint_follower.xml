@@ -18,6 +18,20 @@
   <ros:Services>
     <ros:Service kind="action" name="follow_waypoints" dataType="nav2_msgs/action/FollowWaypoints" />
   </ros:Services>
+  <ros:Parameters>
+    <ros:Parameter name="stop_on_failure" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="loop_rate" dataType="integer">
+      <ros:Default>20</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="action_server_result_timeout" dataType="double">
+      <ros:Default>900.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="global_frame_id" dataType="string">
+      <ros:Default>"map"</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -31,6 +45,7 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="20">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_waypoint_follower</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_waypoint_follower/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_waypoint_follower/src/waypoint_follower.cpp</ros:ImplementationSource>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

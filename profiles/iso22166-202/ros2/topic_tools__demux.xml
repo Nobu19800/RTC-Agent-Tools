@@ -15,7 +15,21 @@
   <ros:IOVariables>
     <ros:Description>Uses configurable input and outputs and exposes selection services.</ros:Description>
   </ros:IOVariables>
-  <ros:Services />
+  <ros:Services>
+    <ros:Service kind="service" name="~/add" dataType="topic_tools_interfaces/srv/DemuxAdd" />
+    <ros:Service kind="service" name="~/delete" dataType="topic_tools_interfaces/srv/DemuxDelete" />
+    <ros:Service kind="service" name="~/list" dataType="topic_tools_interfaces/srv/DemuxList" />
+    <ros:Service kind="service" name="~/select" dataType="topic_tools_interfaces/srv/DemuxSelect" />
+  </ros:Services>
+  <ros:Parameters>
+    <ros:Parameter name="initial_topic" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="input_topic" dataType="string">
+      <ros:Default>"~/input"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="output_topics" dataType="string[]" />
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -29,6 +43,9 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="79">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-tooling/topic_tools</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-tooling/topic_tools/blob/jazzy/topic_tools/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/demux.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/ros-tooling/topic_tools/blob/462af78b06ad8baafc27ce09cb3dfee96421cfab/topic_tools/src/demux_node.cpp</ros:AdditionalImplementationSource>
+    <ros:SourceReviewNote>This upstream ROS 2 implementation derives data topic names and types from launch arguments and discovery.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

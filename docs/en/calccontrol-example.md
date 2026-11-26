@@ -1,8 +1,10 @@
-# Build a System with CalcControl
+# Build a System That Integrates with a Spreadsheet
 
 [日本語](../calccontrol-example.md)
 
-Enter an integer in ConsoleIn, write it to a LibreOffice Calc cell, and send the cell value to ConsoleOut. Start the OOoRTCs component through `OOoCalcRTC.py` (`OOoCalcControl`). `CalcControl.py` provides its shared base class. [Dynamic RTC port workflow](../agents/en/dynamic-rtc-ports.md)
+Write RTC data to a spreadsheet so you can inspect it, then send a cell value to another RTC. For example, you can record sensor readings in cells or pass a setting entered in a cell to a component.
+
+In this example, enter an integer in ConsoleIn, write it to a LibreOffice Calc cell, and send the cell value to ConsoleOut. Start the OOoRTCs component through `OOoCalcRTC.py` (`OOoCalcControl`). `CalcControl.py` provides its shared base class. [Dynamic RTC port workflow](../agents/en/dynamic-rtc-ports.md)
 
 ## 1. Design the system
 
@@ -34,10 +36,17 @@ All three modules reuse existing RTC implementations. `OOoCalcControl0` creates 
 
 ## 2. Build and start
 
-1. Send “Design approved.” The agent checks that LibreOffice, Python UNO, and OpenRTM-aist Python work together in the selected environment and prepares the document and naming service.
-2. Send “Start the system.” The agent registers the peer RTCs with the same naming service before creating the Calc ports through the path supported by the selected version. If configuration requires GUI interaction, follow the agent's instructions to select the ports and cells.
-3. Check the live port names, directions, types, and connections. Reuse connectors already created by Calc's automatic connection feature.
+> Design approved.
+
+The agent checks that LibreOffice, Python UNO, and OpenRTM-aist Python work together in the selected environment and prepares the document and naming service.
+
+> Start the system.
+
+The agent registers the peer RTCs with the same naming service before creating the Calc ports through the path supported by the selected version. If configuration requires GUI interaction, follow the agent's instructions to select the ports and cells.
+Check the live port names, directions, types, and connections. Reuse connectors already created by Calc's automatic connection feature.
 
 ## 3. Check the cell and output, then stop
 
-Enter `21` into ConsoleIn and check that both `Sheet1!B1` and ConsoleOut show `21`. Send `42` and check that the same cell is overwritten and ConsoleOut receives `42`. For a configuration that advances cells, record the start cell, direction, increment, and trigger in Requirements, then verify input and output order. Send “Stop the system” when finished.
+Enter `21` into ConsoleIn and check that both `Sheet1!B1` and ConsoleOut show `21`. Send `42` and check that the same cell is overwritten and ConsoleOut receives `42`. For a configuration that advances cells, record the start cell, direction, increment, and trigger in Requirements, then verify input and output order.
+
+> Stop the system.

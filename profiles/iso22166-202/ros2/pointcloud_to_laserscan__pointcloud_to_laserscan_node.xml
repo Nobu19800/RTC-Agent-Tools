@@ -14,10 +14,27 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Subscribes to cloud_in as PointCloud2 and publishes scan as LaserScan.</ros:Description>
-    <ros:Variable direction="input" transport="ROS 2 topic" name="cloud_in" dataType="sensor_msgs/msg/PointCloud2" />
     <ros:Variable direction="output" transport="ROS 2 topic" name="scan" dataType="sensor_msgs/msg/LaserScan" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="cloud_in" dataType="sensor_msgs/msg/PointCloud2" />
   </ros:IOVariables>
   <ros:Services />
+  <ros:Parameters>
+    <ros:Parameter name="target_frame" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="transform_tolerance" dataType="double">
+      <ros:Default>0.01</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="range_min" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="inf_epsilon" dataType="double">
+      <ros:Default>1.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="use_inf" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The executable was verified on the Humble branch. Jazzy binary availability was not checked.</ros:Requirement>
   </ros:Infra>
@@ -31,7 +48,8 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="59">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-perception/pointcloud_to_laserscan</ros:Source>
     <ros:UpstreamSource status="other-ref-registration">https://github.com/ros-perception/pointcloud_to_laserscan/blob/humble/CMakeLists.txt</ros:UpstreamSource>
-    <ros:ImplementationSource>https://github.com/ros-perception/pointcloud_to_laserscan/blob/humble/src/pointcloud_to_laserscan_node.cpp</ros:ImplementationSource>
+    <ros:ImplementationSource>https://github.com/ros-perception/pointcloud_to_laserscan/blob/59bf996fb3ee7db0026a5cd3ce0d2a39d2e602ea/src/pointcloud_to_laserscan_node.cpp</ros:ImplementationSource>
+    <ros:SourceReviewNote>The input subscription starts when the output has a subscriber.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

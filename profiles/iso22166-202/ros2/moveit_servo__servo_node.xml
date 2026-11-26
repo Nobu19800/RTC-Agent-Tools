@@ -15,7 +15,130 @@
   <ros:IOVariables>
     <ros:Description>Accepts configured twist, pose, or joint-jog commands and joint-state feedback. Publishes configured joint trajectory or command output.</ros:Description>
   </ros:IOVariables>
-  <ros:Services />
+  <ros:Services>
+    <ros:Service kind="service" name="~/switch_command_type" dataType="moveit_msgs/srv/ServoCommandType" />
+    <ros:Service kind="service" name="~/pause_servo" dataType="std_srvs/srv/SetBool" />
+  </ros:Services>
+  <ros:Parameters>
+    <ros:Parameter name="moveit_servo.thread_priority" dataType="integer">
+      <ros:Default>40</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.publish_period" dataType="double">
+      <ros:Default>0.01</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.max_expected_latency" dataType="double">
+      <ros:Default>0.1</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.move_group_name" dataType="string" />
+    <ros:Parameter name="moveit_servo.active_subgroup" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.pose_command_in_topic" dataType="string">
+      <ros:Default>"~/pose_target_cmds"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.cartesian_command_in_topic" dataType="string">
+      <ros:Default>"~/delta_twist_cmds"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.joint_command_in_topic" dataType="string">
+      <ros:Default>"~/delta_joint_cmds"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.command_in_type" dataType="string">
+      <ros:Default>"unitless"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.scale.linear" dataType="double">
+      <ros:Default>0.4</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.scale.rotational" dataType="double">
+      <ros:Default>0.8</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.scale.joint" dataType="double">
+      <ros:Default>0.5</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.incoming_command_timeout" dataType="double">
+      <ros:Default>0.1</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.apply_twist_commands_about_ee_frame" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.pose_tracking.linear_tolerance" dataType="double">
+      <ros:Default>0.001</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.pose_tracking.angular_tolerance" dataType="double">
+      <ros:Default>0.01</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.status_topic" dataType="string">
+      <ros:Default>"~/status"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.command_out_topic" dataType="string">
+      <ros:Default>"/panda_arm_controller/joint_trajectory"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.command_out_type" dataType="string">
+      <ros:Default>"trajectory_msgs/JointTrajectory"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.publish_joint_positions" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.publish_joint_velocities" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.publish_joint_accelerations" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.monitored_planning_scene_topic" dataType="string">
+      <ros:Default>"/planning_scene"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.joint_topic" dataType="string">
+      <ros:Default>"/joint_states"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.check_octomap_collisions" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.is_primary_planning_scene_monitor" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.use_smoothing" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.smoothing_filter_plugin_name" dataType="string">
+      <ros:Default>"online_signal_smoothing::ButterworthFilterPlugin"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.check_collisions" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.self_collision_proximity_threshold" dataType="double">
+      <ros:Default>0.01</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.scene_collision_proximity_threshold" dataType="double">
+      <ros:Default>0.02</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.collision_check_rate" dataType="double">
+      <ros:Default>10.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.lower_singularity_threshold" dataType="double">
+      <ros:Default>17.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.hard_stop_singularity_threshold" dataType="double">
+      <ros:Default>30.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.leaving_singularity_threshold_multiplier" dataType="double">
+      <ros:Default>2.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.singularity_step_scale" dataType="double">
+      <ros:Default>0.01</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.halt_all_joints_in_joint_mode" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.halt_all_joints_in_cartesian_mode" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.joint_limit_margins" dataType="double[]">
+      <ros:Default>[0.1]</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="moveit_servo.override_velocity_scaling_factor" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists Jazzy support. Check the installed Servo message and topic configuration.</ros:Requirement>
   </ros:Infra>
@@ -29,6 +152,9 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="28">deep-research-report.md</ros:Report>
     <ros:Source>https://moveit.picknik.ai/main/doc/examples/realtime_servo/realtime_servo_tutorial.html</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/moveit/moveit2/blob/jazzy/moveit_ros/moveit_servo/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/moveit_servo/src/servo_node.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/moveit_servo/config/servo_parameters.yaml</ros:AdditionalImplementationSource>
+    <ros:SourceReviewNote>Servo topics and generated parameters depend on the MoveIt Servo configuration.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

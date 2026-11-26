@@ -15,7 +15,8 @@
   <ros:IOVariables>
     <ros:Description>Subscribes to /diagnostics and publishes aggregate diagnostic messages.</ros:Description>
     <ros:Variable direction="input" transport="ROS 2 topic" name="/diagnostics" dataType="diagnostic_msgs/msg/DiagnosticArray" />
-    <ros:Variable direction="output" transport="ROS 2 topic" name="/diagnostics_agg" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="/diagnostics_agg" dataType="diagnostic_msgs/msg/DiagnosticArray" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="/diagnostics_toplevel_state" dataType="diagnostic_msgs/msg/DiagnosticStatus" />
   </ros:IOVariables>
   <ros:Services />
   <ros:Infra>
@@ -30,7 +31,10 @@
   <ros:Evidence>
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="90">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros/diagnostics/blob/ros2/diagnostic_aggregator/mainpage.dox</ros:Source>
-    <ros:UpstreamSource status="other-ref-registration">https://github.com/ros/diagnostics/blob/rolling/diagnostic_aggregator/CMakeLists.txt</ros:UpstreamSource>
+    <ros:UpstreamSource status="other-ref-registration">https://github.com/ros/diagnostics/blob/33029d0f04430dc0473a6890f1228e0000d2b9d1/diagnostic_aggregator/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros/diagnostics/blob/33029d0f04430dc0473a6890f1228e0000d2b9d1/diagnostic_aggregator/src/aggregator.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/ros/diagnostics/blob/33029d0f04430dc0473a6890f1228e0000d2b9d1/diagnostic_aggregator/src/aggregator_node.cpp</ros:AdditionalImplementationSource>
+    <ros:SourceReviewNote>No static parameter declaration with a confirmed type or literal default was captured by this review.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

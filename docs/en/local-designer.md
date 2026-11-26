@@ -4,14 +4,20 @@
 
 Place compatible RTSystemDesigner and RTC-Agent-Tools checkouts side by side. This procedure uses Windows PowerShell, Node.js 24, npm, and Python 3.
 
-Run these commands from the parent folder and keep this terminal open.
+Send the quoted request to Codex or Claude Code. The agent prepares dependencies from the parent folder and keeps the local server running.
+
+> Start local RTSystemDesigner and open a test session.
+
+Example commands the agent runs.
 
 ~~~powershell
 npm.cmd --prefix .\RTSystemDesigner ci
 npm.cmd --prefix .\RTSystemDesigner run dev:integration
 ~~~
 
-In another terminal, move to RTC-Agent-Tools and register the version 2 smoke-test session.
+For the same request, the agent switches to RTC-Agent-Tools in a separate shell, registers the smoke-test session, and opens it.
+
+Example commands the agent runs.
 
 ~~~powershell
 Set-Location .\RTC-Agent-Tools
@@ -21,6 +27,10 @@ Start-Process $session.designerUrl
 ~~~
 
 In the browser, move the SmokeRTC0 node and click **Save**. Close the confirmation dialog and reload the page. The node should appear at its saved position. Retrieve the saved JSON from the terminal.
+
+> Retrieve the saved local session.
+
+Example commands the agent runs.
 
 ~~~powershell
 python .\scripts\local_designer_session.py get $session.sessionId
@@ -33,6 +43,10 @@ The default endpoint is `127.0.0.1:5173`. The integration test API uses the same
 ## Stream a Hakoniwa Drone pose to ROS 2
 
 Start with the design in `examples/local-designer/hakoniwa-ros2-pose-session.json`. Approve the design in the Designer, retrieve it using `local_designer_session.py get`, and pass the JSON to the verification script in WSL2.
+
+> Verify that the Hakoniwa Drone pose reaches ROS 2.
+
+Example commands the agent runs.
 
 ~~~bash
 bash examples/local-designer/verify-hakoniwa-ros2.sh "$APPROVED_SESSION" \
@@ -47,4 +61,12 @@ The test uses `drone_pose_bridge.py` to read the latest PDU every 20 ms and publ
 
 Register `examples/local-designer/hakoniwa-ros2-viewer-session.json` and pass the approved design to the same script. In WSL2, set `HAKONIWA_VISUAL_PUBLISHER` to `tools/recipe/drone_gui_visual_state.py` in the Business Pack and set `HAKONIWA_VIEWER_ROOT` to the Three.js Drone checkout.
 
-Add `--keep-running` as the sixth argument to keep the system running while you check the viewer connection, rendered Drone, and displayed coordinates. To stop, press Ctrl+C in the foreground launch terminal. [Three.js viewer](http://127.0.0.1:8000/index.html?viewerConfigPath=/config/viewer-config-fleets.json&wsUri=ws://127.0.0.1:8765&wireVersion=v2)
+To try the viewer, ask the agent:
+
+> Start the test with the Three.js viewer.
+
+The agent adds `--keep-running` as the sixth argument to keep the system running while you check the viewer connection, rendered Drone, and displayed coordinates. To stop the test, send the request below. The agent interrupts the process it started.
+
+> Stop the test.
+
+[Three.js viewer](http://127.0.0.1:8000/index.html?viewerConfigPath=/config/viewer-config-fleets.json&wsUri=ws://127.0.0.1:8765&wireVersion=v2)

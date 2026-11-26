@@ -14,10 +14,30 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Subscribes to joy and publishes cmd_vel. Enable, turbo, and axis mappings are configurable.</ros:Description>
+    <ros:Variable direction="output" transport="ROS 2 topic" name="cmd_vel" dataType="geometry_msgs/msg/Twist" />
     <ros:Variable direction="input" transport="ROS 2 topic" name="joy" dataType="sensor_msgs/msg/Joy" />
-    <ros:Variable direction="output" transport="ROS 2 topic" name="cmd_vel" />
   </ros:IOVariables>
   <ros:Services />
+  <ros:Parameters>
+    <ros:Parameter name="publish_stamped_twist" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="frame" dataType="string">
+      <ros:Default>"teleop_twist_joy"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="require_enable_button" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="enable_button" dataType="integer">
+      <ros:Default>5</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="enable_turbo_button" dataType="integer">
+      <ros:Default>-1</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="inverted_reverse" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report cites teleop_twist_joy 2.6.x releases for Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -31,6 +51,9 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="94">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros2/teleop_twist_joy</ros:Source>
     <ros:UpstreamSource status="other-ref-registration">https://github.com/ros2/teleop_twist_joy/blob/rolling/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros2/teleop_twist_joy/blob/556a07100ee745f68619de84a95d3c84a4892ab9/src/teleop_node.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/ros2/teleop_twist_joy/blob/556a07100ee745f68619de84a95d3c84a4892ab9/src/teleop_twist_joy.cpp</ros:AdditionalImplementationSource>
+    <ros:SourceReviewNote>cmd_vel uses Twist by default; publish_stamped_twist selects TwistStamped.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

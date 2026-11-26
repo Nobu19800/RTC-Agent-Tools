@@ -14,8 +14,112 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Exposes controller manager services. Hardware state and command interfaces come from the URDF and hardware plugins. Controllers supply their own ROS interfaces.</ros:Description>
+    <ros:Variable direction="output" transport="ROS 2 topic" name="~/activity" dataType="controller_manager_msgs/msg/ControllerManagerActivity" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="robot_description" dataType="std_msgs/msg/String" />
   </ros:IOVariables>
-  <ros:Services />
+  <ros:Services>
+    <ros:Service kind="service" name="~/list_controllers" dataType="controller_manager_msgs/srv/ListControllers" />
+    <ros:Service kind="service" name="~/list_controller_types" dataType="controller_manager_msgs/srv/ListControllerTypes" />
+    <ros:Service kind="service" name="~/load_controller" dataType="controller_manager_msgs/srv/LoadController" />
+    <ros:Service kind="service" name="~/configure_controller" dataType="controller_manager_msgs/srv/ConfigureController" />
+    <ros:Service kind="service" name="~/reload_controller_libraries" dataType="controller_manager_msgs/srv/ReloadControllerLibraries" />
+    <ros:Service kind="service" name="~/switch_controller" dataType="controller_manager_msgs/srv/SwitchController" />
+    <ros:Service kind="service" name="~/unload_controller" dataType="controller_manager_msgs/srv/UnloadController" />
+    <ros:Service kind="service" name="~/cleanup_controller" dataType="controller_manager_msgs/srv/CleanupController" />
+    <ros:Service kind="service" name="~/list_hardware_components" dataType="controller_manager_msgs/srv/ListHardwareComponents" />
+    <ros:Service kind="service" name="~/list_hardware_interfaces" dataType="controller_manager_msgs/srv/ListHardwareInterfaces" />
+    <ros:Service kind="service" name="~/set_hardware_component_state" dataType="controller_manager_msgs/srv/SetHardwareComponentState" />
+  </ros:Services>
+  <ros:Parameters>
+    <ros:Parameter name="update_rate" dataType="integer">
+      <ros:Default>100</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="enforce_command_limits" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="handle_exceptions" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="hardware_components_initial_state.unconfigured" dataType="string[]">
+      <ros:Default>[]</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="hardware_components_initial_state.inactive" dataType="string[]">
+      <ros:Default>[]</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="hardware_components_initial_state.shutdown_on_initial_state_failure" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="defaults.switch_controller.strictness" dataType="string">
+      <ros:Default>"best_effort"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="defaults.allow_controller_activation_with_inactive_hardware" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="defaults.deactivate_controllers_on_hardware_self_deactivate" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.controller_manager.periodicity.mean_error.warn" dataType="double">
+      <ros:Default>5.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.controller_manager.periodicity.mean_error.error" dataType="double">
+      <ros:Default>10.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.controller_manager.periodicity.standard_deviation.warn" dataType="double">
+      <ros:Default>5.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.controller_manager.periodicity.standard_deviation.error" dataType="double">
+      <ros:Default>10.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.controllers.periodicity.mean_error.warn" dataType="double">
+      <ros:Default>5.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.controllers.periodicity.mean_error.error" dataType="double">
+      <ros:Default>10.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.controllers.periodicity.standard_deviation.warn" dataType="double">
+      <ros:Default>5.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.controllers.periodicity.standard_deviation.error" dataType="double">
+      <ros:Default>10.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.controllers.execution_time.mean_error.warn" dataType="double">
+      <ros:Default>1000.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.controllers.execution_time.mean_error.error" dataType="double">
+      <ros:Default>2000.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.controllers.execution_time.standard_deviation.warn" dataType="double">
+      <ros:Default>100.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.controllers.execution_time.standard_deviation.error" dataType="double">
+      <ros:Default>200.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.hardware_components.periodicity.mean_error.warn" dataType="double">
+      <ros:Default>5.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.hardware_components.periodicity.mean_error.error" dataType="double">
+      <ros:Default>10.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.hardware_components.periodicity.standard_deviation.warn" dataType="double">
+      <ros:Default>5.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.hardware_components.periodicity.standard_deviation.error" dataType="double">
+      <ros:Default>10.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.hardware_components.execution_time.mean_error.warn" dataType="double">
+      <ros:Default>1000.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.hardware_components.execution_time.mean_error.error" dataType="double">
+      <ros:Default>2000.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.hardware_components.execution_time.standard_deviation.warn" dataType="double">
+      <ros:Default>100.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="diagnostics.threshold.hardware_components.execution_time.standard_deviation.error" dataType="double">
+      <ros:Default>200.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="overruns.print_warnings" dataType="bool" />
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">Jazzy has upstream controller manager documentation. Controller APIs can differ by distribution.</ros:Requirement>
   </ros:Infra>
@@ -29,6 +133,10 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="10">deep-research-report.md</ros:Report>
     <ros:Source>https://control.ros.org/jazzy/doc/ros2_control/controller_manager/doc/userdoc.html</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-controls/ros2_control/blob/jazzy/controller_manager/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-controls/ros2_control/blob/6f85954fc0e00b1412636439c2b1b8f56e54f093/controller_manager/src/controller_manager.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/ros-controls/ros2_control/blob/6f85954fc0e00b1412636439c2b1b8f56e54f093/controller_manager/src/ros2_control_node.cpp</ros:AdditionalImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/ros-controls/ros2_control/blob/6f85954fc0e00b1412636439c2b1b8f56e54f093/controller_manager/src/controller_manager_parameters.yaml</ros:AdditionalImplementationSource>
+    <ros:SourceReviewNote>The registered controllers and hardware plugins can create additional interfaces and parameters.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

@@ -14,9 +14,14 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Reads configured velocity inputs and Boolean locks and publishes the selected velocity command.</ros:Description>
-    <ros:Variable direction="output" transport="ROS 2 topic" name="cmd_vel_out" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="cmd_vel_out" dataType="geometry_msgs/msg/TwistStamped" />
   </ros:IOVariables>
   <ros:Services />
+  <ros:Parameters>
+    <ros:Parameter name="use_stamped" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report cites twist_mux 4.5.0 on Jazzy. Verify compatibility with the selected stamped velocity message configuration.</ros:Requirement>
   </ros:Infra>
@@ -30,6 +35,8 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="95">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-teleop/twist_mux</ros:Source>
     <ros:UpstreamSource status="other-ref-registration">https://github.com/ros-teleop/twist_mux/blob/rolling/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-teleop/twist_mux/blob/a8225e2d9bf0171aac447c246376f0981defd17b/src/twist_mux.cpp</ros:ImplementationSource>
+    <ros:SourceReviewNote>Input topics are selected by configuration. The cmd_vel_out type depends on use_stamped.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

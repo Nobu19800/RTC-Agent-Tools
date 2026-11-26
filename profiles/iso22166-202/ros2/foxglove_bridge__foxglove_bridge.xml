@@ -14,8 +14,86 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Provides access to ROS topics, services, parameters, and assets according to configuration.</ros:Description>
+    <ros:Variable direction="input" transport="ROS 2 topic" name="/clock" dataType="rosgraph_msgs/msg/Clock" />
   </ros:IOVariables>
   <ros:Services />
+  <ros:Parameters>
+    <ros:Parameter name="port" dataType="integer">
+      <ros:Default>8765</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="debug" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="address" dataType="string">
+      <ros:Default>"0.0.0.0"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="send_buffer_limit" dataType="integer">
+      <ros:Default>10000000</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="tls" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="certfile" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="keyfile" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="min_qos_depth" dataType="integer">
+      <ros:Default>1</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="max_qos_depth" dataType="integer">
+      <ros:Default>25</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="use_compression" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="include_hidden" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="disable_load_message" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="ignore_unresponsive_param_nodes" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="publish_client_count" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="sysinfo" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="sysinfo_topic" dataType="string">
+      <ros:Default>"/foxglove_bridge/sysinfo"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="sysinfo_refresh_interval" dataType="integer">
+      <ros:Default>500</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="message_backlog_size" dataType="integer">
+      <ros:Default>1024</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="remote_access" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="device_token" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="foxglove_api_url" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="video_encoder" dataType="string">
+      <ros:Default>"auto"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="max_data_track_message_size" dataType="integer">
+      <ros:Default>102400</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="point_cloud_compression_quantization_bits" dataType="integer">
+      <ros:Default>12</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="point_cloud_compression_method" dataType="string">
+      <ros:Default>"kd-tree"</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">Verify the installed Jazzy package and the compatible Foxglove protocol version.</ros:Requirement>
   </ros:Infra>
@@ -29,6 +107,11 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="85">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/foxglove/foxglove-sdk/tree/main/ros/src/foxglove_bridge</ros:Source>
     <ros:UpstreamSource status="other-ref-registration">https://github.com/foxglove/foxglove-sdk/blob/main/ros/src/foxglove_bridge/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/foxglove/foxglove-sdk/blob/a1f0d773f224c760ea86d8db39f561030f0fe5d1/ros/src/foxglove_bridge/src/param_utils.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/foxglove/foxglove-sdk/blob/a1f0d773f224c760ea86d8db39f561030f0fe5d1/ros/src/foxglove_bridge/src/ros2_foxglove_bridge.cpp</ros:AdditionalImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/foxglove/foxglove-sdk/blob/a1f0d773f224c760ea86d8db39f561030f0fe5d1/ros/src/foxglove_bridge/src/ros2_foxglove_bridge_node.cpp</ros:AdditionalImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/foxglove/foxglove-sdk/blob/a1f0d773f224c760ea86d8db39f561030f0fe5d1/ros/src/foxglove_bridge/include/foxglove_bridge/param_utils.hpp</ros:AdditionalImplementationSource>
+    <ros:SourceReviewNote>Most ROS interfaces are selected by client requests and topic discovery. The clock subscription is conditional.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

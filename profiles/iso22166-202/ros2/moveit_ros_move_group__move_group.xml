@@ -14,14 +14,21 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Uses joint states and TF, exposes planning and execution actions and kinematics services, and can call controller trajectory actions. Requires robot and planning configuration.</ros:Description>
-    <ros:Variable direction="input" transport="ROS 2 topic" name="/joint_states" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="joint_states" dataType="sensor_msgs/msg/JointState" />
   </ros:IOVariables>
   <ros:Services>
-    <ros:Service kind="action" name="move_action" />
-    <ros:Service kind="action" name="execute_trajectory" />
-    <ros:Service kind="service" name="compute_ik" />
-    <ros:Service kind="service" name="compute_fk" />
-    <ros:Service kind="service" name="plan_kinematic_path" />
+    <ros:Service kind="action" name="move_action" dataType="moveit_msgs/action/MoveGroup" />
+    <ros:Service kind="action" name="execute_trajectory" dataType="moveit_msgs/action/ExecuteTrajectory" />
+    <ros:Service kind="service" name="compute_ik" dataType="moveit_msgs/srv/GetPositionIK" />
+    <ros:Service kind="service" name="compute_fk" dataType="moveit_msgs/srv/GetPositionFK" />
+    <ros:Service kind="service" name="plan_kinematic_path" dataType="moveit_msgs/srv/GetMotionPlan" />
+    <ros:Service kind="service" name="get_planning_scene" dataType="moveit_msgs/srv/GetPlanningScene" />
+    <ros:Service kind="service" name="apply_planning_scene" dataType="moveit_msgs/srv/ApplyPlanningScene" />
+    <ros:Service kind="service" name="compute_cartesian_path" dataType="moveit_msgs/srv/GetCartesianPath" />
+    <ros:Service kind="service" name="check_state_validity" dataType="moveit_msgs/srv/GetStateValidity" />
+    <ros:Service kind="service" name="query_planner_interface" dataType="moveit_msgs/srv/QueryPlannerInterfaces" />
+    <ros:Service kind="service" name="get_planner_params" dataType="moveit_msgs/srv/GetPlannerParams" />
+    <ros:Service kind="service" name="set_planner_params" dataType="moveit_msgs/srv/SetPlannerParams" />
   </ros:Services>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists Jazzy support. Plugins and APIs can differ from the upstream main branch.</ros:Requirement>
@@ -36,6 +43,16 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="27">deep-research-report.md</ros:Report>
     <ros:Source>https://moveit.picknik.ai/main/doc/concepts/move_group.html</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/moveit/moveit2/blob/jazzy/moveit_ros/move_group/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/move_group/src/move_group.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/move_group/src/move_group_context.cpp</ros:AdditionalImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/move_group/include/moveit/move_group/capability_names.hpp</ros:AdditionalImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/move_group/src/default_capabilities/plan_service_capability.cpp</ros:AdditionalImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/move_group/src/default_capabilities/kinematics_service_capability.cpp</ros:AdditionalImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/move_group/src/default_capabilities/cartesian_path_service_capability.cpp</ros:AdditionalImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/move_group/src/default_capabilities/query_planners_service_capability.cpp</ros:AdditionalImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/move_group/src/default_capabilities/state_validation_service_capability.cpp</ros:AdditionalImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/moveit/moveit2/blob/daf89d3031436f053e7d6eb063e7a2306ffc3ff1/moveit_ros/move_group/src/default_capabilities/apply_planning_scene_service_capability.cpp</ros:AdditionalImplementationSource>
+    <ros:SourceReviewNote>MoveGroup capabilities and robot configuration add interfaces and parameters. No static parameter declaration with a confirmed type or literal default was captured by this review.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

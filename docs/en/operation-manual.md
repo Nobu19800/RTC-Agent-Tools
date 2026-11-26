@@ -4,7 +4,11 @@
 
 ## 1. Prepare a design
 
-Run commands from the RTC-Agent-Tools repository root. If you ask an agent to design the system, specify the required behavior, inputs and outputs, deployment environment, and expected verification results. You can search the catalogs directly.
+Send the quoted messages to the agent. The command blocks show examples the agent runs from the RTC-Agent-Tools repository root. If you ask an agent to design the system, specify the required behavior, inputs and outputs, deployment environment, and expected verification results. You can search the catalogs directly.
+
+> Find the modules I need in the catalogs.
+
+Example commands the agent runs.
 
 ~~~powershell
 python rtc_search.py catalog/rtc_catalog.json camera --json
@@ -18,6 +22,10 @@ To design in RTSystemDesigner, add a module, choose its **Module Kind**, and con
 
 Register the proposal with the public session server and obtain a URL for review.
 
+> Register the design proposal and show me the review link.
+
+Example commands the agent runs.
+
 ~~~powershell
 $api = 'https://rt-session-server.rtsystem-designer-web.workers.dev/api/sessions'
 $session = Invoke-RestMethod -Method Post -Uri $api -ContentType 'application/json' -InFile .\proposal.json
@@ -30,6 +38,10 @@ $designerUrl
 
 Open the session link and review the modules, ports, connections, and implementation requirements. Save any edits and explicitly approve the design. In the same PowerShell session, retrieve the approved version.
 
+> Design approved.
+
+Example commands the agent runs.
+
 ~~~powershell
 curl.exe --fail-with-body --silent --show-error "$api/$($session.sessionId)" -o final-session.json
 ~~~
@@ -40,12 +52,20 @@ If you approved a JSON export from the Designer, use that file as the final desi
 
 For a new RTC, derive its definition JSON from the approved design. Convert it to XML and generate the skeleton. Replace `MyRTC` with the target RTC name. [JSON definition format](../agents/en/generation.md)
 
+> Generate the RTC skeleton from the approved design.
+
+Example commands the agent runs.
+
 ~~~powershell
 python json_to_rtc_xml.py build/generated/MyRTC/MyRTC.json build/generated/MyRTC/RTC.xml
 .\cuirtcbuilder.bat -d build/generated/MyRTC -f build/generated/MyRTC/RTC.xml
 ~~~
 
 Implement and build the RTC, then prepare the deployment settings. If the system provides Windows lifecycle batches, run them in the target environment.
+
+> Start the system.
+
+Example commands the agent runs.
 
 ~~~powershell
 .\build\system\scripts\start_rtcs.bat
@@ -55,9 +75,13 @@ Implement and build the RTC, then prepare the deployment settings. If the system
 
 Check registration, live port connections, and activation as each step completes. Send test input and compare it with the expected output. To stop, run `deactivate_rtcs.bat` followed by `stop_rtcs.bat`. Verify that RTCs are unregistered and dedicated processes have exited. Manage a shared naming service according to its ownership. If the agent reports that GUI checks remain, follow its instructions to verify the actual window and behavior. [RTC lifecycle and shutdown](../agents/en/runtime.md) · [Verification](../agents/en/verification.md)
 
-## 4. Run systems with ROS 2 or Hakoniwa
+> Stop the system.  Example shutdown commands the agent runs.  ~~~powershell .\build\system\scripts\deactivate_rtcs.bat .\build\system\scripts\stop_rtcs.bat ~~~  ## 4. Run systems with ROS 2 or Hakoniwa
 
-Source the ROS 2 environment in the Linux or WSL2 shell.
+The agent sources the ROS 2 environment in the Linux or WSL2 shell.
+
+> Check the ROS 2 configuration and start it.
+
+Example commands the agent runs.
 
 ~~~bash
 python3 scripts/ros2_system.py plan final-session.json

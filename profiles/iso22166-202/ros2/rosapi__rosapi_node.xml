@@ -15,7 +15,57 @@
   <ros:IOVariables>
     <ros:Description>Exposes services for discovering topics, services, and message types.</ros:Description>
   </ros:IOVariables>
-  <ros:Services />
+  <ros:Services>
+    <ros:Service kind="service" name="~/topics" dataType="rosapi_msgs/srv/Topics" />
+    <ros:Service kind="service" name="~/interfaces" dataType="rosapi_msgs/srv/Interfaces" />
+    <ros:Service kind="service" name="~/topics_for_type" dataType="rosapi_msgs/srv/TopicsForType" />
+    <ros:Service kind="service" name="~/topics_and_raw_types" dataType="rosapi_msgs/srv/TopicsAndRawTypes" />
+    <ros:Service kind="service" name="~/services" dataType="rosapi_msgs/srv/Services" />
+    <ros:Service kind="service" name="~/services_for_type" dataType="rosapi_msgs/srv/ServicesForType" />
+    <ros:Service kind="service" name="~/nodes" dataType="rosapi_msgs/srv/Nodes" />
+    <ros:Service kind="service" name="~/node_details" dataType="rosapi_msgs/srv/NodeDetails" />
+    <ros:Service kind="service" name="~/action_servers" dataType="rosapi_msgs/srv/GetActionServers" />
+    <ros:Service kind="service" name="~/action_type" dataType="rosapi_msgs/srv/ActionType" />
+    <ros:Service kind="service" name="~/topic_type" dataType="rosapi_msgs/srv/TopicType" />
+    <ros:Service kind="service" name="~/service_type" dataType="rosapi_msgs/srv/ServiceType" />
+    <ros:Service kind="service" name="~/publishers" dataType="rosapi_msgs/srv/Publishers" />
+    <ros:Service kind="service" name="~/subscribers" dataType="rosapi_msgs/srv/Subscribers" />
+    <ros:Service kind="service" name="~/service_providers" dataType="rosapi_msgs/srv/ServiceProviders" />
+    <ros:Service kind="service" name="~/service_node" dataType="rosapi_msgs/srv/ServiceNode" />
+    <ros:Service kind="service" name="~/message_details" dataType="rosapi_msgs/srv/MessageDetails" />
+    <ros:Service kind="service" name="~/service_request_details" dataType="rosapi_msgs/srv/ServiceRequestDetails" />
+    <ros:Service kind="service" name="~/service_response_details" dataType="rosapi_msgs/srv/ServiceResponseDetails" />
+    <ros:Service kind="service" name="~/action_goal_details" dataType="rosapi_msgs/srv/ActionGoalDetails" />
+    <ros:Service kind="service" name="~/action_result_details" dataType="rosapi_msgs/srv/ActionResultDetails" />
+    <ros:Service kind="service" name="~/action_feedback_details" dataType="rosapi_msgs/srv/ActionFeedbackDetails" />
+    <ros:Service kind="service" name="~/set_param" dataType="rosapi_msgs/srv/SetParam" />
+    <ros:Service kind="service" name="~/get_param" dataType="rosapi_msgs/srv/GetParam" />
+    <ros:Service kind="service" name="~/has_param" dataType="rosapi_msgs/srv/HasParam" />
+    <ros:Service kind="service" name="~/delete_param" dataType="rosapi_msgs/srv/DeleteParam" />
+    <ros:Service kind="service" name="~/get_param_names" dataType="rosapi_msgs/srv/GetParamNames" />
+    <ros:Service kind="service" name="~/get_time" dataType="rosapi_msgs/srv/GetTime" />
+    <ros:Service kind="service" name="~/get_ros_version" dataType="rosapi_msgs/srv/GetROSVersion" />
+  </ros:Services>
+  <ros:Parameters>
+    <ros:Parameter name="topics_glob" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="topics_pub_glob" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="topics_sub_glob" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="services_glob" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="params_glob" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="params_timeout" dataType="double">
+      <ros:Default>5.0</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -29,6 +79,7 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="83">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/RobotWebTools/rosbridge_suite</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/RobotWebTools/rosbridge_suite/blob/jazzy/rosapi/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/RobotWebTools/rosbridge_suite/blob/cb33a16b890e4b8d9def531326409f3ee6c12537/rosapi/scripts/rosapi_node</ros:ImplementationSource>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

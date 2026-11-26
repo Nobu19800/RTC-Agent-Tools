@@ -18,6 +18,20 @@
   <ros:Services>
     <ros:Service kind="service" name="manage_nodes" dataType="nav2_msgs/srv/ManageLifecycleNodes" />
   </ros:Services>
+  <ros:Parameters>
+    <ros:Parameter name="autostart" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="bond_timeout" dataType="double">
+      <ros:Default>4.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="bond_respawn_max_duration" dataType="double">
+      <ros:Default>10.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="attempt_respawn_reconnection" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -31,6 +45,8 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="21">deep-research-report.md</ros:Report>
     <ros:Source>https://docs.nav2.org/jazzy/configuration_and_development/configuration_guide/core_servers/configuring_lifecycle_manager/</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_lifecycle_manager/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_lifecycle_manager/src/lifecycle_manager.cpp</ros:ImplementationSource>
+    <ros:SourceReviewNote>Managed node names determine the lifecycle service clients.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

@@ -14,8 +14,28 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Subscribes to stereo images. See the selected source for synchronization and additional inputs.</ros:Description>
+    <ros:Variable direction="input" transport="ROS 2 topic" name="stereo/left/image" dataType="sensor_msgs/msg/Image" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="stereo/right/image" dataType="sensor_msgs/msg/Image" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="stereo/disparity" dataType="stereo_msgs/msg/DisparityImage" />
   </ros:IOVariables>
   <ros:Services />
+  <ros:Parameters>
+    <ros:Parameter name="autosize" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="filename_format" dataType="string">
+      <ros:Default>"frame%04i.jpg"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="image_transport" dataType="string">
+      <ros:Default>"raw"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="queue_size" dataType="integer">
+      <ros:Default>5</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="approximate_sync" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -29,6 +49,8 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="55">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-perception/image_pipeline/blob/rolling/image_view/CMakeLists.txt</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_view/src/stereo_view.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_view/src/stereo_view_node.cpp</ros:AdditionalImplementationSource>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

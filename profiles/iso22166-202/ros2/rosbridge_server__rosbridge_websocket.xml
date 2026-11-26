@@ -16,6 +16,86 @@
     <ros:Description>Bridges WebSocket clients to ROS topics, services, and actions.</ros:Description>
   </ros:IOVariables>
   <ros:Services />
+  <ros:Parameters>
+    <ros:Parameter name="port" dataType="integer">
+      <ros:Default>9090</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="address" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="url_path" dataType="string">
+      <ros:Default>"/"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="retry_startup_delay" dataType="double">
+      <ros:Default>2.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="certfile" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="keyfile" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="websocket_ping_interval" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="websocket_ping_timeout" dataType="double">
+      <ros:Default>30.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="incoming_queue_size" dataType="integer">
+      <ros:Default>1000</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="write_queue_size" dataType="integer">
+      <ros:Default>1000</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="use_compression" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="use_events_executor" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="fragment_timeout" dataType="integer">
+      <ros:Default>600</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="delay_between_messages" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="max_message_size" dataType="integer">
+      <ros:Default>1000000</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="unregister_timeout" dataType="double">
+      <ros:Default>10.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="binary_encoder_type" dataType="string">
+      <ros:Default>"default"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="bson_only_mode" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="topics_glob" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="topics_pub_glob" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="topics_sub_glob" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="services_glob" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="actions_glob" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="call_services_in_new_thread" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="default_call_service_timeout" dataType="double">
+      <ros:Default>5.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="send_action_goals_in_new_thread" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -29,6 +109,8 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="82">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/RobotWebTools/rosbridge_suite</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/RobotWebTools/rosbridge_suite/blob/jazzy/rosbridge_server/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/RobotWebTools/rosbridge_suite/blob/cb33a16b890e4b8d9def531326409f3ee6c12537/rosbridge_server/scripts/rosbridge_websocket.py</ros:ImplementationSource>
+    <ros:SourceReviewNote>ROS topics and services are selected dynamically by WebSocket clients; the WebSocket itself is not a ROS topic.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

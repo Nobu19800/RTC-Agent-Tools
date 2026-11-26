@@ -27,12 +27,19 @@ The example places `VelocityCommand0` and `VelocityReceiver0` as new test module
 
 ## 2. Build and start
 
-1. Send “Design approved.” The agent prepares the selected Recipe's Workspace and Foundation on Ubuntu or WSL2 and checks the Python runtime and native Hakoniwa bindings.
-2. The agent loads the transport plugin and serializer through `rtc.conf`. The connection uses `dataport.interface_type: hakoniwa` and the `dataport.marshaling_type` for the selected type and layout. If the Hakoniwa endpoint has no CORBA port, use the documented single-port connection procedure.
-3. Send “Start the system.” The agent prepares the Conductor and PDU region in the order specified by the Recipe, then starts, connects, and activates the RTC. Loading the plugin and preparing the PDU region are separate steps. [Environment setup](setup.md) · [Python plugin and native verification example](../../examples/hakoniwa_transport/README.md)
+> Design approved.
+
+The agent prepares the selected Recipe's Workspace and Foundation on Ubuntu or WSL2 and checks the Python runtime and native Hakoniwa bindings.
+The agent loads the transport plugin and serializer through `rtc.conf`. The connection uses `dataport.interface_type: hakoniwa` and the `dataport.marshaling_type` for the selected type and layout. If the Hakoniwa endpoint has no CORBA port, use the documented single-port connection procedure.
+
+> Start the system.
+
+The agent prepares the Conductor and PDU region in the order specified by the Recipe, then starts, connects, and activates the RTC. Loading the plugin and preparing the PDU region are separate steps. [Environment setup](setup.md) · [Python plugin and native verification example](../../examples/hakoniwa_transport/README.md)
 
 ## 3. Verify the data and stop
 
-For example, send `vx=0.1` m/s with all other fields set to zero. Check that the target PDU reports `linear.x=0.1` and zero in the other fields. Check both the connection log and the PDU values actually read. For a system with a viewer, follow the agent's instructions to check motion on screen. Send “Stop the system” when finished.
+For example, send `vx=0.1` m/s with all other fields set to zero. Check that the target PDU reports `linear.x=0.1` and zero in the other fields. Check both the connection log and the PDU values actually read. For a system with a viewer, follow the agent's instructions to check motion on screen.
+
+> Stop the system.
 
 [OpenRTM-aist serialization and transport plugins](rtc-transport-plugins.md)

@@ -4,14 +4,20 @@
 
 `RTSystemDesigner` と `RTC-Agent-Tools` のローカル連携対応済みチェックアウトを同じフォルダーに置きます。Windows の PowerShell で Node.js 24、npm、Python 3 を使用します。
 
-親フォルダーで次を実行し、このターミナルを開いたままにします。
+以下の引用文を Codex または Claude Code に送ります。エージェントは親フォルダーで依存関係を準備し、ローカルサーバーを起動したままにします。
+
+> ローカル版 RTSystemDesigner を起動し、テストセッションを開いて。
+
+エージェントが実行するコマンドの例です。
 
 ```powershell
 npm.cmd --prefix .\RTSystemDesigner ci
 npm.cmd --prefix .\RTSystemDesigner run dev:integration
 ```
 
-別のターミナルで `RTC-Agent-Tools` に移動し、テスト用の v2 セッションを登録します。
+同じ依頼で、エージェントは別のシェルで `RTC-Agent-Tools` に移動し、テスト用セッションを登録してブラウザで開きます。
+
+エージェントが実行するコマンドの例です。
 
 ```powershell
 Set-Location .\RTC-Agent-Tools
@@ -20,7 +26,11 @@ $session.designerUrl
 Start-Process $session.designerUrl
 ```
 
-ブラウザに `SmokeRTC0` が表示されたら、ノードを移動して「保存」をクリックします。確認ダイアログを閉じてページを再読み込みすると、移動後の位置が表示されます。エージェント側でも保存された JSON を取得できます。
+ブラウザに `SmokeRTC0` が表示されたら、ノードを移動して「保存」をクリックします。確認ダイアログを閉じてページを再読み込みすると、移動後の位置が表示されます。保存結果の読み戻しもエージェントに依頼できます。
+
+> 保存したローカルセッションを読み戻して。
+
+エージェントが実行するコマンドの例です。
 
 ```powershell
 python .\scripts\local_designer_session.py get $session.sessionId
@@ -33,6 +43,10 @@ python .\scripts\local_designer_session.py get $session.sessionId
 ## 箱庭 Drone から ROS 2 への姿勢配信テスト
 
 `examples/local-designer/hakoniwa-ros2-pose-session.json` が設計のひな形です。設計確定後、`local_designer_session.py get` で取得したセッションを WSL2 側の検証に渡します。
+
+> 箱庭 Drone の姿勢が ROS 2 に届くか確認して。
+
+エージェントが実行するコマンドの例です。
 
 ```bash
 bash examples/local-designer/verify-hakoniwa-ros2.sh "$APPROVED_SESSION" \
@@ -47,4 +61,10 @@ bash examples/local-designer/verify-hakoniwa-ros2.sh "$APPROVED_SESSION" \
 
 `examples/local-designer/hakoniwa-ros2-viewer-session.json` を登録し、確定したセッションを同じスクリプトに渡します。WSL2 側で `HAKONIWA_VISUAL_PUBLISHER` を Business Pack の `tools/recipe/drone_gui_visual_state.py` に、`HAKONIWA_VIEWER_ROOT` を Three.js Drone のチェックアウトに設定します。
 
-ブラウザで確認する間は、上記コマンドに第6引数 `--keep-running` を付けます。[Three.js ビューア](http://127.0.0.1:8000/index.html?viewerConfigPath=/config/viewer-config-fleets.json&wsUri=ws://127.0.0.1:8765&wireVersion=v2) の接続状態、機体の描画、表示座標を確認し、フォアグラウンドで起動したターミナルの Ctrl+C で停止します。
+ビューア付きの検証は次のように依頼します。
+
+> Three.js ビューア付きでテストを起動して。
+
+エージェントは上記コマンドに第6引数 `--keep-running` を付けます。[Three.js ビューア](http://127.0.0.1:8000/index.html?viewerConfigPath=/config/viewer-config-fleets.json&wsUri=ws://127.0.0.1:8765&wireVersion=v2) の接続状態、機体の描画、表示座標を確認し、確認後は次のように依頼します。エージェントは起動したテストを Ctrl+C 相当の割り込みで停止します。
+
+> テストを終了して。

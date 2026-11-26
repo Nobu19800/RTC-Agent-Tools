@@ -17,8 +17,84 @@
     <ros:Variable direction="input" transport="ROS 2 topic" name="odomN" dataType="nav_msgs/msg/Odometry" />
     <ros:Variable direction="input" transport="ROS 2 topic" name="imuN" dataType="sensor_msgs/msg/Imu" />
     <ros:Variable direction="output" transport="ROS 2 topic" name="/odometry/filtered" dataType="nav_msgs/msg/Odometry" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="set_pose" dataType="geometry_msgs/msg/PoseWithCovarianceStamped" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="odometry/filtered" dataType="nav_msgs/msg/Odometry" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="accel/filtered" dataType="geometry_msgs/msg/AccelWithCovarianceStamped" />
   </ros:IOVariables>
-  <ros:Services />
+  <ros:Services>
+    <ros:Service kind="service" name="set_pose" dataType="robot_localization/srv/SetPose" />
+    <ros:Service kind="service" name="enable" dataType="std_srvs/srv/Empty" />
+    <ros:Service kind="service" name="reset" dataType="std_srvs/srv/Empty" />
+    <ros:Service kind="service" name="toggle" dataType="robot_localization/srv/ToggleFilterProcessing" />
+  </ros:Services>
+  <ros:Parameters>
+    <ros:Parameter name="print_diagnostics" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="debug" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="map_frame" dataType="string">
+      <ros:Default>"map"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="odom_frame" dataType="string">
+      <ros:Default>"odom"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="base_link_frame" dataType="string">
+      <ros:Default>"base_link"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="publish_tf" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="publish_acceleration" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="permit_corrected_publication" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="transform_time_offset" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="transform_timeout" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="transform_timeout_odom_bl" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="frequency" dataType="double">
+      <ros:Default>30.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="predict_to_current_time" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="two_d_mode" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="smooth_lagged_data" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="history_length" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="reset_on_time_jump" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="use_control" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="stamped_control" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="control_timeout" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="dynamic_process_noise_covariance" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="disabled_at_startup" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report cites Jazzy releases after 2025.</ros:Requirement>
   </ros:Infra>
@@ -31,7 +107,10 @@
   <ros:Evidence>
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="6">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/cra-ros-pkg/robot_localization</ros:Source>
-    <ros:UpstreamSource status="other-ref-registration">https://github.com/cra-ros-pkg/robot_localization/blob/ros2/CMakeLists.txt</ros:UpstreamSource>
+    <ros:UpstreamSource status="jazzy-registration">https://github.com/cra-ros-pkg/robot_localization/blob/fea7fc3dcad81c533121e4aa2fb1087a0565d8cc/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/cra-ros-pkg/robot_localization/blob/fea7fc3dcad81c533121e4aa2fb1087a0565d8cc/src/ekf_node.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/cra-ros-pkg/robot_localization/blob/fea7fc3dcad81c533121e4aa2fb1087a0565d8cc/src/ros_filter.cpp</ros:AdditionalImplementationSource>
+    <ros:SourceReviewNote>Sensor subscriptions use the configured odomN, imuN, poseN and twistN parameters. cmd_vel is conditional on use_control, and stamped_control controls its type. accel/filtered and TF are conditional.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

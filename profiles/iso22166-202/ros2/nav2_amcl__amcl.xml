@@ -17,8 +17,145 @@
     <ros:Variable direction="input" transport="ROS 2 topic" name="/scan" dataType="sensor_msgs/msg/LaserScan" />
     <ros:Variable direction="input" transport="ROS 2 topic" name="/map" dataType="nav_msgs/msg/OccupancyGrid" />
     <ros:Variable direction="output" transport="ROS 2 topic" name="/amcl_pose" dataType="geometry_msgs/msg/PoseWithCovarianceStamped" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="particle_cloud" dataType="nav2_msgs/msg/ParticleCloud" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="amcl_pose" dataType="geometry_msgs/msg/PoseWithCovarianceStamped" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="initialpose" dataType="geometry_msgs/msg/PoseWithCovarianceStamped" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="scan" dataType="sensor_msgs/msg/LaserScan" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="map" dataType="nav_msgs/msg/OccupancyGrid" />
   </ros:IOVariables>
-  <ros:Services />
+  <ros:Services>
+    <ros:Service kind="service" name="reinitialize_global_localization" dataType="std_srvs/srv/Empty" />
+    <ros:Service kind="service" name="set_initial_pose" dataType="nav2_msgs/srv/SetInitialPose" />
+    <ros:Service kind="service" name="request_nomotion_update" dataType="std_srvs/srv/Empty" />
+  </ros:Services>
+  <ros:Parameters>
+    <ros:Parameter name="alpha1" dataType="double">
+      <ros:Default>0.2</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="alpha2" dataType="double">
+      <ros:Default>0.2</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="alpha3" dataType="double">
+      <ros:Default>0.2</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="alpha4" dataType="double">
+      <ros:Default>0.2</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="alpha5" dataType="double">
+      <ros:Default>0.2</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="beam_skip_distance" dataType="double">
+      <ros:Default>0.5</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="beam_skip_error_threshold" dataType="double">
+      <ros:Default>0.9</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="beam_skip_threshold" dataType="double">
+      <ros:Default>0.3</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="do_beamskip" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="lambda_short" dataType="double">
+      <ros:Default>0.1</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="laser_likelihood_max_dist" dataType="double">
+      <ros:Default>2.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="laser_max_range" dataType="double">
+      <ros:Default>100.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="laser_min_range" dataType="double">
+      <ros:Default>-1.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="set_initial_pose" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="initial_pose.x" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="initial_pose.y" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="initial_pose.z" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="initial_pose.yaw" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="max_beams" dataType="integer">
+      <ros:Default>60</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="max_particles" dataType="integer">
+      <ros:Default>2000</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="min_particles" dataType="integer">
+      <ros:Default>500</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="pf_err" dataType="double">
+      <ros:Default>0.05</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="pf_z" dataType="double">
+      <ros:Default>0.99</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="recovery_alpha_fast" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="recovery_alpha_slow" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="resample_interval" dataType="integer">
+      <ros:Default>1</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="robot_model_type" dataType="string">
+      <ros:Default>"nav2_amcl::DifferentialMotionModel"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="save_pose_rate" dataType="double">
+      <ros:Default>0.5</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="sigma_hit" dataType="double">
+      <ros:Default>0.2</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="tf_broadcast" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="transform_tolerance" dataType="double">
+      <ros:Default>1.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="update_min_a" dataType="double">
+      <ros:Default>0.2</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="update_min_d" dataType="double">
+      <ros:Default>0.25</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="z_hit" dataType="double">
+      <ros:Default>0.5</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="z_max" dataType="double">
+      <ros:Default>0.05</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="z_rand" dataType="double">
+      <ros:Default>0.5</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="z_short" dataType="double">
+      <ros:Default>0.05</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="always_reset_initial_pose" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="scan_topic" dataType="string">
+      <ros:Default>"scan"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="map_topic" dataType="string">
+      <ros:Default>"map"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="first_map_only" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="freespace_downsampling" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -32,6 +169,8 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="11">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-navigation/navigation2/tree/jazzy/nav2_amcl</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_amcl/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_amcl/src/amcl_node.cpp</ros:ImplementationSource>
+    <ros:SourceReviewNote>Laser scan topic and map topic are configurable. Lifecycle configuration must complete before the interfaces appear.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

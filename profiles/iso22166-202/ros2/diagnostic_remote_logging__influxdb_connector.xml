@@ -14,9 +14,37 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Reads diagnostics and sends them to a configured database. Credentials are supplied at deployment.</ros:Description>
-    <ros:Variable direction="input" transport="ROS 2 topic" name="/diagnostics_agg" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="/diagnostics_agg" dataType="diagnostic_msgs/msg/DiagnosticArray" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="/diagnostics" dataType="diagnostic_msgs/msg/DiagnosticArray" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="/diagnostics_toplevel_state" dataType="diagnostic_msgs/msg/DiagnosticStatus" />
   </ros:IOVariables>
   <ros:Services />
+  <ros:Parameters>
+    <ros:Parameter name="connection.url" dataType="string">
+      <ros:Default>"http://localhost:8086/api/v2/write"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="connection.organization" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="connection.bucket" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="connection.token" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="send.period" dataType="double">
+      <ros:Default>1.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="send.diagnostics" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="send.agg" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="send.top_level_state" dataType="bool">
+      <ros:Default>true</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -30,6 +58,7 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="91">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros/diagnostics/tree/ros2/diagnostic_remote_logging</ros:Source>
     <ros:UpstreamSource status="other-ref-registration">https://github.com/ros/diagnostics/blob/ros2/diagnostic_remote_logging/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros/diagnostics/blob/33029d0f04430dc0473a6890f1228e0000d2b9d1/diagnostic_remote_logging/src/influxdb_connector.cpp</ros:ImplementationSource>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

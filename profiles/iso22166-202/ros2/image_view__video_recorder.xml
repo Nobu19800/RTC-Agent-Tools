@@ -14,8 +14,41 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Subscribes to Image and writes a video file.</ros:Description>
+    <ros:Variable direction="input" transport="ROS 2 topic" name="image" dataType="sensor_msgs/msg/Image" />
   </ros:IOVariables>
   <ros:Services />
+  <ros:Parameters>
+    <ros:Parameter name="filename" dataType="string">
+      <ros:Default>"output.avi"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="stamped_filename" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="fps" dataType="double">
+      <ros:Default>15.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="codec" dataType="string">
+      <ros:Default>"MJPG"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="encoding" dataType="string">
+      <ros:Default>"bgr8"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="min_depth_range" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="max_depth_range" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="use_dynamic_depth_range" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="colormap" dataType="integer">
+      <ros:Default>-1</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="image_transport" dataType="string">
+      <ros:Default>"raw"</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -29,6 +62,8 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="58">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-perception/image_pipeline/blob/rolling/image_view/CMakeLists.txt</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-perception/image_pipeline/blob/jazzy/image_view/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_view/src/video_recorder.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_view/src/video_recorder_node.cpp</ros:AdditionalImplementationSource>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

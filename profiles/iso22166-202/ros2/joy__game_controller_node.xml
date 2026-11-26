@@ -15,8 +15,29 @@
   <ros:IOVariables>
     <ros:Description>Publishes joy. Button and axis mapping depends on the controller and SDL configuration.</ros:Description>
     <ros:Variable direction="output" transport="ROS 2 topic" name="joy" dataType="sensor_msgs/msg/Joy" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="joy/set_feedback" dataType="sensor_msgs/msg/JoyFeedback" />
   </ros:IOVariables>
   <ros:Services />
+  <ros:Parameters>
+    <ros:Parameter name="device_id" dataType="integer">
+      <ros:Default>0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="device_name" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="deadzone" dataType="double">
+      <ros:Default>0.05</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="autorepeat_rate" dataType="double">
+      <ros:Default>20.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="sticky_buttons" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="coalesce_interval_ms" dataType="integer">
+      <ros:Default>1</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists Jazzy support. SDL2 controller mappings can differ by device.</ros:Requirement>
   </ros:Infra>
@@ -30,6 +51,7 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="93">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-drivers/joystick_drivers/tree/ros2/joy</ros:Source>
     <ros:UpstreamSource status="other-ref-registration">https://github.com/ros-drivers/joystick_drivers/blob/ros2/joy/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-drivers/joystick_drivers/blob/50bcf0f44d40368201aec8f451227af384429c50/joy/src/game_controller.cpp</ros:ImplementationSource>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

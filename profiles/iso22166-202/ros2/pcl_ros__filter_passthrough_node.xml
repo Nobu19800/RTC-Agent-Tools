@@ -14,8 +14,34 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Reads PointCloud2 and emits filtered PointCloud2.</ros:Description>
+    <ros:Variable direction="input" transport="ROS 2 topic" name="input" dataType="sensor_msgs/msg/PointCloud2" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="indices" dataType="pcl_msgs/msg/PointIndices" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="output" dataType="sensor_msgs/msg/PointCloud2" />
   </ros:IOVariables>
   <ros:Services />
+  <ros:Parameters>
+    <ros:Parameter name="input_frame" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="output_frame" dataType="string">
+      <ros:Default>""</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="filter_field_name" dataType="string">
+      <ros:Default>"z"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="filter_limit_min" dataType="double">
+      <ros:Default>0.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="filter_limit_max" dataType="double">
+      <ros:Default>1.0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="filter_limit_negative" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="keep_organized" dataType="bool">
+      <ros:Default>false</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -29,6 +55,9 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="63">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-perception/perception_pcl/blob/ros2/pcl_ros/CMakeLists.txt</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-perception/perception_pcl/blob/jazzy/pcl_ros/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/src/pcl_ros/filters/filter.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/ros-perception/perception_pcl/blob/c5e7e72d20cbbc164e9d940f75ae2a6ae5bbf41a/pcl_ros/src/pcl_ros/filters/passthrough.cpp</ros:AdditionalImplementationSource>
+    <ros:SourceReviewNote>The indices input is enabled by the filter configuration.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

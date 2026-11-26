@@ -14,11 +14,28 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Provides navigation actions such as navigate_to_pose and navigate_through_poses.</ros:Description>
+    <ros:Variable direction="input" transport="ROS 2 topic" name="goal_pose" dataType="geometry_msgs/msg/PoseStamped" />
   </ros:IOVariables>
   <ros:Services>
-    <ros:Service kind="action" name="navigate_to_pose" />
-    <ros:Service kind="action" name="navigate_through_poses" />
+    <ros:Service kind="action" name="navigate_to_pose" dataType="nav2_msgs/action/NavigateToPose" />
+    <ros:Service kind="action" name="navigate_through_poses" dataType="nav2_msgs/action/NavigateThroughPoses" />
   </ros:Services>
+  <ros:Parameters>
+    <ros:Parameter name="transform_tolerance" dataType="double">
+      <ros:Default>0.1</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="goals_blackboard_id" dataType="string">
+      <ros:Default>"goals"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="path_blackboard_id" dataType="string">
+      <ros:Default>"path"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="default_nav_through_poses_bt_xml" dataType="string" />
+    <ros:Parameter name="goal_blackboard_id" dataType="string">
+      <ros:Default>"goal"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="default_nav_to_pose_bt_xml" dataType="string" />
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -32,6 +49,10 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="19">deep-research-report.md</ros:Report>
     <ros:Source>https://docs.nav2.org/jazzy/getting_started/navigation_concepts/navigation_servers/</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-navigation/navigation2/blob/jazzy/nav2_bt_navigator/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_bt_navigator/src/bt_navigator.cpp</ros:ImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_bt_navigator/src/navigators/navigate_through_poses.cpp</ros:AdditionalImplementationSource>
+    <ros:AdditionalImplementationSource>https://github.com/ros-navigation/navigation2/blob/c7046550547d382a5186d106b0895eda02485d7c/nav2_bt_navigator/src/navigators/navigate_to_pose.cpp</ros:AdditionalImplementationSource>
+    <ros:SourceReviewNote>Configured navigator plugins determine action endpoints and additional parameters.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>

@@ -14,9 +14,25 @@
   </ros:ModuleProp>
   <ros:IOVariables>
     <ros:Description>Reads an Image input. See the selected source for the marker and image outputs.</ros:Description>
+    <ros:Variable direction="output" transport="ROS 2 topic" name="tracked_pose" dataType="geometry_msgs/msg/PoseStamped" />
     <ros:Variable direction="input" transport="ROS 2 topic" name="image" dataType="sensor_msgs/msg/Image" />
+    <ros:Variable direction="input" transport="ROS 2 topic" name="camera_info" dataType="sensor_msgs/msg/CameraInfo" />
   </ros:IOVariables>
   <ros:Services />
+  <ros:Parameters>
+    <ros:Parameter name="image_transport" dataType="string">
+      <ros:Default>"raw"</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="marker_id" dataType="integer">
+      <ros:Default>0</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="marker_size" dataType="double">
+      <ros:Default>0.05</ros:Default>
+    </ros:Parameter>
+    <ros:Parameter name="dictionary" dataType="integer">
+      <ros:Default>10</ros:Default>
+    </ros:Parameter>
+  </ros:Parameters>
   <ros:Infra>
     <ros:Requirement kind="report-distribution-note">The report lists this entry for ROS 2 Jazzy.</ros:Requirement>
   </ros:Infra>
@@ -30,6 +46,8 @@
     <ros:Report sha256="a8ac313c49c6b958a86bc11474c8a694c69f7968c10bd8d71edd93c87c2f93b6" row="40">deep-research-report.md</ros:Report>
     <ros:Source>https://github.com/ros-perception/image_pipeline/blob/rolling/image_proc/src/track_marker.cpp</ros:Source>
     <ros:UpstreamSource status="jazzy-registration">https://github.com/ros-perception/image_pipeline/blob/jazzy/image_proc/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros-perception/image_pipeline/blob/6c3df3099bc7b1ec92215719215c8eefd0d3aa69/image_proc/src/track_marker.cpp</ros:ImplementationSource>
+    <ros:SourceReviewNote>Base topic names assume raw image transport; subscriptions may be created lazily.</ros:SourceReviewNote>
     <ros:Verification>Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
   </ros:Evidence>
 </ros:Module>
