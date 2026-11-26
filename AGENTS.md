@@ -110,6 +110,18 @@ Use [the ROS 2 workflow](docs/agents/ros2.md) for catalog selection, node deploy
 - For Hakoniwa asset ↔ ROS 2 topic connections, use a [PDU-to-ROS bridge](docs/agents/hakoniwa-ros2.md). Show the bridge as an independent module and identify the PDU and ROS 2 legs on the diagram. Preserve the asset's PDU identity and layout. Include the viewer path when visualization is part of the design.
 - Verify actual data transfer in addition to node and topic discovery. Use the selected design's configuration and retain evidence for each implemented connection.
 
+## Git installation
+
+Before cloning RTC-Agent-Tools or component repositories, run `git --version` in the shell that will run `git clone`. If it succeeds, reuse the installed Git. Otherwise, install Git in that environment:
+
+| Environment | Installation |
+| --- | --- |
+| Windows (PowerShell) | Run `winget install --id Git.Git --exact --source winget`. If WinGet is unavailable, use the standalone installer for the host architecture from [Git for Windows](https://git-scm.com/install/win). Open a new PowerShell session to pick up PATH changes. |
+| Ubuntu | Run `sudo apt update`, then `sudo apt install git` using the Ubuntu package repositories. [Git for Linux](https://git-scm.com/install/linux.html) |
+| WSL2 (Ubuntu) | Open the Ubuntu distribution that will perform the clone, then run `sudo apt update` and `sudo apt install git` inside its shell. Check and use the Linux `git` in that distribution. |
+
+Run `git --version` again in the target shell before cloning. For the first clone of RTC-Agent-Tools, this check takes place before the local copy of this guide is available.
+
 ## Runtime installation
 
 Follow [Runtime installation](docs/agents/install-runtime.md) for OpenRTM-aist, ROS 2, and Hakoniwa. On Windows, use the newest compatible OpenRTM-aist MSI and reuse installed Visual Studio, Python, and CMake when compatible. On Ubuntu and WSL2, use the official OpenRTM-aist installation procedure and select ROS 2 for the actual Ubuntu release. For Hakoniwa on either Ubuntu host, start with the [Hakoniwa Business Pack AGENTS.md](https://github.com/hakoniwalab/hakoniwa-business-pack/blob/main/AGENTS.md) and follow the selected Recipe's Workspace and Foundation procedures.
