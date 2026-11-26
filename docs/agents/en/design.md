@@ -72,7 +72,13 @@ For each Hakoniwa candidate, inspect `catalogId`, `moduleId`, `moduleKind`, `sou
 
 Check connection compatibility by endpoint kinds.
 
-For RTC-to-RTC DataPorts, require matching types unless an explicit adapter/converter is inserted. For asset-to-asset PDUs, check exact message type, robot, channel, capacity, layout and semantics. For RTC-to-asset or asset-to-RTC DataPorts, require the OpenRTM-aist custom Hakoniwa interface and a serializer mapping the typed RTC value to/from the asset PDU. The RTC and PDU type names can differ only with that explicit mapping; follow [hakoniwa-serializer.md](hakoniwa-serializer.md). Do not select a serializer solely because it mentions the same message name.
+For RTC-to-RTC DataPorts with different types, prefer reusing both existing RTCs through a custom serializer and deserializer when they meet the functional requirements. Preserve the original port types and source. Document the endpoints, field semantics and units, ranges, invalid-value handling, wire format, shared `dataport.marshaling_type`, and plugin loading. Confirm that the selected OpenRTM-aist implementations support the typed connection, then verify converted data after design approval. Treat unresolved semantics or unsupported negotiation as a design blocker.
+
+- Register the serializer for the original OutPort type and the deserializer for the original InPort type under the same identifier. Load each plugin through `manager.modules.preload` in its manager's `rtc.conf` before the RTC creates its DataPorts. For CDR, record the wire IDL type and byte order, and define how timestamps are preserved or converted.
+- Verify direction, IDL repository ID, and `dataport.marshaling_types` on both live port profiles. If the `rtcon` client rejects the different types, call `PortService.connect` for the approved edge with explicit connector properties after checking both profiles. Check the properties of an existing connection before reusing it and avoid duplicate connectors.
+- Confirm received values using the actual language and OpenRTM-aist version combination. For control data, check normal, boundary, and invalid inputs. Check whether releasing input stops motion and whether the receiver retains the last command after a disconnect. Measure output velocity after a zero command and the time until motion stops separately.
+
+For asset-to-asset PDUs, check exact message type, robot, channel, capacity, layout and semantics. For RTC-to-asset or asset-to-RTC DataPorts, require the OpenRTM-aist custom Hakoniwa interface and a serializer mapping the typed RTC value to/from the asset PDU. The RTC and PDU type names can differ only with that explicit mapping; follow [hakoniwa-serializer.md](hakoniwa-serializer.md). Do not select a serializer solely because it mentions the same message name.
 
 For ServicePorts, check service interface name, interface type, and Consumer/Provider direction.
 

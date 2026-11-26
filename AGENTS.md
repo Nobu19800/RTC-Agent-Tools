@@ -61,6 +61,10 @@ The linked guides below are mandatory parts of this repository's instructions, n
 
 ## System composition JSON
 
+If existing RTCs meet the functional requirements and their DataPorts differ only in representation, prefer reusing both RTCs through a custom serializer and deserializer over generating a replacement RTC. Preserve the original port types and component source. Record the semantic mapping, wire format, shared `dataport.marshaling_type`, plugin loading, and runtime checks in the design. Verify that the selected OpenRTM-aist implementations can negotiate the typed connection, and verify data transfer after design approval. Mark unsupported negotiation or unresolved semantics as a design blocker.
+
+Register each codec for its endpoint's original IDL type and preload it before the RTC creates its DataPorts. Verify the shared serializer identifier in both live port profiles. If `rtcon` rejects the distinct IDL types in its client-side check, the connection batch may invoke a dedicated `PortService.connect` helper for that approved edge. Require the helper to verify both port profiles and the codec before connecting. Follow [Design workflow](docs/agents/design.md) for the wire contract and runtime verification.
+
 When an existing RTC creates DataPorts from a selected peer, derive the planned ports during design generation and place them in `components[].data.ports`. Connect them with ordinary v2 `edges` so they are visible in RTSystemDesigner. Follow [Dynamic RTC ports](docs/agents/dynamic-rtc-ports.md) for direction, supported types, naming and runtime reconciliation.
 
 For ExcelControlpy and LibreOffice Calc RTCs based on CalcControl, record each spreadsheet port's sheet, starting cell or range, and whether the cell advances after each sample in RTSystemDesigner's **Implementation → Requirements** (`components[].data.implementation.requirements`). For advancing ports, state the direction and what triggers advancement. Read these settings from the confirmed design when configuring the RTC. Follow the startup and verification procedure in [Dynamic RTC ports](docs/agents/dynamic-rtc-ports.md).
