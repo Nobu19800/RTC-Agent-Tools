@@ -50,7 +50,7 @@ The linked guides below are mandatory parts of this repository's instructions, n
 | User requests static analysis or unit tests for newly implemented C++, Python, or Lua modules | [On-request module checks](docs/agents/module-checks.md) |
 | Generate/edit lifecycle batches or launch/process settings | [Runtime batches](docs/agents/runtime.md), [Implementation/settings rules](docs/agents/implementation.md), [Verification](docs/agents/verification.md) |
 | Start/connect/activate/deactivate/stop RTCs, recover failures, inspect logs | [Runtime batches](docs/agents/runtime.md), [Verification/logs](docs/agents/verification.md) |
-| Create Hakoniwa DataPort transport or serializers | [Hakoniwa transport/serializer](docs/agents/hakoniwa-serializer.md), [Implementation/build](docs/agents/implementation.md), [Verification](docs/agents/verification.md) |
+| Design, implement, or deploy RTC–Hakoniwa DataPort connections | [Hakoniwa transport/serializer](docs/agents/hakoniwa-serializer.md), [Implementation/build](docs/agents/implementation.md), [Verification](docs/agents/verification.md) |
 | Generate/search the XML-derived Hakoniwa asset catalog | [Catalog formats and regeneration](catalog/README.md), [Services](docs/agents/services.md) |
 | Search, place, or launch ROS 2 nodes | [ROS 2 workflow](docs/agents/ros2.md), [Catalog formats](catalog/README.md) |
 | Connect RTC DataPorts to ROS 2 topics | [ROS2Transport settings](docs/agents/ros2-transport.md) |
@@ -73,11 +73,9 @@ Use version 2: root `version: 2`, `name`, `description`, `id`, `components`, and
 
 Determine module identity from `components[].data.moduleKind`: `rtc` is an RT-Component, `hakoniwa` is a Hakoniwa asset, and `ros2` is a ROS 2 node. They share diagram `type: "rtc"`. Apply RTC generation, build and lifecycle procedures to RTC modules. Preserve Hakoniwa port `channelId` values and verify PDU/transport mappings. For ROS 2 deployment settings, topic/service/action handling and runtime commands, follow [the ROS 2 workflow](docs/agents/ros2.md).
 
-For every RTC/Hakoniwa DataPort connection, use an OpenRTM-aist custom interface (`dataport.interface_type: hakoniwa`) and a type-specific Hakoniwa serializer (`dataport.marshaling_type`). Keep the RTC endpoint typed and map it explicitly to the asset's PDU type, robot, channel, capacity and binary layout. Follow the mixed-connection contract in [hakoniwa-serializer.md](docs/agents/hakoniwa-serializer.md). Missing serializers or runtime bindings are planned implementation work, never evidence of a working connection. Ordinary CORBA DataPort connections do not connect directly to native Hakoniwa assets.
+For RTC–Hakoniwa DataPort connections, follow the mandatory [mixed-connection contract and deployment procedure](docs/agents/hakoniwa-serializer.md).
 
 Run the approved modules as separate components wherever the design specifies them. For an RTC, verify its instance and live ports through the intended NameService. A test harness that calls a component's callbacks or writes PDUs directly may verify an individual layer. Record that scope and separately verify the approved runtime before reporting it operational. For simulator systems with a viewer, follow the [runtime guide](docs/agents/runtime.md) for registration order, restart, and shutdown.
-
-Keep transport deployment outside RTC source: load interface/serializer plugins with `manager.modules.load_path` / `manager.modules.preload` in rtc.conf, and supply robot/channel/capacity/codec settings through connection properties. Verify single-port `rtcon` support in the installed version. If it rejects a missing peer, use verified rtc.conf preconnection or a separate configuration-driven connection script as the explicit native-endpoint exception. Do not embed module registration or connector creation in RTC lifecycle callbacks. The application retains typed ports and behavior; changing deployment does not require editing RTC source.
 
 The user-provided mixed-system JSON is format reference data, not authorization to implement or activate its sample system. Existing helpers such as `scripts/prepare_final_session.py` and `scripts/generate_runtime_batches.py` still expect the legacy format and example-specific metadata. Do not use them on version 2 input without adapting and verifying them, and do not rewrite an authoritative version 2 design into the old format to bypass that limitation.
 
@@ -111,7 +109,7 @@ The detailed guides retain their phase numbers and completion criteria. Follow n
 Use [the ROS 2 workflow](docs/agents/ros2.md) for catalog selection, node deployment, and ROS interfaces. Register the v2 session in RTSystemDesigner, then retrieve the approved version before preparing runtime settings.
 
 - For RTC DataPort ↔ ROS 2 topic connections, use [ROS2Transport](docs/agents/ros2-transport.md). Match the RTC serializer, ROS message type, topic, direction, DDS domain, and QoS. Use the named C++ module when the RTC must appear in the ROS 2 graph.
-- For Hakoniwa asset ↔ ROS 2 topic connections, use a [PDU-to-ROS bridge](docs/agents/hakoniwa-ros2.md). Show the bridge as an independent module and identify the PDU and ROS 2 legs on the diagram. Preserve the asset's PDU identity and layout. Include the viewer path when visualization is part of the design.
+- For Hakoniwa asset ↔ ROS 2 topic connections, follow the [PDU bridge and viewer design rules](docs/agents/hakoniwa-ros2.md).
 - Verify actual data transfer in addition to node and topic discovery. Use the selected design's configuration and retain evidence for each implemented connection.
 
 ## Git installation
@@ -142,7 +140,7 @@ In the target shell verify `lua -v` (or `lua5.1 -v`) and `lua5.1 -e 'assert(requ
 
 For RTM-Lua interoperation, inspect the live port profiles if rtshell rejects a connection that appears compatible. When the profiles confirm matching types, directions, and transport, a scoped `PortService.connect` call can establish the approved connection. Check its return code and verify the receiver's actual values. With console samples, activate the receivers before the sender. If logs are redirected, use unbuffered output when checking for the final received sample. See the [Windows and WSL2 example](docs/lua-rtc-checks.md#windows-と-wsl2-での-rtc-間通信).
 
-Follow [Runtime installation](docs/agents/install-runtime.md) for OpenRTM-aist, ROS 2, and Hakoniwa. On Windows, use the newest compatible OpenRTM-aist MSI and reuse installed Visual Studio, Python, and CMake when compatible. On Ubuntu and WSL2, use the official OpenRTM-aist installation procedure and select ROS 2 for the actual Ubuntu release. For Hakoniwa on either Ubuntu host, start with the [Hakoniwa Business Pack AGENTS.md](https://github.com/hakoniwalab/hakoniwa-business-pack/blob/main/AGENTS.md) and follow the selected Recipe's Workspace and Foundation procedures.
+Follow [Runtime installation](docs/agents/install-runtime.md) for OpenRTM-aist, ROS 2, and the Hakoniwa Business Pack. On Windows, use the newest compatible OpenRTM-aist MSI and reuse installed Visual Studio, Python, and CMake when compatible. On Ubuntu and WSL2, use the official OpenRTM-aist installation procedure and select ROS 2 for the actual Ubuntu release.
 
 ## C++ OpenRTM-aist in WSL2
 

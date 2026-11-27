@@ -8,7 +8,16 @@ Python 版と同様に、標準 TkJoyStick の `RTC::TimedFloatSeq` を受け、
 
 ## 実行手順
 
-エージェントが Ubuntu 24.04 または WSL2 の Bash で、RTC-Agent-Tools のルートから実行します。OpenRTM-aist 2.1、箱庭 Foundation、Clang 18、LLVM 18 の `llvm-profdata` と `llvm-cov`、Clang のプロファイルランタイム、CMake、GoogleTest を使います。Foundation のパスは実際の配置に合わせます。
+エージェントが Ubuntu 24.04 または WSL2 の Bash で、RTC-Agent-Tools のルートから実行します。Foundation のパスは実際の配置に合わせます。
+
+必要なソフトウェアは次のとおりです。
+
+- OpenRTM-aist 2.1
+- 箱庭 Foundation
+- Clang 18 とプロファイルランタイム
+- LLVM 18 の `llvm-profdata` と `llvm-cov`
+- CMake
+- GoogleTest
 
 ```bash
 src=examples/hakoniwa_transport/cpp
@@ -43,6 +52,33 @@ llvm-cov-18 report "$build/drone_adapter_tests" \
 | LLVM 分岐カバレッジ | 同じ対象の 40 分岐中 40 分岐（100%） |
 
 単体テストでは入力と移動距離の上限、応答判定、PDU のパディングと不正メタデータの拒否を確認しました。カバレッジの対象は `Control.hpp` と `Pdu.hpp` です。RTC のライフサイクルや箱庭シミュレーターとの実通信は個別の動作確認が必要です。
+
+## Windows で単体テストを実行する
+
+必要なソフトウェアとファイルは次のとおりです。
+
+- Visual Studio 2022 の MSVC と Windows SDK
+- CMake と CTest
+- GoogleTest のソースツリー
+- 箱庭 Foundation の PDU ヘッダー（`include/hakoniwa/pdu`）
+
+エージェントが Windows の PowerShell で実行します。`$foundation` と `$gtest` は用意したファイルの場所に合わせます。今回は WSL2 にあったヘッダーと GoogleTest のソースを Windows 側にコピーし、MSVC でネイティブビルドしました。`DRONE_BUILD_RTC=OFF` では単体テストだけを構成できるため、OpenRTM と Foundation の実行ライブラリは不要です。
+
+```powershell
+$src = "examples/hakoniwa_transport/cpp"
+$build = "work/drone-adapter-windows/build"
+$foundation = (Resolve-Path "work/drone-adapter-windows/foundation").Path
+$gtest = (Resolve-Path "work/drone-adapter-windows/googletest").Path
+
+cmake -S $src -B $build -G "Visual Studio 17 2022" -A x64 `
+  -DDRONE_BUILD_RTC=OFF "-DHAKONIWA_ROOT=$foundation" `
+  "-DGTEST_SOURCE_DIR=$gtest" -Dgtest_force_shared_crt=ON
+cmake --build $build --config Release --target drone_adapter_tests
+ctest --test-dir $build -C Release --output-on-failure
+& "$build/Release/drone_adapter_tests.exe"
+```
+
+Visual Studio 2022 の MSVC 19.44、x64 Release で **GoogleTest 5 件成功、失敗 0 件**でした。CTest ではテスト実行ファイル 1 件が成功と表示されます。この Windows 実行ではカバレッジを計測していません。
 
 ## 箱庭との結合確認
 
