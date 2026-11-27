@@ -2,6 +2,8 @@
 
 [日本語](README.ja.md)
 
+The documentation is available on GitHub Pages in [English](https://nobu19800.github.io/RTC-Agent-Tools/) and [Japanese](https://nobu19800.github.io/RTC-Agent-Tools/README.ja.html).
+
 RTC-Agent-Tools helps you design, build, and run robot systems with a coding agent such as Codex. Describe the system you want, review the proposal in RTSystemDesigner, then ask the agent to build and start the approved design. [Public RTSystemDesigner](https://nobu19800.github.io/RTSystemDesigner/)
 
 ## What you can do
@@ -40,6 +42,7 @@ Open a working folder in Codex or start Claude Code from a terminal in that fold
 | [OpenRTM-aist serialization and transport plugins](docs/en/rtc-transport-plugins.md) | Understand and configure the plugins for Hakoniwa and ROS 2 |
 | [Catalogs and XML profiles](docs/en/catalog-profiles.md) | Explore the four catalogs, ISO 22166-202 mappings, and RTC.xml |
 | [AGENTS.md](AGENTS.md) | Repository instructions for agents and links to the language-specific guides |
+| [Development inventory](docs/en/development-inventory.md) | Catalogs, generation and runtime tools, integration examples, and documentation |
 | [Python static analysis and unit tests](docs/en/drone-adapter-checks.md) | Run Bandit, flake8, and pytest on the drone adapter |
 | [C++ static analysis and unit tests](docs/en/drone-adapter-cpp-checks.md) | Run Clang, GoogleTest, and LLVM coverage and review simulator test results |
 | [Lua static analysis and unit tests](docs/en/lua-rtc-checks.md) | Run Luacheck, LuaUnit, and LuaCov and verify RTC communication on Windows and WSL2 |
@@ -74,3 +77,7 @@ Open a working folder in Codex or start Claude Code from a terminal in that fold
 | [ROS2Transport](docs/agents/en/ros2-transport.md) | Configure RTC-to-ROS 2 transport |
 | [Hakoniwa serializers](docs/agents/en/hakoniwa-serializer.md) | Map RTC types to Hakoniwa PDUs |
 | [Hakoniwa–ROS 2](docs/agents/en/hakoniwa-ros2.md) | Configure the PDU bridge and viewer |
+
+## License
+
+The project's original materials are available under [GNU LGPL 2.1](LICENSE). See [licensing information](LICENSING.md) for scope and upstream materials.

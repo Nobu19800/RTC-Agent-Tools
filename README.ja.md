@@ -2,6 +2,8 @@
 
 [English](README.md)
 
+ドキュメントを GitHub Pages で公開しています。[日本語版](https://nobu19800.github.io/RTC-Agent-Tools/README.ja.html) · [英語版](https://nobu19800.github.io/RTC-Agent-Tools/)
+
 RTC-Agent-Tools は、Codex などのエージェントと一緒にロボットシステムを設計・構築・実行するためのツール群です。エージェントに作りたいシステムを伝えると、設計案を RTSystemDesigner で確認できます。設計を確定した後は、その内容に沿って構築と起動を依頼できます。[公開版 RTSystemDesigner](https://nobu19800.github.io/RTSystemDesigner/)
 
 ## できること
@@ -40,6 +42,7 @@ Codex で作業フォルダを開くか、そのフォルダの端末で Claude 
 | [OpenRTM-aist の型変換と通信プラグイン](docs/rtc-transport-plugins.md) | 箱庭・ROS 2 連携で使うプラグインの役割と設定を確認する |
 | [カタログと XML プロファイル](docs/catalog-profiles.md) | 各カタログ、ISO 22166-202 対応 XML、RTC.xml の内容を確認する |
 | [AGENTS.md](AGENTS.md) | エージェント向けの作業指示と、日英の作業ガイドへの入口 |
+| [開発物一覧](docs/development-inventory.md) | カタログ、生成・実行ツール、連携事例、検証、公開文書の一覧 |
 | [Python の静的解析と単体テスト](docs/drone-adapter-checks.md) | Bandit・flake8・pytest の実行手順と測定結果 |
 | [C++ の静的解析と単体テスト](docs/drone-adapter-cpp-checks.md) | Clang・GoogleTest・LLVM カバレッジと箱庭での確認結果 |
 | [Lua の静的解析と単体テスト](docs/lua-rtc-checks.md) | Luacheck・LuaUnit・LuaCov と Windows／WSL2 の RTC 間通信 |
@@ -74,3 +77,7 @@ Codex で作業フォルダを開くか、そのフォルダの端末で Claude 
 | [ROS2Transport](docs/agents/ja/ros2-transport.md) | RTC と ROS 2 の接続設定 |
 | [箱庭のシリアライザ](docs/agents/ja/hakoniwa-serializer.md) | RTC 型と箱庭 PDU の変換 |
 | [箱庭と ROS 2](docs/agents/ja/hakoniwa-ros2.md) | PDU ブリッジとビューアの構成 |
+
+## ライセンス
+
+本プロジェクトの独自の成果物は [GNU LGPL 2.1](LICENSE) で公開しています。適用範囲と上流由来の資料については、ライセンス情報を参照してください。 [ライセンス情報](LICENSING.md)
