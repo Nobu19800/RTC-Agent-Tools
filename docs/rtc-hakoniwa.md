@@ -2,44 +2,59 @@
 
 [English](en/rtc-hakoniwa.md)
 
-型付き DataPort を持つ RTC と、箱庭のネイティブ PDU を読み書きするアセットを接続します。利用者はエージェントに構築を依頼し、設計を確認してから起動を指示します。環境の準備、プラグインの設定、接続とデータの確認はエージェントが行います。
-
-## 1. 設計する
-
-RTC-Agent-Tools を配置した作業フォルダのチャットで、エージェントに AGENTS.md に従うよう伝えておきます。
-
-> RTC の速度指令を箱庭 PDU でシミュレーション用アセットに送る構成を設計して。
-
-確定する前に RTSystemDesigner で RTC とアセットのポート、接続方向を確認します。たとえば速度指令では、RTC の `RTC::TimedVelocity3D` を箱庭側の `geometry_msgs/Twist` PDU に変換します。実際に選定したアセットの PDU 定義に合わせ、ロボット名、PDU 名、チャンネル ID、容量、バイナリ配置、座標系、単位を設計に記録します。逆方向の転送が必要なら、その接続についても同じ情報を確認します。[接続契約](agents/ja/hakoniwa-serializer.md)
-
-### 登録した構成例
-
-<a href="images/designer-sessions/rtc-hakoniwa.jpg"><img src="images/designer-sessions/rtc-hakoniwa.jpg" alt="RTSystemDesigner に表示された速度指令 RTC と箱庭アセットの接続" width="600"></a>
+OpenRTM-aist Python 版の GUI サンプル `TkJoyStick` で、箱庭のドローンシミュレーターに水平移動を指示します。
 
 ```mermaid
 flowchart LR
-    source["VelocityCommand0 · RTC<br/>velocity · RTC::TimedVelocity3D"]
-    asset["VelocityReceiver0 · Hakoniwa Asset<br/>cmd_vel · geometry_msgs/Twist"]
-    source -->|"hakoniwa · SerializerProbe · channel 0 · raw48"| asset
+    joy["TkJoyStick0 · 既存 RTC"]
+    ctl["ドローン操作アダプター · 新規 RTC"]
+    sim["箱庭 Drone · 既存アセット"]
+    bridge["Hakoniwa PDU Web Bridge · 既存"]
+    viewer["Three.js Drone Viewer · 既存（ブラウザ）"]
+    joy -->|"pos · RTC::TimedFloatSeq"| ctl
+    ctl -->|"箱庭 PDU · 離陸・移動・着陸要求"| sim
+    sim -->|"箱庭 PDU · 現在位置・応答"| ctl
+    sim -->|"箱庭 PDU · pos / motor"| bridge
+    bridge -->|"WebSocket v2 · pos / motor"| viewer
 ```
 
-構成例では `VelocityCommand0` と `VelocityReceiver0` を新規の試験用モジュールとして配置しています。速度指令を `SerializerProbe` のチャンネル 0 に、48 バイトの Twist PDU として書き込む設計です。
+## 1. 設計する
+
+> OpenRTM-aist Python の TkJoyStick で箱庭のドローンを操作し、WebSocket ブリッジ経由で Three.js ビューアに表示するシステムを設計して。
+
+RTSystemDesigner で `TkJoyStick0.pos` から操作アダプターへの接続と、アダプターから Drone への箱庭 PDU 接続を確認します。`pos` はキャンバスの X・Y 座標を出力します。`vel` は車輪型移動ロボット向けの左・右の値を出力するため、この例では `pos` を使います。
+
+アダプターでは入力の正規化、座標軸と符号、デッドゾーン、移動幅と速度の上限を設定します。離陸と着陸は明示操作とし、中央入力や入力途絶時は新しい移動要求を発行しません。直前の要求への応答を確認してから次の要求を送ります。
+
+| Drone の PDU | チャンネル | 容量 | 用途 |
+| --- | --- | --- | --- |
+| `pos` | 1 | 72 B | 位置と姿勢の読み取り |
+| `drone_cmd_takeoff` | 6 | 88 B | 離陸の要求と応答 |
+| `drone_cmd_move` | 7 | 104 B | 絶対位置への移動の要求と応答 |
+| `drone_cmd_land` | 8 | 88 B | 着陸の要求と応答 |
+
+上表はカタログの legacy API 構成です。実行時は選定した Recipe の PDU 定義と照合します。`pos` の型名は `geometry_msgs/Twist` ですが、この PDU は位置と姿勢を格納します。移動は `hako_msgs/HakoDroneCmdMove` で指示します。[PDU プロファイル](../profiles/iso22166-202/drone-three-point/drone-service.xml)
 
 ## 2. 構築して起動する
 
-> 設計完了
+> 設計完了。TkJoyStick と箱庭ドローンのシステムを起動して。
 
-エージェントは配備先の Ubuntu または WSL2 に選定した Recipe の Workspace と Foundation を準備し、対象の Python と箱庭のネイティブバインディングを確認します。
-エージェントは RTC の `rtc.conf` で転送プラグインとシリアライザをロードし、接続に `dataport.interface_type: hakoniwa` と型・レイアウトに合う `dataport.marshaling_type` を設定します。箱庭端点が CORBA ポートを公開しない構成では、確認済みの単一ポート接続手順を使います。
+エージェントが選定した Recipe の Workspace と Foundation を準備し、Tkinter 付きの OpenRTM-aist Python で既存の `TkJoyStickComp.py` を起動します。アダプターは `dataport.interface_type=hakoniwa` と PDU ごとの `dataport.marshaling_type` を設定し、ドローンと同じ共有メモリ領域を使います。ドローンが Conductor を内蔵する構成ではその 1 つを使います。箱庭側が稼働状態になり、時刻と `pos` が読み取れてから操作を有効にします。[環境構築手順書](setup.md) · [型変換と通信プラグイン](rtc-transport-plugins.md)
 
-> システムを起動して
+## 3. 確認して終了する
 
-エージェントは選定した Recipe の順序で Conductor と PDU 領域を準備し、RTC を起動・接続・活性化します。プラグインのロードと PDU 領域の準備は別工程です。[環境構築手順書](setup.md) · [Python 転送プラグインとネイティブ検証例](../examples/hakoniwa_transport/README.md)
+RTSystemEditor のネームサービスビューで、Windows からは共有先の `localhost:2809` を更新します。`TkJoyStick0` と `DroneJoystickAdapter0` の両方が表示され、`pos → joystick` が接続されていることを確認します。操作画面は **TkJoystick (Ubuntu)** です。標準 GUI に離着陸ボタンはないため、離陸はエージェントに依頼します。
 
-## 3. 値を照合して終了する
+> ドローンを離陸させて。
 
-たとえば `vx=0.1` m/s、その他の成分をゼロにした試験値を送り、対象 PDU の `linear.x` が `0.1`、他の成分がゼロであることを照合します。接続ログに加え、実際に読み取った PDU 値を確認します。ビューア付きの場合は、エージェントが案内する画面で利用者が動作を確認します。
+利用者は TkJoyStick の画面から水平入力を行います。エージェントは、受信した `RTC::TimedFloatSeq`、移動要求 PDU、成功応答、移動前後の `Drone/pos` を照合します。中央に戻した後は新しい移動要求が出ないことを確認します。
 
-> システムを終了して
+エージェントは WebSocket ブリッジをシミュレーション開始前に登録します。案内された 3D ビューアの URL を開き、**Connect** を押します。**Connected** と表示されていれば接続済みです。離陸して機体が画面から外れたときは、**追従**・**前方**・**全体**のいずれかを押して視点を切り替えてください。
 
-[OpenRTM-aist の型変換と通信プラグイン](rtc-transport-plugins.md)
+標準の `TkJoyStick0` と独立した `DroneJoystickAdapter0` を接続した構成で、ジョイスティック操作後の移動成功応答と `Drone/pos` の変化を確認しました。操作アダプターの水平移動要求は速度 **6.0 m/s**、1 回の目標移動距離は最大 **5.0 m** に設定しています。速度の値はシミュレーターへの指令値です。
+
+> システムを終了して。
+
+エージェントが、両 RTC の登録、ブリッジの WebSocket、ビューアの HTTP が今回の起動分について終了したことを確認します。
+
+[操作アダプターの静的解析・単体テスト](drone-adapter-checks.md)

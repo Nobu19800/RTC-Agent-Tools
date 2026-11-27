@@ -30,7 +30,7 @@ python rtc_search.py catalog/openrtm_samples_catalog.json "ConsoleIn Python" --j
 
 ## ROS 2 ノード
 
-`profiles/iso22166-202/ros2/*.xml` から100件を生成します。各エントリは `moduleKind: ros2` で、`catalogId` は `ros2:<package>/<executable>` です。英語の入出力概要は `interfaceSummary`、構造化できたトピックは `topics`、サービスとアクションは `servicesAndActions` に格納します。`source` には生成元 XML の相対パスと SHA-256、レポートの項目番号、上流の確認先と照合結果を記録します。上流の確認対象に実行ファイルの登録がない項目では `launch` は `null` です。
+`profiles/iso22166-202/ros2/*.xml` から104件を生成します。各エントリは `moduleKind: ros2` で、`catalogId` は `ros2:<package>/<executable>` です。英語の入出力概要は `interfaceSummary`、構造化できたトピックは `topics`、サービスとアクションは `servicesAndActions` に格納します。`source` には生成元 XML の相対パスと SHA-256、該当する場合はレポートの項目番号、上流の確認先と照合結果を記録します。上流の確認対象に実行ファイルの登録がない項目では `launch` は `null` です。
 
 RTC-Agent-Tools のルートで実行します。
 

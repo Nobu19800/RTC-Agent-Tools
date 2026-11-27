@@ -1,0 +1,5 @@
+return {
+    include = {"[/\\]limit$", "[/\\]limit%.lua$", "^limit$"},
+    statsfile = "luacov.stats.out",
+    reportfile = "luacov.report.out",
+}

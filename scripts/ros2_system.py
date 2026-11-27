@@ -45,7 +45,8 @@ def make_component(entry, name, namespace, x, y):
     services = [
         {"id": f"{item['kind']}-{i}", "name": item["name"], "portType": "service",
          "rosInterfaceKind": item["kind"], "interfaces": [
-             {"name": item["name"], "interfaceType": item.get("dataType", ""), "polarity": "provider"}
+             {"name": item["name"], "interfaceType": item.get("dataType", ""),
+              "polarity": "consumer" if item.get("role") == "client" else "provider"}
          ]}
         for i, item in enumerate(entry["servicesAndActions"], 1)
     ]
@@ -55,13 +56,16 @@ def make_component(entry, name, namespace, x, y):
             "moduleKind": "ros2", "catalogId": entry["catalogId"], "name": entry["executable"],
             "instanceName": name, "state": "INACTIVE", "ports": topics + services,
             "ros2": {"package": entry["package"], "executable": entry["executable"],
-                     "namespace": namespace, "catalogLaunchAvailable": entry["launch"] is not None},
+                     "namespace": namespace, "catalogLaunchAvailable": entry["launch"] is not None,
+                     "catalogParameters": entry.get("parameters", [])},
             "deployment": {"host": "localhost", "executable": "", "workingDirectory": "",
                            "arguments": "", "environment": ""},
             "rtcConf": {"corbaNameServers": "", "managerShutdownAuto": ""},
             "configuration": [],
             "implementation": {"summary": entry["description"], "requirements": "",
-                               "constraints": "", "notes": entry["interfaceSummary"]},
+                               "constraints": "", "notes": "\n\n".join(filter(None, (
+                                   entry["interfaceSummary"], entry.get("source", {}).get("reviewNote"),
+                               )))},
         },
     }
 

@@ -152,7 +152,17 @@ def profile_document(entry, report_name, digest, categories, translations, revie
             direction = {"subscribe": "input", "publish": "output"}[role]
             add(variables, "Variable", direction=direction, transport="ROS 2 topic", **fields)
         else:
-            add(services, "Service", kind=role, **fields)
+            if role == "service-client":
+                add(services, "Service", kind="service", role="client", **fields)
+            else:
+                add(services, "Service", kind=role, **fields)
+    parameters = checked.get("parameters", [])
+    if parameters:
+        parameter_group = add(module, "Parameters")
+        for item in parameters:
+            parameter = add(parameter_group, "Parameter", name=item["name"], dataType=item["type"])
+            if "default" in item:
+                add(parameter, "Default", json.dumps(item["default"], ensure_ascii=False))
     infrastructure = add(module, "Infra")
     add(infrastructure, "Requirement", distro, kind="report-distribution-note")
     if checked.get("status") != "not-registered":
@@ -168,6 +178,8 @@ def profile_document(entry, report_name, digest, categories, translations, revie
         add(evidence, "UpstreamSource", checked["url"], status=checked["status"])
     if "implementationUrl" in checked:
         add(evidence, "ImplementationSource", checked["implementationUrl"])
+    for url in checked.get("additionalImplementationUrls", []):
+        add(evidence, "AdditionalImplementationSource", url)
     if "note" in checked:
         add(evidence, "SourceReviewNote", checked["note"])
     add(evidence, "Verification", "Runtime behavior and Annex B conformance have not been verified.")
@@ -194,11 +206,20 @@ def read_profile(path):
     )}
     executable = required("GenInfo", "ModuleName").text
     package = properties["rosPackage"]
-    report = required("Evidence", "Report")
+    report = module.find(f"{tag('Evidence')}/{tag('Report')}")
     upstream = module.find(f"{tag('Evidence')}/{tag('UpstreamSource')}")
     implementation_url = module.findtext(f"{tag('Evidence')}/{tag('ImplementationSource')}")
+    if report is None and (upstream is None or not implementation_url):
+        raise ValueError(f"{path.name}: standalone profiles require upstream and implementation sources")
     review_note = module.findtext(f"{tag('Evidence')}/{tag('SourceReviewNote')}")
     launch = module.find(tag("ExecutableForm"))
+    parameters = []
+    for item in module.findall(f"{tag('Parameters')}/{tag('Parameter')}"):
+        parameter = {"name": item.attrib["name"], "type": item.attrib["dataType"]}
+        default = item.findtext(tag("Default"))
+        if default is not None:
+            parameter["default"] = json.loads(default)
+        parameters.append(parameter)
     return {
         "catalogId": f"ros2:{package}/{executable}",
         "moduleId": required("IDnType", "ID").text,
@@ -210,6 +231,7 @@ def read_profile(path):
         "interfaceSummary": required("IOVariables", "Description").text,
         "topics": [item.attrib for item in module.findall(f"{tag('IOVariables')}/{tag('Variable')}")],
         "servicesAndActions": [item.attrib for item in module.findall(f"{tag('Services')}/{tag('Service')}")],
+        "parameters": parameters,
         "distributionNote": required("Infra", "Requirement").text,
         "launch": None if launch is None else {
             "command": required("ExecutableForm", "Command").text,
@@ -218,13 +240,16 @@ def read_profile(path):
         "source": {
             "profilePath": path.relative_to(ROOT).as_posix(),
             "profileSha256": sha256(data),
-            "report": report.text,
-            "reportSha256": report.attrib["sha256"],
-            "reportRow": int(report.attrib["row"]),
+            **({"report": report.text, "reportSha256": report.attrib["sha256"],
+                "reportRow": int(report.attrib["row"])} if report is not None else {}),
             "urls": [item.text for item in module.findall(f"{tag('Evidence')}/{tag('Source')}")],
             **({"upstreamSource": {"url": upstream.text, "status": upstream.attrib["status"]}}
                if upstream is not None else {}),
             **({"implementationUrl": implementation_url} if implementation_url else {}),
+            **({"additionalImplementationUrls": sources} if (sources := [
+                item.text for item in module.findall(
+                    f"{tag('Evidence')}/{tag('AdditionalImplementationSource')}")
+            ]) else {}),
             **({"reviewNote": review_note} if review_note else {}),
         },
         "profile": {
@@ -253,14 +278,18 @@ def main():
         PROFILE_DIR.mkdir(parents=True, exist_ok=True)
         for name, content in profiles.items():
             (PROFILE_DIR / name).write_bytes(content)
-    nodes = sorted((read_profile(path) for path in PROFILE_DIR.glob("*.xml")),
-                   key=lambda node: node["source"]["reportRow"])
-    if [node["source"]["reportRow"] for node in nodes] != list(range(1, 101)):
+    profiles = [read_profile(path) for path in PROFILE_DIR.glob("*.xml")]
+    report_nodes = sorted((node for node in profiles if "reportRow" in node["source"]),
+                          key=lambda node: node["source"]["reportRow"])
+    standalone_nodes = sorted((node for node in profiles if "reportRow" not in node["source"]),
+                              key=lambda node: node["catalogId"])
+    nodes = report_nodes + standalone_nodes
+    if [node["source"]["reportRow"] for node in report_nodes] != list(range(1, 101)):
         parser.error("Expected a complete set of report rows 1 through 100")
     for key in ("catalogId", "moduleId"):
         if len({node[key] for node in nodes}) != len(nodes):
             parser.error(f"Duplicate {key} in XML profiles")
-    if len({node["source"]["reportSha256"] for node in nodes}) != 1:
+    if len({node["source"]["reportSha256"] for node in report_nodes}) != 1:
         parser.error("XML profiles refer to different report revisions")
     catalog = {"schemaVersion": "1.0", "catalogKind": "ros2-nodes", "nodes": nodes}
     content = (json.dumps(catalog, ensure_ascii=False, indent=2) + "\n").encode("utf-8")

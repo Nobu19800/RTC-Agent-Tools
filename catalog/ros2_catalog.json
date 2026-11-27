@@ -10522,6 +10522,326 @@
         "version": "0.1",
         "conformanceStatus": "not-assessed"
       }
+    },
+    {
+      "catalogId": "ros2:turtlesim/draw_square",
+      "moduleId": "urn:uuid:b5e3d28a-4178-5b38-a211-099b51d03ad4",
+      "moduleKind": "ros2",
+      "package": "turtlesim",
+      "executable": "draw_square",
+      "category": "Tutorials",
+      "description": "Drives the turtle in a square.",
+      "interfaceSummary": "Resets the simulator, reads the turtle pose, and publishes velocity commands.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "turtle1/pose",
+          "dataType": "turtlesim/msg/Pose"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "turtle1/cmd_vel",
+          "dataType": "geometry_msgs/msg/Twist"
+        }
+      ],
+      "servicesAndActions": [
+        {
+          "kind": "service",
+          "role": "client",
+          "name": "reset",
+          "dataType": "std_srvs/srv/Empty"
+        }
+      ],
+      "parameters": [],
+      "distributionNote": "ROS 2 Jazzy package ros-jazzy-turtlesim. Start the simulator before this node so the reset service is available.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "turtlesim",
+          "draw_square"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/turtlesim__draw_square.xml",
+        "profileSha256": "987ba11c06105927ef148a268c059a0ec220409d819d40a084a179e8f5d119a7",
+        "urls": [
+          "https://github.com/ros/ros_tutorials/tree/c83136eb8d0d3ed52eb0906183dd86ca309a4ed2/turtlesim"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros/ros_tutorials/blob/c83136eb8d0d3ed52eb0906183dd86ca309a4ed2/turtlesim/CMakeLists.txt",
+          "status": "verified"
+        },
+        "implementationUrl": "https://github.com/ros/ros_tutorials/blob/c83136eb8d0d3ed52eb0906183dd86ca309a4ed2/turtlesim/tutorials/draw_square.cpp"
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:turtlesim/mimic",
+      "moduleId": "urn:uuid:bdf3d19e-53f3-57a1-a1ff-2b39658bdf26",
+      "moduleKind": "ros2",
+      "package": "turtlesim",
+      "executable": "mimic",
+      "category": "Tutorials",
+      "description": "Makes one turtle mimic another.",
+      "interfaceSummary": "Reads the source turtle pose and publishes velocity commands to the target turtle.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "input/pose",
+          "dataType": "turtlesim/msg/Pose"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "output/cmd_vel",
+          "dataType": "geometry_msgs/msg/Twist"
+        }
+      ],
+      "servicesAndActions": [],
+      "parameters": [],
+      "distributionNote": "ROS 2 Jazzy package ros-jazzy-turtlesim. The default node name is turtle_mimic. Remap input/pose and output/cmd_vel to the source and target turtle topics.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "turtlesim",
+          "mimic"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/turtlesim__mimic.xml",
+        "profileSha256": "fd741a6ef556416e610f325f0515bcef4f4e7b6a32a11bdd7b2343906a0ae145",
+        "urls": [
+          "https://github.com/ros/ros_tutorials/tree/c83136eb8d0d3ed52eb0906183dd86ca309a4ed2/turtlesim"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros/ros_tutorials/blob/c83136eb8d0d3ed52eb0906183dd86ca309a4ed2/turtlesim/CMakeLists.txt",
+          "status": "verified"
+        },
+        "implementationUrl": "https://github.com/ros/ros_tutorials/blob/c83136eb8d0d3ed52eb0906183dd86ca309a4ed2/turtlesim/tutorials/mimic.cpp",
+        "additionalImplementationUrls": [
+          "https://github.com/ros/ros_tutorials/blob/c83136eb8d0d3ed52eb0906183dd86ca309a4ed2/turtlesim/launch/multisim.launch.py"
+        ]
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:turtlesim/turtle_teleop_key",
+      "moduleId": "urn:uuid:1142787b-a092-57f3-9227-e6420b3b2833",
+      "moduleKind": "ros2",
+      "package": "turtlesim",
+      "executable": "turtle_teleop_key",
+      "category": "Teleoperation",
+      "description": "Drives the turtle with keyboard input.",
+      "interfaceSummary": "Publishes velocity commands and sends absolute rotation goals.",
+      "topics": [
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "turtle1/cmd_vel",
+          "dataType": "geometry_msgs/msg/Twist"
+        }
+      ],
+      "servicesAndActions": [
+        {
+          "kind": "action",
+          "role": "client",
+          "name": "turtle1/rotate_absolute",
+          "dataType": "turtlesim/action/RotateAbsolute"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "scale_angular",
+          "type": "double",
+          "default": 2.0
+        },
+        {
+          "name": "scale_linear",
+          "type": "double",
+          "default": 2.0
+        }
+      ],
+      "distributionNote": "ROS 2 Jazzy package ros-jazzy-turtlesim. Requires an interactive terminal. The default node name is teleop_turtle.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "turtlesim",
+          "turtle_teleop_key"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/turtlesim__turtle_teleop_key.xml",
+        "profileSha256": "59a759ad48c61d7d1284dd9f40788a5c8f6d8e277423808961042a120f839755",
+        "urls": [
+          "https://github.com/ros/ros_tutorials/tree/c83136eb8d0d3ed52eb0906183dd86ca309a4ed2/turtlesim"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros/ros_tutorials/blob/c83136eb8d0d3ed52eb0906183dd86ca309a4ed2/turtlesim/CMakeLists.txt",
+          "status": "verified"
+        },
+        "implementationUrl": "https://github.com/ros/ros_tutorials/blob/c83136eb8d0d3ed52eb0906183dd86ca309a4ed2/turtlesim/tutorials/teleop_turtle_key.cpp"
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
+    },
+    {
+      "catalogId": "ros2:turtlesim/turtlesim_node",
+      "moduleId": "urn:uuid:4262e74d-d130-5ade-ae33-fbd89bbacb47",
+      "moduleKind": "ros2",
+      "package": "turtlesim",
+      "executable": "turtlesim_node",
+      "category": "Simulation",
+      "description": "Runs the Qt turtle simulator.",
+      "interfaceSummary": "Controls the default turtle and exposes its pose, color sensor, and lifecycle controls.",
+      "topics": [
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "turtle1/cmd_vel",
+          "dataType": "geometry_msgs/msg/Twist"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "turtle1/pose",
+          "dataType": "turtlesim/msg/Pose"
+        },
+        {
+          "direction": "output",
+          "transport": "ROS 2 topic",
+          "name": "turtle1/color_sensor",
+          "dataType": "turtlesim/msg/Color"
+        },
+        {
+          "direction": "input",
+          "transport": "ROS 2 topic",
+          "name": "/parameter_events",
+          "dataType": "rcl_interfaces/msg/ParameterEvent"
+        }
+      ],
+      "servicesAndActions": [
+        {
+          "kind": "service",
+          "role": "server",
+          "name": "clear",
+          "dataType": "std_srvs/srv/Empty"
+        },
+        {
+          "kind": "service",
+          "role": "server",
+          "name": "reset",
+          "dataType": "std_srvs/srv/Empty"
+        },
+        {
+          "kind": "service",
+          "role": "server",
+          "name": "spawn",
+          "dataType": "turtlesim/srv/Spawn"
+        },
+        {
+          "kind": "service",
+          "role": "server",
+          "name": "kill",
+          "dataType": "turtlesim/srv/Kill"
+        },
+        {
+          "kind": "service",
+          "role": "server",
+          "name": "turtle1/set_pen",
+          "dataType": "turtlesim/srv/SetPen"
+        },
+        {
+          "kind": "service",
+          "role": "server",
+          "name": "turtle1/teleport_absolute",
+          "dataType": "turtlesim/srv/TeleportAbsolute"
+        },
+        {
+          "kind": "service",
+          "role": "server",
+          "name": "turtle1/teleport_relative",
+          "dataType": "turtlesim/srv/TeleportRelative"
+        },
+        {
+          "kind": "action",
+          "role": "server",
+          "name": "turtle1/rotate_absolute",
+          "dataType": "turtlesim/action/RotateAbsolute"
+        }
+      ],
+      "parameters": [
+        {
+          "name": "background_r",
+          "type": "int",
+          "default": 69
+        },
+        {
+          "name": "background_g",
+          "type": "int",
+          "default": 86
+        },
+        {
+          "name": "background_b",
+          "type": "int",
+          "default": 255
+        },
+        {
+          "name": "holonomic",
+          "type": "bool",
+          "default": false
+        }
+      ],
+      "distributionNote": "ROS 2 Jazzy package ros-jazzy-turtlesim. Requires a Qt display. Names under turtle1 also exist for each additional spawned turtle.",
+      "launch": {
+        "command": "ros2",
+        "arguments": [
+          "run",
+          "turtlesim",
+          "turtlesim_node"
+        ]
+      },
+      "source": {
+        "profilePath": "profiles/iso22166-202/ros2/turtlesim__turtlesim_node.xml",
+        "profileSha256": "ca8ca95f718942dea3c0b312593198718fe71e8d535ffb6d9a08a27b85ccf604",
+        "urls": [
+          "https://github.com/ros/ros_tutorials/tree/c83136eb8d0d3ed52eb0906183dd86ca309a4ed2/turtlesim"
+        ],
+        "upstreamSource": {
+          "url": "https://github.com/ros/ros_tutorials/blob/c83136eb8d0d3ed52eb0906183dd86ca309a4ed2/turtlesim/CMakeLists.txt",
+          "status": "verified"
+        },
+        "implementationUrl": "https://github.com/ros/ros_tutorials/blob/c83136eb8d0d3ed52eb0906183dd86ca309a4ed2/turtlesim/src/turtlesim.cpp",
+        "additionalImplementationUrls": [
+          "https://github.com/ros/ros_tutorials/blob/c83136eb8d0d3ed52eb0906183dd86ca309a4ed2/turtlesim/src/turtle_frame.cpp",
+          "https://github.com/ros/ros_tutorials/blob/c83136eb8d0d3ed52eb0906183dd86ca309a4ed2/turtlesim/src/turtle.cpp"
+        ]
+      },
+      "profile": {
+        "targetStandard": "ISO 22166-202:2025",
+        "namespace": "urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1",
+        "version": "0.1",
+        "conformanceStatus": "not-assessed"
+      }
     }
   ]
 }

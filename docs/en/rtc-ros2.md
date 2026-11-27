@@ -1,53 +1,46 @@
-# Connect an RTC to ROS 2
+# RTC–ROS 2 integration
 
 [日本語](../rtc-ros2.md)
 
-Use OpenRTM-aist ROS2Transport to connect RTC DataPorts to ROS 2 publishers and subscribers. In this example, ROS 2 sends a string to an RTC, which returns a modified string to ROS 2.
-
-## 1. Design the round trip
-
-Use a chat working in the RTC-Agent-Tools checkout and ask the agent to follow its AGENTS.md.
-
-> Design a string round trip between ROS 2 and an echo RTC using ROS2Transport.
-
-| Source | Destination | Topic |
-| --- | --- | --- |
-| ROS 2 talker | RTC InPort | `/rtsd_bridge_in/chatter` |
-| RTC OutPort | ROS 2 listener | `/rtsd_bridge_out/chatter` |
-
-In RTSystemDesigner, check `RTC::TimedString` on the RTC ports and `std_msgs/msg/String` on the ROS 2 endpoints. Review publisher and subscriber roles, topic names, the ROS2Transport implementation, and the DDS backend. [Example session](../../examples/ros2-transport/session.json)
-
-### Registered example configuration
-
-<a href="../images/designer-sessions/rtc-ros2.jpg"><img src="../images/designer-sessions/rtc-ros2.jpg" alt="ROS 2 talker, echo RTC, and listener connected in RTSystemDesigner" width="600"></a>
+Use the standard OpenRTM-aist Python `TkJoyStick` GUI sample to control a turtle in ROS 2 Jazzy Turtlesim.
 
 ```mermaid
 flowchart LR
-    talker["bridge_source · ROS 2 talker<br/>chatter · std_msgs/msg/String"]
-    echo["RtsdEcho0 · RTC<br/>input / output · RTC::TimedString"]
-    listener["bridge_sink · ROS 2 listener<br/>chatter · std_msgs/msg/String"]
-    talker -->|"/rtsd_bridge_in/chatter"| echo
-    echo -->|"/rtsd_bridge_out/chatter"| listener
+    joy["TkJoyStick0 · RTC"]
+    sim["turtlesim_node · ROS 2"]
+    joy -->|"pos · ROS2Transport + custom serializer · /turtle1/cmd_vel"| sim
 ```
 
-The design uses existing implementations from the bundled round-trip test. Both connections use ROS2Transport.
+## 1. Design the system
 
-## 2. Build and start
+> Design a system that controls ROS 2 Turtlesim with the standard TkJoyStick sample.
 
-> Design approved.
+In RTSystemDesigner, check the connection from the existing `TkJoyStick0.pos` to the existing `turtlesim_node` subscriber. A custom ROS2Transport serializer converts `RTC::TimedFloatSeq` to `geometry_msgs/msg/Twist` on `/turtle1/cmd_vel`. It maps Y to forward speed (`linear.x`) and X to turn rate (`angular.z`), bounds both values, and produces zero velocity for centered or invalid input. The example uses the standard TkJoyStick GUI and ports.
 
-The agent prepares compatible ROS 2 and OpenRTM-aist runtimes and generates `rtc.conf` from the approved design. Match DDS domain, discovery scope, QoS, and type mappings. If the C++ RTC must appear by name in the ROS graph, select a transport configuration that supports named discovery.
+## 2. Build and start the system
 
-> Start the system.
+> Design complete. Start TkJoyStick and Turtlesim.
 
-[ROS2Transport configuration](../agents/en/ros2-transport.md) · [Jazzy round-trip test for Python and C++](../../examples/ros2-transport/README.md)
+The agent starts Turtlesim and TkJoyStick in the same ROS 2 Jazzy domain. It runs Turtlesim with `ros2 run turtlesim turtlesim_node` and loads ROS2Transport and the custom serializer through the RTC manager's `rtc.conf`.
 
-## 3. Verify the round trip and stop
+The standard TkJoyStick sample creates its RTC after manager startup, so startup preconnect may miss `pos`. After registration, the agent checks for a connector on `pos`. If missing, it uses `PortService.connect` on that port with `dataport.interface_type=ros2`, `dataport.dataflow_type=push`, `dataport.marshaling_type=ros2:tkjoystick/Twist`, and `dataport.ros2.topic=/turtle1/cmd_vel`, then activates the RTC. [ROS2Transport settings](agents/en/ros2-transport.md)
 
-From the same ROS 2 environment, the agent checks both topics with `ros2 topic info` and confirms the modified string with `ros2 topic echo /rtsd_bridge_out/chatter` or the listener log. For named discovery, also use `ros2 node list` and `ros2 node info` to check the RTC node and its endpoints.
+## 3. Verify and stop the system
+
+Drag the joystick away from center and watch the turtle move in Turtlesim. Release the joystick to stop. The agent checks the velocity command and turtle position, and verifies that Turtlesim's receive timeout stops motion when publishing ceases.
+
+```bash
+ros2 topic info /turtle1/cmd_vel
+ros2 topic echo /turtle1/cmd_vel
+ros2 topic echo /turtle1/pose
+```
 
 > Stop the system.
 
-The bundled round-trip test stops its test processes after reporting the result.
+The agent verifies that both processes have exited and the `TkJoyStick0` registration is gone. The shared NameService stays running.
 
-[OpenRTM-aist serialization and transport plugins](rtc-transport-plugins.md)
+In WSL2 with Jazzy, injecting `[0, 60]` through the standard input callback published `linear.x=1.0` and moved the turtle's X position from approximately 5.54 to 8.57. Both centered input and ceasing publication stopped the turtle. The user also verified mouse operation with both windows open. In this setup, `ros2 topic echo` received `Twist` even when `ros2 topic info` reported zero publishers. Verify delivery using message samples and position changes as well.
+
+[Custom serializer](../../examples/ros2-transport/TkJoyStickTwistSerializer.py)
+
+[OpenRTM transport plugins](rtc-transport-plugins.md)

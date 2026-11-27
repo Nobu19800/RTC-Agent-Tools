@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ros:Module xmlns:ros="urn:rtc-agent-tools:iso22166-202:ros2-mapping:0.1" targetStandard="ISO 22166-202:2025" profileVersion="0.1" conformanceStatus="not-assessed">
+  <ros:GenInfo>
+    <ros:ModuleName>draw_square</ros:ModuleName>
+    <ros:Description>Drives the turtle in a square.</ros:Description>
+  </ros:GenInfo>
+  <ros:IDnType>
+    <ros:ID>urn:uuid:b5e3d28a-4178-5b38-a211-099b51d03ad4</ros:ID>
+    <ros:InformationModelVersion>local-mapping-0.1</ros:InformationModelVersion>
+  </ros:IDnType>
+  <ros:ModuleProp>
+    <ros:Property name="rosPackage">turtlesim</ros:Property>
+    <ros:Property name="category">Tutorials</ros:Property>
+  </ros:ModuleProp>
+  <ros:IOVariables>
+    <ros:Description>Resets the simulator, reads the turtle pose, and publishes velocity commands.</ros:Description>
+    <ros:Variable direction="input" transport="ROS 2 topic" name="turtle1/pose" dataType="turtlesim/msg/Pose" />
+    <ros:Variable direction="output" transport="ROS 2 topic" name="turtle1/cmd_vel" dataType="geometry_msgs/msg/Twist" />
+  </ros:IOVariables>
+  <ros:Services>
+    <ros:Service kind="service" role="client" name="reset" dataType="std_srvs/srv/Empty" />
+  </ros:Services>
+  <ros:Infra>
+    <ros:Requirement>ROS 2 Jazzy package ros-jazzy-turtlesim. Start the simulator before this node so the reset service is available.</ros:Requirement>
+  </ros:Infra>
+  <ros:ExecutableForm>
+    <ros:Command>ros2</ros:Command>
+    <ros:Argument>run</ros:Argument>
+    <ros:Argument>turtlesim</ros:Argument>
+    <ros:Argument>draw_square</ros:Argument>
+  </ros:ExecutableForm>
+  <ros:Evidence>
+    <ros:Source>https://github.com/ros/ros_tutorials/tree/c83136eb8d0d3ed52eb0906183dd86ca309a4ed2/turtlesim</ros:Source>
+    <ros:UpstreamSource status="verified">https://github.com/ros/ros_tutorials/blob/c83136eb8d0d3ed52eb0906183dd86ca309a4ed2/turtlesim/CMakeLists.txt</ros:UpstreamSource>
+    <ros:ImplementationSource>https://github.com/ros/ros_tutorials/blob/c83136eb8d0d3ed52eb0906183dd86ca309a4ed2/turtlesim/tutorials/draw_square.cpp</ros:ImplementationSource>
+    <ros:Verification>Interfaces were reviewed against the ROS 2 Jazzy source. Runtime behavior and Annex B conformance have not been verified.</ros:Verification>
+  </ros:Evidence>
+</ros:Module>

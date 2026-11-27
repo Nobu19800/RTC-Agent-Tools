@@ -1,45 +1,60 @@
-# Connect an RTC to a Hakoniwa Asset
+# Connect an OpenRTM joystick to a Hakoniwa drone
 
 [日本語](../rtc-hakoniwa.md)
 
-Connect a typed RTC DataPort to an asset that reads or writes native Hakoniwa PDUs. Ask the agent to prepare the system, review the design, then request startup. The agent handles environment setup, plugin configuration, connection, and data checks.
-
-## 1. Design the connection
-
-Use a chat working in the RTC-Agent-Tools checkout and ask the agent to follow its AGENTS.md.
-
-> Design a system that sends RTC velocity commands to a simulated Hakoniwa asset over a PDU.
-
-In RTSystemDesigner, review both ports and the direction of the connection. For a velocity command, one mapping is from `RTC::TimedVelocity3D` to a Hakoniwa `geometry_msgs/Twist` PDU. Record the actual asset's robot name, PDU name, channel ID, capacity, layout, coordinate frame, and units. Document the same details separately for any reverse connection. [Connection contract](../agents/en/hakoniwa-serializer.md)
-
-### Registered example configuration
-
-<a href="../images/designer-sessions/rtc-hakoniwa.jpg"><img src="../images/designer-sessions/rtc-hakoniwa.jpg" alt="Velocity command RTC connected to a Hakoniwa asset in RTSystemDesigner" width="600"></a>
+Use the OpenRTM-aist Python `TkJoyStick` GUI sample to command horizontal motion in the Hakoniwa drone simulator.
 
 ```mermaid
 flowchart LR
-    source["VelocityCommand0 · RTC<br/>velocity · RTC::TimedVelocity3D"]
-    asset["VelocityReceiver0 · Hakoniwa Asset<br/>cmd_vel · geometry_msgs/Twist"]
-    source -->|"hakoniwa · SerializerProbe · channel 0 · raw48"| asset
+    joy["TkJoyStick0 · existing RTC"]
+    ctl["Drone control adapter · new RTC"]
+    sim["Hakoniwa Drone · existing asset"]
+    bridge["Hakoniwa PDU Web Bridge · existing"]
+    viewer["Three.js Drone Viewer · existing (browser)"]
+    joy -->|"pos · RTC::TimedFloatSeq"| ctl
+    ctl -->|"Hakoniwa PDUs · takeoff, move, land"| sim
+    sim -->|"Hakoniwa PDUs · pose and responses"| ctl
+    sim -->|"Hakoniwa PDUs · pos / motor"| bridge
+    bridge -->|"WebSocket v2 · pos / motor"| viewer
 ```
 
-The example places `VelocityCommand0` and `VelocityReceiver0` as new test modules. The design writes velocity commands to channel 0 on `SerializerProbe` as a 48-byte Twist PDU.
+## 1. Design the system
 
-## 2. Build and start
+> Design a system that controls a Hakoniwa simulated drone with the OpenRTM-aist Python TkJoyStick sample and shows it in the Three.js viewer through a WebSocket bridge.
 
-> Design approved.
+In RTSystemDesigner, check the connection from `TkJoyStick0.pos` to the adapter and the Hakoniwa PDU connections between the adapter and the drone. The `pos` port outputs canvas X and Y coordinates. The `vel` port outputs left and right values for a wheeled mobile robot, so this example uses `pos`.
 
-The agent prepares the selected Recipe's Workspace and Foundation on Ubuntu or WSL2 and checks the Python runtime and native Hakoniwa bindings.
-The agent loads the transport plugin and serializer through `rtc.conf`. The connection uses `dataport.interface_type: hakoniwa` and the `dataport.marshaling_type` for the selected type and layout. If the Hakoniwa endpoint has no CORBA port, use the documented single-port connection procedure.
+Configure the adapter's input scaling, axis directions, dead zone, and movement and speed limits. Use explicit actions for takeoff and landing. Centered or stale input stops new move requests. Wait for a response to the previous request before sending another.
 
-> Start the system.
+| Drone PDU | Channel | Capacity | Use |
+| --- | --- | --- | --- |
+| `pos` | 1 | 72 B | Read position and attitude |
+| `drone_cmd_takeoff` | 6 | 88 B | Takeoff request and response |
+| `drone_cmd_move` | 7 | 104 B | Absolute position request and response |
+| `drone_cmd_land` | 8 | 88 B | Landing request and response |
 
-The agent prepares the Conductor and PDU region in the order specified by the Recipe, then starts, connects, and activates the RTC. Loading the plugin and preparing the PDU region are separate steps. [Environment setup](setup.md) · [Python plugin and native verification example](../../examples/hakoniwa_transport/README.md)
+These values apply to the catalog's legacy API profile. Compare them with the selected Recipe's PDU definitions before running. The `pos` PDU uses the `geometry_msgs/Twist` type to carry position and attitude. Movement requests use `hako_msgs/HakoDroneCmdMove`. [PDU profile](../../profiles/iso22166-202/drone-three-point/drone-service.xml)
 
-## 3. Verify the data and stop
+## 2. Build and start the system
 
-For example, send `vx=0.1` m/s with all other fields set to zero. Check that the target PDU reports `linear.x=0.1` and zero in the other fields. Check both the connection log and the PDU values actually read. For a system with a viewer, follow the agent's instructions to check motion on screen.
+> Design complete. Start TkJoyStick and the Hakoniwa drone system.
+
+The agent prepares the Workspace and Foundation for the selected Recipe and runs the installed `TkJoyStickComp.py` with a Tkinter-enabled OpenRTM-aist Python runtime. The adapter uses `dataport.interface_type=hakoniwa`, a PDU-specific `dataport.marshaling_type`, and the same shared-memory domain as the drone. Use the drone's built-in Conductor when supplied by the Recipe. Enable control after the simulator is running and simulation time and `pos` are readable. [Environment setup](setup.md) · [OpenRTM transport plugins](rtc-transport-plugins.md)
+
+## 3. Verify and stop the system
+
+From Windows, refresh the shared `localhost:2809` in RTSystemEditor's Name Service view. Check that `TkJoyStick0` and `DroneJoystickAdapter0` are listed and their `pos → joystick` ports are connected. Use the **TkJoystick (Ubuntu)** window. The standard GUI has no takeoff or landing buttons. Ask the agent to initiate takeoff.
+
+> Take off the simulated drone.
+
+Move the TkJoyStick control horizontally. The agent compares the received `RTC::TimedFloatSeq`, move request PDU, successful response, and `Drone/pos` before and after the move. Check that centering the joystick stops new move requests.
+
+The agent registers the WebSocket bridge before starting the simulation. Open the 3D viewer URL provided by the agent and click **Connect**. The **Connected** status indicates an active connection. If the drone leaves the frame after takeoff, select **Follow**, **Front**, or **Overview** to switch cameras.
+
+The standard `TkJoyStick0` connected to the standalone `DroneJoystickAdapter0` produced successful move responses and changes in `Drone/pos` after joystick input. The adapter requests a horizontal speed of **6.0 m/s** and limits each target displacement to **5.0 m**. The speed is a command to the simulator.
 
 > Stop the system.
 
-[OpenRTM-aist serialization and transport plugins](rtc-transport-plugins.md)
+The agent confirms that both RTC registrations are gone and that the bridge's WebSocket and viewer's HTTP listeners for this run have stopped.
+
+[Static analysis and unit tests for the drone control adapter](drone-adapter-checks.md)

@@ -22,17 +22,16 @@ JSON ファイルで渡す場合は、セッション登録を省略して [公�
 
 ```mermaid
 flowchart TD
-    blank["空のキャンバスを開く"]
+    create["Codex が空のセッションを作成し、リンクを返す"]
+    blank["ユーザーがリンクを開く"]
     design["モジュールを追加してポートを接続する"]
-    saved["セッションを保存してリンクを渡す"]
-    exported["JSON を出力して添付する"]
-    review["エージェントに設計の確認を依頼する"]
+    saved["ユーザーがセッションを保存する"]
+    review["Codex が保存済みの設計 JSON を取得して確認する"]
     approve["設計完了を伝える"]
+    create --> blank
     blank --> design
     design --> saved
-    design --> exported
     saved --> review
-    exported --> review
     review --> approve
 ```
 
@@ -70,7 +69,9 @@ flowchart LR
 
 ## 3. 保存して渡す
 
-登録済みセッションで作業している場合は **保存** を押し、同じチャットでセッション URL または ID を伝えます。ファイルで渡す場合は **JSON出力** を押し、出力した v2 JSON を添付します。
+登録済みセッションで作業している場合は **保存** を押し、同じチャットでセッション URL または ID を伝えます。**保存** で設計 JSON がセッションサーバーに保存されます。Codex はそのセッションから JSON を取得します。
+
+ファイルで渡す場合は、別操作の **JSON出力** を押してローカルにダウンロードし、添付します。
 
 > この設計を読み込んで確認して。
 

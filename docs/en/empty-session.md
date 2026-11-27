@@ -22,17 +22,16 @@ The screenshot shows the blank canvas when the Designer is opened directly. In a
 
 ```mermaid
 flowchart TD
-    blank["Open a blank canvas"]
+    create["Codex creates an empty session and returns the link"]
+    blank["The user opens the link"]
     design["Add modules and connect ports"]
-    saved["Save the session and share its link"]
-    exported["Export and attach the JSON"]
-    review["Ask the agent to review the design"]
+    saved["The user saves the session"]
+    review["Codex retrieves and reviews the saved design JSON"]
     approve["Approve the design"]
+    create --> blank
     blank --> design
     design --> saved
-    design --> exported
     saved --> review
-    exported --> review
     review --> approve
 ```
 
@@ -70,7 +69,9 @@ Save and hand off the design as described below. After approval, the agent gener
 
 ## 3. Save and hand off the design
 
-For a registered session, click **保存** (Save) and send the URL or ID in the same chat. For a file handoff, click **JSON出力** (Export JSON) and attach the exported version 2 file.
+For a registered session, click **保存** (Save) and send the URL or ID in the same chat. Save stores the design JSON on the session server. Codex retrieves it from the session.
+
+For a file handoff, use the separate **JSON出力** (Export JSON) action to download and attach the file.
 
 > Load and review this design.
 

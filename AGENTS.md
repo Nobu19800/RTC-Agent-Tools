@@ -75,6 +75,8 @@ Determine module identity from `components[].data.moduleKind`: `rtc` is an RT-Co
 
 For every RTC/Hakoniwa DataPort connection, use an OpenRTM-aist custom interface (`dataport.interface_type: hakoniwa`) and a type-specific Hakoniwa serializer (`dataport.marshaling_type`). Keep the RTC endpoint typed and map it explicitly to the asset's PDU type, robot, channel, capacity and binary layout. Follow the mixed-connection contract in [hakoniwa-serializer.md](docs/agents/hakoniwa-serializer.md). Missing serializers or runtime bindings are planned implementation work, never evidence of a working connection. Ordinary CORBA DataPort connections do not connect directly to native Hakoniwa assets.
 
+Run the approved modules as separate components wherever the design specifies them. For an RTC, verify its instance and live ports through the intended NameService. A test harness that calls a component's callbacks or writes PDUs directly may verify an individual layer. Record that scope and separately verify the approved runtime before reporting it operational. For simulator systems with a viewer, follow the [runtime guide](docs/agents/runtime.md) for registration order, restart, and shutdown.
+
 Keep transport deployment outside RTC source: load interface/serializer plugins with `manager.modules.load_path` / `manager.modules.preload` in rtc.conf, and supply robot/channel/capacity/codec settings through connection properties. Verify single-port `rtcon` support in the installed version. If it rejects a missing peer, use verified rtc.conf preconnection or a separate configuration-driven connection script as the explicit native-endpoint exception. Do not embed module registration or connector creation in RTC lifecycle callbacks. The application retains typed ports and behavior; changing deployment does not require editing RTC source.
 
 The user-provided mixed-system JSON is format reference data, not authorization to implement or activate its sample system. Existing helpers such as `scripts/prepare_final_session.py` and `scripts/generate_runtime_batches.py` still expect the legacy format and example-specific metadata. Do not use them on version 2 input without adapting and verifying them, and do not rewrite an authoritative version 2 design into the old format to bypass that limitation.
@@ -90,6 +92,8 @@ Preserve public source URLs, component IDs and revisions as identities rather th
 ## Workflow gates
 
 Run static analysis and unit tests for newly implemented modules only when the user explicitly requests the respective check. A request to build, deploy, or run the system does not trigger these checks. Keep them out of automatic workflows and default build targets. For C++ use Clang and GoogleTest, for Python use Bandit, flake8, and pytest, and for Lua use Luacheck and LuaUnit. Display a coverage report whenever running the requested unit tests, following [On-request module checks](docs/agents/module-checks.md).
+
+Run the requested checks independently so that static-analysis findings do not prevent unit tests or coverage from running. Use fresh coverage data and report the exact files and line or branch counts measured. When tests use doubles for middleware or measure only a logic or codec module, report build, analysis, unit tests, and live integration as separate results. Keep findings visible when the request is to measure the current implementation. See the worked examples for [Python](docs/drone-adapter-checks.md), [C++](docs/drone-adapter-cpp-checks.md), and [Lua](docs/lua-rtc-checks.md).
 
 Whenever presenting system design information to the user, including a proposal, a revised design, or a design loaded from RTSystemDesigner, show a component table alongside the design link or file. List every instantiated component in the presented design with its instance name, module name, module kind, and implementation status (`既存` for reuse or `新規` for an implementation to create). If the design and its provenance do not establish the status, show `未確認`. A new instance of an existing implementation is `既存`. Follow [the design presentation format](docs/agents/design.md#phase-7-show-the-design-link-and-stop-implementation).
 
@@ -124,21 +128,49 @@ Run `git --version` again in the target shell before cloning. For the first clon
 
 ## Runtime installation
 
+### OpenRTM Lua (RTM-Lua)
+
+Reuse a compatible Lua 5.1 and LuaRocks installation when available. Choose the interpreter that will run the RTC and install rocks for that same Lua version and architecture.
+
+- **Windows:** Follow the [official Windows instructions](https://nobu19800.github.io/RTM-Lua/docs/Windows.html). Install Lua for Windows, then run `luarocks install openrtm 0.4-12` from an elevated terminal for a system-wide installation. The upstream source-install alternative is to extract RTM-Lua and run its `install.bat` from an elevated terminal. Use a shell that can resolve the selected Lua and LuaRocks.
+- **Ubuntu / WSL2:** Inside the target Ubuntu environment, run `sudo apt-get install lua5.1 luarocks`, then `sudo luarocks --lua-version=5.1 install openrtm`. If loading RTM-Lua fails because OiL was omitted, follow the upstream fallback `sudo luarocks --lua-version=5.1 install oil` and recheck the load. [Official Ubuntu instructions](https://nobu19800.github.io/RTM-Lua/docs/Ubuntu.html)
+
+- **Explicit CORBA endpoint on Windows and WSL2:** Inspect the installed `openrtm/Manager.lua`. If it still contains `local uriport = uriobj.getPort()`, back up that file and replace the line with `local uriport = tonumber(uriobj:getPort())`. The colon supplies the receiver, and OiL requires a numeric port. Verify RTC creation and registration with the explicit endpoint after applying the fix.
+- **UUID on WSL2 with RTM-Lua 0.5-3:** Pin `uuid` to `0.2-1` in the same Lua 5.1 rock tree as `openrtm`. For a user tree at `$HOME/.local/rtm-lua`, run `luarocks --lua-version=5.1 --tree="$HOME/.local/rtm-lua" install uuid 0.2-1` and verify the selected version with `luarocks --lua-version=5.1 --tree="$HOME/.local/rtm-lua" list uuid`. UUID 1.0.0-1 requires RNG configuration that this RTM-Lua version does not perform. If the OpenRTM source rock fails to unpack, use the official checkout and build its rockspec with `luarocks --lua-version=5.1 --tree="$HOME/.local/rtm-lua" make spec/openrtm-0.5-3.rockspec`.
+
+In the target shell verify `lua -v` (or `lua5.1 -v`) and `lua5.1 -e 'assert(require("openrtm"))'` using the selected executable name. If connecting to other OpenRTM implementations, check that the chosen RTM-Lua distribution supports the required standard DataPort transport, such as `corba_cdr`. Apply the shared NameService and advertised endpoint rules below. Do not assume that RTM-Lua exposes custom serializer configuration. Prefer an RTC with matching port types for Lua examples, or document the conversion on a runtime that supports it. [Upstream transport variants](https://nobu19800.github.io/RTM-Lua/docs/#ダウンロード)
+
+For RTM-Lua interoperation, inspect the live port profiles if rtshell rejects a connection that appears compatible. When the profiles confirm matching types, directions, and transport, a scoped `PortService.connect` call can establish the approved connection. Check its return code and verify the receiver's actual values. With console samples, activate the receivers before the sender. If logs are redirected, use unbuffered output when checking for the final received sample. See the [Windows and WSL2 example](docs/lua-rtc-checks.md#windows-と-wsl2-での-rtc-間通信).
+
 Follow [Runtime installation](docs/agents/install-runtime.md) for OpenRTM-aist, ROS 2, and Hakoniwa. On Windows, use the newest compatible OpenRTM-aist MSI and reuse installed Visual Studio, Python, and CMake when compatible. On Ubuntu and WSL2, use the official OpenRTM-aist installation procedure and select ROS 2 for the actual Ubuntu release. For Hakoniwa on either Ubuntu host, start with the [Hakoniwa Business Pack AGENTS.md](https://github.com/hakoniwalab/hakoniwa-business-pack/blob/main/AGENTS.md) and follow the selected Recipe's Workspace and Foundation procedures.
 
 ## C++ OpenRTM-aist in WSL2
 
 After setting up the official APT source, check the candidate for `openrtm2` with `apt-cache policy openrtm2`. If the candidate is `2.1.0-0`, build and use the C++ runtime from the OpenRTM-aist source repository. If APT offers a newer version, use the APT package. See [Runtime installation](docs/agents/install-runtime.md).
 
-## WSL2 RTC and NameService endpoint defaults
+## One NameService per machine
+
+Run or reuse one CORBA NameService on each participating machine that runs RTCs. Register each RTC with the NameService on its own machine. For cross-machine connections, resolve each RTC using its own machine's NameService and verify that its advertised RTC IOR is reachable. Configure management tools to query each machine as needed. Use port **2809** by default on each machine.
+
+### Windows and WSL2 on the same machine
+
+Use one shared CORBA NameService instance across Windows and all participating WSL2 distributions. Before starting RTCs or a NameService, inspect listeners and service ownership on Windows and in the participating distributions. Reuse the existing instance if both environments can query its root naming context through its advertised IOR. If none is running, start one instance on either Windows or WSL2, using port **2809** by default. Configure all participating RTCs and clients, including rtshell and RTSystemEditor, to use the same shared endpoint. Verify CORBA access from both environments and from any additional host in the approved deployment.
+
+If multiple instances already exist, or the sole instance is reachable only from one environment, identify the owners and affected users and report the conflict. Resolve it through an authorized consolidation or reconfiguration that preserves required registrations and unrelated workloads. A failed reachability check must never trigger a second instance. Keep shared infrastructure running when stopping individual systems.
+
+For Docker deployments using bridge networking, run one dedicated CORBA NameService in each container that runs OpenRTM RTCs. Configure the RTCs in each container to register with their container's instance. Port **2809** can be reused inside each isolated container. If clients connect from outside a container, configure distinct host ports when publishing ports on the same host address, and verify that each NameService and RTC advertises an IOR reachable by the intended clients. The shared Windows/WSL2 rule still applies to native processes and containers using host networking.
 
 When launching an RTC in WSL2, if the user or approved deployment does not explicitly specify its CORBA endpoint address, configure the RTC to publish an IP address reachable from Windows. Resolve a suitable address from the current WSL2 network configuration and verify Windows-to-RTC reachability; do not rely on an automatically selected interface, wildcard, or WSL-local hostname being reachable. Preserve explicitly specified endpoints and report any reachability problem instead of silently replacing them. Apply the detailed endpoint selection and verification rules in [Runtime batches](docs/agents/runtime.md).
 
-Apply the same default to the WSL2 NameService: unless an address is explicitly specified, start/configure it to publish the same Windows-reachable WSL2 IP selected for the RTCs, using port **2809** by default. Verify the NameService's advertised IOR from Windows as well as its listening socket. Reuse an existing service only when it satisfies the intended endpoint/reachability requirements; WSL-local health alone is insufficient. If recovery or reconfiguration is needed, preserve its registration data and restart only the verified owning service/process. Retain explicit endpoint choices and the shared-service shutdown policy described in the runtime guide.
+If the shared NameService runs in WSL2 and its address is unspecified, publish a WSL2 IP reachable from Windows. If it runs in Windows, publish a Windows address reachable from WSL2. Verify the listening socket and published IOR separately. Preserve explicit endpoint choices and report any reachability conflict. Restart only the verified owning service or process when applying an authorized endpoint change, and preserve its registration data.
 
 For this deployment, restart the NameService only on the first application of the selected endpoint configuration. Record that application in durable non-JSON state; subsequent RTC starts reuse the healthy service without restarting it. Do not reset this state on RTC shutdown or enter an automatic restart loop on a later health-check failure. An endpoint/network change requires a new reviewed configuration application. Preserve registration data and unrelated bindings throughout.
 
 ## Source selection rules
+
+For ROS2Transport, verify the connector on the actual RTC port before activation. A standard sample may create its RTC after Manager startup preconnect has already run. In that case, load the transport and serializer through runtime configuration and create the missing single-port connector after registration, following [ROS2Transport settings](docs/agents/ros2-transport.md). Confirm delivery with a ROS 2 subscriber and the receiving application. Graph discovery alone can omit an endpoint that is delivering data.
+
+When a connection requires data conversion, prefer a type-specific serializer or deserializer at the transport boundary. Keep existing modules, port types, and interfaces intact. Implement only the directions the connection uses. Record the field mapping, units, limits, serializer registration, and compatibility with the selected transport in the design, then verify the conversion on the actual data path. Use a separate adapter when the transport cannot support the mapping or when the behavior needs state, sequencing, or coordination outside serialization.
 
 Use this precedence when deciding what information to trust:
 
@@ -163,7 +195,7 @@ Search [the OpenRTM sample catalog](catalog/openrtm_samples_catalog.json) alongs
 - Inspect build/install commands before running them.
 - Keep third-party RTC sources separated under `build/existing/`.
 - Keep generated RTC sources separated under `build/generated/`.
-- Do not modify upstream RTC source unnecessarily.
+- Preserve existing components' source and behavior. Obtain the user's explicit approval before making any change to an existing component other than a bug fix. This includes changes to its UI, controls, behavior, ports, and interfaces, whether implemented in the source, a wrapper, or a local copy. Show the proposed change and its effect before asking. Approval of a system design or a request to start or verify a system does not by itself approve an undisclosed component change. Prefer an independent adapter that leaves the existing component intact, when the approved design calls for adaptation.
 - Preserve source URLs for traceability.
 - Do not claim an RTC exists in the catalog unless `rtc_search.py` or the catalog confirms it.
 - Do not claim a Hakoniwa asset exists in the catalog unless `hakoniwa_search.py` or the asset catalog confirms it; preserve its profile scope and source hash.
