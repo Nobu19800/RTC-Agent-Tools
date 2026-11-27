@@ -83,10 +83,10 @@ Catalog側にはXMLへの参照を追加しません。関連付けはXMLからC
 
 | XML | Catalog component ID | 関連種別 |
 | --- | --- | --- |
-| [drone-service.xml](drone-service.xml) | [hakoniwa-drone-core](../../../../hakoniwa-business-pack/catalog/components/hakoniwa-drone-core.yaml) | `implementation-profile`：実行構成のプロファイル |
+| [drone-service.xml](drone-service.xml) | [hakoniwa-drone-core](https://github.com/hakoniwalab/hakoniwa-business-pack/blob/main/catalog/components/hakoniwa-drone-core.yaml) | `implementation-profile`：実行構成のプロファイル |
 | [position-command.xml](position-command.xml) | hakoniwa-drone-core | `controls`：当該シミュレータを制御する別実装 |
 | [visual-state-publisher.xml](visual-state-publisher.xml) | hakoniwa-drone-core | `recipe-local-adapter-for`：姿勢出力に接続するRecipe内アダプタ |
-| [web-bridge.xml](web-bridge.xml) | [hakoniwa-pdu-bridge-core](../../../../hakoniwa-business-pack/catalog/components/hakoniwa-pdu-bridge-core.yaml) | `implementation-profile`：実行構成のプロファイル |
+| [web-bridge.xml](web-bridge.xml) | [hakoniwa-pdu-bridge-core](https://github.com/hakoniwalab/hakoniwa-business-pack/blob/main/catalog/components/hakoniwa-pdu-bridge-core.yaml) | `implementation-profile`：実行構成のプロファイル |
 
 XMLのModule IDとCatalogのcomponent IDは別の識別子です。
 Catalogは提供元コンポーネント、XMLは今回の構成・実装のプロファイルなので、

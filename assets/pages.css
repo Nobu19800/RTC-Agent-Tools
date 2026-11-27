@@ -1,0 +1,19 @@
+body {
+  box-sizing: border-box;
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 1.5rem clamp(1rem, 4vw, 3rem);
+  font: 1rem/1.65 system-ui, sans-serif;
+  color: #182332;
+  background: #fff;
+}
+
+nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+a { color: #075bb5; overflow-wrap: anywhere; }
+img { max-width: 100%; height: auto; }
+pre, table, .mermaid { overflow-x: auto; }
+pre { padding: 1rem; background: #f2f5f8; }
+table { display: block; border-collapse: collapse; }
+td, th { padding: .4rem .7rem; border: 1px solid #d5dee8; }
+blockquote { margin-left: 0; padding-left: 1rem; border-left: 3px solid #a4b5c8; }
+.mermaid svg { max-width: 100%; height: auto; }

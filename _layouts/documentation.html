@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="{% if page.path == 'README.ja.md' %}ja{% elsif page.path contains 'docs/agents/ja/' %}ja{% elsif page.path contains 'docs/en/' or page.path contains 'docs/agents/en/' %}en{% elsif page.path contains 'docs/' %}ja{% else %}en{% endif %}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | default: site.title | escape }}</title>
+  <link rel="stylesheet" href="{{ '/assets/pages.css' | relative_url }}">
+</head>
+<body>
+  <nav aria-label="RTC-Agent-Tools">
+    <a href="{{ '/' | relative_url }}">RTC-Agent-Tools</a>
+    <a href="{{ '/README.ja.html' | relative_url }}" lang="ja">日本語</a>
+    <a href="https://github.com/Nobu19800/RTC-Agent-Tools">GitHub</a>
+  </nav>
+  <main>
+    {{ content }}
+  </main>
+  <script type="module" src="{{ '/assets/pages-mermaid.js' | relative_url }}"></script>
+</body>
+</html>

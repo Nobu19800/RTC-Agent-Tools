@@ -23,7 +23,7 @@ In RTSystemDesigner, check the connection from the existing `TkJoyStick0.pos` to
 
 The agent starts Turtlesim and TkJoyStick in the same ROS 2 Jazzy domain. It runs Turtlesim with `ros2 run turtlesim turtlesim_node` and loads ROS2Transport and the custom serializer through the RTC manager's `rtc.conf`.
 
-The standard TkJoyStick sample creates its RTC after manager startup, so startup preconnect may miss `pos`. After registration, the agent checks for a connector on `pos`. If missing, it uses `PortService.connect` on that port with `dataport.interface_type=ros2`, `dataport.dataflow_type=push`, `dataport.marshaling_type=ros2:tkjoystick/Twist`, and `dataport.ros2.topic=/turtle1/cmd_vel`, then activates the RTC. [ROS2Transport settings](agents/en/ros2-transport.md)
+The standard TkJoyStick sample creates its RTC after manager startup, so startup preconnect may miss `pos`. After registration, the agent checks for a connector on `pos`. If missing, it uses `PortService.connect` on that port with `dataport.interface_type=ros2`, `dataport.dataflow_type=push`, `dataport.marshaling_type=ros2:tkjoystick/Twist`, and `dataport.ros2.topic=/turtle1/cmd_vel`, then activates the RTC. [ROS2Transport settings](../agents/en/ros2-transport.md)
 
 ## 3. Verify and stop the system
 

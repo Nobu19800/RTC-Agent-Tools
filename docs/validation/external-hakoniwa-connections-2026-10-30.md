@@ -18,7 +18,7 @@ native接続はdeactivateで維持され、再activate時に作り直さない�
 
 使用環境のrtshellはFoundation Python配下、OpenRTM-aistは `/usr/lib/python3/dist-packages/OpenRTM_aist`。`rtcon.py` は1引数でも `connect_ports` に到達するが、rtctree `DataPort.connect` が空のdestination配列を `WrongPortTypeError` で拒否する。
 
-実RTCの `move_request` を相手指定なしで試した結果も、終了コード1、`rtctree.exceptions.WrongPortTypeError: Wrong port type.` だった。ログとロード後のポート広告は [external-preload-20261030T114128-21298](../../build/system/logs/external-preload-20261030T114128-21298/rtcon-single-port.txt) と同ディレクトリの `preloaded-ports.txt` に保存した。RTCはINACTIVEのままで検証した。
+実RTCの `move_request` を相手指定なしで試した結果も、終了コード1、`rtctree.exceptions.WrongPortTypeError: Wrong port type.` だった。ログとロード後のポート広告は external-preload-20261030T114128-21298 (`build/system/logs/external-preload-20261030T114128-21298/rtcon-single-port.txt`) と同ディレクトリの `preloaded-ports.txt` に保存した。RTCはINACTIVEのままで検証した。
 
 OpenRTM `Manager.initPreConnection` にはpeer省略で `CORBA_RTCUtil.connect(..., RTC.PortService._nil)` を呼ぶ分岐がある。この作業では、起動と接続のフェーズを独立させるため外部ツールを選択し、rtc.conf preconnect自体のnative実通信は検証していない。
 
@@ -28,7 +28,7 @@ OpenRTM `Manager.initPreConnection` にはpeer省略で `CORBA_RTCUtil.connect(.
 
 最初の実通信試行はWindowsから編集した2本の `.sh` がCRLFとなり、Bashの `set` / sourceで失敗した。対象をLFに修正し、失敗ログは `external-connections-20261030T114346-21687` に保持した。その前のpreflightでは広告プロパティ名を単数と誤認して拒否したため、OpenRTMの `dataport.marshaling_types` に修正し、正常終了を再確認した。
 
-修正後の [external-connections-20261030T114443-22557](../../build/system/logs/external-connections-20261030T114443-22557/verification.log) は終了コード0。23件の単体検証（skipなし）、7本のnative接続生成・同一設定再利用、Tk widgetイベントによる離陸・X/Y/Z/yaw・入力release後の新規指令抑止・着陸を確認した。7本のmixed edgeは各要求・応答ackログとpose測定により対応づけた。さらにdeactivate後の接続維持、再activate後の照合、明示disconnect/reconnect、RTC終了と専用シミュレーションの停止まで確認した。
+修正後の external-connections-20261030T114443-22557 (`build/system/logs/external-connections-20261030T114443-22557/verification.log`) は終了コード0。23件の単体検証（skipなし）、7本のnative接続生成・同一設定再利用、Tk widgetイベントによる離陸・X/Y/Z/yaw・入力release後の新規指令抑止・着陸を確認した。7本のmixed edgeは各要求・応答ackログとpose測定により対応づけた。さらにdeactivate後の接続維持、再activate後の照合、明示disconnect/reconnect、RTC終了と専用シミュレーションの停止まで確認した。
 
 この検証はWSL2内のnative PDU通信とWSLgのGUIイベント操作を対象とする。ブラウザ描画、Windowsネイティブ共有メモリ、実機は今回の対象外で、以前のブラウザ証跡を現在の検証として扱わない。
 

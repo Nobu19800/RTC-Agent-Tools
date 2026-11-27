@@ -30,7 +30,7 @@ Ubuntuの `/usr/bin/python3` 3.12.3と `/usr/lib/python3/dist-packages/OpenRTM_a
 5. 別Pythonプロセスから同じPDUを書き換え、InPortがその値を取得することを確認します。writerは順番に使用し、同時書き込みはしません。
 6. 接続プロファイルの消滅、providerスレッドの終了、箱庭 `status=stopped`、conductor停止、テスト用CORBA servant解放とOpenRTM終了を確認します。
 
-最終結果は終了コード0です。ログは [native.log](../../build/system/logs/hakoniwa-wsl-20261030T021810.690208Z/native.log)、[unit.log](../../build/system/logs/hakoniwa-wsl-20261030T021810.690208Z/unit.log)、同ディレクトリの `peer-0.log`、`peer-1.log`、`environment.txt`、`run.txt` に保存しました。native/peerの終了後ログに未解決の例外・ORBエラーはありません。ビルド構成時には上流のCMake CMP0135警告とpyenv不在によるsystem Pythonフォールバック警告がありました。ビルドログにコンパイラwarning/errorはありません。
+最終結果は終了コード0です。ログは native.log (`build/system/logs/hakoniwa-wsl-20261030T021810.690208Z/native.log`)、unit.log (`build/system/logs/hakoniwa-wsl-20261030T021810.690208Z/unit.log`)、同ディレクトリの `peer-0.log`、`peer-1.log`、`environment.txt`、`run.txt` に保存しました。native/peerの終了後ログに未解決の例外・ORBエラーはありません。ビルド構成時には上流のCMake CMP0135警告とpyenv不在によるsystem Pythonフォールバック警告がありました。ビルドログにコンパイラwarning/errorはありません。
 
 この検証は **同一プロセス内の実DataPort接続と、別プロセス間のnative PDU共有** です。別プロセスに配置したRTC間のCORBA接続、登録assetのstep同期・reset、実機動作は未検証です。空のシミュレーションをstart/stopするため、初回試案の「masterをstoppedのまま検証する」手順は使用しません。
 

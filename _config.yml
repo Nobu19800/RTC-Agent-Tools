@@ -1,0 +1,28 @@
+title: RTC-Agent-Tools
+url: https://nobu19800.github.io
+baseurl: /RTC-Agent-Tools
+
+plugins:
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+  - jekyll-relative-links
+
+readme_index:
+  enabled: true
+  remove_originals: false
+
+relative_links:
+  enabled: true
+
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: documentation
+
+exclude:
+  - build/
+  - work/
+  - "**/__pycache__/"
+  - "**/*.pyc"
