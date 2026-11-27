@@ -8,7 +8,7 @@ RTC-Agent-Tools helps you design, build, and run robot systems with a coding age
 
 ## What you can do
 
-Describe the system you want to build to Codex or Claude Code. The agent selects existing RTCs, ROS 2 nodes, and Hakoniwa assets from the catalogs and proposes a design. Review it in RTSystemDesigner, then ask the agent to generate any missing RTCs and build and start the system. For example, you can drive a simulated robot with a joystick or exchange data between RTCs running on Windows and Raspberry Pi. With LibreOffice Calc, one RTC can write its output to a cell and another can read the value.
+Describe the system you want to build to Codex or Claude Code. The agent selects existing RTCs, ROS 2 nodes, and Hakoniwa assets from the catalogs and proposes a design. Review and finalize the design in RTSystemDesigner, then ask the agent to generate any missing RTCs and build and start the system. For example, you can build a system that lets you drive a simulated robot with a joystick or exchange data between RTCs deployed on Windows and Raspberry Pi.
 
 ![Prompt Codex or Claude Code, review the design, approve and build, then run and verify. Examples show simulated robot control, physical robot control, data exchange with ROS 2 and Hakoniwa, and spreadsheet integration.](docs/images/robot-development-workflow.en.png)
 
