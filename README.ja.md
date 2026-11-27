@@ -8,7 +8,7 @@ RTC-Agent-Tools は、Codex などのエージェントと一緒にロボット�
 
 ## できること
 
-Codex や Claude Code に作りたいシステムを伝えると、エージェントがカタログから既存の RTC、ROS 2 ノード、箱庭アセットを選び、設計案を作成します。RTSystemDesigner で設計を確認し、確定したら、足りない RTC の生成やシステムの構築・起動をエージェントに依頼できます。たとえば、ジョイスティックでシミュレーター上のロボットを操作したり、Windows と Raspberry Pi に配置した RTC 間でデータを送ったりできます。LibreOffice Calc と接続すれば、RTC が出力した値をセルに書き込み、セルの値を別の RTC へ渡せます。
+Codex や Claude Code に作りたいシステムを伝えると、エージェントがカタログから既存の RTC、ROS 2 ノード、箱庭アセットを選び、設計案を作成します。RTSystemDesigner で設計を確認し、確定したら、足りない RTC の生成やシステムの構築・起動をエージェントに依頼できます。たとえば、ジョイスティックでシミュレーター上のロボットを操作するシステムや、Windows と Raspberry Pi に配置した RTC 間でデータを送るシステムなどが構築できます。
 
 ![Codex または Claude Code に要件を伝える、設計を確認する、承認して構築する、起動して確認する。下段は移動ロボットのシミュレーション、実機制御、RTC・ROS 2・箱庭のデータ連携、表計算連携](docs/images/robot-development-workflow.ja.png)
 
